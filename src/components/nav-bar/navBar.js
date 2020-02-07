@@ -72,19 +72,37 @@ const LiOptions = styled.div`
     }
     
 `
-const stylestyleOptionsLight = {
-    color: "white",
-    textDecoration: "none",
-    fontWeight: "bold",
-    fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 
-}
-const styleOptionsDark = {
-    color: "black",
-    textDecoration: "none",
-    fontWeight: "bold",
-    fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-}
+const OptionLink = styled(NavLink)`
+    ${props => props.theme.darkMode ? {
+        color: "black",
+        textDecoration: "none",
+        fontWeight: "bold",
+        fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+        ":hover": {
+            color: "white",
+        }
+    } : {
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+            fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+
+        }}
+`
+const NavBarLink = styled(NavLink)`
+        ${props => props.theme.darkMode ? {
+        color: "white",
+        textDecoration: "none",
+        fontWeight: "bold",
+        fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    } : {
+            color: "black",
+            textDecoration: "none",
+            fontWeight: "bold",
+            fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+        }}
+`
 
 
 const Avatar = styled.img`
@@ -102,24 +120,24 @@ const AvatarBackground = styled.div`
 
 function HookNavBar() {
     const [toggleUsser, setToggleUser] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     console.log(toggleUsser)
     const Option = toggleUsser ?
         <>
-        <Polygon></Polygon>
-        <Options>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
-                <LiOptions>
-                    <NavLink to={"/profile/" + toggleUsser} style={isDarkMode ? styleOptionsDark : stylestyleOptionsLight}>Trang Cá Nhân</NavLink>
-                </LiOptions>
-                <LiOptions>
-                    <NavLink to="/change-password" style={isDarkMode ? styleOptionsDark : stylestyleOptionsLight} > Đổi Mật Khẩu </NavLink>
-                </LiOptions>
-                <LiOptions>
-                    <NavLink to="/log-in" style={isDarkMode ? styleOptionsDark : stylestyleOptionsLight} > Đăng xuất </NavLink>
-                </LiOptions>
-            </div>
-        </Options>
+            <Polygon></Polygon>
+            <Options>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
+                    <LiOptions>
+                        <OptionLink to={"/profile/" + toggleUsser} >Trang Cá Nhân</OptionLink>
+                    </LiOptions>
+                    <LiOptions>
+                        <OptionLink to={"/change-password"} >Đổi Mật Khẩu</OptionLink>
+                    </LiOptions>
+                    <LiOptions>
+                        <OptionLink to={"/sign-in"} >Đăng Xuất</OptionLink>
+                    </LiOptions>
+                </div>
+            </Options>
         </>
         : <></>
     return (
@@ -136,26 +154,26 @@ function HookNavBar() {
                                 <FlexGrow grow={66} >
                                     <Ul>
                                         <Li>
-                                            <NavLink to="/" exact activeStyle={styleActiveLink} style={isDarkMode ? styleLinkDark : styleLinkLight}>Trang Chủ</NavLink>
+                                            <NavBarLink to="/" exact activeStyle={styleActiveLink} >Trang Chủ</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavLink to="/news" activeStyle={styleActiveLink} style={isDarkMode ? styleLinkDark : styleLinkLight}>Tin Tức</NavLink>
+                                            <NavBarLink to="/news" activeStyle={styleActiveLink} >Tin Tức</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavLink to="/project" activeStyle={styleActiveLink} style={isDarkMode ? styleLinkDark : styleLinkLight} >Dự Án</NavLink>
+                                            <NavBarLink to="/project" activeStyle={styleActiveLink}  >Dự Án</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavLink to="/forum" activeStyle={styleActiveLink} style={isDarkMode ? styleLinkDark : styleLinkLight}>Dự Án</NavLink>
+                                            <NavBarLink to="/forum" activeStyle={styleActiveLink} >Dự Án</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavLink to="/about-us" activeStyle={styleActiveLink} style={isDarkMode ? styleLinkDark : styleLinkLight}>Về Chúng Tôi</NavLink>
+                                            <NavBarLink to="/about-us" activeStyle={styleActiveLink} >Về Chúng Tôi</NavBarLink>
                                         </Li>
                                     </Ul>
                                 </FlexGrow>
                                 <FlexGrow onClick={() => { setToggleUser(!toggleUsser) }} grow={8}  >
                                     <AvatarBackground>
                                         <Avatar src="https://tindongvathome.files.wordpress.com/2019/06/cho-husky-3.jpg" />
-                                        <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} class="fas fa-chevron-down"></i>
+                                        <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
                                     </AvatarBackground>
                                 </FlexGrow>
                             </MiddleRow>
@@ -171,18 +189,6 @@ const styleActiveLink = {
     color: '#37A28D',
 }
 
-const styleLinkLight = {
-    color: "black",
-    textDecoration: "none",
-    fontWeight: "bold",
-    fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-}
-const styleLinkDark = {
-    color: "white",
-    textDecoration: "none",
-    fontWeight: "bold",
-    fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-}
 
 
 export default HookNavBar;
