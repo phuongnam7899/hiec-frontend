@@ -119,21 +119,21 @@ const AvatarBackground = styled.div`
 `;
 
 function HookNavBar() {
-    const [toggleUsser, setToggleUser] = useState(false);
+    const [toggleUser, setToggleUser] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
-    console.log(toggleUsser)
-    const Option = toggleUsser ?
+    
+    const Option = toggleUser ?
         <>
             <Polygon></Polygon>
             <Options>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
-                    <LiOptions>
-                        <OptionLink to={"/profile/" + toggleUsser} >Trang Cá Nhân</OptionLink>
+                    <LiOptions onClick = {()=>setToggleUser(!toggleUser)}>
+                        <OptionLink to={"/profile/" + toggleUser} >Trang Cá Nhân</OptionLink>
                     </LiOptions>
-                    <LiOptions>
+                    <LiOptions onClick = {()=>setToggleUser(!toggleUser)}>
                         <OptionLink to={"/change-password"} >Đổi Mật Khẩu</OptionLink>
                     </LiOptions>
-                    <LiOptions>
+                    <LiOptions onClick = {()=>setToggleUser(!toggleUser)}>
                         <OptionLink to={"/sign-in"} >Đăng Xuất</OptionLink>
                     </LiOptions>
                 </div>
@@ -163,14 +163,14 @@ function HookNavBar() {
                                             <NavBarLink to="/project" activeStyle={styleActiveLink}  >Dự Án</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/forum" activeStyle={styleActiveLink} >Dự Án</NavBarLink>
+                                            <NavBarLink to="/forum" activeStyle={styleActiveLink} >Diễn Đàn</NavBarLink>
                                         </Li>
                                         <Li>
                                             <NavBarLink to="/about-us" activeStyle={styleActiveLink} >Về Chúng Tôi</NavBarLink>
                                         </Li>
                                     </Ul>
                                 </FlexGrow>
-                                <FlexGrow onClick={() => { setToggleUser(!toggleUsser) }} grow={8}  >
+                                <FlexGrow onClick={() => { setToggleUser(!toggleUser) }} grow={8}  >
                                     <AvatarBackground>
                                         <Avatar src="https://tindongvathome.files.wordpress.com/2019/06/cho-husky-3.jpg" />
                                         <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
