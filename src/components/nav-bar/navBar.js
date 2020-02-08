@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
-
+import {Container} from "../container/container"
 
 const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
     height:60px;
 `;
 
-const Container = styled.div`
-    margin: 0px 90px;
-    height:100%;
-    position:relative;
+// const Container = styled.div`
+//     margin: 0px 90px;
+//     height:100%;
+//     position:relative;
 
-`;
+// `;
 const Logo = styled.img`
     width : auto;
     max-height : 50px;
@@ -182,6 +182,7 @@ function HookNavBar() {
                     </BackgroundNav>
                 </Router>
             </ThemeProvider>
+            <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button>
         </div>
     )
 }

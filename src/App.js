@@ -6,6 +6,7 @@ export default function App() {
   return (
     <div style = {{backgroundColor : "#F6F6F6",height: "100vh"}}>
       <HookNavBar/>
+    
     </div>
   )
 }
