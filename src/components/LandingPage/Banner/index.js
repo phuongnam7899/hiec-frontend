@@ -21,7 +21,7 @@ const BannerContainer = styled.div`
     align-items : center;
     color : #FFFFFF;
     justify-content : center;
-    width : 100vw;
+    max-width : 100vw;
     height : calc(100vh - 60px);
     background-image : url(https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/84351595_2573974126212653_3668950583970103296_n.png?_nc_cat=103&_nc_ohc=oTJvSlhv-FMAX-Df-tl&_nc_ht=scontent.fhan2-4.fna&oh=5d03e3e3be2a4282d12a20e306b58cc8&oe=5ED98D91);
     background-size : cover;

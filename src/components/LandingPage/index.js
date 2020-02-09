@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Container from "../Container"
 import Banner from "./Banner";
-import News from "./News"
+import News from "./News";
+import Project from "./Project"
 
 const LandingPageContainer = styled.div`
     background-color : #F6F6F6;
@@ -18,10 +19,10 @@ const LandingPage = (props) => {
                 <News>
 
                 </News>
-                {/* <Project>
+                <Project>
 
                 </Project>
-                <Forum>
+                {/* <Forum>
 
                 </Forum> */}
                 {/* <Leaderboard>

@@ -211,7 +211,7 @@ function HookNavBar() {
             </ThemeProvider>
             {/* <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button> */}
             {/* <button onClick={() => setIsDarkMode(!isDarkMode)}> MODE </button> */}
-            <button onClick={() => window.localStorage.setItem("token", "HELLLo")}> A TOKEN </button>
+            {/* <button onClick={() => window.localStorage.setItem("token", "HELLLo")}> A TOKEN </button> */}
         </div>
     )
 }

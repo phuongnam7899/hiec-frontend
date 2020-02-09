@@ -26,6 +26,10 @@ const Title = styled.h2`
     font-size: ${props => props.type === "big" ?  "24px" : "20px"};
     margin : 8px 0px;
 `
+const Description = styled.div`
+    font-size : 18px;
+    margin : 8px 0px;
+`
 const Date = styled.div`
     font-size : 18px;
     color : #707070;
@@ -36,6 +40,9 @@ const ImageWithTitle = (props) => {
         <ImageWithTitleContainer>
             <Img imgSrc={props.imgUrl} className="img"></Img>
             <Title type={props.type} className="title">{props.title}</Title>
+            {
+                props.description ? <Description>{props.description}</Description> : null
+            }
             <Date type={props.type}>{props.date}</Date>
         </ImageWithTitleContainer>
     )
