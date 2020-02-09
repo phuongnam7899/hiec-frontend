@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
-import {Container} from "../container/container"
+import {Container} from "../container"
 
 const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
@@ -68,7 +68,7 @@ const LiOptions = styled.div`
     text-align:center;
     &:hover{
         background-color: #37A28D;
-        transition : 0.3s all;
+        transition : 0.2s all;
     }
     
 `
@@ -182,7 +182,7 @@ function HookNavBar() {
                     </BackgroundNav>
                 </Router>
             </ThemeProvider>
-            <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button>
+            {/* <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button> */}
         </div>
     )
 }
