@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
-import {Container} from "../container"
+import {Container} from "../Container"
+import { useSelector } from 'react-redux';
 
 const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
@@ -108,6 +109,7 @@ const NavBarLink = styled(NavLink)`
 const Avatar = styled.img`
   height:40px;
   border-radius:999px;
+  
 `;
 const AvatarBackground = styled.div`
     display : flex;
@@ -116,35 +118,64 @@ const AvatarBackground = styled.div`
     align-items:center;
     height: 100%;
     cursor: pointer;
+    
 `;
 
 function HookNavBar() {
     const [toggleUser, setToggleUser] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
-    
+    const [isUser, setIsUser] = useState(false);
+    const [href, setHref] = useState("");
+    const token = useSelector(state => state.token);
+
+
+// kiểm tra token mỗi khi href thay đổi, nếu có token => có user => chuyển mode user = true;
+// note : về sau nên để 1 user object và kiểm tra 1 trường khác rỗng không thì hơn, loại đi biến setIsUser cho nhanh;
+    useEffect(()=>{
+        console.log('hêlo')
+        if (token) {
+            setIsUser(true);
+            console.log("ssss");
+        }
+    },[href])
+
+    // useEffect(() => {
+    // },[href])
+    function changeHref() {
+        setHref(window.location.href);
+    }
+
+    const User = isUser ? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
+        <Avatar src="https://tindongvathome.files.wordpress.com/2019/06/cho-husky-3.jpg" />
+        <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
+    </AvatarBackground> : <></>
+
     const Option = toggleUser ?
         <>
             <Polygon></Polygon>
             <Options>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
-                    <LiOptions onClick = {()=>setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/profile/" + toggleUser} >Trang Cá Nhân</OptionLink>
+                    <LiOptions onClick={() => setToggleUser(!toggleUser)}>
+                        <OptionLink to={"/profile/" + toggleUser} onClick={changeHref}>Trang Cá Nhân</OptionLink>
                     </LiOptions>
-                    <LiOptions onClick = {()=>setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/change-password"} >Đổi Mật Khẩu</OptionLink>
+                    <LiOptions onClick={() => setToggleUser(!toggleUser)}>
+                        <OptionLink to={"/change-password"} onClick={changeHref} >Đổi Mật Khẩu</OptionLink>
                     </LiOptions>
-                    <LiOptions onClick = {()=>setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/sign-in"} >Đăng Xuất</OptionLink>
+                    <LiOptions onClick={() => setToggleUser(!toggleUser)}>
+                        <OptionLink to={"/sign-in"} onClick={changeHref} >Đăng Xuất</OptionLink>
                     </LiOptions>
                 </div>
             </Options>
         </>
         : <></>
+
+
+
+
     return (
 
         <div>
             <ThemeProvider theme={{ darkMode: isDarkMode }}>
-                <Router>
                     <BackgroundNav>
                         <Container>
                             <MiddleRow>
@@ -154,35 +185,33 @@ function HookNavBar() {
                                 <FlexGrow grow={66} >
                                     <Ul>
                                         <Li>
-                                            <NavBarLink to="/" exact activeStyle={styleActiveLink} >Trang Chủ</NavBarLink>
+                                            <NavBarLink to="/" exact activeStyle={styleActiveLink} onClick={changeHref} >Trang Chủ</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/news" activeStyle={styleActiveLink} >Tin Tức</NavBarLink>
+                                            <NavBarLink to="/news" activeStyle={styleActiveLink} onClick={changeHref} >Tin Tức</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/project" activeStyle={styleActiveLink}  >Dự Án</NavBarLink>
+                                            <NavBarLink to="/project" activeStyle={styleActiveLink} onClick={changeHref}  >Dự Án</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/forum" activeStyle={styleActiveLink} >Diễn Đàn</NavBarLink>
+                                            <NavBarLink to="/forum" activeStyle={styleActiveLink} onClick={changeHref} >Diễn Đàn</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/about-us" activeStyle={styleActiveLink} >Về Chúng Tôi</NavBarLink>
+                                            <NavBarLink to="/about-us" activeStyle={styleActiveLink} onClick={changeHref} >Về Chúng Tôi</NavBarLink>
                                         </Li>
                                     </Ul>
                                 </FlexGrow>
-                                <FlexGrow onClick={() => { setToggleUser(!toggleUser) }} grow={8}  >
-                                    <AvatarBackground>
-                                        <Avatar src="https://tindongvathome.files.wordpress.com/2019/06/cho-husky-3.jpg" />
-                                        <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
-                                    </AvatarBackground>
+                                <FlexGrow grow={8} style = {{position:"relative"}} >
+                                    {User}
+                                    {Option}
                                 </FlexGrow>
                             </MiddleRow>
-                            {Option}
                         </Container>
                     </BackgroundNav>
-                </Router>
             </ThemeProvider>
             {/* <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button> */}
+            {/* <button onClick={() => setIsDarkMode(!isDarkMode)}> MODE </button> */}
+            <button onClick={() => window.localStorage.setItem("token", "HELLLo")}> A TOKEN </button>
         </div>
     )
 }
