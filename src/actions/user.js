@@ -1,4 +1,8 @@
-export default saveUser = user=>({
-    type : "SAVE_USER",
-    payload : user,
+export const saveUser = user=>({
+    type : 'SAVE_USER',
+    user,
+})
+
+export const deleteUser = ()=>({
+    type : 'DELETE_USER'
 })
