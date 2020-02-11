@@ -18,12 +18,16 @@ const Img = styled.div`
     background-image : url(${props => props.imgSrc || null});
     background-size : 100% 100%;
     width: 100%;
-    height : 70%;
+    height : 75%;
     transition : background-size .3s;
 }
 `
 const Title = styled.h2`
     font-size: ${props => props.type === "big" ?  "24px" : "20px"};
+    margin : 8px 0px;
+`
+const Description = styled.div`
+    font-size : 18px;
     margin : 8px 0px;
 `
 const Date = styled.div`
@@ -33,10 +37,22 @@ const Date = styled.div`
 
 const ImageWithTitle = (props) => {
     return(
-        <ImageWithTitleContainer>
+        <ImageWithTitleContainer onClick={() => {
+            if(props.toHref){
+                console.log(`link to ${props.toHref} `)
+            }
+        }}>
             <Img imgSrc={props.imgUrl} className="img"></Img>
-            <Title type={props.type} className="title">{props.title}</Title>
-            <Date type={props.type}>{props.date}</Date>
+            {
+                props.title ? <Title type={props.type} className="title">{props.title}</Title> : null
+            }
+            {
+                props.description ? <Description>{props.description}</Description> : null
+            }
+            {
+                props.date ? <Date type={props.type}>{props.date}</Date> : null
+            }
+            
         </ImageWithTitleContainer>
     )
 }
