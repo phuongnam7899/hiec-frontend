@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ImageWithTitle from "../ImageWithTitle";
 import axios from "../../../axios";
+import {NavLink} from "react-router-dom"
 
-const Title = styled.h1`
+const Title = styled(NavLink)`
   font-size: 48px;
   width: 100%;
+  text-decoration : none;
+  font-weight : bold;
+  color : #000000;
+  &:hover {
+      color : #1ABC9C
+  }
   margin: 32px 0px 0px 0px;
 `;
 const NewsContainer = styled.div`
@@ -48,7 +55,7 @@ const News = () => {
   };
   return (
     <NewsContainer>
-      <Title>Tin Tức</Title>
+      <Title to="/news">Tin Tức</Title>
       <BigNews>
         <ImageWithTitle
           type="big"
@@ -66,6 +73,7 @@ const News = () => {
                 date={oneNew.postTime}
                 title={oneNew.title}
                 imgUrl="https://images.unsplash.com/photo-1581084121296-8b65c4f80452?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+                toHref = "/news/:id"
               />
             </OneNews>
           )

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
 import {Container} from "../Container"
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import {addToken ,deleteToken} from "../../actions/token"
+import {saveUser, deleteUser} from "../../actions/user"
 const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
     height:60px;
@@ -75,6 +76,8 @@ const LiOptions = styled.div`
 `
 
 const OptionLink = styled(NavLink)`
+    padding : 8px 32px;
+
     ${props => props.theme.darkMode ? {
         color: "black",
         textDecoration: "none",
@@ -92,6 +95,7 @@ const OptionLink = styled(NavLink)`
         }}
 `
 const NavBarLink = styled(NavLink)`
+        
         ${props => props.theme.darkMode ? {
         color: "white",
         textDecoration: "none",
@@ -124,29 +128,43 @@ const AvatarBackground = styled.div`
 function HookNavBar() {
     const [toggleUser, setToggleUser] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [isUser, setIsUser] = useState(false);
     const [href, setHref] = useState("");
+    const dispatch = useDispatch();
+    // NOTE : phần giả định token 
+//     const aToken = 
+// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBodW9uZ25hbTc4OTlAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjMxMjMiLCJpYXQiOjE1ODA5NjEzMTZ9.zsj2ac61JwVXOOLRzlct3Q5k6UQwgMazZ4-18GthjHs"
+//     const aUser = {
+//         isAdmin: false,
+//        _id :"#894895688325t3468",
+//         profile: {
+//             name: "THAI NGUYEN",
+//             gender: "NAM",
+//             phoneNumber: "435568404",
+//             dob: "252//252",
+//             occupation: {
+//                 isWorking: false,
+//                 describe: {} // jobTitle - companyName or school - major
+//             },
+//             address: "45/ ngách ",
+//             avatar : "http://cdn.hoahoctro.vn/uploads/2018/10/5bc41f947aa93-1.jpg"
+//         }
+//     }
+    // const getUserAndToken = ()=>{
+    //     dispatch(addToken(aToken));
+    //     dispatch(saveUser(aUser));
+    // }
     const token = useSelector(state => state.token);
+    const user = useSelector(state=>state.user);
+    // console.log(user)
+    // console.log(token)
 
 
-// kiểm tra token mỗi khi href thay đổi, nếu có token => có user => chuyển mode user = true;
-// note : về sau nên để 1 user object và kiểm tra 1 trường khác rỗng không thì hơn, loại đi biến setIsUser cho nhanh;
-    useEffect(()=>{
-        console.log('hêlo')
-        if (token) {
-            setIsUser(true);
-            console.log("ssss");
-        }
-    },[href])
-
-    // useEffect(() => {
-    // },[href])
     function changeHref() {
         setHref(window.location.href);
     }
 
-    const User = isUser ? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
-        <Avatar src="https://tindongvathome.files.wordpress.com/2019/06/cho-husky-3.jpg" />
+    const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
+        <Avatar src= {user.profile.avatar} />
         <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
     </AvatarBackground> : <></>
 
@@ -156,13 +174,13 @@ function HookNavBar() {
             <Options>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/profile/" + toggleUser} onClick={changeHref}>Trang Cá Nhân</OptionLink>
+                        <OptionLink to={"/profile/" + user._id} onClick={changeHref}>Trang Cá Nhân</OptionLink>
                     </LiOptions>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
                         <OptionLink to={"/change-password"} onClick={changeHref} >Đổi Mật Khẩu</OptionLink>
                     </LiOptions>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/sign-in"} onClick={changeHref} >Đăng Xuất</OptionLink>
+                        <OptionLink to={"/sign-in"} onClick={changeHref,()=>{dispatch(deleteToken(),dispatch(deleteUser()))}} >Đăng Xuất</OptionLink>
                     </LiOptions>
                 </div>
             </Options>
@@ -211,7 +229,7 @@ function HookNavBar() {
             </ThemeProvider>
             {/* <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button> */}
             {/* <button onClick={() => setIsDarkMode(!isDarkMode)}> MODE </button> */}
-            {/* <button onClick={() => window.localStorage.setItem("token", "HELLLo")}> A TOKEN </button> */}
+            {/* <button onClick={getUserAndToken}> A TOKEN </button> */}
         </div>
     )
 }
