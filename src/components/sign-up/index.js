@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import "./signUp.css"
 import { Link } from 'react-router-dom'
+import axios from '../../axios'
 
 
 const Background = styled.div`
@@ -11,7 +12,7 @@ const Background = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 `
-const Form = styled.div`
+const Form = styled.form`
     display: flex;
     flex-direction:column;
     justify-content:center;
@@ -152,9 +153,44 @@ const Job = styled(Email)`
     justify-content: space-between;
 `
 
-function HookSignIn() {
+function HookSignIn(props) {
     const [widthBackground1, setWidthBackground1] = useState(100 / 20 * 13);
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState ("")
+    const [password,setPassword] = useState("")
+    const [dob, setDob] = useState("")
+    const [isWorking, setIsWorking] = useState(false);
+    const [enoughInfo,setEnoughInfo] = useState(true);
+    const [confirmPassword,setConfirmPassword] = useState("")
     const [isDarkMode, setisDarkMode] = useState(false);
+    const submit = async (e) =>{
+        e.preventDefault();
+        if(password === confirmPassword && 
+            (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))&&
+            password.length >= 8 && name && dob){
+                // TODO : xử lí thông tin và gửi api
+                
+                const res = await axios.post("http://localhost:1234/api/user/register",{
+                    name,
+                    dob,
+                    email,
+                    password,
+                    isWorking,
+                })
+                if(res.status === 200){
+                    alert("Bạn đã đăng kí thành công")
+                    props.history.push("/sign-in")   
+                }else{
+                    setEnoughInfo(false);
+                    // console.log("EMAIL EXISTED OR INTERNET CONNECTION")
+                }
+                
+
+        }else{
+            setEnoughInfo(false);
+            // console.log("THIẾU HOẶC SAI FORMAT")
+        }
+    }
     const theme = isDarkMode ? {
         time: "1s all",
         backgroundButton: "#FFD946",
@@ -170,32 +206,35 @@ function HookSignIn() {
             backgroundButton: "#1ABC9C",
             ImageURL: "https://scontent.fhan3-3.fna.fbcdn.net/v/t1.15752-9/85055898_133191184536849_84730002418958336_n.png?_nc_cat=100&_nc_oc=AQnwnWSAzvLc8L7LR8mXIHInGK5jFTL3v_hvHd0yNvF4xjyZTP9nu4HbgOQgBFemcgk&_nc_ht=scontent.fhan3-3.fna&oh=3ee88d558f7ab401687844b396bf88a3&oe=5EB828F4"
         }
+ 
+    const enough = enoughInfo?<></>:<div style = {{color:"red"}}>KO ĐỦ HOẶC KO KẾT NỐI ĐẾN SERVER</div>
+   
     return (
         <ThemeProvider theme={theme}>
             <div style={{ width: "100%", height: "100%" }}>
                 <Background>
                     <Background2 width={(100 - widthBackground1) + "%"}>
-                        <Form>
+                        <Form onSubmit = {submit}>
                             <Title>Đăng Ký</Title>
                             <Name>
                                 <span>Tên của bạn</span>
-                                <Input></Input>
+                                <Input value = {name} onChange = {(e)=>setName(e.target.value)}></Input>
                             </Name>
                             <Email>
                                 <span>Email</span>
-                                <Input></Input>
+                                <Input value = {email} onChange = {(e)=>setEmail(e.target.value)}></Input>
                             </Email>
                             <Year>
                                 <span>Năm sinh</span>
-                                <Input></Input>
+                                <Input type = "date" value  = {dob} onChange = {(e)=> setDob(e.target.value)}/>
                             </Year>
                             <ChooseJob>
                                 <span style={{ marginBottom: "7px" }}>Bạn đang?</span>
                                 <Job>
 
-                                    <div >
-                                        <Box type="radio" className="cbx" id="box1" name="is-working" />
-                                        <label for="box1" class="check">
+                                    <div>
+                                        <Box onChange = {()=>setIsWorking(true)} type="radio" className="cbx" id="box1" name="is-working" value = {true} />
+                                        <label htmlFor="box1" className="check" >
                                             <svg width="18px" height="18px" viewBox="0 0 18 18">
                                                 <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
                                                 <polyline points="1 9 7 14 15 4"></polyline>
@@ -204,8 +243,8 @@ function HookSignIn() {
                                         <span style={{ marginLeft: "8px" }}>Đi làm</span>
                                     </div>
                                     <div>
-                                        <Box type="radio" className="cbx" id="box2" name="is-working" />
-                                        <label for="box2" class="check">
+                                        <Box onChange = {()=>setIsWorking(false)} type="radio" className="cbx" id="box2" name="is-working"  value = {false}/>
+                                        <label htmlFor="box2" className="check">
                                             <svg width="18px" height="18px" viewBox="0 0 18 18">
                                                 <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
                                                 <polyline points="1 9 7 14 15 4"></polyline>
@@ -215,8 +254,8 @@ function HookSignIn() {
 
                                     </div>
                                     <div>
-                                        <Box type="radio" className="cbx" id="box3" name="is-working" />
-                                        <label for="box3" class="check" style={{ Left: " 10px" }}>
+                                        <Box onChange = {()=>setIsWorking(false)} type="radio" className="cbx" id="box3" name="is-working" value = {false} />
+                                        <label htmlFor="box3" className="check" style={{ Left: " 10px" }}>
                                             <svg width="18px" height="18px" viewBox="0 0 18 18">
                                                 <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
                                                 <polyline points="1 9 7 14 15 4"></polyline>
@@ -228,14 +267,15 @@ function HookSignIn() {
                                     </div>
                                 </Job>
                             </ChooseJob>
-                            <Password >
+                            <Password  >
                                 <span>Mật khẩu ( Tối thiểu 8 ký tự )</span>
-                                <Input type="password" style={{ fontFamily: "pass" }} />
+                                <Input type="password" style={{ fontFamily: "pass" }} value={password} onChange = {(e)=>setPassword(e.target.value)} />
                             </Password>
                             <Password >
                                 <span>Nhập lại mật khẩu</span>
-                                <Input type="password" style={{ fontFamily: "pass" }} />
+                                <Input type="password" style={{ fontFamily: "pass" }} value={confirmPassword} onChange = {(e)=>setConfirmPassword(e.target.value)} />
                             </Password>
+                            {enough}
                             <Center>
                                 <Button>Đăng Ký</Button>
                                 <SignUp>Đã có tài khoản? <SignUpLink to="/sign-in">Đăng nhập</SignUpLink></SignUp>
@@ -253,7 +293,7 @@ function HookSignIn() {
 
                 </Background>
             </div>
-            <button onClick={() => setisDarkMode(!isDarkMode)}>MODE</button>
+            {/* <button onClick={() => setisDarkMode(!isDarkMode)}>MODE</button> */}
         </ThemeProvider>
     )
 }
