@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
-import {Container} from "../container/index"
+import {Container} from "../Container/index"
 import { useSelector, useDispatch } from 'react-redux';
 import {addToken ,deleteToken} from "../../actions/token"
 import {saveUser, deleteUser} from "../../actions/user"
