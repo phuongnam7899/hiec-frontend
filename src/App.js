@@ -1,8 +1,8 @@
 import React ,{useEffect} from 'react'
 import HookNavBar from "./components/NavBar"
 import LandingPage from "./components/LandingPage"
-import SignIn from "./components/sign-in"
-import SignUp from "./components/sign-up"
+import SignIn from "./components/SignIn"
+import SignUp from "./components/SignUp"
 import {  BrowserRouter as Router,Route } from "react-router-dom";
 import "./App.css";
 export default function App() {
