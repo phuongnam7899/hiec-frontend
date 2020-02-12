@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
-import {Container} from "../Container/index"
+import {Container} from "../Container"
 import { useSelector, useDispatch } from 'react-redux';
 import {addToken ,deleteToken} from "../../actions/token"
 import {saveUser, deleteUser} from "../../actions/user"
 const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
     height:60px;
+    width: 100vw;
 `;
 
 // const Container = styled.div`
@@ -192,7 +193,7 @@ function HookNavBar() {
 
     return (
 
-        <div>
+        <div style = {{position:"fixed",top:0}}>
             <ThemeProvider theme={{ darkMode: isDarkMode }}>
                     <BackgroundNav>
                         <Container>
