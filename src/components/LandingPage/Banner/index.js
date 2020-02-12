@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-import {BrowserRouter as Router} from "react-router-dom"
 
 const Title = styled.h1`
     font-size : 72px;
@@ -69,16 +68,14 @@ const Banner = (props) => {
 
 
     return(
-        <Router>
         <BannerContainer>
             <Title>Beyond the infinity</Title>
             <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien.</Description>
             <ButtonsContainer>
-                <ButtonRed to="/register">Đăng kí</ButtonRed>
-                <ButtonGreen to="/login" >Đăng nhập</ButtonGreen>
+                <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
+                <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>
             </ButtonsContainer>
         </BannerContainer>
-        </Router>
     )
 }
 

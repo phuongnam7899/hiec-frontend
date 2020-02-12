@@ -87,8 +87,8 @@ const Forum = props => {
         />
       </OneNews>
       <ButtonsContainer>
-                <ButtonRed to="/register">Đăng kí</ButtonRed>
-                <ButtonGreen to="/login" >Đăng nhập</ButtonGreen>
+                <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
+                <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>
         </ButtonsContainer>
     </ForumContainer>
   );
