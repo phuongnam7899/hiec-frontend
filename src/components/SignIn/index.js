@@ -142,7 +142,6 @@ const IMG = styled.img`
 function HookSignIn(props) {
     const [widthBackground1, setWidthBackground1] = useState(100 / 20 * 13);
     const [isDarkMode, setisDarkMode] = useState(false);
-    // const [redirect,setRedirect] = useState(false);
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [token, setToken] = useState("");
@@ -150,8 +149,7 @@ function HookSignIn(props) {
     const [isNote,setIsNote] = useState(false);
     const dispatch = useDispatch();
 
-    // dispatch(addToken(token));
-    // dispatch(saveUser(info));
+  
 
     const theme = isDarkMode ? {
         time : "1s all",
@@ -176,26 +174,16 @@ function HookSignIn(props) {
                 email:email,
                 password:password,
             }).then((res) =>{
-                console.log(res);
-                console.log("ĐI qua r")
                 const data = res.data;
-                // console.log(data)
-                console.log(res.status)
                 if(res.status === 200){
                     const userToken = data.token;
                     const userInfo = data.userInfo;
-                    // setToken(userToken);
-                    // setInfo(userInfo);
                     dispatch(addToken(userToken));
                     dispatch(saveUser(userInfo));
-                    // setRedirect(true);
                     props.history.push("/")
-                    // console.log("THÀNH CÔNG")       
                 }
                 else{
-                    // Wrong email or password
-                    // hỏi lại tk loz nam
-                    // console.log("SAI")
+                   
                 }
             })
 

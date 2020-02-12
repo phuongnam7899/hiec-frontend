@@ -3,6 +3,8 @@ import HookNavBar from "./components/NavBar"
 import LandingPage from "./components/LandingPage"
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
+import Footer from "./components/Footer"
+// import SignIn from "./components/SignIn/index"
 import {  BrowserRouter as Router,Route } from "react-router-dom";
 import "./App.css";
 export default function App() {
@@ -14,7 +16,7 @@ export default function App() {
       <Route exact path = "/" component = {LandingPage}/>
       <Route exact path = "/sign-up" component = {SignUp}/>
       <Route exact path = "/sign-in" component = {SignIn}/>
-
+      <Route path= "/"  component = {Footer} />
     </div>
     </Router>
   )
