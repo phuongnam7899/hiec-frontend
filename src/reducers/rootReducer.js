@@ -4,6 +4,7 @@ import token from "./token"
 const rootReducer = combineReducers({
     user : user,
     token : token,
+    
 })
 
 export default rootReducer;

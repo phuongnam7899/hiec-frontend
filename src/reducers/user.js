@@ -41,5 +41,4 @@ const user = (state = initState, action) => {
     }
 }
 
-
 export default user;
