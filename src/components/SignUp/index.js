@@ -114,22 +114,24 @@ const LogoOnImg = styled.span`
 `
 
 const Background1 = styled.div.attrs(props => ({
-    width: props.width
+    width: props.width,
+    urlImage : props.urlImage
 }))`
-
+background-image: url(${props => props.urlImage});
     width : ${props => props.width};
     position:relative;
     transition: ${props => props.theme.time};
-    height:100%;
-    
+    min-height : 100vh;
+    background-size: cover;
     `
 const Background2 = styled.div.attrs(props => ({
-    width: props.width
+    width: props.width,
+    
 }))`
 transition: ${props => props.theme.time};
-    
+
     width : ${props => props.width};
-    height:100vh;
+    // height:100vh;
     display: flex;
     flex-direction:column;
     justify-content:center;
@@ -140,12 +142,7 @@ transition: ${props => props.theme.time};
 const Box = styled.input`
     display:none;
 `
-const IMG = styled.img`
-    width: 100%;
-    height:100vh;
-    size:cover;
-    transition: ${props => props.theme.time};
-`
+
 const ChooseJob = styled(Email)``
 const Job = styled(Email)`
     display: flex;
@@ -280,10 +277,13 @@ function HookSignIn(props) {
                                 <Button>Đăng Ký</Button>
                                 <SignUp>Đã có tài khoản? <SignUpLink to="/sign-in">Đăng nhập</SignUpLink></SignUp>
                             </Center>
+   
                         </Form>
+                       
+
                     </Background2>
-                    <Background1 width={widthBackground1 + "%"}>
-                        <IMG src={theme.ImageURL} />
+                    <Background1 width={widthBackground1 + "%"} urlImage={theme.ImageURL}>
+                              
                         <TextOnImg style={{}}>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                         </TextOnImg>
