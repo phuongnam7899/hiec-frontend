@@ -41,7 +41,7 @@ export default function App() {
   },[writePostVisible])
   return (
     <Router>
-    <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
+    <div style = {{backgroundColor : "#F6F6F6",height: "100%"}} >
 
       <Route path=  "/"  component = {HookNavBar} />
       <Route path= "/" exact  component = {LandingPage} />

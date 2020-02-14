@@ -1,4 +1,4 @@
-import React ,{useEffect,useState}from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import axios from '../../axios';
 import Info from "./Info"
@@ -9,7 +9,7 @@ const FlexRowBetween = styled.div`
     display : flex;
     flex-direction: row;
     justify-content : space-around;
-    // margin-top: 0px;
+    padding-top: 88px;
 `
 
 
@@ -18,9 +18,9 @@ function HookProfilePage() {
     return (
         <Container>
             <FlexRowBetween>
-                    <MyPosts>
-                    </MyPosts>
-            <Info />
+                <MyPosts>
+                </MyPosts>
+                <Info />
             </FlexRowBetween>
         </Container>
     )

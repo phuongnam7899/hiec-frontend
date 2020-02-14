@@ -12,16 +12,14 @@ import { saveUser } from '../../../actions/user';
 const Background = styled.div`
     position: sticky ;
     top:88px;
-    // z-index : 0;
+
     background-color:white;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
     width: 400px;
-    // height :auto;
+
     padding : 40px 28px;
     padding-right : 0px;
-    // display:flex;
-    // flex-direction: column;
-    // align-items : center;
+
 `
 
 const Avatar = styled.img`
@@ -30,12 +28,6 @@ const Avatar = styled.img`
     height: 80px;
     // margin-left : 
 
-`
-
-const rotate = keyframes`
-100% {
-    transform: rotate(1turn);
-}
 `
 const Label = styled.label`
     position:relative;
