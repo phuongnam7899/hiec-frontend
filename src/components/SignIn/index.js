@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import styled, { ThemeProvider } from "styled-components"
 import {useSelector,useDispatch} from "react-redux"
 import { Link, Redirect } from 'react-router-dom'
@@ -6,6 +6,7 @@ import axios from "../../axios"
 import {addToken} from "../../actions/token"
 import {saveUser} from "../../actions/user"
 import user from '../../reducers/user'
+
 
 const Background = styled.div`
     display:flex;
@@ -150,8 +151,13 @@ function HookSignIn(props) {
     const [token, setToken] = useState("");
     const [info, setInfo] = useState({});
     const [isNote,setIsNote] = useState(false);
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch();
-
+    useEffect(()=>{
+        if(user._id){
+            props.history.push("/");
+        }
+    },[])
   
 
     const theme = isDarkMode ? {
@@ -169,28 +175,28 @@ function HookSignIn(props) {
             backgroundButton: "#1ABC9C",
             ImageURL:"https://scontent.fhan3-3.fna.fbcdn.net/v/t1.15752-9/85055898_133191184536849_84730002418958336_n.png?_nc_cat=100&_nc_oc=AQnwnWSAzvLc8L7LR8mXIHInGK5jFTL3v_hvHd0yNvF4xjyZTP9nu4HbgOQgBFemcgk&_nc_ht=scontent.fhan3-3.fna&oh=3ee88d558f7ab401687844b396bf88a3&oe=5EB828F4"
         }
-    const submit =  (e)=>{        
+    const submit = async (e)=>{        
         e.preventDefault(); 
         if(email && password){
             try{
-            axios.post("http://localhost:1234/api/auth/sign-in",{
+            const response = await axios.post("/api/auth/sign-in",{
                 email:email,
                 password:password,
-            }).then((res) =>{
-                const data = res.data;
-                if(res.status === 200){
+            });
+            const data = response.data;
+                if(response.status === 200){
                     const userToken = data.token;
                     const userInfo = data.userInfo;
+                    sessionStorage.setItem("hiec_user_id",data.userInfo._id)
+                    sessionStorage.setItem("hiec_user_token",data.token);
                     dispatch(addToken(userToken));
                     dispatch(saveUser(userInfo));
                     props.history.push("/")
                 }
-                else{
-                   
-                }
-            })
-
-            }catch(err){console.log(err)}
+            }
+            catch(err){
+                setIsNote(true)
+            }
         }
         else{
             // Missing email or password

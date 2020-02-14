@@ -167,7 +167,7 @@ function HookSignIn(props) {
             password.length >= 8 && name && dob){
                 // TODO : xử lí thông tin và gửi api
                 
-                const res = await axios.post("http://localhost:1234/api/user/register",{
+                const res = await axios.post("/api/user/register",{
                     name,
                     dob,
                     email,
@@ -179,7 +179,7 @@ function HookSignIn(props) {
                     props.history.push("/sign-in")   
                 }else{
                     setEnoughInfo(false);
-                    // console.log("EMAIL EXISTED OR INTERNET CONNECTION")
+                    console.log("EMAIL EXISTED OR INTERNET CONNECTION")
                 }
                 
 

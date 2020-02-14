@@ -83,7 +83,7 @@ const Leaderboard = (props) => {
             {
                 rank.month ? rank.month.map((user,index) => {
                     return(
-            <OneRow>
+            <OneRow key={index}>
                 <Number number={index + 1}>{index + 1}</Number>
                 <WidthXPercent x = {60}><AvatarWithName size="medium" name={user.name} imgSrc={user.avatar}></AvatarWithName></WidthXPercent>
                 <Point>

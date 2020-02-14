@@ -8,6 +8,8 @@ import {saveUser, deleteUser} from "../../actions/user"
 const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
     height:60px;
+    width: 100vw;
+    box-shadow: 0px 4px 4px rgba(193,193,193,0.25);
 `;
 
 // const Container = styled.div`
@@ -51,6 +53,8 @@ const Options = styled.div`
     right: 0px;
     top: 65px;
     width: 180px;
+    border-radius : 5px;
+   
 `;
 
 const Polygon = styled.div`
@@ -60,7 +64,7 @@ const Polygon = styled.div`
     height:10px;
     clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
     right:0px;
-    top:55px;
+    top:57px;
     background-color:${props => props.theme.darkMode ? "#EFEFEF" : "#3E3E3E"};
 `
 
@@ -75,7 +79,7 @@ const LiOptions = styled.div`
     
 `
 
-const OptionLink = styled(NavLink)`
+const OptionLink = styled(Link)`
     padding : 8px 32px;
 
     ${props => props.theme.darkMode ? {
@@ -112,6 +116,7 @@ const NavBarLink = styled(NavLink)`
 
 const Avatar = styled.img`
   height:40px;
+  width: 40px;
   border-radius:999px;
   
 `;
@@ -128,7 +133,7 @@ const AvatarBackground = styled.div`
 function HookNavBar() {
     const [toggleUser, setToggleUser] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [href, setHref] = useState("");
+    
     const dispatch = useDispatch();
     // NOTE : phần giả định token 
 //     const aToken = 
@@ -159,8 +164,12 @@ function HookNavBar() {
     // console.log(token)
 
 
-    function changeHref() {
-        setHref(window.location.href);
+  
+    const setSession = ()=>{
+        dispatch(deleteToken());
+        dispatch(deleteUser());
+        sessionStorage.setItem("hiec_user_id","");
+        sessionStorage.setItem("hiec_user_token","");
     }
 
     const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
@@ -174,13 +183,13 @@ function HookNavBar() {
             <Options>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/profile/" + user._id} onClick={changeHref}>Trang Cá Nhân</OptionLink>
+                        <OptionLink to={"/profile/" + user._id} >Trang Cá Nhân</OptionLink>
                     </LiOptions>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/change-password"} onClick={changeHref} >Đổi Mật Khẩu</OptionLink>
+                        <OptionLink to={"/change-password"}  >Đổi Mật Khẩu</OptionLink>
                     </LiOptions>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/sign-in"} onClick={changeHref,()=>{dispatch(deleteToken(),dispatch(deleteUser()))}} >Đăng Xuất</OptionLink>
+                        <OptionLink to={"/sign-in"} onClick={setSession} >Đăng Xuất</OptionLink>
                     </LiOptions>
                 </div>
             </Options>
@@ -192,7 +201,7 @@ function HookNavBar() {
 
     return (
 
-        <div>
+        <div style = {{position:"fixed",top:0, zIndex : 999}}>
             <ThemeProvider theme={{ darkMode: isDarkMode }}>
                     <BackgroundNav>
                         <Container>
@@ -203,19 +212,19 @@ function HookNavBar() {
                                 <FlexGrow grow={66} >
                                     <Ul>
                                         <Li>
-                                            <NavBarLink to="/" exact activeStyle={styleActiveLink} onClick={changeHref} >Trang Chủ</NavBarLink>
+                                            <NavBarLink to="/" exact activeStyle={styleActiveLink} >Trang Chủ</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/news" activeStyle={styleActiveLink} onClick={changeHref} >Tin Tức</NavBarLink>
+                                            <NavBarLink to="/news" activeStyle={styleActiveLink} >Tin Tức</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/project" activeStyle={styleActiveLink} onClick={changeHref}  >Dự Án</NavBarLink>
+                                            <NavBarLink to="/project" activeStyle={styleActiveLink}  >Dự Án</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/forum" activeStyle={styleActiveLink} onClick={changeHref} >Diễn Đàn</NavBarLink>
+                                            <NavBarLink to="/forum" activeStyle={styleActiveLink}>Diễn Đàn</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/about-us" activeStyle={styleActiveLink} onClick={changeHref} >Về Chúng Tôi</NavBarLink>
+                                            <NavBarLink to="/about-us" activeStyle={styleActiveLink} >Về Chúng Tôi</NavBarLink>
                                         </Li>
                                     </Ul>
                                 </FlexGrow>

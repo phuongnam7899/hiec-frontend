@@ -65,9 +65,9 @@ const News = () => {
         />
       </BigNews>
       <SubNews>
-        {hotNews.slice(1, 5).map(oneNew => {
+        {hotNews.slice(1, 5).map((oneNew,index) => {
          return (
-            <OneNews>
+            <OneNews key={index}>
               <ImageWithTitle
                 type="normal"
                 date={oneNew.postTime}
