@@ -7,22 +7,28 @@ const Posts = styled.div`
 
 `
 function MyPosts() {
-    const scrollY = window.scrollY;
-    const innerHeight = window.innerHeight;
-    const scrollHeight = document.documentElement.scrollHeight;
     const [listPosts,setListPosts] = useState([]);
+    const [page,setPage] = useState(0);
     useEffect(()=>{
-        console.log("LẤY THÔI")
         const regex = /profile/gi
         const idUser = window.location.pathname.replace(regex, "").split("/").join("");
-        axios.get("/api/post/by-user/" + idUser).then(res => {
+        axios.post("/api/post/by-user/",{
+            page : page,
+            id : idUser,
+
+        }).then(res => {
             console.log(res.data);
             setListPosts(res.data)
         })
     },[])
     // console.log(scrollY + " " + innerHeight + " " + scrollHeight )
+    const scrolling =()=> {
+        console.log("hello")    
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+         }
+        };
     return (
-        <Posts>
+        <Posts onScroll= {scrolling}>
             {listPosts.map(post =><Post post = {post} linkTo = "/forum" ></Post>)}
         </Posts>
     )

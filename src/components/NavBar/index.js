@@ -9,6 +9,7 @@ const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
     height:60px;
     width: 100vw;
+    box-shadow: 0px 4px 4px rgba(193,193,193,0.25);
 `;
 
 // const Container = styled.div`

@@ -51,9 +51,9 @@ const Project = (props) => {
             <Description>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </Description>
-            {hotNews.slice(0, 3).map(oneNew => {
+            {hotNews.slice(0, 3).map((oneNew,index) => {
                 return (
-                   <OneNews>
+                   <OneNews key={index}>
                      <ImageWithTitle
                        type="normal"
                        date={oneNew.postTime}

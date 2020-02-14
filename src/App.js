@@ -1,4 +1,4 @@
-import React ,{useEffect,useState,useCallback} from 'react'
+import React ,{useEffect,useState} from 'react'
 import HookNavBar from "./components/NavBar"
 import LandingPage from "./components/LandingPage"
 import Profile from "./components/ProfilePage"
@@ -6,6 +6,7 @@ import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import Footer from "./components/Footer"
 // import SignIn from "./components/SignIn/index"
+import WritePost from "./components/WritePost"
 import {  BrowserRouter as Router,Route } from "react-router-dom";
 import "./App.css";
 import { useDispatch } from 'react-redux'
@@ -27,12 +28,20 @@ export default function App() {
     }
   },[])
 
-  const [, updateState] = React.useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
-
+  //không xóa phần này
+  const [writePostVisible,setWritePostVisible] = useState(false)
+  const turnOnWritePost = () => {
+    setWritePostVisible(true);
+  }
+  const turnOffWritePost = () => {
+    setWritePostVisible(false);
+  }
+  useEffect(() => {
+    console.log(writePostVisible)
+  },[writePostVisible])
   return (
     <Router>
-    <div style = {{backgroundColor : "#F6F6F6",height: "100vh"}}>
+    <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
 
       <Route path=  "/"  component = {HookNavBar} />
       <Route path= "/" exact  component = {LandingPage} />
@@ -40,6 +49,12 @@ export default function App() {
       <Route exact path = "/sign-up" component = {SignUp}/>
       <Route exact path = "/sign-in" component = {SignIn}/>
       <Route path= "/"  component = {Footer} />
+
+      {/* Phần này để test write post, không xóa */}
+      <button onClick={() => {turnOnWritePost()}}>New Post</button>
+      <Route path= "/" render = {() => <WritePost visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}} />} />
+
+      
     </div>
     </Router>
   )

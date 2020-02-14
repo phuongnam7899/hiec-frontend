@@ -23,6 +23,12 @@ const Title = styled.div`
     color : black;
     margin-bottom : 20px;
 `
+const Content = styled.div`
+    margin-bottom : 30px;
+    color: black;
+`
+
+
 const Icons = styled.div`
     display : flex;
     flex-direction:row;
@@ -47,7 +53,7 @@ const Arrow = styled.i`
     }
 `
 function Post(props) {
-    const [idPost,setIdPost] = useState("");
+    const [idPost, setIdPost] = useState("");
     const [avatar, setAvatar] = useState("");
     const [name, setName] = useState("")
     const [tags, setTags] = useState([]);
@@ -57,7 +63,7 @@ function Post(props) {
     const [claps, setClaps] = useState([]);
     const [viewers, setViewers] = useState([]);
     const [comments, setComments] = useState([]);
-    const [linkTo,setLinkTo] = useState("")
+    const [linkTo, setLinkTo] = useState("")
 
     // console.log(props.post);
     useEffect(() => {
@@ -66,29 +72,47 @@ function Post(props) {
         setTags(props.post.tags)
         setPostTime(props.post.postTime);
         setTitle(props.post.title);
-        setContent(props.post.content);
+        // setContent(props.post.content);
         setClaps(props.post.claps)
         setViewers(props.post.viewers);
         setComments(props.post.comments);
         setIdPost(props.post._id);
         setLinkTo(props.linkTo)
+        let parser = new DOMParser();
+        // console.log(props.post.content);
+        let parserContent = parser.parseFromString(props.post.content, "text/html");
+        let newContent = parserContent.getElementsByTagName("*");
+        let finalContent = "";
+        for (var i = 0; i < newContent.length; i++) {
+            var current = newContent[i];
+            // console.log(current)
+            if (current.children.length === 0 && current.textContent.replace(/ |\n/g, '') !== '') {
+                // Check the element has no children && that it is not empty
+                finalContent = finalContent + " " + current.textContent;
+            }
+        }
+        finalContent = finalContent.slice(0, 150);
+        setContent(finalContent)
+
+
 
     }, [])
     return (
-        <More to={linkTo + "/"+idPost}>
+        <More to={linkTo + "/" + idPost}>
             <PostForm>
                 <AvatarWithName avatar={avatar} name={name} postTime={postTime} />
                 <Tags>
                     {tags.map(item => <Tag tag={item} />)}
                 </Tags>
                 <Title><span>{title}</span></Title>
+                <Content><span>{content}</span>{}</Content>
                 <Icons>
                     <Icons>
                         <IconWithNumber icon="fas fa-eye" number={viewers.length} />
                         <IconWithNumber icon="fas fa-sign-language" number={claps.length} />
                         <IconWithNumber icon="fas fa-comment" number={comments.length} />
                     </Icons>
-                    <div style = {{}}><span>Xem thêm </span><Arrow className="fas fa-arrow-right"></Arrow></div>
+                    <div style={{}}><span>Xem thêm </span><Arrow className="fas fa-arrow-right"></Arrow></div>
                 </Icons>
             </PostForm>
         </More>
