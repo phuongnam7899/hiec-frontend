@@ -66,6 +66,7 @@ function ForumPage() {
             const res = await axios.post("/api/post/hot",{
                 number : 5,
             })
+            console.log(res.data)
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
