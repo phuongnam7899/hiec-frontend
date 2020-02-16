@@ -31,7 +31,7 @@ const Posts = styled.ul`
     // flex-diretion : column;
 `
 function HotRecentForm(props) {
-    console.log(props.listPost);
+    // console.log(props.listPost);
     return (
         <Background>
         <BgTitle>

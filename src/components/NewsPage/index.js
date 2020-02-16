@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar"
 import axios from "../../axios"
 import InfiniteScroll from "react-infinite-scroll-component"
 import Post from "../ProfilePage/Posts/Post"
+import HotRecentForm from "../HotRecentForm"
 
 const NewsPageContainer = styled(Container)`
     display : flex;
@@ -34,23 +35,93 @@ const NewsPage = (props) => {
     const [page, setPage] = useState(0);
     const [loadMore, setLoadMore] = useState(true);
     const [tags,setTags] = useState([]);
-    const [keyword,setKeyword] = useState([]);
-    const [sortBy,setSortBy] = useState("clap")
+    const [keyword,setKeyword] = useState("");
+    const [sortBy,setSortBy] = useState("claps")
+    const [ hotPosts,setHotPosts ] = useState([]);
+    const [ recentPosts,setRecentPosts ] = useState([]);
+    const [postsForum,setPostsForum] = useState([]);
+    const [filterCd,setFilterCd] = useState({})
+
+
+    useEffect(()=>{
+        getHotPosts()
+        getRecentPosts()
+        getForumPosts()
+    },[])
+
     useEffect(() => {
         more()
-    }, [])
+    },[filterCd])
+
+    const getForumPosts = async() =>{
+        try{
+            const res = await axios.post("/api/post/hot",{
+                number : 50,
+            })
+            setPostsForum([...postsForum,...res.data]);
+        }catch(err){
+           console.log(err)
+        }   
+    }
+
+    const handleSearch = ({tags,keyword,sortOption}) => {
+            setPage(0);
+            setListPosts([])
+            setLoadMore(true)
+            setKeyword(keyword);
+            setTags(tags);
+            setSortBy(sortOption) 
+            setFilterCd({
+                tags,keyword,sortOption
+            })     
+    }
+
+
+    const getRecentPosts = async ()=>{
+        // console.log("hello");
+        try{
+            const res = await axios.post("/api/news/recent",{
+                number : 5,
+            })
+            setRecentPosts(res.data)
+        }catch(err){
+           console.log(err)
+        }   
+    }
+
+    const getHotPosts = async ()=>{
+        // console.log("hello");
+        try{
+            const res = await axios.post("/api/news/hot",{
+                number : 5,
+            })
+            setHotPosts(res.data)
+        }catch(err){
+           console.log(err)
+        }
+
+        
+    }
+    
 
 
 
     const more = () => {
-            axios.post("/api/post/search", {
-                tags,
-                keyword,
-                sortBy,
-                page
+        console.log(tags)
+        console.log(keyword)
+        console.log(sortBy)
+        console.log(page)
+
+            axios.post("/api/news/search", {
+                tags : tags,
+                keyword : keyword,
+                sortBy : sortBy,
+                page : page
             }).then(res => {
+                console.log(res.data)
                 setListPosts([...listPosts,...res.data])
                 setPage(page + 1);
+                
                 if(res.data.length===0){
                     setLoadMore(false);
                 }
@@ -75,7 +146,9 @@ const NewsPage = (props) => {
         </InfiniteScroll>
             </NewsList>
             <RightSide>
-                <SearchBar/>
+                <SearchBar onSearch = {handleSearch}/>
+                <HotRecentForm url ="/news/" title = "Tin tức nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
+                <HotRecentForm url ="/news/" title = "Tin tức gần đây" icon = "fas fa-star" listPost = {recentPosts} />
             </RightSide>
         </NewsPageContainer>
     )
