@@ -79,7 +79,7 @@ const LiOptions = styled.div`
     
 `
 
-const OptionLink = styled(Link)`
+const OptionLink = styled(NavLink)`
     padding : 8px 32px;
 
     ${props => props.theme.darkMode ? {
