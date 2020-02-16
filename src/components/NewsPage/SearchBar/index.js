@@ -122,12 +122,12 @@ const SearchBar = props => {
     // console.log("clicked")
   };
   const changeSortOption = option => {
-    setSortOption(option);
-    console.log(option)
+      console.log(option.value)
+    setSortOption(option.value);
   }
   const search = () => {
-      console.log({tags,keyword,sortOption})
-      //onSeach({tags,keyword,sortOption})
+    //   console.log({tags,keyword,sortOption})
+      onSearch({tags,keyword,sortOption})
   }
   const handleInputChange = (e) => {
       setKeyword(e.target.value)
@@ -164,7 +164,7 @@ const SearchBar = props => {
       <Select
         onChange={changeSortOption}
         options={sortOptions}
-        value=""
+        value={sortOption}
         placeholder="Sắp xếp theo"
       />
       <Button onClick={() => {search()}}>Tìm kiếm</Button>
