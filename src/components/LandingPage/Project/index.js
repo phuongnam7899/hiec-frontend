@@ -40,7 +40,8 @@ const Project = (props) => {
     const getNews = async () => {
       const news = await axios.post("/api/news/hot", {
         number: 3,
-        category: "project"
+        category: "project",
+        limit : 30
       });
       setHotNews(news.data);
       console.log(news.data);

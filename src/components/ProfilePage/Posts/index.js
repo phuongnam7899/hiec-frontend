@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
-import axios from "../../../axios"
 import Post from "./Post"
+import axios from "../../../axios"
 import InfiniteScroll from "react-infinite-scroll-component";
 const Posts = styled.div`
    
@@ -22,28 +22,25 @@ function MyPosts() {
     const [loadMore, setLoadMore] = useState(true);
 
     useEffect(() => {
-        const regex = /profile/gi
-        const idUser = window.location.pathname.replace(regex, "").split("/").join("");
-        axios.post("/api/post/by-user/", {
-            page: page,
-            id: idUser,
+        more()
+        // const regex = /profile/gi
+        // const idUser = window.location.pathname.replace(regex, "").split("/").join("");
+        // axios.post("/api/post/by-user/", {
+        //     page: page,
+        //     id: idUser,
 
-        }).then(res => {
-            setListPosts(...listPosts, res.data)
-            setPage(1);
-            if(res.data.length===0){
-                setLoadMore(false);
-            }
-        })
+        // }).then(res => {
+        //     setListPosts(...listPosts, res.data)
+        //     setPage(1);
+        //     if(res.data.length===0){
+        //         setLoadMore(false);
+        //     }
+        // })
     }, [])
 
 
 
     const more = () => {
-        // if (listPosts.length >= 50) {
-        //     setLoadMore(false)
-        //     return;
-        //   }
             const regex = /profile/gi
             const idUser = window.location.pathname.replace(regex, "").split("/").join("");
             axios.post("/api/post/by-user/", {

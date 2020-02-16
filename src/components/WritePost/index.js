@@ -162,7 +162,7 @@ const WritePost = props => {
   }
 
   const addTag = tagName => {
-    if (tags.length < 5 && !tags.includes(tagName.value)) setTags([...tags, tagName.value]);
+    if (tags.length < 3 && !tags.includes(tagName.value)) setTags([...tags, tagName.value]);
   };
   const deleteTag = index => {
     const oldTags = [...tags];

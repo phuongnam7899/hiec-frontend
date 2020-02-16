@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import { saveUser } from './actions/user'
 import {addToken} from "./actions/token"
 import axios from './axios'
+import NewsPage from './components/NewsPage'
 export default function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -53,7 +54,7 @@ export default function App() {
       {/* Phần này để test write post, không xóa */}
       <button onClick={() => {turnOnWritePost()}}>New Post</button>
       <Route path= "/" render = {() => <WritePost visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}} />} />
-
+      <Route path= "/news"  render = {() => <NewsPage category="news"/> } />
       
     </div>
     </Router>
