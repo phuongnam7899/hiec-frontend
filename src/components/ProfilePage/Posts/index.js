@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
-import axios from "../../../axios"
 import Post from "./Post"
+import axios from "../../../axios"
 import InfiniteScroll from "react-infinite-scroll-component";
 const Posts = styled.div`
    

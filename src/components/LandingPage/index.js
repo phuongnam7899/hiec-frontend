@@ -7,6 +7,7 @@ import Project from "./Project"
 import Forum from "./Forum"
 import Leaderboard from "./Leaderboard"
 
+
 const LandingPageContainer = styled.div`
     background-color : #F6F6F6;
 `

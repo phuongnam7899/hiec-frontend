@@ -48,7 +48,8 @@ const News = () => {
   const getNews = async () => {
     const news = await axios.post("/api/news/hot", {
       number: 5,
-      category: "news"
+      category: "news",
+      limit : 30
     });
     setHotNews(news.data);
     // console.log(news.data[0].postTime);
