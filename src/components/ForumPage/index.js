@@ -84,7 +84,7 @@ function ForumPage() {
             </LeftContent>
             <RightContent>
             <HotRecentForm url ="/forum/" title = "Tin tức nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
-            <HotRecentForm url ="/forum/" title = "Tin tức gần đây" icon = "fas fa-star" listPost = {recentPosts} />
+            <HotRecentForm url ="/forum/" title = "Tin tức gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
             </RightContent>
         </Page>
         </Container>
