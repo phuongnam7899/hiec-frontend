@@ -22,57 +22,40 @@ function MyPosts() {
     const [loadMore, setLoadMore] = useState(true);
 
     useEffect(() => {
-        more()
-        // const regex = /profile/gi
-        // const idUser = window.location.pathname.replace(regex, "").split("/").join("");
-        // axios.post("/api/post/by-user/", {
-        //     page: page,
-        //     id: idUser,
-
-        // }).then(res => {
-        //     setListPosts(...listPosts, res.data)
-        //     setPage(1);
-        //     if(res.data.length===0){
-        //         setLoadMore(false);
-        //     }
-        // })
+        more();
     }, [])
 
 
 
     const more = () => {
-            const regex = /profile/gi
-            const idUser = window.location.pathname.replace(regex, "").split("/").join("");
-            axios.post("/api/post/by-user/", {
-                page: page,
-                id: idUser,
-            }).then(res => {
-                setPage(page+1);
-                let array = listPosts.concat(res.data)
-                setListPosts(array);
-                if(res.data.length===0){
-                    setLoadMore(false);
-                }
-                // if(res.data = [])
-            })  
-
+        const regex = /profile/gi
+        const idUser = window.location.pathname.replace(regex, "").split("/").join("");
+        axios.post("/api/post/by-user/", {
+            page: page,
+            id: idUser,
+        }).then(res => {
+            setPage(page + 1);
+            setListPosts([...listPosts, ...res.data])
+            if (res.data.length === 0) {
+                setLoadMore(false);
+            }
+        })
     }
-
     return (
         <Posts id="list"  >
             <InfiniteScroll
                 dataLength={listPosts.length}
                 next={more}
                 hasMore={loadMore}
-                loader={<Loader src = "https://i.pinimg.com/originals/3f/2c/97/3f2c979b214d06e9caab8ba8326864f3.gif"/>}
+                loader={<Loader src="https://i.pinimg.com/originals/3f/2c/97/3f2c979b214d06e9caab8ba8326864f3.gif" />}
                 endMessage={
                     <div style={{ textAlign: "center" }}>
                         <Done>__ Bạn đã xem hết bài __</Done>
                     </div>
                 }
-                >
+            >
                 {listPosts.map(post => <Post post={post} linkTo="/forum" ></Post>)}
-        </InfiniteScroll>
+            </InfiniteScroll>
         </Posts>
     )
 }
