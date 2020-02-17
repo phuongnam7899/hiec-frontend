@@ -13,6 +13,8 @@ import { useDispatch } from 'react-redux'
 import { saveUser } from './actions/user'
 import {addToken} from "./actions/token"
 import axios from './axios'
+import NewsPage from './components/NewsPage'
+import ForumPage from './components/ForumPage'
 export default function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -45,6 +47,7 @@ export default function App() {
 
       <Route path=  "/"  component = {HookNavBar} />
       <Route path= "/" exact  component = {LandingPage} />
+      <Route path= "/forum" exact  component = {ForumPage} />
       <Route path= "/profile/:id" exact  component = {Profile} />
       <Route exact path = "/sign-up" component = {SignUp}/>
       <Route exact path = "/sign-in" component = {SignIn}/>
@@ -53,7 +56,7 @@ export default function App() {
       {/* Phần này để test write post, không xóa */}
       <button onClick={() => {turnOnWritePost()}}>New Post</button>
       <Route path= "/" render = {() => <WritePost visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}} />} />
-
+      <Route path= "/news"  render = {() => <NewsPage category="news"/> } />
       
     </div>
     </Router>

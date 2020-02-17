@@ -132,7 +132,7 @@ tagOptions.sort((currentTag, nextTag) => {
   else if (currentValue > nextValue) return 1;
   else return 0;
 });
-console.log(tagOptions);
+// console.log(tagOptions);
 const WritePost = props => {
   const { onTurnOffWritePost, visible } = props;
   const [postContent, setPostContent] = useState("<h1>Hello</h1>");
@@ -162,7 +162,7 @@ const WritePost = props => {
   }
 
   const addTag = tagName => {
-    if (tags.length < 5 && !tags.includes(tagName.value)) setTags([...tags, tagName.value]);
+    if (tags.length < 3 && !tags.includes(tagName.value)) setTags([...tags, tagName.value]);
   };
   const deleteTag = index => {
     const oldTags = [...tags];
