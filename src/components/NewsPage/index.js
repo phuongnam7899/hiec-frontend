@@ -41,18 +41,14 @@ const NewsPage = (props) => {
     const [ recentPosts,setRecentPosts ] = useState([]);
     const [postsForum,setPostsForum] = useState([]);
     const [filterCd,setFilterCd] = useState({})
-
-
     useEffect(()=>{
         getHotPosts()
         getRecentPosts()
         getForumPosts()
     },[])
-
     useEffect(() => {
         more()
     },[filterCd])
-
     const getForumPosts = async() =>{
         try{
             const res = await axios.post("/api/post/hot",{
@@ -63,7 +59,6 @@ const NewsPage = (props) => {
            console.log(err)
         }   
     }
-
     const handleSearch = ({tags,keyword,sortOption}) => {
             setPage(0);
             setListPosts([])
@@ -75,10 +70,7 @@ const NewsPage = (props) => {
                 tags,keyword,sortOption
             })     
     }
-
-
     const getRecentPosts = async ()=>{
-        // console.log("hello");
         try{
             const res = await axios.post("/api/news/recent",{
                 number : 5,
@@ -90,7 +82,6 @@ const NewsPage = (props) => {
     }
 
     const getHotPosts = async ()=>{
-        // console.log("hello");
         try{
             const res = await axios.post("/api/news/hot",{
                 number : 5,
@@ -98,20 +89,9 @@ const NewsPage = (props) => {
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
-        }
-
-        
+        }    
     }
-    
-
-
-
     const more = () => {
-        console.log(tags)
-        console.log(keyword)
-        console.log(sortBy)
-        console.log(page)
-
             axios.post("/api/news/search", {
                 tags : tags,
                 keyword : keyword,

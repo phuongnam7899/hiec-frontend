@@ -6,14 +6,20 @@ import Select from "react-select";
 import Dialog from "../YesNoDialog";
 import axios from "../../axios"
 
+
 const WritePostContainer = styled.div`
     position : relative;
-    left : 50vw;
-    top : 10vh;
-    transform : translate(-50%, 0%);
+    // left : 50vw;
+    // top : 10vh;
+    // transform : translate(-50%, 0%);
     width : 50vw;
-    box-shadow : 0px 0px 5px #8a8a8a
-    margin-bottom : 64px;
+    box-shadow : 0px 0px 5px #8a8a8a;
+    margin-bottom : 20px;
+    z-index : 11;
+    // & *{
+    //   z-index : 11;
+    // }
+    // background-color : black;
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
@@ -232,7 +238,7 @@ const WritePost = props => {
         <Button onClick={() => {createNewPost()}}>Đăng</Button>
       </Main>
     </WritePostContainer>
-  ) : null;
+  ) : <></>;
 };
 
 WritePost.modules = {

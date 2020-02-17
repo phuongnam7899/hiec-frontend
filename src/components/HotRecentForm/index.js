@@ -8,7 +8,8 @@ const Title = styled.span`
 `
 const Icon = styled.div`
     color : #1ABC9C;
-    margin-top : 5px;
+    margin-top : 2px;
+    font-size : 20px;
 `
 const BgTitle = styled.div`
     display:flex;
@@ -17,6 +18,7 @@ const BgTitle = styled.div`
 
 `
 const Background =styled.div`
+    margin-bottom : 12px;
     display : flex;
     flex-direction : column;
     align-items : flex-start;
@@ -24,6 +26,7 @@ const Background =styled.div`
     background: #FFFFFF;
     max-width : 400px;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
+    
 `
 
 const Posts = styled.ul`
