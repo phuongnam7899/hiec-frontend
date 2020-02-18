@@ -51,12 +51,14 @@ export default function App() {
       <Route path= "/profile/:id" exact  component = {Profile} />
       <Route exact path = "/sign-up" component = {SignUp}/>
       <Route exact path = "/sign-in" component = {SignIn}/>
+      <Route path= "/news"  render = {() => <NewsPage category="news"/> } />
+      <Route path= "/project"  render = {() => <NewsPage category="project"/> } />
+
       <Route path= "/"  component = {Footer} />
 
       {/* Phần này để test write post, không xóa */}
       <button onClick={() => {turnOnWritePost()}}>New Post</button>
       <Route path= "/" render = {() => <WritePost visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}} />} />
-      <Route path= "/news"  render = {() => <NewsPage category="news"/> } />
       
     </div>
     </Router>

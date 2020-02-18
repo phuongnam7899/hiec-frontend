@@ -19,6 +19,7 @@ const Title = styled.div`
 const InfoPost = styled.div`
     // width : %;
     display:flex;
+    justify-content : space-between;
     // flex-wrap : wrap;
     margin-left : 10%;
     
@@ -50,10 +51,12 @@ const More = styled(NavLink)`
 
 const Name = styled.span`
     overflow: hidden;
+    font-weight : bold;
     height : 16px;
 `
 const Time = styled(Name)`
-
+    font-weight : 400;
+    color : #787878
 `
 
 function PostForm(props) {
@@ -74,9 +77,9 @@ function PostForm(props) {
         <Post>
             <Title><span>{props.post.title}</span></Title>
             <InfoPost>
-                <div><Img src = {props.post.user.profile.avatar} /></div>
+                <div><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></div>
                 <NameAndTime>
-                    <Name>{props.post.user.profile.name}</Name>
+                    <Name>{props.post.user ? props.post.user.profile.name : "Admin"}</Name>
                     <Time>{day}/{month}/{year}</Time>
                 </NameAndTime>
             </InfoPost>

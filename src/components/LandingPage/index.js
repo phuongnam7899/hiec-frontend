@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Container from "../Container"
 import Banner from "./Banner";
@@ -19,6 +19,9 @@ const FormAndLeaderboard = styled.div`
 `
 
 const LandingPage = (props) => {
+    useEffect(() => {
+        window.scrollTo(0,0)
+    },[])
     return(
         <LandingPageContainer>
             <Banner>

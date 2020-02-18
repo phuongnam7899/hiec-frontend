@@ -5,6 +5,9 @@ import Select from "react-select";
 const SearchBarContainer = styled.div`
  padding : 32px;
  box-shadow : 0 0 5px #ababab;
+ margin-top : 31px;
+ background :#ffffff;
+ margin-bottom : 12px;
 `;
 const Input = styled.input`
     width : 100%;
@@ -28,6 +31,8 @@ const Button = styled.button`
   margin-top : 32px;
   &:hover {
     background : #24d4b1;
+    transform : scale(1.05);
+    cursor : pointer;
   }
 `;
 const Title = styled.div`
@@ -110,7 +115,7 @@ const SearchBar = props => {
   const {onSearch} = props;
   const [keyword, setKeyword] = useState("");
   const [tags, setTags] = useState([]);
-  const [sortOption, setSortOption] = useState("clap");
+  const [sortOption, setSortOption] = useState("claps");
   const addTag = tagName => {
     if (tags.length < 3 && !tags.includes(tagName.value))
       setTags([...tags, tagName.value]);
@@ -162,10 +167,10 @@ const SearchBar = props => {
         })}
       </TagContainer>
       <Select
+        placeholder="Sắp xếp theo"
         onChange={changeSortOption}
         options={sortOptions}
         value={sortOption}
-        placeholder="Sắp xếp theo"
       />
       <Button onClick={() => {search()}}>Tìm kiếm</Button>
     </SearchBarContainer>

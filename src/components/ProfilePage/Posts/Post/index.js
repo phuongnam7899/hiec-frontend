@@ -35,14 +35,6 @@ const Icons = styled.div`
     align-items : center;
     justify-content : space-between;
 `
-const More = styled(NavLink)`
-    text-decoration : none;
-    color : black;
-    transition: 0.2s all;
-    &:hover{
-        color : #37A28D;
-    }
-`
 const Arrow = styled.i`
     width : 10px;
     height : 10px;
@@ -52,11 +44,20 @@ const Arrow = styled.i`
     }
 
 `
+const More = styled(NavLink)`
+    text-decoration : none;
+    color : black;
+    transition: 0.2s all;
+    &:hover{
+        color : #37A28D;
+    }
+`
 function Post(props) {
 
         const {post, linkTo} = props;
         const {user, tags, postTime, title, claps, comments, viewers, _id, content} = post;
-        const {name, avatar} = user.profile;
+        const defaultUser = {name : "Admin" , avatar : ""}
+        const {name, avatar} = user ? user.profile : defaultUser ;
     // console.log(props.post);
     let parser = new DOMParser();
     // console.log(props.post.content);
