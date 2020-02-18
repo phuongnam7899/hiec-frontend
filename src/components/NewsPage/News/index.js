@@ -30,7 +30,7 @@ const Title = styled.h1`
   max-width: 60%;
   margin-bottom: 16px;
 `;
-const Date = styled.span`
+const DateString = styled.span`
   font-size: 14px;
   font-weight: 500;
   color: #888787;
@@ -71,7 +71,15 @@ const Arrow = styled.i`
     height: 10px;
   }
 `;
+
+
 const News = props => {
+  const convertDate = (dateNumber) => {
+    const timeConverted = new Date(dateNumber);
+    const dateString = timeConverted.toLocaleString().split(",")[1]
+    console.log(dateString)
+    return dateString
+  }
   const {
     viewer,
     clap,
@@ -82,6 +90,8 @@ const News = props => {
     content,
     _id
   } = props.postInfo;
+
+  const convertedDate = convertDate(postTime)
 
   let parser = new DOMParser();
   let parsedDoccument = parser.parseFromString(content, "text/html");
@@ -106,7 +116,7 @@ const News = props => {
     <NewsContainer to={`/news/${_id}`}>
       <Head>
         <Title>{title}</Title>
-        <Date>{postTime}</Date>
+        <DateString>{convertedDate}</DateString>
       </Head>
       <TagsContainer>
         {tags.map(tag => {

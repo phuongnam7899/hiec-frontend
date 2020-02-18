@@ -82,14 +82,14 @@ const NewsPage = (props) => {
     }
 
     const getHotPosts = async ()=>{
-        console.log("hello");
+        // console.log("hello");
         try{
             const res = await axios.post("/api/news/hot",{
                 number : 5,
                 category : category,
                 limit : 30
             })
-            console.log(res.data)
+            // console.log(res.data)
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
@@ -102,10 +102,10 @@ const NewsPage = (props) => {
 
 
     const more = () => {
-        console.log(tags)
-        console.log(keyword)
-        console.log(sortBy)
-        console.log(page)
+        // console.log(tags)
+        // console.log(keyword)
+        // console.log(sortBy)
+        // console.log(page)
 
             axios.post("/api/news/search", {
                 tags : tags,
@@ -114,7 +114,7 @@ const NewsPage = (props) => {
                 page : page,
                 category : category
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setListPosts([...listPosts,...res.data])
                 setPage(page + 1);
                 

@@ -140,7 +140,7 @@ const WritePost = props => {
   const [postTitle, setPostTitle] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
   useEffect(() => {
-    console.log(tags);
+    // console.log(tags);
   }, [tags, postContent]);
   const handleContentChange = newText => {
     setPostContent(newText);

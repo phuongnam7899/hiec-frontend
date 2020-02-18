@@ -39,7 +39,7 @@ export default function App() {
     setWritePostVisible(false);
   }
   useEffect(() => {
-    console.log(writePostVisible)
+    // console.log(writePostVisible)
   },[writePostVisible])
   return (
     <Router>
