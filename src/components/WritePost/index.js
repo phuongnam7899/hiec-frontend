@@ -46,7 +46,7 @@ const Bar = styled.div`
   & i {
     line-height: 40px;
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 700;
   }
   & i:hover {
     color: #f05663;
