@@ -44,18 +44,14 @@ const NewsPage = (props) => {
     const [ recentPosts,setRecentPosts ] = useState([]);
     const [postsForum,setPostsForum] = useState([]);
     const [filterCd,setFilterCd] = useState({})
-
-
     useEffect(()=>{
         window.scrollTo(0,0)
         getRecentPosts()
         getHotPosts()
     },[])
-
     useEffect(() => {
         more()
     },[filterCd])
-
     const handleSearch = ({tags,keyword,sortOption}) => {
             setPage(0);
             setListPosts([])
@@ -67,10 +63,7 @@ const NewsPage = (props) => {
                 tags,keyword,sortOption
             })     
     }
-
-
     const getRecentPosts = async ()=>{
-        // console.log("hello");
         try{
             const res = await axios.post("/api/news/recent",{
                 number : 5,
@@ -82,7 +75,6 @@ const NewsPage = (props) => {
     }
 
     const getHotPosts = async ()=>{
-        // console.log("hello");
         try{
             const res = await axios.post("/api/news/hot",{
                 number : 5,
@@ -93,14 +85,8 @@ const NewsPage = (props) => {
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
-        }
-
-        
+        }    
     }
-    
-
-
-
     const more = () => {
         // console.log(tags)
         // console.log(keyword)

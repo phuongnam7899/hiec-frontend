@@ -6,7 +6,6 @@ import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import Footer from "./components/Footer"
 // import SignIn from "./components/SignIn/index"
-import WritePost from "./components/WritePost"
 import {  BrowserRouter as Router,Route } from "react-router-dom";
 import "./App.css";
 import { useDispatch } from 'react-redux'
@@ -19,28 +18,17 @@ export default function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
 
-    const hiec_user_id = sessionStorage.getItem("hiec_user_id")
-    const hiec_user_token = sessionStorage.getItem("hiec_user_token");
+    const hiec_user_id = localStorage.getItem("hiec_user_id")
+    const hiec_user_token = localStorage.getItem("hiec_user_token");
     if(hiec_user_id){
       axios.get("/api/user/"+hiec_user_id).then(res=>{
         dispatch(addToken(hiec_user_token))
         dispatch(saveUser(res.data))
-  
       })
     }
   },[])
 
   //không xóa phần này
-  const [writePostVisible,setWritePostVisible] = useState(false)
-  const turnOnWritePost = () => {
-    setWritePostVisible(true);
-  }
-  const turnOffWritePost = () => {
-    setWritePostVisible(false);
-  }
-  useEffect(() => {
-    // console.log(writePostVisible)
-  },[writePostVisible])
   return (
     <Router>
     <div style = {{backgroundColor : "#F6F6F6",height: "100%"}} >
@@ -57,8 +45,8 @@ export default function App() {
       <Route path= "/"  component = {Footer} />
 
       {/* Phần này để test write post, không xóa */}
-      <button onClick={() => {turnOnWritePost()}}>New Post</button>
-      <Route path= "/" render = {() => <WritePost visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}} />} />
+ 
+      <Route path= "/news"  render = {() => <NewsPage category="news"/> } />
       
     </div>
     </Router>

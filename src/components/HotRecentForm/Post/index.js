@@ -6,6 +6,7 @@ const Post = styled.li`
     display : block;
     display:flex;
     width:100%;
+    justify-content : space-between;
    
 `
 const Title = styled.div`
@@ -15,13 +16,17 @@ const Title = styled.div`
     overflow : hidden;
     margin-bottom : 30px;
     line-height: 21px;
+    // flex-grow : 1;
+
     `
 const InfoPost = styled.div`
-    // width : %;
+    // flex-grow : 1;
+    width : 30%;
     display:flex;
     justify-content : space-between;
     // flex-wrap : wrap;
     margin-left : 10%;
+    over-flow : hidden;
     
 `
 const Img = styled.img`

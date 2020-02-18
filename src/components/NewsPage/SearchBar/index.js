@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Select from "react-select";
 
+const SelectStyled = styled(Select)`
+  z-index : 10;
+`
 const SearchBarContainer = styled.div`
  padding : 32px;
  box-shadow : 0 0 5px #ababab;
@@ -145,7 +148,7 @@ const SearchBar = props => {
         <i class="fas fa-tags"></i>
       </Title>
       <Input placeholder="Từ khóa" onChange={handleInputChange} />
-      <Select
+      <SelectStyled
         onChange={addTag}
         options={tagOptions}
         value=""
@@ -166,11 +169,11 @@ const SearchBar = props => {
           );
         })}
       </TagContainer>
-      <Select
-        placeholder="Sắp xếp theo"
+      <SelectStyled
         onChange={changeSortOption}
         options={sortOptions}
-        value={sortOption}
+        value= {sortOption}
+        placeholder="Sắp xếp theo"
       />
       <Button onClick={() => {search()}}>Tìm kiếm</Button>
     </SearchBarContainer>
