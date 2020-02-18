@@ -184,8 +184,8 @@ function HookSignIn(props) {
                 if(response.status === 200){
                     const userToken = data.token;
                     const userInfo = data.userInfo;
-                    sessionStorage.setItem("hiec_user_id",data.userInfo._id)
-                    sessionStorage.setItem("hiec_user_token",data.token);
+                    localStorage.setItem("hiec_user_id",data.userInfo._id)
+                    localStorage.setItem("hiec_user_token",data.token);
                     dispatch(addToken(userToken));
                     dispatch(saveUser(userInfo));
                     props.history.push("/")

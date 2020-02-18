@@ -11,15 +11,19 @@ const Button = styled.button`
      background-color : #37A28D;
      color : #fff;
      cursor : pointer;
+     font-weight : 600;
+     font-size : 20px;
+     transition : 0.1s all;
+     text-align : center;
+     &:hover {
+      background-color : #1ABC9C
+     }
 `
 
 
 function ButtonWrite(props) {
     const [writePostVisible,setWritePostVisible] = useState(false);
-    const [buttonVisible,setButtonVisible] = useState(false);
-    const [isForum,setIsForum] = useState(false);
-    const [isNews,setIsNews] = useState(false);
-    const [isProject,setIsProject] = useState(false);
+    const [buttonVisible,setButtonVisible] = useState(true);
     const user = useSelector(state => state.user);
     const turnOnWritePost = () => {
       setWritePostVisible(true);
@@ -39,35 +43,9 @@ function ButtonWrite(props) {
     useEffect(() => {
       console.log(writePostVisible)
     },[writePostVisible])
-
-    useEffect(()=>{
-        if(window.location.href.includes("/forum")){
-            setIsForum(true);
-            setIsProject(false);
-            setIsNews(false);
-            setButtonVisible(true);
-
-        }
-        else if(window.location.href.includes("/news")){
-          setIsForum(false);
-          setIsProject(false);
-          setIsNews(true);
-          if(user.isAdmin){
-            setButtonVisible(true);
-          }
-        }
-        else if(window.location.href.includes("/project")){
-          setIsForum(false);
-          setIsProject(true);
-          setIsNews(false);
-          if(user.isAdmin){
-            setButtonVisible(true);
-          }
-        }
-    },[])
     return (<>
         {buttonVisible?<Button onClick = {click}>Thêm bài viết</Button>:<></>}
-        <WritePost visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}}></WritePost>
+        <WritePost userId = {user._id} visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}}></WritePost>
         </>
     )
 }

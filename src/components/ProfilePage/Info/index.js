@@ -109,7 +109,7 @@ function Info() {
                 setAddress(profile.address);
                 setAvatar(profile.avatar)
 
-                if (data._id == user._id || data._id == sessionStorage.getItem("hiec_user_id")) {
+                if (data._id == user._id || data._id == localStorage.getItem("hiec_user_id")) {
                     setIsRightUser(true);
                 } else {
                     setIsRightUser(false);

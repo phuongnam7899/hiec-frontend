@@ -18,13 +18,12 @@ export default function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
 
-    const hiec_user_id = sessionStorage.getItem("hiec_user_id")
-    const hiec_user_token = sessionStorage.getItem("hiec_user_token");
+    const hiec_user_id = localStorage.getItem("hiec_user_id")
+    const hiec_user_token = localStorage.getItem("hiec_user_token");
     if(hiec_user_id){
       axios.get("/api/user/"+hiec_user_id).then(res=>{
         dispatch(addToken(hiec_user_token))
         dispatch(saveUser(res.data))
-  
       })
     }
   },[])

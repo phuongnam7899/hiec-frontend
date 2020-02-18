@@ -7,6 +7,7 @@ import Post from "../ProfilePage/Posts/Post"
 import InfiniteScroll from "react-infinite-scroll-component"
 import SearchBar from "../NewsPage/SearchBar"
 import ButtonWrite from '../ButtonWrite';
+import { useSelector } from 'react-redux';
 
 const Page = styled.div`
     padding-top : 88px;
@@ -37,7 +38,7 @@ const Loader = styled.img`
     height : 100px;
 `
 
-function ForumPage() {
+function ForumPage(props) {
     const [loadMore, setLoadMore] = useState(true);
     const [ hotPosts,setHotPosts ] = useState([]);
     const [ recentPosts,setRecentPosts ] = useState([]);
@@ -48,11 +49,13 @@ function ForumPage() {
     const [sortBy,setSortBy] = useState("claps")
     const [page, setPage] = useState(0);
 
-
+    const user = useSelector(state=>state.user)
     useEffect(()=>{
+        if(!localStorage.getItem("hiec_user_id")){
+            props.history.push("/sign-in");
+        }        
         getHotPosts()
         getRecentPosts()
-        // getForumPosts()
     },[])
 
 
@@ -89,18 +92,6 @@ function ForumPage() {
         })     
         
     }   
-    // const getForumPosts = async() =>{
-    //     try{
-    //         const res = await axios.post("/api/post/hot",{
-    //             number : 50,
-    //         })
-    //         setPostsForum([...postsForum,...res.data]);
-    //     }catch(err){
-    //        console.log(err)
-    //     }   
-    // }
-
-
     const getRecentPosts = async ()=>{
         // console.log("hello");
         try{
@@ -114,7 +105,6 @@ function ForumPage() {
     }
 
     const getHotPosts = async ()=>{
-        // console.log("hello");
         try{
             const res = await axios.post("/api/post/hot",{
                 number : 5,
@@ -123,11 +113,10 @@ function ForumPage() {
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
-        }
-
-        
+        }  
     }
-    // console.log(hotPosts);
+    console.log(user._id)
+
     return (
         <Container>
 

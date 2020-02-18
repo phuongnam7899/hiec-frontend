@@ -165,11 +165,11 @@ function HookNavBar() {
 
 
   
-    const setSession = ()=>{
+    const setLocal = ()=>{
         dispatch(deleteToken());
         dispatch(deleteUser());
-        sessionStorage.setItem("hiec_user_id","");
-        sessionStorage.setItem("hiec_user_token","");
+        localStorage.setItem("hiec_user_id","");
+        localStorage.setItem("hiec_user_token","");
     }
 
     const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
@@ -189,7 +189,7 @@ function HookNavBar() {
                         <OptionLink to={"/change-password"}  >Đổi Mật Khẩu</OptionLink>
                     </LiOptions>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/sign-in"} onClick={setSession} >Đăng Xuất</OptionLink>
+                        <OptionLink to={"/sign-in"} onClick={setLocal} >Đăng Xuất</OptionLink>
                     </LiOptions>
                 </div>
             </Options>

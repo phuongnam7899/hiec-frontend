@@ -180,14 +180,23 @@ const WritePost = props => {
   const createNewPost = async () => {
       const currentTime = new Date();
       const currentTimeMilis = currentTime.getTime();
-    const response = await axios.post("/api/post",{
+      try{
+      const response = await axios.post("/api/post",{
         tags : tags,
-        user: "5e42555d2ba8a607749cdb2c",
+        user: props.userId,
         postTime : currentTimeMilis,
         title : postTitle,
         content : postContent,
-    });
-    console.log(response)
+      });
+          onTurnOffWritePost();
+          alert("Đăng bài thành công")
+      }
+      catch(err){
+          onTurnOffWritePost();
+          alert("Có lỗi xảy ra không mong muốn, mời bạn đăng nhập lại trước khi đăng")
+          console.log(err)
+      }
+    
   }
 
   return visible ? (
