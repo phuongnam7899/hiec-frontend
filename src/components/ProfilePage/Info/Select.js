@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Select from "react-select";
 const Icon = styled.i`
   color: #37a28d;
-  margin-right: 16px;
+
   width: 20px;
   height: 20px;
 `;
@@ -10,9 +11,9 @@ const Info = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 16px 0;
+  margin: 8px 0;
 `;
-const Input = styled.input`
+const Input = styled(Select)`
   &:focus {
     outline: none;
   }
@@ -28,7 +29,6 @@ const Input = styled.input`
     }
   }}
   border : none;
-  border-bottom: 1px solid #808080;
   width: 200px;
   transition: 0.1s all;
 `;
@@ -46,20 +46,24 @@ const Span = styled.span`
 `;
 
 const InputFunc = props => {
-  const { size, type, info, change, name } = props;
-  const changeInfo = e => {
-    change(e.target.value);
+  const { info, options, name, change } = props;
+  const changeInfo = newValue => {
+    change(newValue);
   };
   const isUpdate = props.update ? (
-    <Input size={size} type={type} value={info} onChange={changeInfo} />
+    <Input
+      options={options}
+      defaultValue={{ value: info, label: info }}
+      onChange={changeInfo}
+    />
   ) : (
-    <Span size={props.size}>{props.info}</Span>
+    <Span>{props.info}</Span>
   );
   return (
     <Info>
-      {name ? <Icon className={name}></Icon> : null}
+      <Icon className={name}></Icon>
 
-      <div>{isUpdate}</div>
+      <div style={{ marginLeft: "16px" }}>{isUpdate}</div>
     </Info>
   );
 };

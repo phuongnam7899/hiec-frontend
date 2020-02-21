@@ -111,7 +111,7 @@ const sortOptions = [
   },
   {
     value: "claps",
-    label: "Nhiều clap nhất"
+    label: "Hot nhất"
   }
 ];
 const SearchBar = props => {
@@ -130,7 +130,7 @@ const SearchBar = props => {
     // console.log("clicked")
   };
   const changeSortOption = option => {
-      console.log(option.value)
+      // console.log(option.value)
     setSortOption(option.value);
   }
   const search = () => {

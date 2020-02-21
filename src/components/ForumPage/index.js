@@ -8,6 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import SearchBar from "../NewsPage/SearchBar"
 import ButtonWrite from '../ButtonWrite';
 import { useSelector } from 'react-redux';
+import withNavAndFooter from "../HOC/withNavAndFooter"
 
 const Page = styled.div`
     padding-top : 88px;
@@ -109,13 +110,13 @@ function ForumPage(props) {
             const res = await axios.post("/api/post/hot",{
                 number : 5,
             })
-            console.log(res.data)
+            // console.log(res.data)
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
         }  
     }
-    console.log(user._id)
+    // console.log(user._id)
 
     return (
         <Container>
@@ -150,4 +151,4 @@ function ForumPage(props) {
     )
 }
 
-export default ForumPage
+export default withNavAndFooter(ForumPage)

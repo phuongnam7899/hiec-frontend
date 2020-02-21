@@ -74,7 +74,7 @@ const Leaderboard = (props) => {
     
     const getRank = async () => {
         const userRank = await axios.get("/api/common/ranking");
-        console.log(userRank.data)
+        // console.log(userRank.data)
         setRank(userRank.data)
     }
     return(

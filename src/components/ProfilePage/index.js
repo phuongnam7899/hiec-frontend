@@ -6,8 +6,8 @@ import Container from "../Container"
 import styled from 'styled-components';
 import MyPosts from "./Posts"
 const FlexRowBetween = styled.div`
+    width : 100%;
     display : flex;
-    flex-direction: row;
     justify-content : space-between;
     padding-top: 88px;
 `

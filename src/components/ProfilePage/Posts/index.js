@@ -4,7 +4,7 @@ import Post from "./Post"
 import axios from "../../../axios"
 import InfiniteScroll from "react-infinite-scroll-component";
 const Posts = styled.div`
-   
+   width : 60%;
 `
 const Done = styled.div`
     font-size : 14px;

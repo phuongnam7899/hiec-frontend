@@ -6,6 +6,7 @@ import News from "./News";
 import Project from "./Project"
 import Forum from "./Forum"
 import Leaderboard from "./Leaderboard"
+import withNavAndFooter from "../HOC/withNavAndFooter"
 
 
 const LandingPageContainer = styled.div`
@@ -39,4 +40,4 @@ const LandingPage = (props) => {
     )
 }
 
-export default LandingPage;
+export default withNavAndFooter(LandingPage);

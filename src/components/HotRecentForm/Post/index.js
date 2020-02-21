@@ -69,7 +69,7 @@ function PostForm(props) {
     const [month,setMonth] = useState("")
     const [year,setYear] = useState("")
     useEffect(()=>{
-        const date = new Date(props.post.postTime)
+        const date = new Date(Number(props.post.postTime))
         // console.log(date);
         setDay(date.getDate())
         setMonth(date.getMonth() + 1);
