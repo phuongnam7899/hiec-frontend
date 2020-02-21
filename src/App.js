@@ -14,7 +14,9 @@ import {addToken} from "./actions/token"
 import axios from './axios'
 import NewsPage from './components/NewsPage'
 import ForumPage from './components/ForumPage'
+import NotificationBox from "./components/NotificationBox"
 export default function App() {
+  const [visible,setVisbile] = useState(false);
   const dispatch = useDispatch()
   useEffect(()=>{
 
@@ -28,11 +30,19 @@ export default function App() {
     }
   },[])
 
+  const show = ()=>{
+    setVisbile(true);
+    setTimeout(()=>{
+      setVisbile(false)
+    },10000);
+  }
+
   //không xóa phần này
   return (
     <Router>
-    <div style = {{backgroundColor : "#F6F6F6",height: "100%"}} >
-
+ 
+      <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
+      <Route path = "/box" component = {NotificationBox}/>
       <Route path=  "/"  component = {HookNavBar} />
       <Route path= "/" exact  component = {LandingPage} />
       <Route path= "/forum" exact  component = {ForumPage} />
@@ -47,7 +57,8 @@ export default function App() {
       {/* Phần này để test write post, không xóa */}
  
       <Route path= "/news"  render = {() => <NewsPage category="news"/> } />
-      
+      <button onClick = {show}>Test NotificationBox</button>
+      {visible?<NotificationBox message = "Thành Công" success = {true}></NotificationBox>:<></>}
     </div>
     </Router>
   )
