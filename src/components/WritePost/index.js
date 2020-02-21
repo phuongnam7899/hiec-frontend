@@ -6,14 +6,20 @@ import Select from "react-select";
 import Dialog from "../YesNoDialog";
 import axios from "../../axios"
 
+
 const WritePostContainer = styled.div`
     position : relative;
-    left : 50vw;
-    top : 10vh;
-    transform : translate(-50%, 0%);
+    // left : 50vw;
+    // top : 10vh;
+    // transform : translate(-50%, 0%);
     width : 50vw;
-    box-shadow : 0px 0px 5px #8a8a8a
-    margin-bottom : 64px;
+    box-shadow : 0px 0px 5px #8a8a8a;
+    margin-bottom : 20px;
+    z-index : 11;
+    // & *{
+    //   z-index : 11;
+    // }
+    // background-color : black;
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
@@ -40,7 +46,7 @@ const Bar = styled.div`
   & i {
     line-height: 40px;
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 700;
   }
   & i:hover {
     color: #f05663;
@@ -140,7 +146,7 @@ const WritePost = props => {
   const [postTitle, setPostTitle] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
   useEffect(() => {
-    console.log(tags);
+    // console.log(tags);
   }, [tags, postContent]);
   const handleContentChange = newText => {
     setPostContent(newText);
@@ -174,14 +180,23 @@ const WritePost = props => {
   const createNewPost = async () => {
       const currentTime = new Date();
       const currentTimeMilis = currentTime.getTime();
-    const response = await axios.post("/api/post",{
+      try{
+      const response = await axios.post("/api/post",{
         tags : tags,
-        user: "5e42555d2ba8a607749cdb2c",
+        user: props.userId,
         postTime : currentTimeMilis,
         title : postTitle,
         content : postContent,
-    });
-    console.log(response)
+      });
+          onTurnOffWritePost();
+          alert("Đăng bài thành công")
+      }
+      catch(err){
+          onTurnOffWritePost();
+          alert("Có lỗi xảy ra không mong muốn, mời bạn đăng nhập lại trước khi đăng")
+          console.log(err)
+      }
+    
   }
 
   return visible ? (
@@ -232,7 +247,7 @@ const WritePost = props => {
         <Button onClick={() => {createNewPost()}}>Đăng</Button>
       </Main>
     </WritePostContainer>
-  ) : null;
+  ) : <></>;
 };
 
 WritePost.modules = {

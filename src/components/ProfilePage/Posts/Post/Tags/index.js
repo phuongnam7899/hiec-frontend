@@ -6,7 +6,7 @@ const TagSpan = styled.span`
     font-size : 12px;
     font-weight : 600;
     margin-right: 8px;
-    padding : 6px 9px;
+    padding : 6px 12px;
     border-radius : 20px;
 `
 

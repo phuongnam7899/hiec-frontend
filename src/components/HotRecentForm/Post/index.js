@@ -6,6 +6,7 @@ const Post = styled.li`
     display : block;
     display:flex;
     width:100%;
+    justify-content : space-between;
    
 `
 const Title = styled.div`
@@ -15,12 +16,17 @@ const Title = styled.div`
     overflow : hidden;
     margin-bottom : 30px;
     line-height: 21px;
+    // flex-grow : 1;
+
     `
 const InfoPost = styled.div`
-    // width : %;
+    // flex-grow : 1;
+    width : 30%;
     display:flex;
+    justify-content : space-between;
     // flex-wrap : wrap;
     margin-left : 10%;
+    over-flow : hidden;
     
 `
 const Img = styled.img`
@@ -50,10 +56,12 @@ const More = styled(NavLink)`
 
 const Name = styled.span`
     overflow: hidden;
+    font-weight : bold;
     height : 16px;
 `
 const Time = styled(Name)`
-
+    font-weight : 400;
+    color : #787878
 `
 
 function PostForm(props) {
@@ -66,7 +74,7 @@ function PostForm(props) {
         setDay(date.getDate())
         setMonth(date.getMonth() + 1);
         setYear(date.getFullYear())
-    })
+    },[])
 
 
     return (
@@ -74,9 +82,9 @@ function PostForm(props) {
         <Post>
             <Title><span>{props.post.title}</span></Title>
             <InfoPost>
-                <div><Img src = {props.post.user.profile.avatar} /></div>
+                <div><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></div>
                 <NameAndTime>
-                    <Name>{props.post.user.profile.name}</Name>
+                    <Name>{props.post.user ? props.post.user.profile.name : "Admin"}</Name>
                     <Time>{day}/{month}/{year}</Time>
                 </NameAndTime>
             </InfoPost>

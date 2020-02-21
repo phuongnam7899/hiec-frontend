@@ -17,7 +17,8 @@ const DialogContainer = styled.div`
     left : 50%;
     top : 20%;
     transform : translate(-50%, 50%);
-    z-index : 2;
+    z-index : 20;
+
 `
 const Options = styled.div`
     display : flex;
