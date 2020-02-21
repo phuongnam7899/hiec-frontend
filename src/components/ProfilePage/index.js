@@ -5,6 +5,7 @@ import Info from "./Info"
 import Container from "../Container"
 import styled from 'styled-components';
 import MyPosts from "./Posts"
+import withNavAndFooter from "../HOC/withNavAndFooter"
 const FlexRowBetween = styled.div`
     width : 100%;
     display : flex;
@@ -25,4 +26,4 @@ function HookProfilePage() {
         </Container>
     )
 }
-export default HookProfilePage;
+export default withNavAndFooter(HookProfilePage);

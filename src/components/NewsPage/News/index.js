@@ -88,7 +88,8 @@ const News = props => {
     title,
     postTime,
     content,
-    _id
+    _id,
+    category
   } = props.postInfo;
 
   const convertedDate = convertDate(postTime)
@@ -113,7 +114,7 @@ const News = props => {
   demoContent = demoContent.slice(0, 150);
 
   return (
-    <NewsContainer to={`/news/${_id}`}>
+    <NewsContainer to={`/${category}/${_id}`}>
       <Head>
         <Title>{title}</Title>
         <DateString>{convertedDate}</DateString>
