@@ -3,6 +3,7 @@ import axios from "../../../axios"
 import { useSelector, useDispatch } from "react-redux"
 import styled, { keyframes ,css } from "styled-components"
 import InfoUser from "./input";
+import Select from "./Select"
 import { saveUser } from '../../../actions/user';
 
 
@@ -12,13 +13,11 @@ import { saveUser } from '../../../actions/user';
 const Background = styled.div`
     position: sticky ;
     top:88px;
-
     background-color:white;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
-    width: 400px;
-
+    width: 36%;
+    height : 80vh;
     padding : 40px 28px;
-    padding-right : 0px;
 
 `
 
@@ -26,7 +25,7 @@ const Avatar = styled.img`
     border-radius : 999px;
     width : 80px;
     height: 80px;
-    // margin-left : 
+    margin-right : 16px;
 
 `
 const Label = styled.label`
@@ -51,13 +50,14 @@ const IconSettings = styled.i`
 
 const AvatarWithName = styled.div`
     display : flex;
-    flex-direction : row;
     align-items : center;
     margin-bottom:40px;
+    & span {
+        text-align : center;
+    }
 `
 const Button = styled.button`
-    margin-top: 60px; 
-    margin-right:14px;
+    margin : 32px 0px;
     border : none;
     padding : 8px 20px;  
     font-size : 20px;
@@ -136,7 +136,7 @@ function Info() {
                 describe,
                 avatar
             })
-            console.log(res)
+            // console.log(res)
             if(res.status == 200){
                 const userGet =  await axios.get("/api/user/"+user._id)
                 alert("Cập nhật thông tin thành công")
@@ -144,7 +144,7 @@ function Info() {
                     dispatch(saveUser(userGet.data))
                 }
                 setIsUpdate(false);
-                console.log(user)
+                // console.log(user)
             }else{
                 alert("Không thể cập nhật thông tin, xin mời bạn kiểm tra lại thông tin vừa nhập");
             }
@@ -186,18 +186,41 @@ function Info() {
     const button = isUpdate ? <Button disabled = {isLoading} onClick={updateUser}>Lưu<I className="fas fa-pen"></I></Button>
         : <Button onClick={() => setIsUpdate(true)}>Chỉnh sửa<I className="fas fa-pen"></I></Button>
     const updateRightUser = isRightUser ? button : <></>
+    const genderOptions = [
+        {
+          value: "Nam",
+          label: "Nam"
+        },
+        {
+          value: "Nữ",
+          label: "Nữ"
+        },
+        {
+            value: "Khác",
+            label: "Khác"
+          },
 
+      ];
+      const jobOptions= [
+        {
+          value: "Đi làm",
+          label: "Đi làm"
+        },
+        {
+          value: "Đi học",
+          label: "Đi học"
+        }
+      ];
     return (
-        <div>
             <Background>
                 <AvatarWithName>
                     {upAvatar}
-                    <InfoUser size="normal" className="dcmm" info={name} update={isUpdate} change={(value) => {if(value.length < 25){setName(value)} }} />
+                    <InfoUser size="normal" className="dcmm" info={name} update={false} change={(value) => {if(value.length < 25){setName(value)} }} />
                 </AvatarWithName>
                 <InfoUser name="fas fa-envelope" info={email} update={false} change={(value) => { setEmail(value) }}></InfoUser>
-                <InfoUser name="fas fa-venus-mars" info={gender} update={isUpdate} change={(value) => { setGender(value) }}></InfoUser>
+                <Select name="fas fa-venus-mars" options={genderOptions} info={gender} update={isUpdate} change={(value) => { setGender(value) }}></Select>
                 <InfoUser type="date" name="fas fa-baby" info={dob} update={isUpdate} change={(value) => { setDob(value) }}></InfoUser>
-                {/* <InfoUser className = "" info = {isWorking}  update = {isUpdate} change = {(value)=>{setIsWorking(value)}}></InfoUser> */}
+                <Select name="fas fa-briefcase" options={jobOptions} info={isWorking ? jobOptions[0].value : jobOptions[1].value} update={isUpdate} change={(value) => { if (value.value === "Đi làm") setIsWorking(true); else setIsWorking(false) }}></Select>
                 <InfoUser name="fas fa-phone" info={phoneNumber} update={isUpdate} change={(value) => {if(value.length < 16)setPhoneNumber(value) }}></InfoUser>
                 <InfoUser name="fas fa-home" info={address} update={isUpdate} change={(value) => {if(value.length < 60){ setAddress(value) }}}></InfoUser>
                 
@@ -205,7 +228,6 @@ function Info() {
                     {updateRightUser}
                 </div>
             </Background>
-        </div>
     )
 }
 

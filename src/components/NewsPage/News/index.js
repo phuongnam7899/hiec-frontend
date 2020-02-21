@@ -77,7 +77,7 @@ const News = props => {
   const convertDate = (dateNumber) => {
     const timeConverted = new Date(dateNumber);
     const dateString = timeConverted.toLocaleString().split(",")[1]
-    console.log(dateString)
+    // console.log(dateString)
     return dateString
   }
   const {
@@ -97,7 +97,7 @@ const News = props => {
   let parsedDoccument = parser.parseFromString(content, "text/html");
   let contentText = parsedDoccument.getElementsByTagName("*");
   let contentImage = parsedDoccument.getElementsByTagName("img");
-  if (contentImage[0]) console.log(contentImage[0].src)
+  // if (contentImage[0]) console.log(contentImage[0].src)
   
   let demoContent = "";
   for (var i = 0; i < contentText.length; i++) {
@@ -136,8 +136,8 @@ const News = props => {
       <Icons>
         <Icons>
           <IconWithNumber icon="fas fa-eye" number={viewer.length} />
-          <IconWithNumber icon="fas fa-sign-language" number={clap.length} />
-          <IconWithNumber icon="fas fa-comment" number={comments.length} />
+          {/* <IconWithNumber icon="fas fa-sign-language" number={clap.length} />
+          <IconWithNumber icon="fas fa-comment" number={comments.length} /> */}
         </Icons>
         <div className="more" style={{}}>
           <span>Xem thêm </span>

@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import Post from "../ProfilePage/Posts/Post"
 import HotRecentForm from "../HotRecentForm"
 import News from "./News"
+import withNavAndFooter from "../HOC/withNavAndFooter"
 
 const NewsPageContainer = styled(Container)`
     display : flex;
@@ -33,7 +34,11 @@ const Loader = styled.img`
 
 
 const NewsPage = (props) => {
-    const {category} = props
+    const href = window.location.href
+    const splitedHef = href.split("/");
+    const currentPath = splitedHef[splitedHef.length - 1];
+    const category = currentPath;
+    // console.log(category);
     const [listPosts, setListPosts] = useState([]);
     const [page, setPage] = useState(0);
     const [loadMore, setLoadMore] = useState(true);
@@ -67,7 +72,9 @@ const NewsPage = (props) => {
         try{
             const res = await axios.post("/api/news/recent",{
                 number : 5,
+                category : category,
             })
+            // console.log(res)
             setRecentPosts(res.data)
         }catch(err){
            console.log(err)
@@ -81,7 +88,7 @@ const NewsPage = (props) => {
                 category : category,
                 limit : 30
             })
-            // console.log(res.data)
+            // console.log(res)
             setHotPosts(res.data)
         }catch(err){
            console.log(err)
@@ -136,4 +143,4 @@ const NewsPage = (props) => {
     )
 }
 
-export default NewsPage
+export default withNavAndFooter(NewsPage)

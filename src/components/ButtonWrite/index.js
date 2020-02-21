@@ -44,7 +44,7 @@ function ButtonWrite(props) {
       setButtonVisible(true);
     }
     useEffect(() => {
-      console.log(writePostVisible)
+      // console.log(writePostVisible)
     },[writePostVisible])
     return (<>
         {buttonVisible?<Button onClick = {click}>Thêm bài viết <i class="fas fa-plus"></i></Button>:<></>}

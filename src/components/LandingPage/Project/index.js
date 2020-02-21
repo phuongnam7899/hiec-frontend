@@ -44,7 +44,7 @@ const Project = (props) => {
         limit : 30
       });
       setHotNews(news.data);
-      console.log(news.data);
+      // console.log(news.data);
     };
     return(
         <ProjectsContainer>
