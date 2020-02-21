@@ -15,6 +15,8 @@ import {addToken} from "./actions/token"
 import axios from './axios'
 import NewsPage from './components/NewsPage'
 import ForumPage from './components/ForumPage'
+import PostForm from './components/HotRecentForm/Post'
+import OnePost from './components/OnePost'
 export default function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -51,7 +53,9 @@ export default function App() {
       <Route path= "/profile/:id" exact  component = {Profile} />
       <Route exact path = "/sign-up" component = {SignUp}/>
       <Route exact path = "/sign-in" component = {SignIn}/>
+      <Route path= "/post/:id" exact component = {OnePost}/>
       <Route path= "/"  component = {Footer} />
+      
 
       {/* Phần này để test write post, không xóa */}
       <button onClick={() => {turnOnWritePost()}}>New Post</button>
