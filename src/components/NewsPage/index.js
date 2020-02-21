@@ -55,7 +55,7 @@ const NewsPage = (props) => {
         getHotPosts()
     },[])
     useEffect(() => {
-        // more()
+        more()
     },[filterCd])
     const handleSearch = ({tags,keyword,sortOption}) => {
             setPage(0);
