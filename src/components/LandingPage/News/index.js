@@ -54,27 +54,67 @@ const News = () => {
     setHotNews(news.data);
     // console.log(news.data[0].postTime);
   };
+  const getTextAndImg = (html) => {
+    let parser = new DOMParser();
+    let parsedDoccument = parser.parseFromString(html, "text/html");
+    let contentText = parsedDoccument.getElementsByTagName("*");
+    let contentImage = parsedDoccument.getElementsByTagName("img");
+    // if (contentImage[0]) console.log(contentImage[0].src)
+    const imgs = [...contentImage].map((img) => {
+      return img.src
+    })
+    
+    let demoContent = "";
+    for (var i = 0; i < contentText.length; i++) {
+      var current = contentText[i];
+      if (
+        current.children.length === 0 &&
+        current.textContent.replace(/ |\n/g, "") !== ""
+      ) {
+        // Check the element has no children && that it is not empty
+        demoContent = demoContent + " " + current.textContent;
+      }
+    }
+    demoContent = demoContent.slice(0, 150);
+    console.log({
+      content : demoContent,
+      imgs
+    })
+    return {
+      content : demoContent,
+      imgs
+    }
+  }
+  const convertDate = (dateNumber) => {
+    const timeConverted = new Date(Number(dateNumber));
+    const dateString = timeConverted.toLocaleString().split(",")[1]
+    // console.log(dateString)
+    return dateString
+  }
   return (
     <NewsContainer>
       <Title to="/news">Tin Tức</Title>
       <BigNews>
         <ImageWithTitle
           type="big"
-          date={hotNews[0] ? hotNews[0].postTime : ""}
+          date={hotNews[0] ? convertDate(hotNews[0].postTime) : ""}
           title={hotNews[0] ? hotNews[0].title : ""}
-          imgUrl={hotNews[0] ? "https://images.unsplash.com/photo-1581084121296-8b65c4f80452?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" : ""}
+          imgUrl={hotNews[0] ? getTextAndImg(hotNews[0].content).imgs[0] : ""}
+          toHref = {hotNews[0] ? `/news/${hotNews[0]._id}` : "/news"}
         />
       </BigNews>
       <SubNews>
         {hotNews.slice(1, 5).map((oneNew,index) => {
+          const {imgs} = getTextAndImg(oneNew.content)
+          const date = convertDate(oneNew.postTime)
          return (
             <OneNews key={index}>
               <ImageWithTitle
                 type="normal"
-                date={oneNew.postTime}
+                date={date}
                 title={oneNew.title}
-                imgUrl="https://images.unsplash.com/photo-1581084121296-8b65c4f80452?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                toHref = "/news/:id"
+                imgUrl={imgs[0] || ""}
+                toHref = {`/news/${oneNew._id}`}
               />
             </OneNews>
           )

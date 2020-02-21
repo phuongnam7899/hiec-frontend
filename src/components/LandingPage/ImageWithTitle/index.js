@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import {NavLink} from "react-router-dom"
 
-const ImageWithTitleContainer = styled.div`
+const ImageWithTitleContainer = styled(NavLink)`
+    color : #000000;
+    text-decoration : none;
     width : 100%;
     height : 100%;
     display : flex;
@@ -37,11 +40,7 @@ const Date = styled.div`
 
 const ImageWithTitle = (props) => {
     return(
-        <ImageWithTitleContainer onClick={() => {
-            if(props.toHref){
-                console.log(`link to ${props.toHref} `)
-            }
-        }}>
+        <ImageWithTitleContainer to ={props.toHref} >
             <Img imgSrc={props.imgUrl} className="img"></Img>
             {
                 props.title ? <Title type={props.type} className="title">{props.title}</Title> : null
