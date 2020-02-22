@@ -6,6 +6,7 @@ import axios from "../../axios"
 import Container from "../Container"
 import Comment from "./Comment"
 import InputComment from "./InputComment"
+import withNavAndFooter from "../HOC/withNavAndFooter"
 const Form = styled.div`
     display: flex;
     flex-direction: row;
@@ -60,8 +61,21 @@ const Reaction = styled.div`
     border-top: 1px solid #C8C8C8;
 
 `
+
+const ReactArea = styled.div`
+    flex-grow: 1;
+    display:flex;
+    padding: 10px 0px;
+    :hover{
+        background: #E8E8E8;
+    };
+    border-radius:10px;
+    
+`
 const Icon = styled.i`
-    color : #1ABC9C;
+    color : ${props => props.isClapped ? "#1ABC9C" : "black"};
+    margin :auto;
+    
 `
 
 const ReactNumber = styled.span`
@@ -94,7 +108,9 @@ function OnePost(props) {
     const [title, setTitle] = useState("")
     const [tags, setTags] = useState([]);
     const [comments, setComments] = useState([]);
-
+    const [viewers, setViewers] = useState([])
+    const [claps, setClaps] = useState([])
+    const [isClapped, setIsClapped] = useState(false)
 
     useEffect(() => {
         if (!localStorage.getItem("hiec_user_id")) {
@@ -111,11 +127,12 @@ function OnePost(props) {
 
         try {
             const res = await axios.get("/api/post/" + id);
-            console.log(res.data.comments);
+            console.log(res.data);
+            setViewers(res.data.viewers);
             setTitle(res.data.title);
             setTags(res.data.tags)
             setComments(res.data.comments)
-            
+            setClaps(res.data.claps)
             setUserName(res.data.user.profile.name);
             let parser = new DOMParser();
             let parserContent = parser.parseFromString(res.data.content, "text/html");
@@ -129,11 +146,10 @@ function OnePost(props) {
             console.log(err)
         }
     }
+
     
 
-
     const getRecentPosts = async () => {
-        // console.log("hello");
         try {
             const res = await axios.post("/api/post/recent", {
                 number: 5,
@@ -160,9 +176,18 @@ function OnePost(props) {
     // })
 
     // console.log(hotPosts)
-    const submitText = (text)=>{
+    const submitText = (text) => {
         console.log(text);
     }
+
+    const clapping = () => {
+        try{
+            setIsClapped(!isClapped)
+        }
+        catch(err){
+            console.log(err)
+        }
+    } 
     return (<Container>
         <Form>
             <Post>
@@ -176,13 +201,25 @@ function OnePost(props) {
                 <Source>{userName}</Source>
                 <Content id="content"></Content>
                 <Reaction>
-                    <Icon className="fas fa-sign-language"><ReactNumber>1245</ReactNumber></Icon>
-                    <Icon className="fas fa-comment" ><ReactNumber>345345</ReactNumber></Icon>
-                    <Icon className="fas fa-eye" ><ReactNumber>345345</ReactNumber></Icon>
+                    <ReactArea onClick={clapping}>
+                        <Icon isClapped={isClapped} className="fas fa-sign-language">
+                            <ReactNumber>{claps.length}</ReactNumber>
+                        </Icon>
+                    </ReactArea>
+                    <ReactArea>
+                        <Icon className="fas fa-comment" >
+                            <ReactNumber>{comments.length}</ReactNumber>
+                        </Icon>
+                    </ReactArea>
+                    <ReactArea>
+                        <Icon className="fas fa-eye" >
+                            <ReactNumber>{viewers.length}</ReactNumber>
+                        </Icon>
+                    </ReactArea>
                 </Reaction>
                 <CommentContainer>
-                    <InputComment submitText = {submitText}></InputComment>
-                    {comments.map(comment => <Comment comment = {comment}/>)}
+                    <InputComment submitText={submitText}></InputComment>
+                    {comments.map(comment => <Comment comment={comment} />)}
                 </CommentContainer>
             </Post>
             <CucCuLoz>
@@ -195,5 +232,5 @@ function OnePost(props) {
     )
 }
 
-export default OnePost;
+export default withNavAndFooter(OnePost);
 

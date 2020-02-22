@@ -36,7 +36,7 @@ color: #2D8F7C;
 `
 function Comment(props) {
     const comment = props.comment
-    console.log(comment)
+    
     return (
         
         <CommentBox>

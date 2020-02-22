@@ -55,10 +55,6 @@ export default function App() {
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />
-
-      {/* Phần này để test write post, không xóa */}
- 
-
       <button onClick = {show}>Test NotificationBox</button>
       {visible?<NotificationBox message = "Thành Công" success = {true}></NotificationBox>:<></>}
     </div>

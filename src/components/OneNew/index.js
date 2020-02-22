@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import HotRecentForm from "../HotRecentForm"
 import axios from "../../axios"
 import Container from "../Container"
+import withNavAndFooter from "../HOC/withNavAndFooter"
 
 const Form = styled.div`
     display: flex;
@@ -181,5 +182,5 @@ function OneNew(props) {
     )
 }
 
-export default OneNew;
+export default withNavAndFooter(OneNew);
 
