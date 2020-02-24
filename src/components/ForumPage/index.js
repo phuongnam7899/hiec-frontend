@@ -75,6 +75,8 @@ function ForumPage(props) {
             console.log(res.data)
             setPostsForum([...postsForum,...res.data])
             setPage(page + 1);
+            console.log(page)
+            console.log(res.data)
             if(res.data.length===0){
                 setLoadMore(false);
             }
