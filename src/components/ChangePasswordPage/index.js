@@ -88,35 +88,40 @@ const ChangePassWordPage = props => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [cfPassword, setCfPassword] = useState("");
-  const [errVisible,setErrVisible] = useState(false);
-  const [errContent,setErrContent] = useState("");
+  const [errVisible, setErrVisible] = useState(false);
+  const [errContent, setErrContent] = useState("");
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   useEffect(() => {
     // console.log(oldPassword, newPassword, cfPassword);
   }, [oldPassword, newPassword, cfPassword]);
   const handleSubmitForm = async (e) => {
     e.preventDefault()
-    if(newPassword.length < 8){
+    if (newPassword.length < 8) {
       setErrContent("Mật khẩu phải có ít nhất 8 kí tự")
       setErrVisible(true)
-    }else if (newPassword !== cfPassword){
+    } else if (newPassword !== cfPassword) {
       setErrContent("Mật khẩu nhập lại chưa đúng")
       setErrVisible(true)
-    }else{
-      try{
-        const changePasswordResponse = await axios.put(`api/user/${localStorage.getItem("hiec_user_id")}/password`,{
+    } else {
+      try {
+        const changePasswordResponse = await axios.put(`api/user/${localStorage.getItem("hiec_user_id")}/password`, {
           oldPassword,
           newPassword,
         });
         // console.log(changePasswordResponse)
 
-        if (changePasswordResponse.data.success === 0){
+        if (changePasswordResponse.data.success === 0) {
           setErrContent(changePasswordResponse.data.message)
           setErrVisible(true)
-        }else{
+        } else {
           // console.log("ok")
           window.history.back()
         }
-      }catch (err){
+      } catch (err) {
         console.log(err)
       }
     }
@@ -125,7 +130,7 @@ const ChangePassWordPage = props => {
   return (
 
     <ChangePassWordPageContainer onSubmit={handleSubmitForm}>
-              <Title>Đổi mật khẩu</Title>
+      <Title>Đổi mật khẩu</Title>
 
       <InputGroup>
         <span>Mật khẩu cũ</span>
@@ -151,9 +156,9 @@ const ChangePassWordPage = props => {
           onChange={e => setCfPassword(e.target.value)}
         />
       </InputGroup>
-  { errVisible ? <Err>{errContent}</Err> : null }
+      {errVisible ? <Err>{errContent}</Err> : null}
       <ButtomContainer>
-      <ButtonGreen >Xác nhận</ButtonGreen>
+        <ButtonGreen >Xác nhận</ButtonGreen>
       </ButtomContainer>
     </ChangePassWordPageContainer>
 
