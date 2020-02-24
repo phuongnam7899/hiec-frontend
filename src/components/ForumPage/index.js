@@ -143,8 +143,8 @@ function ForumPage(props) {
             </LeftContent>
             <RightContent>
             <SearchBar onSearch = {handleSearch}/>
-            <HotRecentForm url ="/forum/" title = "Tin tức nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
-            <HotRecentForm url ="/forum/" title = "Tin tức gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
+            <HotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
+            <HotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
             </RightContent>
         </Page>
         </Container>
