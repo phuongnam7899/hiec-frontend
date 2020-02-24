@@ -94,6 +94,7 @@ function Info() {
     const [isLoading,setIsLoading] = useState(false);
     const user = useSelector(state => state.user);
     useEffect(() => {
+        console.log("SHKCGJHGCHJGJ")
         const regex = /profile/gi
         const idUser = window.location.pathname.replace(regex, "").split("/").join("");
         axios.get("/api/user/" + idUser).then(res => {
@@ -139,19 +140,28 @@ function Info() {
             // console.log(res)
             if(res.status == 200){
                 const userGet =  await axios.get("/api/user/"+user._id)
-                alert("Cập nhật thông tin thành công")
+                dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
+                setTimeout(()=>{
+                  dispatch({type : "SET_NOT_VISIBLE"})
+                },10000)
                 if(userGet.status == 200){
                     dispatch(saveUser(userGet.data))
                 }
                 setIsUpdate(false);
                 // console.log(user)
             }else{
-                alert("Không thể cập nhật thông tin, xin mời bạn kiểm tra lại thông tin vừa nhập");
+                dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+                setTimeout(()=>{
+                  dispatch({type : "SET_NOT_VISIBLE"})
+                },10000)
             }
         }else{
             console.error("Lỗi xác thực người dùng");
             setIsUpdate(false);
-            alert("Mời bạn kiểm tra lại thông tin")
+            dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+            setTimeout(()=>{
+              dispatch({type : "SET_NOT_VISIBLE"})
+            },10000)
         }
 
         // console.log(res)

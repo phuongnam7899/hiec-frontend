@@ -23,14 +23,12 @@ const Background =styled.div`
     align-items : flex-start;
     padding : 40px 20px;
     background: #FFFFFF;
-    max-width : 400px;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
-    
+    width : 100%;
 `
 
 const Posts = styled.ul`
-    // display : flex;
-    // flex-diretion : column;
+    width : 100%;
 `
 function HotRecentForm(props) {
     // console.log(props.listPost);

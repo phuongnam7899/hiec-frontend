@@ -35,7 +35,7 @@ function AvatarWithName(props) {
         setDay(date.getDate())
         setMonth(date.getMonth() + 1);
         setYear(date.getFullYear())
-    })
+    },[])
     return (
         <RowCenter>
             <div style = {{display:"flex",alignItems:"center"}}>

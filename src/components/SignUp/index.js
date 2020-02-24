@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import "./signUp.css";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
+import { useDispatch } from "react-redux";
 
 const Background = styled.div`
   display: flex;
@@ -147,6 +148,7 @@ const IMG = styled.img`
 `;
 
 function HookSignIn(props) {
+  const dispatch = useDispatch()
   const [widthBackground1, setWidthBackground1] = useState((100 / 20) * 13);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -175,13 +177,24 @@ function HookSignIn(props) {
         isWorking
       });
       if (res.status === 200) {
-        alert("Bạn đã đăng kí thành công");
-        props.history.push("/sign-in");
+        dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
+        setTimeout(()=>{
+          dispatch({type : "SET_NOT_VISIBLE"})
+        },10000)
+        props.history.push("/");
+
       } else {
         setEnoughInfo(false);
-        console.log("EMAIL EXISTED OR INTERNET CONNECTION");
+        dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+        setTimeout(()=>{
+          dispatch({type : "SET_NOT_VISIBLE"})
+        },10000)
       }
     } else {
+      dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+      setTimeout(()=>{
+        dispatch({type : "SET_NOT_VISIBLE"})
+      },10000)
       setEnoughInfo(false);
       // console.log("THIẾU HOẶC SAI FORMAT")
     }

@@ -7,24 +7,27 @@ const Post = styled.li`
     display:flex;
     width:100%;
     justify-content : space-between;
-   
+    color : black;
+    transition: 0.2s all;
+    cursor : pointer;
+    &:hover{
+        color :  #1ABC9C;
+    }
+
 `
 const Title = styled.div`
     font-size : 18px;
     font-weight : normal;
-    width : 60%;
     overflow : hidden;
     margin-bottom : 30px;
     line-height: 21px;
-    // flex-grow : 1;
+    width : 50%
+
 
     `
 const InfoPost = styled.div`
-    // flex-grow : 1;
-    width : 30%;
     display:flex;
-    justify-content : space-between;
-    // flex-wrap : wrap;
+    width : 40%;
     margin-left : 10%;
     over-flow : hidden;
     
@@ -33,26 +36,19 @@ const Img = styled.img`
     border-radius : 999px;
     width : 40px;
     height : 40px;
-    margin-left : -25%;
 `
 const NameAndTime = styled.div`
     display:flex;
     flex-direction :  column;
+    align-items : flex-start;
     font-size : 14px;
+    margin-left : 10px;
     & >*{
         margin-bottom:2px;
     }
     
 `
 
-const More = styled(NavLink)`
-    text-decoration : none;
-    color : black;
-    transition: 0.2s all;
-    &:hover{
-        color :  #1ABC9C;
-    }
-`
 
 const Name = styled.span`
     overflow: hidden;
@@ -74,12 +70,14 @@ function PostForm(props) {
         setDay(date.getDate())
         setMonth(date.getMonth() + 1);
         setYear(date.getFullYear())
-    })
-
+    },[])
+    const toPost = () =>{
+        window.location.assign(props.url + props.post._id)
+    }
 
     return (
-        <More to={props.url + props.post._id}>
-        <Post>
+     
+        <Post onClick = {toPost}>
             <Title><span>{props.post.title}</span></Title>
             <InfoPost>
                 <div><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></div>
@@ -89,7 +87,7 @@ function PostForm(props) {
                 </NameAndTime>
             </InfoPost>
         </Post>
-        </More>
+    
     )
 }
 

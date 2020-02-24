@@ -5,7 +5,8 @@ import styled from "styled-components";
 import Select from "react-select";
 import Dialog from "../YesNoDialog";
 import axios from "../../axios"
-
+import {notificationNotSuccess,notificationNotVisible,notificationSuccess} from "../../actions/notificationBox"
+import { useDispatch } from "react-redux";
 
 const WritePostContainer = styled.div`
     position : relative;
@@ -145,6 +146,7 @@ const WritePost = props => {
   const [tags, setTags] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     // console.log(tags);
   }, [tags, postContent]);
@@ -180,6 +182,7 @@ const WritePost = props => {
   const createNewPost = async () => {
       const currentTime = new Date();
       const currentTimeMilis = currentTime.getTime();
+      // console.log("click")
       try{
       const response = await axios.post("/api/post",{
         tags : tags,
@@ -188,12 +191,20 @@ const WritePost = props => {
         title : postTitle,
         content : postContent,
       });
+      console.log(response)
           onTurnOffWritePost();
-          alert("Đăng bài thành công")
+          // props.success(true)
+          dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
+          setTimeout(()=>{
+            dispatch({type : "SET_NOT_VISIBLE"})
+          },10000)
       }
       catch(err){
           onTurnOffWritePost();
-          alert("Có lỗi xảy ra không mong muốn, mời bạn đăng nhập lại trước khi đăng")
+          dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+          setTimeout(()=>{
+            dispatch({type : "SET_NOT_VISIBLE"})
+          },10000)
           console.log(err)
       }
     

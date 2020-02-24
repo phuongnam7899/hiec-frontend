@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Select from "react-select";
 
 const SelectStyled = styled(Select)`
-  z-index : 10;
+  z-index : 22;
 `
 const SearchBarContainer = styled.div`
  padding : 32px;

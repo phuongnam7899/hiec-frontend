@@ -114,12 +114,15 @@ const LogoOnImg = styled.span`
     font-size: 48px;
 `
 const Background1 = styled.div.attrs(props => ({
-    width: props.width
+    width: props.width,
+    urlImage : props.urlImage
 }))`
     width : ${props => props.width};
+    background-image: url(${props => props.urlImage});
     position:relative;
     transition: ${props => props.theme.time};
-    height:100vh;
+    min-height:100vh;
+    background-size: cover;
     `
 const Background2 = styled.div.attrs(props => ({
     width: props.width
@@ -134,13 +137,14 @@ transition: ${props => props.theme.time};
     align-items:center;
     background-color:${props => props.theme.backgroundColor};
     `
-const IMG = styled.img`
-    width: 100%;
-    height:100vh;
-    size:cover;
-    transition: ${props => props.theme.time};
-`
+//     const IMG = styled.img`
+//         width: 100%;
+//         height:100vh;
+//         size:cover;
+//         transition: ${props => props.theme.time};
+// `
 function HookSignIn(props) {
+
     const [widthBackground1, setWidthBackground1] = useState(100 / 20 * 13);
     const [isDarkMode, setisDarkMode] = useState(false);
     const [email,setEmail] = useState("");
@@ -152,7 +156,7 @@ function HookSignIn(props) {
     const dispatch = useDispatch();
     useEffect(()=>{
         if(user._id){
-            props.history.push("/");
+            window.history.back()
         }
     },[])
   
@@ -188,15 +192,28 @@ function HookSignIn(props) {
                     localStorage.setItem("hiec_user_token",data.token);
                     dispatch(addToken(userToken));
                     dispatch(saveUser(userInfo));
-                    props.history.push("/")
+                    dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
+                    setTimeout(()=>{
+                      dispatch({type : "SET_NOT_VISIBLE"})
+                    },10000)
+                    window.history.back()
+
                 }
             }
             catch(err){
+                dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+                setTimeout(()=>{
+                  dispatch({type : "SET_NOT_VISIBLE"})
+                },10000)
                 setIsNote(true)
             }
         }
         else{
             // Missing email or password
+            dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+            setTimeout(()=>{
+              dispatch({type : "SET_NOT_VISIBLE"})
+            },10000)
             console.log("THIẾU FRONT");
             setIsNote(true);
         }
@@ -213,8 +230,8 @@ function HookSignIn(props) {
            
             <div style={{ width: "100%", height: "100%" }}>
                 <Background>
-                    <Background1 width={widthBackground1 + "%"}>
-                        <IMG src= {theme.ImageURL} />
+                    <Background1 width={widthBackground1 + "%"} urlImage={theme.ImageURL}>
+                        
                         <TextOnImg style={{}}>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                         </TextOnImg>

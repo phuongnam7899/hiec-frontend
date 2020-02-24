@@ -130,7 +130,28 @@ const AvatarBackground = styled.div`
     
 `;
 
-function HookNavBar() {
+const ProfilePage = styled.span`
+padding : 8px 32px;
+cursor : pointer;
+
+${props => props.theme.darkMode ? {
+    color: "black",
+    textDecoration: "none",
+    fontWeight: "bold",
+    fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    ":hover": {
+        color: "white",
+    }
+} : {
+        color: "white",
+        textDecoration: "none",
+        fontWeight: "bold",
+        fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+
+    }}
+`
+
+function HookNavBar(props) {
     const [toggleUser, setToggleUser] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     
@@ -172,6 +193,11 @@ function HookNavBar() {
         localStorage.setItem("hiec_user_token","");
     }
 
+    const toProfile = () =>{
+        window.location.assign("/profile/" + user._id);
+
+    }
+
     const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
         <Avatar src= {user.profile.avatar} />
         <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
@@ -183,7 +209,7 @@ function HookNavBar() {
             <Options>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "16px 0px" }}>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
-                        <OptionLink to={"/profile/" + user._id} >Trang Cá Nhân</OptionLink>
+                        <ProfilePage onClick = {toProfile}>Trang Cá Nhân</ProfilePage>
                     </LiOptions>
                     <LiOptions onClick={() => setToggleUser(!toggleUser)}>
                         <OptionLink to={"/change-password"}  >Đổi Mật Khẩu</OptionLink>
@@ -248,4 +274,4 @@ const styleActiveLink = {
 
 
 
-export default HookNavBar;
+export default withRouter(HookNavBar);

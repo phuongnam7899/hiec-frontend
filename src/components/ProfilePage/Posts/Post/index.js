@@ -9,8 +9,7 @@ const PostForm = styled.div`
     background-color: white;
     box-shadow: 0px 4px 4px rgba(193,193,193,0.25);
     padding : 28px;
-    max-width 760px;
-    min-width : 600px;
+    width : 100%;
     cursor : pointer;
 `
 const Tags = styled.div`
