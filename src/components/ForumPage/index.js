@@ -52,6 +52,7 @@ function ForumPage(props) {
 
     const user = useSelector(state=>state.user)
     useEffect(()=>{
+        window.scrollTo(0,0);        
         if(!localStorage.getItem("hiec_user_id")){
             props.history.push("/sign-in");
         }        

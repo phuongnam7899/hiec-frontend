@@ -92,7 +92,21 @@ const FirstLine = styled.div`
 
 const CommentContainer = styled.div`
 `
-
+const Button = styled.button`
+    border : none;
+    display : block;
+    margin : 12px auto;
+    margin-bottom : 0px;
+    outline : none;
+    cursor : pointer; 
+    padding : 8px 12px;
+    background-color : rgba(1,1,1,0);
+    font-size : 16px;
+    transition : 0.2s all;
+    :hover{
+        color : #1ABC9C;
+    }
+`
 
 const RightSide = styled.div`
     width : 35%;
@@ -115,6 +129,7 @@ function OnePost(props) {
     const [number,setNumber] = useState(5);
 
     useEffect(() => {
+         window.scrollTo(0,0)
         if (!localStorage.getItem("hiec_user_id")) {
             props.history.push("/sign-in");
         }
@@ -273,7 +288,7 @@ function OnePost(props) {
                 <CommentContainer>
                     <InputComment submitText={submitText}></InputComment>
                     {comments.slice(0,number).map(comment => <Comment comment={comment} />)}
-                    {comments.length>number?<button onClick = {moreComment}>Xem thêm</button>:<></>}
+                    {comments.length>number?<div><Button onClick = {moreComment}>Xem thêm</Button></div>:<></>}
                 </CommentContainer>
             </Post>
             <RightSide>
