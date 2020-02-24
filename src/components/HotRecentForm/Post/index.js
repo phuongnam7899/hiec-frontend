@@ -72,7 +72,7 @@ function PostForm(props) {
         setDay(date.getDate())
         setMonth(date.getMonth() + 1);
         setYear(date.getFullYear())
-    })
+    },[])
     const toPost = () =>{
         window.location.assign(props.url + props.post._id)
     }

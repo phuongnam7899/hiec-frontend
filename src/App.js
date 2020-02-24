@@ -12,6 +12,8 @@ import {addToken} from "./actions/token"
 import axios from './axios'
 import NewsPage from './components/NewsPage'
 import ForumPage from './components/ForumPage'
+import OneNew from './components/OneNew'
+import OnePost from './components/OnePost'
 import ChangePasswordPage from './components/ChangePasswordPage'
 import NotificationBox from "./components/NotificationBox"
 export default function App() {
@@ -38,10 +40,14 @@ export default function App() {
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
       <Route path = "/box" component = {NotificationBox}/>
       <Route path= "/" exact  component = {LandingPage} />
-      <Route path= "/forum" exact  render = {() =>  <ForumPage /> } />
-      <Route path= "/profile/:id" exact render = {() =>  <ProfilePage /> } />
-      <Route exact path = "/sign-up" render = {() =>  <SignUp /> }/>
-      <Route exact path = "/sign-in" render = {() => <SignIn/> }/>
+      <Route path= "/forum" exact  component = {ForumPage} />
+      <Route path= "/profile/:id" exact  component = {ProfilePage} />
+      <Route exact path = "/sign-up" component = {SignUp}/>
+      <Route exact path = "/sign-in" component = {SignIn}/>
+      <Route path= "/forum/:id" exact component = {OnePost}/>
+      <Route path= "/news/:id" exact component = {OneNew}/>
+      <Route path= "/project/:id" exact component = {OneNew}/>
+
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />
