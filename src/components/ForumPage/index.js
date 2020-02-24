@@ -13,21 +13,21 @@ import withNavAndFooter from "../HOC/withNavAndFooter"
 const Page = styled.div`
     padding-top : 88px;
     display : flex;
-    justify-content : space-around;
+    justify-content: space-between
+    
 `
 
 const RightContent = styled.div`
-    // width:30%;
+   width : 35%;
 
 `
 const LeftContent = styled.div`
-    // width:70%;
-    // display : flex;
-    // flex-direction : column;
+    width : 60%;
+
 `
 
 const Posts = styled.div`
-
+    width : 100%;
 `
 const Done = styled.div`
     font-size : 14px;
@@ -47,7 +47,7 @@ function ForumPage(props) {
     const [filterCd,setFilterCd] = useState({})
     const [tags,setTags] = useState([]);
     const [keyword,setKeyword] = useState("");
-    const [sortBy,setSortBy] = useState("claps")
+    const [sortBy,setSortBy] = useState("time")
     const [page, setPage] = useState(0);
 
     const user = useSelector(state=>state.user)

@@ -44,7 +44,7 @@ const NewsPage = (props) => {
     const [loadMore, setLoadMore] = useState(true);
     const [tags,setTags] = useState([]);
     const [keyword,setKeyword] = useState("");
-    const [sortBy,setSortBy] = useState("claps")
+    const [sortBy,setSortBy] = useState("time")
     const [ hotPosts,setHotPosts ] = useState([]);
     const [ recentPosts,setRecentPosts ] = useState([]);
     const [postsForum,setPostsForum] = useState([]);

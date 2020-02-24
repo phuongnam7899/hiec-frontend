@@ -7,6 +7,7 @@ import Container from "../Container"
 import Comment from "./Comment"
 import InputComment from "./InputComment"
 import withNavAndFooter from "../HOC/withNavAndFooter"
+import { useSelector } from 'react-redux'
 const Form = styled.div`
     display: flex;
     flex-direction: row;
@@ -98,12 +99,12 @@ const CommentContainer = styled.div`
 
 const CucCuLoz = styled.div``
 function OnePost(props) {
-
+    const user = useSelector(state=>state.user)
     const [day, setDay] = useState("");
     const [month, setMonth] = useState("")
     const [year, setYear] = useState("")
-    const [hotPosts, setHotPosts] = useState([]);
     const [recentPosts, setRecentPosts] = useState([]);
+    const [relevantPosts, setRelevantPosts] = useState([]);
     const [userName, setUserName] = useState("")
     const [title, setTitle] = useState("")
     const [tags, setTags] = useState([]);
@@ -111,14 +112,17 @@ function OnePost(props) {
     const [viewers, setViewers] = useState([])
     const [claps, setClaps] = useState([])
     const [isClapped, setIsClapped] = useState(false)
+    const [postID,setPostID] = useState("");
+    const [number,setNumber] = useState(5);
 
     useEffect(() => {
         if (!localStorage.getItem("hiec_user_id")) {
             props.history.push("/sign-in");
         }
-        getHotPosts()
-        getRecentPosts()
         getPost()
+  
+        getRecentPosts()
+        
     }, [])
 
     const getPost = async () => {
@@ -127,21 +131,44 @@ function OnePost(props) {
 
         try {
             const res = await axios.get("/api/post/" + id);
-            console.log(res.data);
             setViewers(res.data.viewers);
             setTitle(res.data.title);
             setTags(res.data.tags)
-            setComments(res.data.comments)
+            setComments(res.data.comments.reverse())
             setClaps(res.data.claps)
-            setUserName(res.data.user.profile.name);
-            let parser = new DOMParser();
-            let parserContent = parser.parseFromString(res.data.content, "text/html");
+            setPostID(res.data._id);
+            for (let index = 0; index < res.data.claps.length; index++) {
+                if(localStorage.getItem("hiec_user_id") == res.data.claps[index]){
+                    setIsClapped(true);
+                }
+            }
+            setUserName(res.data.user.profile.name);  
             let getContent = document.getElementById("content");
             getContent.innerHTML += res.data.content;
             const date = new Date(res.data.postTime)
             setDay(date.getDate())
             setMonth(date.getMonth() + 1);
             setYear(date.getFullYear())
+
+            const addView = await axios.put("/api/post/add-view",{
+                postID : res.data._id,
+                userID : localStorage.getItem("hiec_user_id")
+            })
+
+//  lấy bài viết liên quan
+            try {
+                const resByTag = await axios.post("/api/post/search/by-tag", {
+                    tagList : res.data.tags
+                })
+                // console.log(resByTag)
+                setRelevantPosts(resByTag.data)
+            } catch (err) {
+                console.log(err)
+            }
+
+
+
+
         } catch (err) {
             console.log(err)
         }
@@ -160,34 +187,63 @@ function OnePost(props) {
         }
     }
 
-    const getHotPosts = async () => {
-        // console.log("hello");
-        try {
-            const res = await axios.post("/api/post/hot", {
-                number: 5,
+ 
+    
+
+
+    const submitText = async (content) => {
+        try{
+            const time  = Date.now();
+            let comment = {
+                user,
+                content,
+                time,
+            }
+            
+            let newComments = comments
+            newComments.unshift(comment)
+            setComments(newComments);
+            setNumber(number+1);
+         
+            const res = await axios.put("/api/post/add-comment",{
+                postID,
+                user : user._id,
+                content,
+                time
             })
-            setHotPosts(res.data)
-        } catch (err) {
+            setNumber(number+1)
+            
+
+        }
+        catch(err){
             console.log(err)
         }
     }
-    // useEffect(() => {
 
-    // })
-
-    // console.log(hotPosts)
-    const submitText = (text) => {
-        console.log(text);
-    }
-
-    const clapping = () => {
+    const clapping = async () => {
         try{
+            if(isClapped){
+                setClaps( claps.filter(id => id != user._id))
+            }else{
+                setClaps([...claps,user._id])
+            }
+            // call API
             setIsClapped(!isClapped)
+            const res = await axios.put("/api/post/add-clap",{
+                userID : user._id,
+                postID : postID,
+            })
+            console.log(res)
         }
         catch(err){
             console.log(err)
         }
     } 
+
+    const moreComment = ()=>{
+        setNumber(number+5);
+    }
+    console.log('render')
     return (<Container>
         <Form>
             <Post>
@@ -206,11 +262,13 @@ function OnePost(props) {
                             <ReactNumber>{claps.length}</ReactNumber>
                         </Icon>
                     </ReactArea>
+               
                     <ReactArea>
                         <Icon className="fas fa-comment" >
                             <ReactNumber>{comments.length}</ReactNumber>
                         </Icon>
                     </ReactArea>
+                   
                     <ReactArea>
                         <Icon className="fas fa-eye" >
                             <ReactNumber>{viewers.length}</ReactNumber>
@@ -219,12 +277,13 @@ function OnePost(props) {
                 </Reaction>
                 <CommentContainer>
                     <InputComment submitText={submitText}></InputComment>
-                    {comments.map(comment => <Comment comment={comment} />)}
+                    {comments.slice(0,number).map(comment => <Comment comment={comment} />)}
+                    {comments.length>number?<button onClick = {moreComment}>Xem thêm</button>:<></>}
                 </CommentContainer>
             </Post>
             <CucCuLoz>
-                <HotRecentForm url="/forum/" title="Tin tức nổi bật" icon="fas fa-star" listPost={hotPosts} />
-                <HotRecentForm url="/forum/" title="Tin tức gần đây" icon="fas fa-star" listPost={recentPosts} />
+                <HotRecentForm url="/forum/" title="Bài viết gần đây" icon="fas fa-star" listPost={recentPosts.slice(0,5)} />
+                <HotRecentForm url="/forum/" title="Bài viết liên quan" icon="fas fa-star" listPost={relevantPosts.slice(0,5)} />
             </CucCuLoz>
         </Form>
 

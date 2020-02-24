@@ -18,19 +18,16 @@ const Post = styled.li`
 const Title = styled.div`
     font-size : 18px;
     font-weight : normal;
-    width : 60%;
     overflow : hidden;
     margin-bottom : 30px;
     line-height: 21px;
-    // flex-grow : 1;
+    width : 50%
+
 
     `
 const InfoPost = styled.div`
-    // flex-grow : 1;
-    width : 30%;
     display:flex;
-    justify-content : space-between;
-    // flex-wrap : wrap;
+    width : 40%;
     margin-left : 10%;
     over-flow : hidden;
     
@@ -39,12 +36,13 @@ const Img = styled.img`
     border-radius : 999px;
     width : 40px;
     height : 40px;
-    margin-left : -25%;
 `
 const NameAndTime = styled.div`
     display:flex;
     flex-direction :  column;
+    align-items : flex-start;
     font-size : 14px;
+    margin-left : 10px;
     & >*{
         margin-bottom:2px;
     }

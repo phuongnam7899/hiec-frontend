@@ -93,6 +93,8 @@ function OneNew(props) {
     const [userName, setUserName] = useState("")
     const [title, setTitle] = useState("")
     const [tags, setTags] = useState([]);
+    const [viewers, setViewers] = useState([])
+
     
 
 
@@ -109,16 +111,29 @@ function OneNew(props) {
 
         try {
             const res = await axios.get("/api/news/" + id);
-            console.log(res.data)
+            // console.log(res.data)
+            setViewers(res.data.viewer);
+            // console.log(res.data)
             setTitle(res.data.title);
             setTags(res.data.tags)
             let getContent = document.getElementById("content");
             getContent.innerHTML += res.data.content;
             const date = new Date(Number(res.data.postTime))
             setDay(date.getDate())
-            console.log(date)
+            // console.log(date)
             setMonth(date.getMonth() + 1);
             setYear(date.getFullYear())
+            
+            if(localStorage.getItem("hiec_user_id")){
+                // console.log("hello")
+                const addView = await axios.put("/api/news/add-view",{
+                    newsID : res.data._id,
+                    userID : localStorage.getItem("hiec_user_id"),
+                })
+
+                // console.log(addView)
+            }
+
         } catch (err) {
             console.log(err)
         }
@@ -168,7 +183,7 @@ function OneNew(props) {
                 <Source>{userName}</Source>
                 <Content id="content"></Content>
                 <Reaction>
-                    <Icon className="fas fa-eye" ><ReactNumber>345345</ReactNumber></Icon>
+                <Icon className="fas fa-eye" ><ReactNumber>{viewers.length}</ReactNumber></Icon>
                 </Reaction>
                 
             </Post>

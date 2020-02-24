@@ -21,17 +21,21 @@ height:40px;
 border-radius: 999px;
 margin-right:5px
 `
-function InputComment() {
+function InputComment(props) {
     const [text,setText]= useState("")
     const user = useSelector(state => state.user);
     const submitText = (e)=>{
-        e.preventDefault();
-        setText("")
+        e.preventDefault()
+        if(text){
+            props.submitText(text);
+            setText("")
+        }
+      
     }
     return (
        <Box onSubmit ={submitText}>
            <AvatarUser src = {user.profile.avatar}/>
-           <Input placeholder = "Nhập bình luận của bạn ..." value = {text} onChange = {(e)=>setText(e.target.value)}/>
+           <Input name ="comment-input" placeholder = "Nhập bình luận của bạn ..." value = {text} onChange = {(e)=>setText(e.target.value)}/>
        </Box>
     )
 }
