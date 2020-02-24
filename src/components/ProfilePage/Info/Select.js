@@ -48,7 +48,7 @@ const Span = styled.span`
 const InputFunc = props => {
   const { info, options, name, change } = props;
   const changeInfo = newValue => {
-    change(newValue.value) ;
+    change(newValue.value);
   };
   const isUpdate = props.update ? (
     <Input

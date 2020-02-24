@@ -8,13 +8,10 @@ import withNavAndFooter from "../HOC/withNavAndFooter"
 
 const Form = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items : flex-start;
+    justify-content : space-between;
     padding-top : 166px ;
     padding-bottom : 88px ;
     width: 100%;
-
-  
 `
 const Title = styled.span`
     font-weight: bolder;
@@ -37,19 +34,12 @@ const Source = styled.div`
     font-weight:600
 `
 const Post = styled.div`
-    margin-bottom: 20px;
-    width: 756px;
-    margin-right:64px;
-    padding:20px;
+    width: 60%;
+    padding:32px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
     & >*{
         margin-bottom:15px;
-    }
-    & p>img{
-        
-        margin-left : 50%;
-        transform: translate(-50%, 0%) 
     }
 `
 
@@ -70,7 +60,12 @@ const ReactNumber = styled.span`
     margin-left : 8px;
     font-weight : 500;
 `
-const Content = styled.div``
+const Content = styled.div`
+    width : 100%;
+    & img {
+        width : 100%;
+    }
+`
 const FirstLine = styled.div`
     display: flex;
     flex-direction: row;
@@ -79,10 +74,9 @@ const FirstLine = styled.div`
     
 `
 
-
-
-
-const CucCuLoz = styled.div``
+const RightSide = styled.div`
+    width : 35%;
+`
 function OneNew(props) {
 
     const [day, setDay] = useState("");
@@ -187,10 +181,10 @@ function OneNew(props) {
                 </Reaction>
                 
             </Post>
-            <CucCuLoz>
+            <RightSide>
                 <HotRecentForm url="/forum/" title="Tin tức nổi bật" icon="fas fa-star" listPost={hotPosts} />
                 <HotRecentForm url="/forum/" title="Tin tức gần đây" icon="fas fa-star" listPost={recentPosts} />
-            </CucCuLoz>
+            </RightSide>
         </Form>
 
     </Container>

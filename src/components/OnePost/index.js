@@ -10,13 +10,10 @@ import withNavAndFooter from "../HOC/withNavAndFooter"
 import { useSelector } from 'react-redux'
 const Form = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items : flex-start;
+    justify-content : space-between;
     padding-top : 166px ;
     padding-bottom : 88px ;
     width: 100%;
-
-  
 `
 const Title = styled.span`
     font-weight: bolder;
@@ -39,18 +36,12 @@ const Source = styled.div`
     font-weight:600
 `
 const Post = styled.div`
-    margin-bottom: 20px;
-    width: 756px;
-    margin-right:64px;
-    padding:20px;
+    width: 60%;
+    padding:32px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
-    & >*{
+    & > *{
         margin-bottom:15px;
-    }
-    & p>img{
-        margin-left : 50%;
-        transform: translate(-50%, 0%) 
     }
 `
 const InfoPost = styled.div``
@@ -67,6 +58,7 @@ const ReactArea = styled.div`
     flex-grow: 1;
     display:flex;
     padding: 10px 0px;
+    cursor : pointer;
     :hover{
         background: #E8E8E8;
     };
@@ -84,7 +76,12 @@ const ReactNumber = styled.span`
     margin-left : 8px;
     font-weight : 500;
 `
-const Content = styled.div``
+const Content = styled.div`
+    width : 100%;
+    & img {
+        width : 100%;
+    }
+`
 const FirstLine = styled.div`
     display: flex;
     flex-direction: row;
@@ -97,7 +94,9 @@ const CommentContainer = styled.div`
 `
 
 
-const CucCuLoz = styled.div``
+const RightSide = styled.div`
+    width : 35%;
+    `
 function OnePost(props) {
     const user = useSelector(state=>state.user)
     const [day, setDay] = useState("");
@@ -186,10 +185,6 @@ function OnePost(props) {
             console.log(err)
         }
     }
-
- 
-    
-
 
     const submitText = async (content) => {
         try{
@@ -281,10 +276,10 @@ function OnePost(props) {
                     {comments.length>number?<button onClick = {moreComment}>Xem thêm</button>:<></>}
                 </CommentContainer>
             </Post>
-            <CucCuLoz>
+            <RightSide>
                 <HotRecentForm url="/forum/" title="Bài viết gần đây" icon="fas fa-star" listPost={recentPosts.slice(0,5)} />
                 <HotRecentForm url="/forum/" title="Bài viết liên quan" icon="fas fa-star" listPost={relevantPosts.slice(0,5)} />
-            </CucCuLoz>
+            </RightSide>
         </Form>
 
     </Container>
