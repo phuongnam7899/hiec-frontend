@@ -124,7 +124,7 @@ function ForumPage(props) {
         <Page>
             
             <LeftContent>
-                <ButtonWrite/>
+                <ButtonWrite />
                 <Posts>
                 <InfiniteScroll
                 dataLength={postsForum.length}

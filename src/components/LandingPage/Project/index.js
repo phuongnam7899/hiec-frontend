@@ -46,6 +46,44 @@ const Project = (props) => {
       setHotNews(news.data);
       // console.log(news.data);
     };
+
+    const getTextAndImg = (html) => {
+      let parser = new DOMParser();
+      let parsedDoccument = parser.parseFromString(html, "text/html");
+      let contentText = parsedDoccument.getElementsByTagName("*");
+      let contentImage = parsedDoccument.getElementsByTagName("img");
+      // if (contentImage[0]) console.log(contentImage[0].src)
+      const imgs = [...contentImage].map((img) => {
+        return img.src
+      })
+      
+      let demoContent = "";
+      for (var i = 0; i < contentText.length; i++) {
+        var current = contentText[i];
+        if (
+          current.children.length === 0 &&
+          current.textContent.replace(/ |\n/g, "") !== ""
+        ) {
+          // Check the element has no children && that it is not empty
+          demoContent = demoContent + " " + current.textContent;
+        }
+      }
+      demoContent = demoContent.slice(0, 150);
+      console.log({
+        content : demoContent,
+        imgs
+      })
+      return {
+        content : demoContent,
+        imgs
+      }
+    }
+    const convertDate = (dateNumber) => {
+      const timeConverted = new Date(Number(dateNumber));
+      const dateString = timeConverted.toLocaleString().split(",")[1]
+      // console.log(dateString)
+      return dateString
+    }
     return(
         <ProjectsContainer>
             <Title to="/project">Dự Án</Title>
@@ -53,15 +91,17 @@ const Project = (props) => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </Description>
             {hotNews.slice(0, 3).map((oneNew,index) => {
+                const {text, imgs} = getTextAndImg(oneNew.content)
+                const date = convertDate(oneNew.postTime)
                 return (
                    <OneNews key={index}>
                      <ImageWithTitle
                        type="normal"
-                       date={oneNew.postTime}
+                       date={date}
                        title={oneNew.title}
-                       description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                       imgUrl="https://images.unsplash.com/photo-1581125206334-788f30d39d34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                       toHref = "/project/:id"
+                       description = {text}
+                       imgUrl={imgs[0] || ""}
+                       toHref = {`/project/${oneNew._id}`}
                      />
                    </OneNews>
                  )

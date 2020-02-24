@@ -145,14 +145,14 @@ const SearchBar = props => {
     <SearchBarContainer>
       <Title>
         <span>Tìm kiếm</span>
-        <i class="fas fa-tags"></i>
+        <i class="fas fa-search"></i>
       </Title>
       <Input placeholder="Từ khóa" onChange={handleInputChange} />
       <SelectStyled
         onChange={addTag}
         options={tagOptions}
         value=""
-        placeholder="Thêm thẻ"
+        placeholder="Thêm thẻ (Tối đa 3)"
       />
       <TagContainer>
         {tags.map((tagName, index) => {

@@ -141,6 +141,7 @@ const IMG = styled.img`
     transition: ${props => props.theme.time};
 `
 function HookSignIn(props) {
+
     const [widthBackground1, setWidthBackground1] = useState(100 / 20 * 13);
     const [isDarkMode, setisDarkMode] = useState(false);
     const [email,setEmail] = useState("");
@@ -152,7 +153,7 @@ function HookSignIn(props) {
     const dispatch = useDispatch();
     useEffect(()=>{
         if(user._id){
-            props.history.push("/");
+            window.history.back()
         }
     },[])
   
@@ -188,15 +189,28 @@ function HookSignIn(props) {
                     localStorage.setItem("hiec_user_token",data.token);
                     dispatch(addToken(userToken));
                     dispatch(saveUser(userInfo));
-                    props.history.push("/")
+                    dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
+                    setTimeout(()=>{
+                      dispatch({type : "SET_NOT_VISIBLE"})
+                    },10000)
+                    window.history.back()
+
                 }
             }
             catch(err){
+                dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+                setTimeout(()=>{
+                  dispatch({type : "SET_NOT_VISIBLE"})
+                },10000)
                 setIsNote(true)
             }
         }
         else{
             // Missing email or password
+            dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
+            setTimeout(()=>{
+              dispatch({type : "SET_NOT_VISIBLE"})
+            },10000)
             console.log("THIẾU FRONT");
             setIsNote(true);
         }

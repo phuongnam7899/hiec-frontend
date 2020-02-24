@@ -1,7 +1,7 @@
 import React ,{useEffect,useState} from 'react'
 
 import LandingPage from "./components/LandingPage"
-import Profile from "./components/ProfilePage"
+import ProfilePage from "./components/ProfilePage"
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import {  BrowserRouter as Router,Route } from "react-router-dom";
@@ -15,12 +15,14 @@ import ForumPage from './components/ForumPage'
 import ChangePasswordPage from './components/ChangePasswordPage'
 import NotificationBox from "./components/NotificationBox"
 export default function App() {
-  const [visible,setVisbile] = useState(false);
-  const dispatch = useDispatch()
+  const visible = useSelector(state=>state.notificationBox.visible)
+  const success = useSelector(state =>state.notificationBox.success)
+  const dispatch = useDispatch();
   useEffect(()=>{
     const hiec_user_id = localStorage.getItem("hiec_user_id")
     const hiec_user_token = localStorage.getItem("hiec_user_token");
     if(hiec_user_id){
+      
       axios.get("/api/user/"+hiec_user_id).then(res=>{
         dispatch(addToken(hiec_user_token))
         dispatch(saveUser(res.data))
@@ -28,33 +30,22 @@ export default function App() {
     }
   },[])
 
-  const show = ()=>{
-    setVisbile(true);
-    setTimeout(()=>{
-      setVisbile(false)
-    },10000);
-  }
 
-  //không xóa phần này
+
+  console.log(visible)
   return (
     <Router>
- 
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
       <Route path = "/box" component = {NotificationBox}/>
       <Route path= "/" exact  component = {LandingPage} />
-      <Route path= "/forum" exact  component = {ForumPage} />
-      <Route path= "/profile/:id" exact  component = {Profile} />
-      <Route exact path = "/sign-up" component = {SignUp}/>
-      <Route exact path = "/sign-in" component = {SignIn}/>
+      <Route path= "/forum" exact  render = {() =>  <ForumPage /> } />
+      <Route path= "/profile/:id" exact render = {() =>  <ProfilePage /> } />
+      <Route exact path = "/sign-up" render = {() =>  <SignUp /> }/>
+      <Route exact path = "/sign-in" render = {() => <SignIn/> }/>
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />
-
-      {/* Phần này để test write post, không xóa */}
- 
-
-      <button onClick = {show}>Test NotificationBox</button>
-      {visible?<NotificationBox message = "Thành Công" success = {true}></NotificationBox>:<></>}
+      {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
     </div>
     </Router>
   )
