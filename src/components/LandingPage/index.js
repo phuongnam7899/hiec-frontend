@@ -21,7 +21,8 @@ const FormAndLeaderboard = styled.div`
 
 const LandingPage = (props) => {
     useEffect(() => {
-        window.scrollTo(0,0)
+        document.title = "HIEC - Trang chủ";
+        window.scrollTo(0,0);
     },[])
     return(
         <LandingPageContainer>

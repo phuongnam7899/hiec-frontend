@@ -78,7 +78,8 @@ const RightSide = styled.div`
     width : 35%;
 `
 function OneNew(props) {
-
+    const href = window.location.href
+    const splitedHef = href.split("/");
     const [day, setDay] = useState("");
     const [month, setMonth] = useState("")
     const [year, setYear] = useState("")
@@ -93,6 +94,7 @@ function OneNew(props) {
 
 
     useEffect(() => {
+        document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Dự án";
         window.scrollTo(0,0)
         getHotPosts()
         getRecentPosts()

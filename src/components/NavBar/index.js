@@ -19,12 +19,18 @@ const BackgroundNav = styled.div`
 
 // `;
 const Logo = styled.img`
-    width : auto;
-    max-height : 50px;
+    display : block;
+    width : 40px;
+    height : 40px;
+    max-height : 40px;
+    max-width: 40px;
+    margin : auto 0;
+
 `;
-const MiddleRow = styled.div`
+const MiddleRow = styled(Container)`
     display : flex;
-    flex-direction : row;
+    align-items : center;
+
     height:100%;
     
 `;
@@ -230,10 +236,9 @@ function HookNavBar(props) {
         <div style = {{position:"fixed",top:0, zIndex : 999}}>
             <ThemeProvider theme={{ darkMode: isDarkMode }}>
                     <BackgroundNav>
-                        <Container>
                             <MiddleRow>
-                                <FlexGrow grow={12} style={{ margin: "auto 0px" }}>
-                                    <Logo src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/p960x960/74380224_103054094497511_454555054863548416_o.jpg?_nc_cat=105&_nc_ohc=I5Z82GveQl0AX_TdRJ5&_nc_ht=scontent.fhan4-1.fna&_nc_tp=6&oh=7dd4035c44393dd25ad1e8d2d1ab2d0c&oe=5EB72A6C" />
+                                <FlexGrow grow={12}>
+                                    <Logo src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
                                 </FlexGrow>
                                 <FlexGrow grow={66} >
                                     <Ul>
@@ -259,7 +264,6 @@ function HookNavBar(props) {
                                     {Option}
                                 </FlexGrow>
                             </MiddleRow>
-                        </Container>
                     </BackgroundNav>
             </ThemeProvider>
             {/* <button onClick = {()=>setIsDarkMode(!isDarkMode)}> MODE </button> */}

@@ -50,6 +50,7 @@ const NewsPage = (props) => {
     const [postsForum,setPostsForum] = useState([]);
     const [filterCd,setFilterCd] = useState({})
     useEffect(()=>{
+        document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Dự án"
         window.scrollTo(0,0)
         getRecentPosts()
         getHotPosts()

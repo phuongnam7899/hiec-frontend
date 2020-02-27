@@ -129,6 +129,7 @@ function OnePost(props) {
     const [number,setNumber] = useState(5);
 
     useEffect(() => {
+        document.title = "HIEC - Diễn đàn"
          window.scrollTo(0,0)
         if (!localStorage.getItem("hiec_user_id")) {
             props.history.push("/sign-in");
