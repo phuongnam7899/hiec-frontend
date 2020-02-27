@@ -7,15 +7,20 @@ import Container from "../Container"
 import withNavAndFooter from "../HOC/withNavAndFooter"
 
 const Form = styled.div`
+
     display: flex;
     justify-content : space-between;
     padding-top : 166px ;
     padding-bottom : 88px ;
     width: 100%;
-`
+    & * {
+        overflow-wrap : break-word;
+    }
+    `
 const Title = styled.span`
     font-weight: bolder;
-    font-size: 30px
+    font-size: 30px;
+    width : 70%;
 `
 const Tag = styled.span`
 background-color : #37A28D;
@@ -62,9 +67,11 @@ const ReactNumber = styled.span`
 `
 const Content = styled.div`
     width : 100%;
+
     & img {
         width : 100%;
     }
+    
 `
 const FirstLine = styled.div`
     display: flex;
