@@ -18,6 +18,7 @@ import ChangePasswordPage from './components/ChangePasswordPage'
 import NotificationBox from "./components/NotificationBox"
 import Loader from './components/Loader'
 import AdminPage from './components/AdminPage'
+import ScrollTopButton from './components/ScrollTopButton'
 
 export default function App() {
   const visible = useSelector(state=>state.notificationBox.visible)
@@ -57,6 +58,7 @@ export default function App() {
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />
       {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
+      <ScrollTopButton />
     </div>
     </Router>
   )

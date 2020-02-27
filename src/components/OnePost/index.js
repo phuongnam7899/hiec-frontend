@@ -14,10 +14,14 @@ const Form = styled.div`
     padding-top : 166px ;
     padding-bottom : 88px ;
     width: 100%;
+    & * {
+        overflow-wrap : break-word;
+    }
 `
 const Title = styled.span`
     font-weight: bolder;
-    font-size: 30px
+    font-size: 30px;
+    width : 70%;
 `
 const Tag = styled.span`
 background-color : #37A28D;
@@ -178,14 +182,14 @@ function OnePost(props) {
                 // console.log(resByTag)
                 setRelevantPosts(resByTag.data)
             } catch (err) {
+               
                 console.log(err)
             }
 
-
-
-
         } catch (err) {
-            console.log(err)
+            console.log("Hlel")
+            window.location.assign("/")
+            console.log(err);   
         }
     }
 
