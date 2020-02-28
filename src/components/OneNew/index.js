@@ -7,15 +7,20 @@ import Container from "../Container"
 import withNavAndFooter from "../HOC/withNavAndFooter"
 
 const Form = styled.div`
+
     display: flex;
     justify-content : space-between;
     padding-top : 166px ;
     padding-bottom : 88px ;
     width: 100%;
-`
+    & * {
+        overflow-wrap : break-word;
+    }
+    `
 const Title = styled.span`
     font-weight: bolder;
-    font-size: 30px
+    font-size: 30px;
+    width : 70%;
 `
 const Tag = styled.span`
 background-color : #37A28D;
@@ -62,9 +67,11 @@ const ReactNumber = styled.span`
 `
 const Content = styled.div`
     width : 100%;
+
     & img {
         width : 100%;
     }
+    
 `
 const FirstLine = styled.div`
     display: flex;
@@ -79,7 +86,7 @@ const RightSide = styled.div`
 `
 function OneNew(props) {
     const href = window.location.href
-    const splitedHef = href.split("/");
+    // const splitedHef = href.split("/");
     const [day, setDay] = useState("");
     const [month, setMonth] = useState("")
     const [year, setYear] = useState("")
@@ -94,10 +101,10 @@ function OneNew(props) {
 
 
     useEffect(() => {
-        document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Dự án";
+        document.title = href.includes("/news") ? "HIEC - Tin tức" : "HIEC - Dự án";
         window.scrollTo(0,0)
         getHotPosts()
-        getRecentPosts()
+        getRecentNews()
         getPost()
     }, [])
 
@@ -138,11 +145,13 @@ function OneNew(props) {
     
 
 
-    const getRecentPosts = async () => {
+    const getRecentNews = async () => {
         // console.log("hello");
         try {
-            const res = await axios.post("/api/post/recent", {
+            const category = href.includes("news")?"news":"project"
+            const res = await axios.post("/api/news/recent", {
                 number: 5,
+                category,
             })
             setRecentPosts(res.data)
         } catch (err) {
@@ -153,8 +162,11 @@ function OneNew(props) {
     const getHotPosts = async () => {
         // console.log("hello");
         try {
-            const res = await axios.post("/api/post/hot", {
+            const category = href.includes("news")?"news":"project"
+            const res = await axios.post("/api/news/hot", {
                 number: 5,
+                limit : 30,
+                category,
             })
             setHotPosts(res.data)
         } catch (err) {
@@ -185,8 +197,8 @@ function OneNew(props) {
                 
             </Post>
             <RightSide>
-                <HotRecentForm url="/forum/" title="Tin tức nổi bật" icon="fas fa-star" listPost={hotPosts} />
-                <HotRecentForm url="/forum/" title="Tin tức gần đây" icon="fas fa-star" listPost={recentPosts} />
+                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title="Tin tức nổi bật" icon="fas fa-star" listPost={hotPosts} />
+                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title="Tin tức gần đây" icon="fas fa-star" listPost={recentPosts} />
             </RightSide>
         </Form>
 

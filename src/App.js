@@ -16,10 +16,18 @@ import OneNew from './components/OneNew'
 import OnePost from './components/OnePost'
 import ChangePasswordPage from './components/ChangePasswordPage'
 import NotificationBox from "./components/NotificationBox"
+<<<<<<< HEAD
 import AbouUsPage from "./components/AboutUsPage"
+=======
+import Loader from './components/Loader'
+import AdminPage from './components/AdminPage'
+import ScrollTopButton from './components/ScrollTopButton'
+
+>>>>>>> 345396b63fdda466c6ca11ffc6a668c3545b6bab
 export default function App() {
   const visible = useSelector(state=>state.notificationBox.visible)
   const success = useSelector(state =>state.notificationBox.success)
+  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   useEffect(()=>{
     const hiec_user_id = localStorage.getItem("hiec_user_id")
@@ -39,7 +47,7 @@ export default function App() {
   return (
     <Router>
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
-      <Route path = "/box" component = {NotificationBox}/>
+      {user.isAdmin?<Route path = "/admin" exact component = {AdminPage}/>:<></>}
       <Route path= "/" exact  component = {LandingPage} />
       <Route path= "/forum" exact  component = {ForumPage} />
       <Route path= "/profile/:id" exact  component = {ProfilePage} />
@@ -48,12 +56,17 @@ export default function App() {
       <Route path= "/forum/:id" exact component = {OnePost}/>
       <Route path= "/news/:id" exact component = {OneNew}/>
       <Route path= "/project/:id" exact component = {OneNew}/>
+<<<<<<< HEAD
       <Route path= "/about-us" exact component = {AbouUsPage}/>
+=======
+      <Route path= "/loading" exact component = {Loader}/>
+>>>>>>> 345396b63fdda466c6ca11ffc6a668c3545b6bab
 
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />
       {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
+      <ScrollTopButton />
     </div>
     </Router>
   )

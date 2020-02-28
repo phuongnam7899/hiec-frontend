@@ -227,6 +227,7 @@ const WritePost = props => {
           onChange = {handlePostTitleChange}
           maxLength="100"
           placeholder="Tiêu đề bài viết (Tối đa 100 kí tự)"
+          value = {postTitle}
         />
         <Select
           onChange={addTag}

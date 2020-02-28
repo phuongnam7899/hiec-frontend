@@ -21,7 +21,9 @@ const Title = styled.div`
     overflow : hidden;
     margin-bottom : 30px;
     line-height: 21px;
-    width : 50%
+    width : 50%;
+    height : 40px;
+    overflow : hidden;
 
 
     `

@@ -28,6 +28,7 @@ const Img = styled.div`
 const Title = styled.h2`
     font-size: ${props => props.type === "big" ?  "24px" : "20px"};
     margin : 8px 0px;
+    overflow : hidden;
 `
 const Description = styled.div`
     font-size : 18px;

@@ -19,6 +19,7 @@ const Title = styled(NavLink)`
   text-decoration : none;
   font-weight : bold;
   color : #000000;
+  
   &:hover {
       color : #1ABC9C
   }
