@@ -26,16 +26,17 @@ const Img = styled.div`
 }
 `
 const Title = styled.h2`
-    font-size: ${props => props.type === "big" ?  "24px" : "20px"};
+    font-size: ${props => props.type === "big" ?  "24px" : "16px"};
     margin : 8px 0px;
-    overflow : hidden;
+    max-width : 100%;
+    overflow-wrap : break-word;
 `
 const Description = styled.div`
     font-size : 18px;
     margin : 8px 0px;
 `
 const Date = styled.div`
-    font-size : 18px;
+    font-size : 14px;
     color : #707070;
 `
 

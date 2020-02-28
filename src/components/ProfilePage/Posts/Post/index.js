@@ -11,7 +11,6 @@ const PostForm = styled.div`
     padding : 28px;
     width : 100%;
     cursor : pointer;
-
     
 `
 const Tags = styled.div`
@@ -22,7 +21,8 @@ const Title = styled.div`
     font-weight: bold;
     font-size : 24px;
     margin-bottom : 20px;
-    overflow : hidden;
+    max-width : 90%;
+    overflow-wrap : break-word;
 `
 const Content = styled.div`
     margin-bottom : 30px;

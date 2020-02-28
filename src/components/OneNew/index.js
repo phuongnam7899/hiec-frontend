@@ -69,6 +69,7 @@ const Content = styled.div`
     width : 100%;
 
     & img {
+        margin : 8px 0px;
         width : 100%;
     }
     

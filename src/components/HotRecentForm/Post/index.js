@@ -23,7 +23,7 @@ const Title = styled.div`
     line-height: 21px;
     width : 50%;
     height : 40px;
-    overflow : hidden;
+    overflow-wrap : break-word;
 
 
     `

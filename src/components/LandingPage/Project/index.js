@@ -97,7 +97,7 @@ const Project = (props) => {
                 return (
                    <OneNews key={index}>
                      <ImageWithTitle
-                       type="normal"
+                       type="big"
                        date={date}
                        title={oneNew.title}
                        description = {text}
