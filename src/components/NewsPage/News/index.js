@@ -11,7 +11,7 @@ const NewsContainer = styled(NavLink)`
   flex-direction: column;
   background: #ffffff;
   margin: 0px 0px 12px 0px;
-  box-shadow: 0 0 5px #ababab;
+  box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
   padding: 30px 22px;
   &:hover {
     h1, .more {
@@ -127,7 +127,7 @@ const News = props => {
       <Content>{demoContent}</Content>
       <ImageContainer>
         {
-          [...contentImage].map((img) => {
+          [...contentImage].slice(0,4).map((img) => {
             return (<Image src={img.src} />)
           })
         }

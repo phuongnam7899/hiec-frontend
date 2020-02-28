@@ -7,7 +7,7 @@ const SelectStyled = styled(Select)`
 `
 const SearchBarContainer = styled.div`
  padding : 32px;
- box-shadow : 0 0 5px #ababab;
+ box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
  margin-top : 31px;
  background :#ffffff;
  margin-bottom : 12px;

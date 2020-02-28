@@ -2,12 +2,12 @@ import React from "react"
 import HookNavBar from "../../NavBar"
 import Footer from "../../Footer"
 
-const withNavAndFooter = (WrappedComponent) => (props) => {
+const withNavAndFooter = (WrappedComponent, footer = true) => (props) => {
     return(
         <>
             <HookNavBar></HookNavBar>
             <WrappedComponent {...props}></WrappedComponent>
-            <Footer></Footer>
+            {footer ? <Footer></Footer> : null}
         </>
     )
 }
