@@ -16,14 +16,11 @@ import OneNew from './components/OneNew'
 import OnePost from './components/OnePost'
 import ChangePasswordPage from './components/ChangePasswordPage'
 import NotificationBox from "./components/NotificationBox"
-<<<<<<< HEAD
 import AbouUsPage from "./components/AboutUsPage"
-=======
 import Loader from './components/Loader'
 import AdminPage from './components/AdminPage'
 import ScrollTopButton from './components/ScrollTopButton'
 
->>>>>>> 345396b63fdda466c6ca11ffc6a668c3545b6bab
 export default function App() {
   const visible = useSelector(state=>state.notificationBox.visible)
   const success = useSelector(state =>state.notificationBox.success)
@@ -56,11 +53,8 @@ export default function App() {
       <Route path= "/forum/:id" exact component = {OnePost}/>
       <Route path= "/news/:id" exact component = {OneNew}/>
       <Route path= "/project/:id" exact component = {OneNew}/>
-<<<<<<< HEAD
       <Route path= "/about-us" exact component = {AbouUsPage}/>
-=======
       <Route path= "/loading" exact component = {Loader}/>
->>>>>>> 345396b63fdda466c6ca11ffc6a668c3545b6bab
 
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
