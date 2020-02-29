@@ -137,8 +137,8 @@ const NewsPage = (props) => {
             </NewsList>
             <RightSide>
                 <SearchBar onSearch = {handleSearch}/>
-                <HotRecentForm url ="/news/" title = "Tin tức nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
-                <HotRecentForm url ="/news/" title = "Tin tức gần đây" icon = "fas fa-star" listPost = {recentPosts} />
+                <HotRecentForm url ={"/"+category+"/"} title = {category.includes("news")?"Tin tức nổi bật":"Dự án nổi bật"} icon = "fas fa-star" listPost = {hotPosts} />
+                <HotRecentForm url ={"/"+category+"/"} title =  {category.includes("news")?"Tin tức gần đây":"Dự án gần đây"} icon = "fas fa-clock" listPost = {recentPosts} />
             </RightSide>
         </NewsPageContainer>
     )

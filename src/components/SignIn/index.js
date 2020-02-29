@@ -6,6 +6,9 @@ import axios from "../../axios"
 import {addToken} from "../../actions/token"
 import {saveUser} from "../../actions/user"
 import user from '../../reducers/user'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+
+
 
 
 const Background = styled.div`
@@ -112,6 +115,7 @@ const LogoOnImg = styled.span`
     font-weight:bolder;
     color:white;
     font-size: 48px;
+    cursor : pointer;
 `
 const Background1 = styled.div.attrs(props => ({
     width: props.width,
@@ -179,7 +183,7 @@ function HookSignIn(props) {
     const submit = async (e)=>{ 
        
         e.preventDefault(); 
-        
+        dispatch(showLoading())
         if(email && password){
             try{
             const response = await axios.post("/api/auth/sign-in",{
@@ -188,6 +192,9 @@ function HookSignIn(props) {
             });
             const data = response.data;
                 if(response.status === 200){
+                    setTimeout(()=>{
+                        dispatch(hideLoading())
+                    },1000)
                     const userToken = data.token;
                     const userInfo = data.userInfo;
                     localStorage.setItem("hiec_user_id",data.userInfo._id)
@@ -199,10 +206,13 @@ function HookSignIn(props) {
                       dispatch({type : "SET_NOT_VISIBLE"})
                     },10000)
                     window.history.back()
-
                 }
             }
             catch(err){
+                console.log("hello")
+                setTimeout(()=>{
+                    dispatch(hideLoading())
+                },1000)
                 dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
                 setTimeout(()=>{
                   dispatch({type : "SET_NOT_VISIBLE"})
@@ -211,6 +221,9 @@ function HookSignIn(props) {
             }
         }
         else{
+            setTimeout(()=>{
+                dispatch(hideLoading())
+            },1000)
             // Missing email or password
             dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
             setTimeout(()=>{
@@ -219,6 +232,9 @@ function HookSignIn(props) {
             console.log("THIẾU FRONT");
             setIsNote(true);
         }
+    }
+    const goToHomepage = () =>{
+        window.location.assign("/")
     }
     // useEffect(() => {
     //     dispatch(getData());
@@ -237,7 +253,7 @@ function HookSignIn(props) {
                         <TextOnImg style={{}}>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                         </TextOnImg>
-                        <LogoOnImg>HIEC</LogoOnImg>
+                        <LogoOnImg onClick = {goToHomepage}>HIEC</LogoOnImg>
                         
                     </Background1>
                     <Background2 width={(100 - widthBackground1) + "%"}>

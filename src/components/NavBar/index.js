@@ -25,6 +25,7 @@ const Logo = styled.img`
     max-height : 40px;
     max-width: 40px;
     margin : auto 0;
+    cursor : pointer;
 
 `;
 const MiddleRow = styled(Container)`
@@ -64,7 +65,7 @@ const Options = styled.div`
 `;
 
 const Polygon = styled.div`
-    z-index:999;
+    z-index:998;
     position:absolute;
     width:20px;
     height:10px;
@@ -191,7 +192,9 @@ function HookNavBar(props) {
     // console.log(token)
 
 
-  
+    const goToHomepage = () =>{
+        window.location.assign("/")
+    }
     const setLocal = ()=>{
         dispatch(deleteToken());
         dispatch(deleteUser());
@@ -233,12 +236,12 @@ function HookNavBar(props) {
 
     return (
 
-        <div style = {{position:"fixed",top:0, zIndex : 999}}>
+        <div style = {{position:"fixed",top:0, zIndex : 500}}>
             <ThemeProvider theme={{ darkMode: isDarkMode }}>
                     <BackgroundNav>
                             <MiddleRow>
                                 <FlexGrow grow={12}>
-                                    <Logo src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
+                                    <Logo onClick = {goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
                                 </FlexGrow>
                                 <FlexGrow grow={66} >
                                     <Ul>

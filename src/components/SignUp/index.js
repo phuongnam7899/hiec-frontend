@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import axios from "../../axios";
 import { useDispatch } from "react-redux";
 
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+
+
 const Background = styled.div`
   display: flex;
   flex-direction: row;
@@ -114,6 +117,7 @@ const LogoOnImg = styled.span`
   font-weight: bolder;
   color: white;
   font-size: 48px;
+  cursor : pointer;
 `;
 
 const Background1 = styled.div.attrs(props => ({
@@ -159,7 +163,7 @@ function HookSignIn(props) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isDarkMode, setisDarkMode] = useState(false);
   const submit = async e => {
-    
+    dispatch(showLoading())
     e.preventDefault();
     if (
       password === confirmPassword &&
@@ -178,13 +182,20 @@ function HookSignIn(props) {
         isWorking
       });
       if (res.status === 200) {
+        setTimeout(()=>{
+          dispatch(hideLoading())
+        },1000)
         dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
         setTimeout(()=>{
           dispatch({type : "SET_NOT_VISIBLE"})
         },10000)
         props.history.push("/");
+     
 
       } else {
+        setTimeout(()=>{
+          dispatch(hideLoading())
+        },1000)
         setEnoughInfo(false);
         dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
         setTimeout(()=>{
@@ -192,6 +203,9 @@ function HookSignIn(props) {
         },10000)
       }
     } else {
+      setTimeout(()=>{
+        dispatch(hideLoading())
+      },1000)
       dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
       setTimeout(()=>{
         dispatch({type : "SET_NOT_VISIBLE"})
@@ -219,7 +233,9 @@ function HookSignIn(props) {
         ImageURL:
           "https://scontent.fhan3-3.fna.fbcdn.net/v/t1.15752-9/85055898_133191184536849_84730002418958336_n.png?_nc_cat=100&_nc_oc=AQnwnWSAzvLc8L7LR8mXIHInGK5jFTL3v_hvHd0yNvF4xjyZTP9nu4HbgOQgBFemcgk&_nc_ht=scontent.fhan3-3.fna&oh=3ee88d558f7ab401687844b396bf88a3&oe=5EB828F4"
       };
-
+  const goToHomepage = () =>{
+    window.location.assign("/")
+  }
   const enough = enoughInfo ? (
     <></>
   ) : (
@@ -290,7 +306,7 @@ function HookSignIn(props) {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </span>
             </TextOnImg>
-            <LogoOnImg>HIEC</LogoOnImg>
+            <LogoOnImg onClick = {goToHomepage}>HIEC</LogoOnImg>
           </Background1>
         </Background>
       {/* </div> */}
