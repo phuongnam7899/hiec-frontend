@@ -5,6 +5,8 @@ import styled, { keyframes ,css } from "styled-components"
 import InfoUser from "./input";
 import Select from "./Select"
 import { saveUser } from '../../../actions/user';
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+
 
 
 	
@@ -125,6 +127,7 @@ function Info() {
 
     const updateUser = async () => {
         // UPDATE USER
+        dispatch(showLoading())
         const justNumberPhone = Number.isInteger((Number)(phoneNumber))
         if(user._id && isRightUser && name.length<25 && justNumberPhone && address.length < 100){
             const res = await axios.put("/api/user/"+user._id,{
@@ -139,6 +142,9 @@ function Info() {
             })
             // console.log(res)
             if(res.status == 200){
+                setTimeout(()=>{
+                    dispatch(hideLoading())
+                },1000)
                 const userGet =  await axios.get("/api/user/"+user._id)
                 dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
                 setTimeout(()=>{
@@ -150,12 +156,18 @@ function Info() {
                 setIsUpdate(false);
                 // console.log(user)
             }else{
+                setTimeout(()=>{
+                    dispatch(hideLoading())
+                },1000)
                 dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
                 setTimeout(()=>{
                   dispatch({type : "SET_NOT_VISIBLE"})
                 },10000)
             }
         }else{
+            setTimeout(()=>{
+                dispatch(hideLoading())
+            },1000)
             console.error("Lỗi xác thực người dùng");
             setIsUpdate(false);
             dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})

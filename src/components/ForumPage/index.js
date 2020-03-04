@@ -103,6 +103,8 @@ function ForumPage(props) {
             const res = await axios.post("/api/post/recent",{
                 number : 5,
             })
+            console.log("RÊCENT")
+            console.log(res.data)
             setRecentPosts(res.data)
         }catch(err){
            console.log(err)
@@ -115,6 +117,8 @@ function ForumPage(props) {
                 number : 5,
             })
             // console.log(res.data)
+            console.log("HOT")
+            console.log(res.data)
             setHotPosts(res.data)
         }catch(err){
            console.log(err)

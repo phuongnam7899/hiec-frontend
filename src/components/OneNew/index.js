@@ -198,8 +198,8 @@ function OneNew(props) {
                 
             </Post>
             <RightSide>
-                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title="Tin tức nổi bật" icon="fas fa-star" listPost={hotPosts} />
-                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title="Tin tức gần đây" icon="fas fa-star" listPost={recentPosts} />
+                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức nổi bật":"Dự án nổi bật"} icon="fas fa-star" listPost={hotPosts} />
+                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức gần đây":"Dự án gần đây"} icon="fas fa-clock" listPost={recentPosts} />
             </RightSide>
         </Form>
 

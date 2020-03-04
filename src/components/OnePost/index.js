@@ -299,7 +299,7 @@ function OnePost(props) {
                 </CommentContainer>
             </Post>
             <RightSide>
-                <HotRecentForm url="/forum/" title="Bài viết gần đây" icon="fas fa-star" listPost={recentPosts.slice(0,5)} />
+                <HotRecentForm url="/forum/" title="Bài viết gần đây" icon="fas fa-clock" listPost={recentPosts.slice(0,5)} />
                 <HotRecentForm url="/forum/" title="Bài viết liên quan" icon="fas fa-star" listPost={relevantPosts.slice(0,5)} />
             </RightSide>
         </Form>
