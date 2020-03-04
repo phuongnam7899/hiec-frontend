@@ -3,6 +3,7 @@ import styled from "styled-components";
 import withNavAndFooter from "../HOC/withNavAndFooter";
 import {NavLink} from "react-router-dom"
 import AOS from "aos";
+import convert2vw from "../../utils/convert2vw"
 import "aos/dist/aos.css";
 AOS.init();
 
@@ -14,20 +15,20 @@ const AboutUsPageContainer = styled.div`
   max-height : 300vw;
   background-image: url(https://i.imgur.com/377jp5o.jpg);
   background-size: 100% 100%;
-  padding: 96px 64px;
+  padding: calc(${convert2vw(96)} + (6.56px - 1vh) * 50) ${convert2vw(64)};
 `;
 const OurStory = styled.div`
   display: flex;
   flex-direction: column;
   // justify-content : center;
   align-items: flex-end;
-  margin-bottom: 45vh;
-  height: 100vh;
+  margin-bottom: calc(${convert2vw(45,"vh")} - (6.56px - 1vh) * 50);
+  height: ${convert2vw(100,"vh")};
 `;
 const Logo = styled.h1`
-  font-size: 8em;
+  font-size: ${convert2vw(128)};
   font-weight: 700;
-  margin-bottom: 12vh;
+  margin-bottom: ${convert2vw(12,"vh")};
   background: rgb(69, 231, 199);
   background: linear-gradient(
     20deg,
@@ -44,14 +45,14 @@ const Title = styled.h2`
   max-width: 30vw;
   border-bottom: 5px solid #34ab93;
   text-align: justify;
-  margin-bottom: 5vh;
-  font-size: 2em;
+  margin-bottom: ${convert2vw(5,"vh")};
+  font-size: ${convert2vw(2,"em")};
 `;
 const Content = styled.p`
   width: 40%;
   overflow-wrap: break-word;
   text-align: justify;
-  font-size: 1.1em;
+  font-size: ${convert2vw(1.1,"em")};
 `;
 
 const Intro = styled.div`
@@ -59,55 +60,58 @@ const Intro = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
-  padding: 72px 0px;
-  margin-bottom: 40vh;
+  min-height: ${convert2vw(100,"vh")};
+  padding: ${convert2vw(72)} 0px;
+  margin-bottom: ${convert2vw(40,"vh")};
 `;
 
 const Activities = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60vh;
+  margin-bottom: ${convert2vw(60,"vh")};
 `;
 
 const Activity = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 21%;
-  height: 50vh;
+  width: 21.5%;
+  height: ${convert2vw(50,"vh")};
   background: #fae7e1;
-  padding: 30px;
+  padding: ${convert2vw(30)};
   & h3 {
-    font-size: 1.5em;
-    margin-bottom: 32px;
+    font-size: ${convert2vw(1.5,"em")};
+    margin-bottom: ${convert2vw(90)};
+  }
+  & p {
+    font-size: ${convert2vw(1,"em")};
   }
 `;
 
 const Partners = styled(Activities)`
-  padding: 0 64px;
-  margin-bottom : 18vh;
+  padding: 0 ${convert2vw(64)};
+  margin-bottom : ${convert2vw(18,"vh")};
 `;
 const Partner = styled(Activity)`
   width: 18%;
-  height: 30vh;
+  height: ${convert2vw(30,"vh")};
   background-color: #c0ede6;
   border-radius: 50%;
 `;
 const Footer = styled.div`
   width: 100%;
   color : #ffffff;
-  font-size : 1.4em;
+  font-size : ${convert2vw(1.4,"em")};
   display: flex;
   flex-direction: column;
   align-items: center;
   & img {
-    max-width : 120px;
-    margin-bottom : 8vh;
-    max-height : 120px;
+    max-width : ${convert2vw(120)};
+    margin-bottom : ${convert2vw(8,"vh")};
+    max-height : ${convert2vw(120)};
   }
   & > p {
-    margin-bottom : 8vh;
+    margin-bottom : ${convert2vw(8,"vh")};
   }
   & ul {
     list-style-type : none;
@@ -182,11 +186,11 @@ const AboutUsPage = () => {
       </Activities>
       <Title
         data-aos="fade-up"
-        style={{ alignSelf: "center", marginBottom: "35vh" }}
+        style={{ alignSelf: "center", marginBottom: `${convert2vw(35,"vh")}` }}
       >
         TẦM NHÌN - SỨ MỆNH
       </Title>
-      <Content data-aos="fade-right" style={{ marginBottom: "45vh" }}>
+      <Content data-aos="fade-right" style={{ marginBottom: `calc(${convert2vw(45,"vh")} - (6.56px - 1vh) * 20)` }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
         efficitur tristique porttitor. Praesent justo odio, facilisis at
         vulputate quis, scelerisque vitae lectus. Nam mi purus, ornare vitae
@@ -195,7 +199,7 @@ const AboutUsPage = () => {
       </Content>
       <Title
         data-aos="fade-up"
-        style={{ alignSelf: "center", marginBottom: "15vh" }}
+        style={{ alignSelf: "center", marginBottom: `${convert2vw(15,"vh")}` }}
       >
         ĐỐI TÁC
       </Title>
