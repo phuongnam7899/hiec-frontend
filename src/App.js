@@ -17,7 +17,7 @@ import OnePost from './components/OnePost'
 import ChangePasswordPage from './components/ChangePasswordPage'
 import NotificationBox from "./components/NotificationBox"
 import AbouUsPage from "./components/AboutUsPage"
-import Loader from './components/Loader'
+import LoadingBar from './components/LoadingBar'
 import AdminPage from './components/AdminPage'
 import ScrollTopButton from './components/ScrollTopButton'
 
@@ -44,6 +44,7 @@ export default function App() {
   return (
     <Router>
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
+      <LoadingBar/>
       {user.isAdmin?<Route path = "/admin" exact component = {AdminPage}/>:<></>}
       <Route path= "/" exact  component = {LandingPage} />
       <Route path= "/forum" exact  component = {ForumPage} />
@@ -54,8 +55,6 @@ export default function App() {
       <Route path= "/news/:id" exact component = {OneNew}/>
       <Route path= "/project/:id" exact component = {OneNew}/>
       <Route path= "/about-us" exact component = {AbouUsPage}/>
-      <Route path= "/loading" exact component = {Loader}/>
-
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />

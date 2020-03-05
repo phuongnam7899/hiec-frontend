@@ -1,17 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
-const Button = styled.div`
+const Button = styled.i`
+    display : block;
     position : fixed;
-    bottom : 10px;
-    right : 10px;
-    width : 50px;
-    height : 50px;
-    background-color :#cccad1;
-    opacity : 0.5;
+    bottom : 20px;
+    right : 20px;
     cursor : pointer;
-    transition : 0.2s all;
+    font-size : 2em;
     :hover{
-        opacity : 0.8
+        color : #1ABC9C;
     }
 `
 
@@ -20,7 +17,7 @@ function ScrollTopButton() {
         window.scrollTo(0,0);
     }
     return (
-       <Button onClick = {scrollTop}></Button>
+       <Button onClick = {scrollTop} className="fas fa-angle-double-up"></Button>
     )
 }
 

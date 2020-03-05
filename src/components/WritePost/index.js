@@ -5,8 +5,9 @@ import styled from "styled-components";
 import Select from "react-select";
 import Dialog from "../YesNoDialog";
 import axios from "../../axios"
-import {notificationNotSuccess,notificationNotVisible,notificationSuccess} from "../../actions/notificationBox"
+// import {notificationNotSuccess,notificationNotVisible,notificationSuccess} from "../../actions/notificationBox"
 import { useDispatch } from "react-redux";
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 const WritePostContainer = styled.div`
     position : relative;
@@ -180,26 +181,35 @@ const WritePost = props => {
   };
 
   const createNewPost = async () => {
+      
       const currentTime = new Date();
       const currentTimeMilis = currentTime.getTime();
       // console.log("click")
+      dispatch(showLoading('sectionBar'))
       try{
-      const response = await axios.post("/api/post",{
-        tags : tags,
-        user: props.userId,
-        postTime : currentTimeMilis,
-        title : postTitle,
-        content : postContent,
-      });
-      console.log(response)
-          onTurnOffWritePost();
-          // props.success(true)
-          dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
-          setTimeout(()=>{
-            dispatch({type : "SET_NOT_VISIBLE"})
-          },10000)
+        if(tags.length > 0 && props.userId && postTitle && postContent){
+          // console.log("POSS")
+        const response = await axios.post("/api/post",{
+          tags : tags,
+          user: props.userId,
+          postTime : currentTimeMilis,
+          title : postTitle,
+          content : postContent,
+        });
+        // console.log(response)
+        dispatch(hideLoading('sectionBar'))
+            onTurnOffWritePost();
+            // props.success(true)
+            dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
+            setTimeout(()=>{
+              dispatch({type : "SET_NOT_VISIBLE"})
+            },10000)
+        }else{
+          throw new Error({message : "NHẬP THIẾU"})
+        }
       }
       catch(err){
+        dispatch(hideLoading('sectionBar'))
           onTurnOffWritePost();
           dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
           setTimeout(()=>{
@@ -225,7 +235,7 @@ const WritePost = props => {
       <Main>
         <Input
           onChange = {handlePostTitleChange}
-          maxLength="100"
+          maxLength="75"
           placeholder="Tiêu đề bài viết (Tối đa 100 kí tự)"
           value = {postTitle}
         />

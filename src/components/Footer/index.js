@@ -14,6 +14,7 @@ const FooterContainer = styled.div`
 const Logo = styled.img`
   width: 20%;
   height: 30%;
+  cursor : pointer;
 `;
 
 const FooterLink = styled(NavLink)`
@@ -56,11 +57,15 @@ const Title = styled.div`
 `;
 
 const Footer = props => {
+  
+  const goToHomepage = () =>{
+    window.location.assign("/")
+}
   return (
     <div style={{ backgroundColor: "#ffffff", height: "30vh" }}>
       <Container>
         <FooterContainer>
-          <Logo src="https://scontent.fhan2-2.fna.fbcdn.net/v/t1.15752-9/85148177_186802199231222_9143504281012273152_n.png?_nc_cat=111&_nc_ohc=xlhuygYNM1IAX-T1jH0&_nc_ht=scontent.fhan2-2.fna&oh=3354c900d0b0a1950ca16c8008eaf17b&oe=5ED1D97E"></Logo>
+          <Logo  onClick = {goToHomepage} src="https://scontent.fhan2-2.fna.fbcdn.net/v/t1.15752-9/85148177_186802199231222_9143504281012273152_n.png?_nc_cat=111&_nc_ohc=xlhuygYNM1IAX-T1jH0&_nc_ht=scontent.fhan2-2.fna&oh=3354c900d0b0a1950ca16c8008eaf17b&oe=5ED1D97E"></Logo>
           <Column>
             <Title>Menu</Title>
             <FooterLink to="/">Trang chủ</FooterLink>

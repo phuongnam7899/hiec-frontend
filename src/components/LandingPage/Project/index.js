@@ -13,7 +13,7 @@ const ProjectsContainer = styled.div`
     align-items : center;
 `
 const Title = styled(NavLink)`
-  font-size: 48px;
+  font-size: 40px;
   width: 100%;
   text-decoration : none;
   font-weight : bold;
@@ -97,7 +97,7 @@ const Project = (props) => {
                 return (
                    <OneNews key={index}>
                      <ImageWithTitle
-                       type="normal"
+                       type="big"
                        date={date}
                        title={oneNew.title}
                        description = {text}

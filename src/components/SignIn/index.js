@@ -6,6 +6,9 @@ import axios from "../../axios"
 import {addToken} from "../../actions/token"
 import {saveUser} from "../../actions/user"
 import user from '../../reducers/user'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+
+
 
 
 const Background = styled.div`
@@ -105,18 +108,22 @@ text-align:center;
 transition: ${props => props.theme.time};
 color:${props => props.theme.textButton};
 `
-const LogoOnImg = styled.span`
+const LogoOnImg = styled.img`
     position: absolute;
     top:10px;
     left:10px;
     font-weight:bolder;
     color:white;
     font-size: 48px;
+    cursor : pointer;
+    width: 60px;
+    height:auto;
 `
 const Background1 = styled.div.attrs(props => ({
     width: props.width,
     urlImage : props.urlImage
 }))`
+    
     width : ${props => props.width};
     background-image: url(${props => props.urlImage});
     position:relative;
@@ -179,7 +186,7 @@ function HookSignIn(props) {
     const submit = async (e)=>{ 
        
         e.preventDefault(); 
-        
+        dispatch(showLoading())
         if(email && password){
             try{
             const response = await axios.post("/api/auth/sign-in",{
@@ -188,6 +195,9 @@ function HookSignIn(props) {
             });
             const data = response.data;
                 if(response.status === 200){
+                    setTimeout(()=>{
+                        dispatch(hideLoading())
+                    },1000)
                     const userToken = data.token;
                     const userInfo = data.userInfo;
                     localStorage.setItem("hiec_user_id",data.userInfo._id)
@@ -199,10 +209,13 @@ function HookSignIn(props) {
                       dispatch({type : "SET_NOT_VISIBLE"})
                     },10000)
                     window.history.back()
-
                 }
             }
             catch(err){
+                console.log("hello")
+                setTimeout(()=>{
+                    dispatch(hideLoading())
+                },1000)
                 dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
                 setTimeout(()=>{
                   dispatch({type : "SET_NOT_VISIBLE"})
@@ -211,6 +224,9 @@ function HookSignIn(props) {
             }
         }
         else{
+            setTimeout(()=>{
+                dispatch(hideLoading())
+            },1000)
             // Missing email or password
             dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
             setTimeout(()=>{
@@ -219,6 +235,9 @@ function HookSignIn(props) {
             console.log("THIẾU FRONT");
             setIsNote(true);
         }
+    }
+    const goToHomepage = () =>{
+        window.location.assign("/")
     }
     // useEffect(() => {
     //     dispatch(getData());
@@ -237,7 +256,7 @@ function HookSignIn(props) {
                         <TextOnImg style={{}}>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                         </TextOnImg>
-                        <LogoOnImg>HIEC</LogoOnImg>
+                        <LogoOnImg onClick = {goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
                         
                     </Background1>
                     <Background2 width={(100 - widthBackground1) + "%"}>

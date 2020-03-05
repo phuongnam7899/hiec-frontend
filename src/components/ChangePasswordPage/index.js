@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
+import {useDispatch} from "react-redux"
 import withNavAndFooter from "../HOC/withNavAndFooter";
 import axios from "../../axios"
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 const ChangePassWordPageContainer = styled.form`
   max-width: 25vw;
@@ -56,6 +58,8 @@ const ButtomContainer = styled.div`
   width : 100%;
 `
 const Button = styled.button`
+    cursor : pointer;
+    outline : none;
     display : block;
     text-decoration : none;
     min-width : 120px;
@@ -90,7 +94,14 @@ const ChangePassWordPage = props => {
   const [cfPassword, setCfPassword] = useState("");
   const [errVisible, setErrVisible] = useState(false);
   const [errContent, setErrContent] = useState("");
+  const dispatch = useDispatch()
 
+
+useEffect(()=>{
+  if(!localStorage.getItem("hiec_user_id")){
+    window.location.assign("/sign-in");
+  }
+},[])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -108,6 +119,7 @@ const ChangePassWordPage = props => {
       setErrVisible(true)
     } else {
       try {
+        dispatch(showLoading())
         const changePasswordResponse = await axios.put(`api/user/${localStorage.getItem("hiec_user_id")}/password`, {
           oldPassword,
           newPassword,
@@ -115,13 +127,22 @@ const ChangePassWordPage = props => {
         // console.log(changePasswordResponse)
 
         if (changePasswordResponse.data.success === 0) {
+          setTimeout(()=>{
+            dispatch(hideLoading())
+          },1000)
           setErrContent(changePasswordResponse.data.message)
           setErrVisible(true)
         } else {
           // console.log("ok")
+          setTimeout(()=>{
+            dispatch(hideLoading())
+          },1000)
           window.history.back()
         }
       } catch (err) {
+        setTimeout(()=>{
+          dispatch(hideLoading())
+        },1000)
         console.log(err)
       }
     }

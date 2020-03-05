@@ -27,10 +27,12 @@ const Head = styled.div`
 
 const Title = styled.h1`
   font-size: 26px;
-  max-width: 60%;
+  max-width: 80%;
   margin-bottom: 16px;
+  overflow-wrap : break-word;
 `;
 const DateString = styled.span`
+line-height : 2em;
   font-size: 14px;
   font-weight: 500;
   color: #888787;
@@ -54,7 +56,7 @@ const ImageContainer = styled.div`
 `;
 const Image = styled.img`
   width: 30%;
-  height: auto;
+  height: 25vh;
   margin-right: 18px;
 `;
 const Icons = styled.div`
@@ -92,7 +94,7 @@ const News = props => {
     category
   } = props.postInfo;
 
-  const convertedDate = convertDate(postTime)
+  const convertedDate = convertDate(Number(postTime))
 
   let parser = new DOMParser();
   let parsedDoccument = parser.parseFromString(content, "text/html");
@@ -111,7 +113,7 @@ const News = props => {
       demoContent = demoContent + " " + current.textContent;
     }
   }
-  demoContent = demoContent.slice(0, 150);
+  demoContent = demoContent.slice(0, 150) + "...";
 
   return (
     <NewsContainer to={`/${category}/${_id}`}>
@@ -127,7 +129,7 @@ const News = props => {
       <Content>{demoContent}</Content>
       <ImageContainer>
         {
-          [...contentImage].slice(0,4).map((img) => {
+          [...contentImage].slice(0,3).map((img) => {
             return (<Image src={img.src} />)
           })
         }

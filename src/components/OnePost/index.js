@@ -21,7 +21,8 @@ const Form = styled.div`
 const Title = styled.span`
     font-weight: bolder;
     font-size: 30px;
-    width : 70%;
+    max-width : 80%;
+    overflow-wrap : break-word;
 `
 const Tag = styled.span`
 background-color : #37A28D;
@@ -84,13 +85,14 @@ const Content = styled.div`
     width : 100%;
     & img {
         width : 100%;
+        margin : 8px 0px;
     }
 `
 const FirstLine = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items:center;
+    align-items:flex-start;
     
 `
 
@@ -297,7 +299,7 @@ function OnePost(props) {
                 </CommentContainer>
             </Post>
             <RightSide>
-                <HotRecentForm url="/forum/" title="Bài viết gần đây" icon="fas fa-star" listPost={recentPosts.slice(0,5)} />
+                <HotRecentForm url="/forum/" title="Bài viết gần đây" icon="fas fa-clock" listPost={recentPosts.slice(0,5)} />
                 <HotRecentForm url="/forum/" title="Bài viết liên quan" icon="fas fa-star" listPost={relevantPosts.slice(0,5)} />
             </RightSide>
         </Form>
