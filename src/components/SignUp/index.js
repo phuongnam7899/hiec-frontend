@@ -110,7 +110,7 @@ const TextOnImg = styled.div`
   transition: ${props => props.theme.time};
   color: ${props => props.theme.textButton};
 `;
-const LogoOnImg = styled.span`
+const LogoOnImg = styled.img`
   position: absolute;
   top: 10px;
   right: 20px;
@@ -118,6 +118,8 @@ const LogoOnImg = styled.span`
   color: white;
   font-size: 48px;
   cursor : pointer;
+  width:60px;
+  height:auto
 `;
 
 const Background1 = styled.div.attrs(props => ({
@@ -306,7 +308,7 @@ function HookSignIn(props) {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </span>
             </TextOnImg>
-            <LogoOnImg onClick = {goToHomepage}>HIEC</LogoOnImg>
+            <LogoOnImg onClick = {goToHomepage}  src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
           </Background1>
         </Background>
       {/* </div> */}

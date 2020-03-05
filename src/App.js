@@ -55,7 +55,6 @@ export default function App() {
       <Route path= "/news/:id" exact component = {OneNew}/>
       <Route path= "/project/:id" exact component = {OneNew}/>
       <Route path= "/about-us" exact component = {AbouUsPage}/>
-    
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
       <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />

@@ -16,7 +16,7 @@ const WidthXPercent = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 48px;
+  font-size: 40px;
   width: 100%;
   font-weight: bold;
   color: #000000;

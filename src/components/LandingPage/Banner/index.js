@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Title = styled.h1`
     font-size : 72px;
-    font-weight : 900;
+    font-weight : 700;
 `
 const Description = styled.p`
     max-width : 45%;

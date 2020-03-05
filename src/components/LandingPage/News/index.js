@@ -5,7 +5,7 @@ import axios from "../../../axios";
 import {NavLink} from "react-router-dom"
 
 const Title = styled(NavLink)`
-  font-size: 48px;
+  font-size: 40px;
   width: 100%;
   text-decoration : none;
   font-weight : bold;

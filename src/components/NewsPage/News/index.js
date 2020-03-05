@@ -56,7 +56,7 @@ const ImageContainer = styled.div`
 `;
 const Image = styled.img`
   width: 30%;
-  height: auto;
+  height: 25vh;
   margin-right: 18px;
 `;
 const Icons = styled.div`

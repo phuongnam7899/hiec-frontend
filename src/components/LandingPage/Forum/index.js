@@ -14,7 +14,7 @@ const ForumContainer = styled.div`
 `;
 
 const Title = styled(NavLink)`
-  font-size: 48px;
+  font-size: 40px;
   width: 40%;
   text-decoration : none;
   font-weight : bold;
