@@ -225,7 +225,7 @@ const AdminWritePost = props => {
                 setTimeout(() => {
                     dispatch({ type: "SET_NOT_VISIBLE" })
                 }, 10000);
-                // onReset();
+                onReset();
             }else{
                 onTurnOffWritePost();
                 dispatch({ type: "SET_VISIBLE_AND_NOT_SUCCESS" })

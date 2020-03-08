@@ -24,7 +24,15 @@ const Time = styled.span`
     font-weight : 600;
     color : #888787;
 `
+const IconTrash = styled.i`
+    cursor : pointer;
+    position : relative;
+    z-index : 9999;
+    &:hover{
+        color : #37A28D;
+    }
 
+`
 function AvatarWithName(props) {
     const [day,setDay]= useState("");
     const [month,setMonth] = useState("")
@@ -36,11 +44,22 @@ function AvatarWithName(props) {
         setMonth(date.getMonth() + 1);
         setYear(date.getFullYear())
     },[])
+
+    const deletePost = (e) =>{
+        
+        props.isDelete();
+    }
+
     return (
         <RowCenter>
             <div style = {{display:"flex",alignItems:"center"}}>
             <Img src = {props.avatar} />
             <Name>{props.name}</Name>
+            {props.userID === localStorage.getItem("hiec_user_id") ?
+                        <div onClick={deletePost}>
+                            <IconTrash className="fas fa-trash"></IconTrash>
+                        </div>
+                        : <></>}
             </div>
             <Time>{day}/{month}/{year}</Time>
         </RowCenter>

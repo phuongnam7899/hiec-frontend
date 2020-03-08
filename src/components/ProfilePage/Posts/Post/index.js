@@ -4,6 +4,9 @@ import AvatarWithName from "./AvatarWithName"
 import Tag from "./Tags"
 import { NavLink } from "react-router-dom"
 import IconWithNumber from "./IconWithNumber"
+import axios from '../../../../axios'
+import { useDispatch } from "react-redux"
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 const PostForm = styled.div`
     margin-bottom: 16px;
     background-color: white;
@@ -54,12 +57,17 @@ const More = styled(NavLink)`
         color : #37A28D;
     }
 `
+
+
 function Post(props) {
 
-        const {post, linkTo} = props;
-        const {user, tags, postTime, title, claps, comments, viewers, _id, content} = post;
-        const defaultUser = {name : "Admin" , avatar : ""}
-        const {name, avatar} = user ? user.profile : defaultUser ;
+    const { post, linkTo } = props;
+    const { user, tags, postTime, title, claps, comments, viewers, _id, content } = post;
+    const defaultUser = { name: "Admin", avatar: "" }
+    const { name, avatar } = user ? user.profile : defaultUser;
+    const dispatch = useDispatch();
+    const [isDelete, setIsDelete] = useState(false);
+    console.log(user)
     // console.log(props.post);
     let parser = new DOMParser();
     // console.log(props.post.content);
@@ -75,25 +83,70 @@ function Post(props) {
         }
     }
     finalContent = finalContent.slice(0, 150);
+
+
+    const deletePost = async (e) => {
+        // console.log("CLICK")
+        // e.stopPropagation()
+        e.stopPropagation();
+
+
+        if (user._id === localStorage.getItem("hiec_user_id")) {
+            dispatch(showLoading())
+            try {
+                const res = await axios.delete("/api/post/" + _id)
+                setTimeout(() => {
+                    dispatch(hideLoading())
+                }, 1000)
+                dispatch({ type: "SET_VISIBLE_AND_SUCCESS" })
+                setTimeout(() => {
+                    dispatch({ type: "SET_NOT_VISIBLE" })
+                }, 10000)
+                setIsDelete(true)
+            } catch (err) {
+                setTimeout(() => {
+                    dispatch(hideLoading())
+                }, 1000)
+                dispatch({ type: "SET_VISIBLE_AND_NOT_SUCCESS" })
+                setTimeout(() => {
+                    dispatch({ type: "SET_NOT_VISIBLE" })
+                }, 10000)
+                console.log(err)
+            }
+        }
+    }
+
+    const goToPost = (e) =>{
+        window.location.assign(linkTo + "/" + _id)
+    }
+
     return (
-        <More to={linkTo + "/" + _id}>
-            <PostForm>
-                <AvatarWithName avatar={avatar} name={name} postTime={postTime} />
-                <Tags>
-                    {tags.map(item => <Tag tag={item} />)}
-                </Tags>
-                <Title><span>{title}</span></Title>
-                <Content><span>{finalContent}</span>{}</Content>
-                <Icons>
-                    <Icons>
-                        <IconWithNumber icon="fas fa-eye" number={viewers.length} />
-                        <IconWithNumber icon="fas fa-sign-language" number={claps.length} />
-                        <IconWithNumber icon="fas fa-comment" number={comments.length} />
-                    </Icons>
-                    <div style={{}}><span>Xem thêm </span><Arrow className="fas fa-arrow-right"></Arrow></div>
-                </Icons>
-            </PostForm>
-        </More>
+        <>
+            {isDelete ? <></> :
+
+                <>
+                   
+                    {/* <More to={}> */}
+                        <PostForm onClick = {goToPost}>
+                            <AvatarWithName isDelete = {deletePost} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
+                            <Tags>
+                                {tags.map(item => <Tag tag={item} />)}
+                            </Tags>
+                            <Title><span>{title}</span></Title>
+                            <Content><span>{finalContent}</span>{}</Content>
+                            <Icons>
+                                <Icons>
+                                    <IconWithNumber icon="fas fa-eye" number={viewers.length} />
+                                    <IconWithNumber icon="fas fa-sign-language" number={claps.length} />
+                                    <IconWithNumber icon="fas fa-comment" number={comments.length} />
+                                </Icons>
+                                <div style={{}}><span>Xem thêm </span><Arrow className="fas fa-arrow-right"></Arrow></div>
+                            </Icons>
+                        </PostForm>
+                    {/* </More> */}
+                </>
+            }
+        </>
     )
 }
 
