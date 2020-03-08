@@ -42,19 +42,29 @@ const OneNews = styled.div`
 `;
 
 const News = () => {
-  const [hotNews, setHotNews] = useState([]);
+    const [ghimNews,setGhimNews] = useState([]);
+    const [hotNews, setHotNews] = useState([]);
   useEffect(() => {
-    getNews();
+        getGhimNews()
+        getNews();
   }, []);
   const getNews = async () => {
     const news = await axios.post("/api/news/hot", {
-      number: 5,
+      number: 7,
       category: "news",
       limit : 30
     });
     setHotNews(news.data);
     // console.log(news.data[0].postTime);
   };
+  const getGhimNews = async () =>{
+    try{
+        const res= await axios.get("/api/news/ghim/news");
+        setGhimNews([...ghimNews,res.data]);
+    }catch(err){
+        console.log(err)
+    }
+}
   const getTextAndImg = (html) => {
     let parser = new DOMParser();
     let parsedDoccument = parser.parseFromString(html, "text/html");
@@ -98,28 +108,33 @@ const News = () => {
       <BigNews>
         <ImageWithTitle
           type="big"
-          date={hotNews[0] ? convertDate(hotNews[0].postTime) : ""}
-          title={hotNews[0] ? hotNews[0].title : ""}
-          imgUrl={hotNews[0] ? getTextAndImg(hotNews[0].content).imgs[0] : ""}
-          toHref = {hotNews[0] ? `/news/${hotNews[0]._id}` : "/news"}
+          date={ghimNews[0] ? convertDate(ghimNews[0].postTime) : ""}
+          title={ghimNews[0] ? ghimNews[0].title : ""}
+          imgUrl={ghimNews[0] ? getTextAndImg(ghimNews[0].content).imgs[0] : ""}
+          toHref = {ghimNews[0] ? `/news/${ghimNews[0]._id}` : "/news"}
         />
       </BigNews>
       <SubNews>
         {hotNews.slice(1, 5).map((oneNew,index) => {
           const {imgs} = getTextAndImg(oneNew.content)
           const date = convertDate(oneNew.postTime)
-         return (
-            <OneNews key={index}>
-              <ImageWithTitle
-                type="normal"
-                date={date}
-                title={oneNew.title}
-                imgUrl={imgs[0] || ""}
-                toHref = {`/news/${oneNew._id}`}
-              />
-            </OneNews>
-          )
-        })}
+          if(!oneNew || !ghimNews[0] || ghimNews[0]._id === oneNew._id ){
+            return null;
+          }else{
+                return (
+                  <OneNews key={index}>
+                    <ImageWithTitle
+                      type="normal"
+                      date={date}
+                      title={oneNew.title}
+                      imgUrl={imgs[0] || ""}
+                      toHref = {`/news/${oneNew._id}`}
+                    />
+                  </OneNews>
+                )
+          }})
+          }
+}
       </SubNews>
     </NewsContainer>
   );
