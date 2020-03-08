@@ -49,9 +49,11 @@ const NewsPage = (props) => {
     const [ recentPosts,setRecentPosts ] = useState([]);
     const [postsForum,setPostsForum] = useState([]);
     const [filterCd,setFilterCd] = useState({})
+    const [ghimPost,setGhimPost] = useState([]);
     useEffect(()=>{
         document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Dự án"
         window.scrollTo(0,0)
+        getGhimPost()
         getRecentPosts()
         getHotPosts()
     },[])
@@ -68,6 +70,15 @@ const NewsPage = (props) => {
             setFilterCd({
                 tags,keyword,sortOption
             })     
+    }
+
+    const getGhimPost = async () =>{
+        try{
+            const res= await axios.get("/api/news/ghim/"+category);
+            setGhimPost([...ghimPost,res.data]);
+        }catch(err){
+            console.log(err)
+        }
     }
     const getRecentPosts = async ()=>{
         try{
@@ -117,10 +128,12 @@ const NewsPage = (props) => {
                 }
             }) 
     }
-
+    console.log(ghimPost)
+    console.log(listPosts)
     return(
         <NewsPageContainer>
             <NewsList>
+            {ghimPost.map(post => <News postInfo = {post}/>)}
             <InfiniteScroll
                 dataLength={listPosts.length}
                 next={more}
@@ -132,7 +145,7 @@ const NewsPage = (props) => {
                     </div>
                 }
                 >
-                {listPosts.map(post => <News postInfo = {post}/>)}
+                {listPosts.map(post => {if(!post.isGhimed){return <News postInfo = {post}/>}})}
         </InfiniteScroll>
             </NewsList>
             <RightSide>

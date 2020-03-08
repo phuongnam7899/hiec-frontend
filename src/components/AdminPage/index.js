@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components';
 import AdminWritePost from './AdminWritePost';
-
+import Container from "../Container"
+import GhimPost from "./GhimPost"
+import DeletePost from "./DeletePost"
 
 const Background = styled.div`
     width : 100%;
@@ -27,6 +29,11 @@ const Button = styled.button`
      & i {
        margin-left : 4px;
      }
+`
+
+const TitleFunc = styled.div`
+     font-weight : 600;
+     font-size : 20px;
 `
 
 function AdminPage() {
@@ -56,10 +63,18 @@ function AdminPage() {
         }
     }
     return (
+        <Container>
         <Background>
+           <TitleFunc>Tạo Bài Viết Mới</TitleFunc>
             {buttonVisible ? <Button onClick={click}>Thêm bài viết <i class="fas fa-plus"></i></Button> : <></>}
             <AdminWritePost userId={user._id} visible={writePostVisible} onTurnOffWritePost={() => { turnOffWritePost() }} />
+            <TitleFunc>Ghim Bài Viết (Lưu ý chỉ một bài)</TitleFunc>
+            <GhimPost/>
+            <TitleFunc>Xóa Bài Viết</TitleFunc>
+            <DeletePost/>
         </Background>
+        </Container>
+
     )
 }
 
