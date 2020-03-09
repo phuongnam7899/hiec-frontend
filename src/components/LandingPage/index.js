@@ -7,6 +7,7 @@ import Project from "./Project"
 import Forum from "./Forum"
 import Leaderboard from "./Leaderboard"
 import withNavAndFooter from "../HOC/withNavAndFooter"
+import {breakpoint} from "../../styles/mixin"
 
 
 const LandingPageContainer = styled.div`
@@ -14,9 +15,18 @@ const LandingPageContainer = styled.div`
 `
 const FormAndLeaderboard = styled.div`
     display : flex;
-    height : 100vh;
+    min-height : 100vh;
     width : 100%;
     justify-content : space-between;
+    ${breakpoint.tb`
+        flex-direction : column;
+        justify-content : flex-start;
+    `}
+
+`
+const MenuContainer = styled(Container)`
+    display : flex;
+    flex-direction : column;
 `
 
 const LandingPage = (props) => {
@@ -29,14 +39,14 @@ const LandingPage = (props) => {
             <Banner>
 
             </Banner>
-            <Container>
+            <MenuContainer>
                 <News></News>
                 <Project></Project>
                 <FormAndLeaderboard>
                     <Forum></Forum>
                     <Leaderboard></Leaderboard>
                 </FormAndLeaderboard>
-            </Container>
+            </MenuContainer>
         </LandingPageContainer>
     )
 }

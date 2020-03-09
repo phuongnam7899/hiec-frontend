@@ -3,9 +3,11 @@ import styled from "styled-components";
 import ImageWithTitle from "../ImageWithTitle";
 import axios from "../../../axios";
 import {NavLink} from "react-router-dom"
+import {breakpoint} from "../../../styles/mixin"
 
 const Title = styled(NavLink)`
   font-size: 40px;
+  margin-bottom : 16px;
   width: 100%;
   text-decoration : none;
   font-weight : bold;
@@ -18,27 +20,36 @@ const Title = styled(NavLink)`
 `;
 const NewsContainer = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
 `;
 
 const BigNews = styled.div`
   width: 55%;
-  height: 80%;
+  height: 85vh;
+  ${breakpoint.ml`
+    width: 100%;
+    height: 60vh;
+    margin-bottom : 16px;
+  `}
 `;
 const SubNews = styled.div`
   display: flex;
   width: 40%;
-  height: 80%;
+  height: 80vh;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: space-between;
+  ${breakpoint.ml`
+  width: 100%;
+  min-height: 80vh;
+`}
 `;
 const OneNews = styled.div`
   width: 47%;
   height: 47%;
+  margin-bottom : 16px;
 `;
 
 const News = () => {
@@ -133,7 +144,7 @@ const News = () => {
                   </OneNews>
                 )
           }})
-          }
+          
 }
       </SubNews>
     </NewsContainer>
