@@ -5,9 +5,10 @@ import {useDispatch} from "react-redux"
 import withNavAndFooter from "../HOC/withNavAndFooter";
 import axios from "../../axios"
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import {breakpoint} from "../../styles/mixin"
 
 const ChangePassWordPageContainer = styled.form`
-  max-width: 25vw;
+  width: 25vw;
   margin : 0 auto;
   height: calc(100vh - 60px);
   display: flex;
@@ -15,7 +16,12 @@ const ChangePassWordPageContainer = styled.form`
   justify-content: center;
   align-items : center;
   margin-top: 60px;
-//   background : #ffffff;
+  ${breakpoint.tb`
+  width: 40vw;
+  `}
+  ${breakpoint.ml`
+  width: 80vw;
+  `}
 `;
 const InputGroup = styled.div`
   display: flex;

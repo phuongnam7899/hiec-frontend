@@ -23,6 +23,8 @@ const Img = styled.div`
     width: 100%;
     height : 75%;
     transition : background-size .3s;
+    box-shadow: 4px 4px 4px rgba(193, 193, 193, 0.25);
+
 }
 `
 const Title = styled.h2`
