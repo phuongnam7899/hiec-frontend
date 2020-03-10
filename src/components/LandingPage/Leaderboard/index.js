@@ -3,11 +3,20 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import AvatarWithName from "../AvatarWithName";
 import axios from "../../../axios";
+import convert2vw from "../../../utils/convert2vw"
+import {breakpoint} from "../../../styles/mixin"
 
 const LeaderboardContainer = styled.div`
-  width: 40%;
+  width: 45%;
   margin-top: 64px;
-  height: 100vh;
+  min-height: 100vh;
+  ${
+    breakpoint.tb`
+  width: 100%;
+  min-height: 10vh;
+    
+    `
+  }
 `;
 const WidthXPercent = styled.div`
   ${props => {
@@ -43,7 +52,7 @@ const OneRow = styled(NavLink)`
 
 const Number = styled.div`
   width: 10%;
-  font-size: 36px;
+  font-size: calc(${convert2vw(36)} + (13.6px - 1vw)*1);
   font-weight: bold;
   ${props => {
     switch (props.number) {
@@ -83,7 +92,7 @@ const Leaderboard = props => {
   };
   return (
     <LeaderboardContainer>
-      <Title>Bảng Xếp Hạng</Title>
+      <Title>Xếp Hạng</Title>
       {rank.month
         ? rank.month.map((user, index) => {
             return (
