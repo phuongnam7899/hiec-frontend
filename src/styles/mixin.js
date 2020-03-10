@@ -11,7 +11,7 @@ export const breakpoint = {
     }
   `,
   ml: (...args) => css`
-    @media (max-width: 425px) {
+    @media (max-width: 426px) {
       ${css(...args)}
     }
   `,
