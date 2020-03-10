@@ -130,7 +130,6 @@ function ForumPage(props) {
         <Container>
 
         <Page>
-            
             <LeftContent>
                 <ButtonWrite />
                 <Posts>

@@ -32,7 +32,7 @@ const BannerContainer = styled.div`
     color : #FFFFFF;
     justify-content : center;
     max-width : 100vw;
-    height : calc(${convert2vw(100,"vh")} + (6.56px - 1vh)*300);
+    height : 100vh;
     background-image : url(https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/84351595_2573974126212653_3668950583970103296_n.png?_nc_cat=103&_nc_ohc=oTJvSlhv-FMAX-Df-tl&_nc_ht=scontent.fhan2-4.fna&oh=5d03e3e3be2a4282d12a20e306b58cc8&oe=5ED98D91);
     background-size : cover;
     margin-top : calc(0px + (13.6px - 1vw)*5);

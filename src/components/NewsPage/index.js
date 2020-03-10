@@ -8,18 +8,28 @@ import Post from "../ProfilePage/Posts/Post"
 import HotRecentForm from "../HotRecentForm"
 import News from "./News"
 import withNavAndFooter from "../HOC/withNavAndFooter"
+import {breakpoint} from "../../styles/mixin"
 
 const NewsPageContainer = styled(Container)`
     display : flex;
     justify-content : space-between;
     margin-top : 60px;
+    ${breakpoint.tb`
+        flex-direction : column-reverse;
+    `}
 `
 const RightSide = styled.div`
     width : 35%;
+    ${breakpoint.tb`
+        width : 100%;
+    `}
 `
 const NewsList = styled.div`
     width : 60%;
     padding : 32px 0px;
+    ${breakpoint.tb`
+    width : 100%;
+`}
 `
 
 const Done = styled.div`
