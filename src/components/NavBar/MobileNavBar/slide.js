@@ -56,7 +56,7 @@ const Option = styled(NavLink)`
 const Back = styled.div`
     display : block;
     font-weight : 500;
-    font-size : 20px;
+    font-size : 24px;
     padding : 8px 30px;
     cursor : pointer;
     &:hover{
@@ -122,7 +122,7 @@ function Slide(props) {
             {token.token?
             <ListOption>
                 <Option  activeStyle={styleActiveLink} to="/change-password" onClick={() => { goToLink("/change-password") }}>Đổi Mật Khẩu</Option>
-                <Back onClick={signOut}>Đăng Xuất</Back>
+                <Option to="/sign-in" onClick={signOut}>Đăng Xuất</Option>
 
             </ListOption>:
             <ListOption>
@@ -132,7 +132,7 @@ function Slide(props) {
             }
             <ListOption>
 
-                <Back onClick={setVisible}><i class="fas fa-arrow-circle-left"></i> </Back>
+                <Back onClick={setVisible}><i class="fas fa-arrow-right"></i> </Back>
             </ListOption>
             <div style={{ width: "100%" }}>
                 <Logo onClick={() => { goToLink("/") }} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
