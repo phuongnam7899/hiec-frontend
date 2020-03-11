@@ -57,6 +57,7 @@ const Column = styled.div`
 }
 ${breakpoint.tb`
   min-width : 50%;
+  margin-bottom : 20px;
 `}
 
 `;
@@ -75,6 +76,7 @@ const LinkArea = styled.div`
   width :70%;
   ${breakpoint.tb`
     width : 100%;
+   
   `}
   
 `

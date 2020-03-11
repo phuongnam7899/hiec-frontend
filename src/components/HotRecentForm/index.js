@@ -25,6 +25,8 @@ const Background =styled.div`
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
     width : 100%;
+    position : sticky;
+    top : 88px;
 `
 
 const Posts = styled.ul`

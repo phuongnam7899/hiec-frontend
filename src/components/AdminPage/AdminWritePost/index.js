@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Select from "react-select";
 import Dialog from "../../YesNoDialog";
 import axios from "../../../axios"
-import { notificationNotSuccess, notificationNotVisible, notificationSuccess } from "../../../actions/notificationBox"
 import { useDispatch } from "react-redux";
 
 const WritePostContainer = styled.div`

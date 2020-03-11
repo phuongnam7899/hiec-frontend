@@ -144,8 +144,8 @@ const News = () => {
                   </OneNews>
                 )
           }})
-          
-}
+          }
+
       </SubNews>
     </NewsContainer>
   );
