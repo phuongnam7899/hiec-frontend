@@ -3,19 +3,22 @@ import styled from "styled-components";
 import IconWithNumber from "../../ProfilePage/Posts/Post/IconWithNumber";
 import Tag from "../../ProfilePage/Posts/Post/Tags";
 import { NavLink } from "react-router-dom";
+import convert2vw from "../../../utils/convert2vw";
+import { breakpoint } from "../../../styles/mixin";
 
 const NewsContainer = styled(NavLink)`
   display: flex;
-  text-decoration : none;
-  color : #000000;
+  text-decoration: none;
+  color: #000000;
   flex-direction: column;
   background: #ffffff;
   margin: 0px 0px 12px 0px;
   box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
   padding: 30px 22px;
   &:hover {
-    h1, .more {
-      color : #1ABC9C;
+    h1,
+    .more {
+      color: #1abc9c;
     }
   }
 `;
@@ -23,16 +26,26 @@ const NewsContainer = styled(NavLink)`
 const Head = styled.div`
   display: flex;
   justify-content: space-between;
+  ${breakpoint.ml`
+  font-size: 20px;
+  flex-direction : column;
+  margin-bottom : 8px;
+    `}
 `;
 
 const Title = styled.h1`
   font-size: 26px;
   max-width: 80%;
   margin-bottom: 16px;
-  overflow-wrap : break-word;
+  overflow-wrap: break-word;
+  ${breakpoint.ml`
+  font-size: 20px;
+  max-width: 100%;
+
+    `}
 `;
 const DateString = styled.span`
-line-height : 2em;
+  line-height: 2em;
   font-size: 14px;
   font-weight: 500;
   color: #888787;
@@ -47,6 +60,9 @@ const Content = styled.div`
   font-size: 18px;
   margin-bottom: 20px;
   max-width: 100%;
+  ${breakpoint.ml`
+  font-size: 14px;
+    `}
 `;
 const ImageContainer = styled.div`
   display: flex;
@@ -56,8 +72,8 @@ const ImageContainer = styled.div`
 `;
 const Image = styled.img`
   width: 30%;
-  height: 25vh;
-  margin-right: 18px;
+  height: ${convert2vw(30, "vh")};
+  margin-right: ${convert2vw(18)};
 `;
 const Icons = styled.div`
   display: flex;
@@ -74,14 +90,13 @@ const Arrow = styled.i`
   }
 `;
 
-
 const News = props => {
-  const convertDate = (dateNumber) => {
+  const convertDate = dateNumber => {
     const timeConverted = new Date(dateNumber);
-    const dateString = timeConverted.toLocaleString().split(",")[1]
+    const dateString = timeConverted.toLocaleString().split(",")[1];
     // console.log(dateString)
-    return dateString
-  }
+    return dateString;
+  };
   const {
     viewer,
     clap,
@@ -94,14 +109,14 @@ const News = props => {
     category
   } = props.postInfo;
 
-  const convertedDate = convertDate(Number(postTime))
+  const convertedDate = convertDate(Number(postTime));
 
   let parser = new DOMParser();
   let parsedDoccument = parser.parseFromString(content, "text/html");
   let contentText = parsedDoccument.getElementsByTagName("*");
   let contentImage = parsedDoccument.getElementsByTagName("img");
   // if (contentImage[0]) console.log(contentImage[0].src)
-  
+
   let demoContent = "";
   for (var i = 0; i < contentText.length; i++) {
     var current = contentText[i];
@@ -128,13 +143,9 @@ const News = props => {
       </TagsContainer>
       <Content>{demoContent}</Content>
       <ImageContainer>
-        {
-          [...contentImage].slice(0,3).map((img) => {
-            return (<Image src={img.src} />)
-          })
-        }
-        
-        
+        {[...contentImage].slice(0, 3).map(img => {
+          return <Image src={img.src} />;
+        })}
       </ImageContainer>
       <Icons>
         <Icons>

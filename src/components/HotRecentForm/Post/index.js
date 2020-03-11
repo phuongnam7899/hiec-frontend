@@ -1,6 +1,7 @@
 import React, { useState ,useEffect } from 'react'
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom"
+import {breakpoint} from "../../../styles/mixin"
 
 const Post = styled.li`
     display : block;
@@ -24,7 +25,9 @@ const Title = styled.div`
     width : 50%;
     height : 40px;
     overflow-wrap : break-word;
-
+    ${breakpoint.ml`
+    font-size : 14px;
+    `}
 
     `
 const InfoPost = styled.div`
@@ -38,6 +41,10 @@ const Img = styled.img`
     border-radius : 999px;
     width : 40px;
     height : 40px;
+    ${breakpoint.ml`
+    width : 30px;
+    height : 30px;
+    `}
 `
 const NameAndTime = styled.div`
     display:flex;
@@ -48,6 +55,9 @@ const NameAndTime = styled.div`
     & >*{
         margin-bottom:2px;
     }
+    ${breakpoint.ml`
+    font-size : 12px;
+    `}
     
 `
 
