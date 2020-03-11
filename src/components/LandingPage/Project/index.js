@@ -3,12 +3,13 @@ import styled from "styled-components"
 import ImageWithTitle from "../ImageWithTitle";
 import axios from "../../../axios";
 import {NavLink} from "react-router-dom"
+import {breakpoint} from "../../../styles/mixin"
 
 const ProjectsContainer = styled.div`
     display : flex;
     flex-wrap : wrap;
     width :100%;
-    height : 100vh;
+    min-height : 100vh;
     justify-content : space-between;
     align-items : center;
 `
@@ -17,6 +18,7 @@ const Title = styled(NavLink)`
   width: 100%;
   text-decoration : none;
   font-weight : bold;
+  margin-bottom : 16px;
   
   color : #000000;
   &:hover {
@@ -28,10 +30,21 @@ const Title = styled(NavLink)`
 const Description = styled.div`
   font-size: 20px;
   width : 75%;
+  ${breakpoint.ml`
+  font-size: 16px;
+  width : 90%;
+  `}
+  margin-bottom : 16px;
+
 `;
 const OneNews = styled.div`
   width: 30%;
-  height: 60%;
+  height: 55vh;
+  ${breakpoint.ml`
+  width: 90%;
+
+  `}
+  margin-bottom : 32px;
 `;
 const Project = (props) => {
     const [hotNews, setHotNews] = useState([]);
@@ -97,7 +110,7 @@ const Project = (props) => {
                 return (
                    <OneNews key={index}>
                      <ImageWithTitle
-                       type="big"
+                       type="small"
                        date={date}
                        title={oneNew.title}
                        description = {text}

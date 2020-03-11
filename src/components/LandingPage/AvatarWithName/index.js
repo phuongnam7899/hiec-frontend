@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import {breakpoint} from "../../../styles/mixin"
+import convert2vw from "../../../utils/convert2vw"
 
 const AvatarWithNameContainer = styled.div`
-    display : flex;
-    align-items : center;
-    width : 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
 `;
 
 const Avatar = styled.img`
@@ -17,23 +19,29 @@ const Avatar = styled.img`
                 `;
       case "medium":
         return `
-                width : 50px;
-                height : 50px;
+                width : calc(${convert2vw(50)} + (13.6px - 1vw)*2);
+                height : calc(${convert2vw(50)} + (13.6px - 1vw)*2);
                 `;
       case "large":
         return `
                 width : 80px;
                 height : 80px;
                 `;
+      default:
+        return `
+      width : 40px;
+      height : 40px;
+      `;
     }
   }};
-  border-radius : 50%;
-  margin-right : 8px;
+  border-radius: 50%;
+  margin-right: 8px;
 `;
 
 const Name = styled.span`
-  font-weight : bold;
-  display : inline-block;
+  font-weight: bold;
+  display: inline-block;
+  overflow-wrap : break-word;
   ${props => {
     switch (props.size) {
       case "small":
@@ -44,9 +52,9 @@ const Name = styled.span`
                 `;
       case "medium":
         return `
-            font-size : 20px;
-            line-height : 50px;
-            height : 50px;
+            font-size : calc(${convert2vw(20)} + (13.6px - 1vw)*1);
+            line-height : calc(${convert2vw(50)} + (13.6px - 1vw)*1);
+            height : calc(${convert2vw(50)} + (13.6px - 1vw)*1);
                 `;
       case "large":
         return `
@@ -54,9 +62,15 @@ const Name = styled.span`
             line-height : 80px;
             height : 80px;
                 `;
+                default:
+                  return `
+                  font-size : 24px;
+                  line-height : 80px;
+                  height : 80px;
+                `;
     }
   }};
-`
+`;
 
 const AvatarWithName = props => {
   return (
