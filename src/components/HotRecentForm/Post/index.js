@@ -32,24 +32,31 @@ const Title = styled.div`
     `
 const InfoPost = styled.div`
     display:flex;
+    justify-content : space-between;
     width : 40%;
     margin-left : 10%;
     over-flow : hidden;
     
 `
+const ImgBlock =styled.div`
+    width : 20%;
+`
 const Img = styled.img`
     border-radius : 999px;
-    width : 40px;
-    height : 40px;
-    ${breakpoint.ml`
-    width : 30px;
-    height : 30px;
-    `}
+    // width : 40px;
+    // height : 40px;
+    // ${breakpoint.ml`
+    // width : 30px;
+    // height : 30px;
+    // `}
+    width  : 100%;
+    height : auto;
 `
 const NameAndTime = styled.div`
     display:flex;
     flex-direction :  column;
     align-items : flex-start;
+    width : 80%;
     font-size : 14px;
     margin-left : 10px;
     & >*{
@@ -66,6 +73,10 @@ const Name = styled.span`
     overflow: hidden;
     font-weight : bold;
     height : 16px;
+    overflow-wrap : break-word;
+
+
+
 `
 const Time = styled(Name)`
     font-weight : 400;
@@ -92,7 +103,7 @@ function PostForm(props) {
         <Post onClick = {toPost}>
             <Title><span>{props.post.title}</span></Title>
             <InfoPost>
-                <div><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></div>
+                <ImgBlock><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></ImgBlock>
                 <NameAndTime>
                     <Name>{props.post.user ? props.post.user.profile.name : "Admin"}</Name>
                     <Time>{day}/{month}/{year}</Time>

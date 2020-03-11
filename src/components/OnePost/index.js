@@ -8,11 +8,13 @@ import Comment from "./Comment"
 import InputComment from "./InputComment"
 import withNavAndFooter from "../HOC/withNavAndFooter"
 import { useSelector } from 'react-redux'
+import {breakpoint} from '../../styles/mixin'
 const Form = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content : space-between;
-    padding-top : 166px ;
-    padding-bottom : 88px ;
+    padding-top : 100px ;
+    padding-bottom : 20px ;
     width: 100%;
     & * {
         overflow-wrap : break-word;
@@ -23,6 +25,16 @@ const Title = styled.span`
     font-size: 30px;
     max-width : 80%;
     overflow-wrap : break-word;
+
+    ${breakpoint.tb`
+    font-size: 24px;
+    max-width : 100%;
+    `}
+    ${breakpoint.ml`
+    max-width : 100%;
+    font-size: 15px;
+    `}
+
 `
 const Tag = styled.span`
 background-color : #37A28D;
@@ -32,23 +44,49 @@ font-weight : 600;
 margin-right: 4px;
 padding : 6px 9px;
 border-radius : 20px;
+margin-top:4px;
+${breakpoint.ml`
+        font-size: 10px;
+        
+        padding : 4px 6px;
+    `}
 `
 const Time = styled.span`
 text-align: center;
+${breakpoint.ml`
+        font-size: 12px;
+        max-width : 100%;
+    `}
     `
 
 const Source = styled.div`
-    font-weight:600
+    font-weight:600;
+    ${breakpoint.ml`
+        font-size: 12px;
+    `}
 `
 const Post = styled.div`
     width: 60%;
     padding:32px;
     background: #FFFFFF;
+    margin-bottom : 12px;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
     & > *{
         margin-bottom:15px;
     }
+    ${breakpoint.tb`
+        width:100%;
+
+    `}
 `
+
+const RightSide = styled.div`
+    width : 35%;
+    ${breakpoint.tb`
+        width:100%;
+
+    `}
+    `
 const InfoPost = styled.div``
 const Reaction = styled.div`
     display: flex;
@@ -73,6 +111,14 @@ const ReactArea = styled.div`
 const Icon = styled.i`
     color : ${props => props.isClapped ? "#1ABC9C" : "black"};
     margin :auto;
+    ${breakpoint.tb`
+
+font-size: 18px;
+`}
+${breakpoint.ml`
+
+font-size: 14px;
+`}
     
 `
 
@@ -87,10 +133,35 @@ const Content = styled.div`
         width : 100%;
         margin : 8px 0px;
     }
+    & * {
+        font-size : 16px;
+        ${breakpoint.tb`
+
+        font-size: 14px;
+        `}
+        ${breakpoint.ml`
+        
+        font-size: 12px;
+        `}
+        
+    }
+    & h1 {
+        font-size : 20px;
+        ${breakpoint.tb`
+
+        font-size: 18px;
+        `}
+        ${breakpoint.ml`
+        
+        font-size: 14px;
+        `}
+    }
+    
 `
 const FirstLine = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap:wrap;
     justify-content: space-between;
     align-items:flex-start;
     
@@ -113,10 +184,12 @@ const Button = styled.button`
         color : #1ABC9C;
     }
 `
+const TagBlock = styled.div`
+    display: flex;
+    flex-wrap: wrap
+    
+`
 
-const RightSide = styled.div`
-    width : 35%;
-    `
 function OnePost(props) {
     const user = useSelector(state=>state.user)
     const [day, setDay] = useState("");
@@ -268,10 +341,10 @@ function OnePost(props) {
                     <Title>{title}</Title>
                     <Time>{day}/{month}/{year}</Time>
                 </FirstLine>
-                <div>
+                <TagBlock>
                     {tags.map(tag => <Tag>{tag}</Tag>)}
-                </div>
-                <Source>{userName}</Source>
+                </TagBlock>
+                <Source>Theo <b><i>{userName}</i></b></Source>
                 <Content id="content"></Content>
                 <Reaction>
                     <ReactArea onClick={clapping}>

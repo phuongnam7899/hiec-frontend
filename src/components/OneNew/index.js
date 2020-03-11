@@ -5,13 +5,14 @@ import HotRecentForm from "../HotRecentForm"
 import axios from "../../axios"
 import Container from "../Container"
 import withNavAndFooter from "../HOC/withNavAndFooter"
-
+import {breakpoint} from "../../styles/mixin"
 const Form = styled.div`
 
     display: flex;
+    flex-wrap:wrap;
     justify-content : space-between;
-    padding-top : 166px ;
-    padding-bottom : 88px ;
+    padding-top : 100px ;
+    padding-bottom : 20px ;
     width: 100%;
     & * {
         overflow-wrap : break-word;
@@ -21,6 +22,15 @@ const Title = styled.span`
     font-weight: bolder;
     font-size: 30px;
     width : 70%;
+    overflow-wrap : break-word;
+    ${breakpoint.tb`
+    font-size: 24px;
+    width : 100%;
+    `}
+    ${breakpoint.ml`
+    width : 100%;
+    font-size: 15px;
+    `}
 `
 const Tag = styled.span`
 background-color : #37A28D;
@@ -33,19 +43,38 @@ border-radius : 20px;
 `
 const Times = styled.span`
 text-align: center;
+    ${breakpoint.ml`
+        font-size: 12px;
+        max-width : 100%;
+    `}
     `
+    
 
 const Source = styled.div`
-    font-weight:600
+    font-weight:600;
+    ${breakpoint.ml`
+    font-size: 12px;
+`}
+`
+
+const RightSide = styled.div`
+    width : 35%;
+    ${breakpoint.tb`
+    width : 100%
+    `}
 `
 const Post = styled.div`
     width: 60%;
     padding:32px;
+    margin-bottom : 12px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
     & >*{
         margin-bottom:15px;
     }
+    ${breakpoint.tb`
+        width : 100%
+    `}
 `
 
 const Reaction = styled.div`
@@ -58,6 +87,14 @@ const Reaction = styled.div`
 `
 const Icon = styled.i`
     color : #1ABC9C;
+    ${breakpoint.tb`
+
+    font-size: 18px;
+    `}
+    ${breakpoint.ml`
+    
+    font-size: 14px;
+    `}
 `
 
 const ReactNumber = styled.span`
@@ -72,6 +109,29 @@ const Content = styled.div`
         margin : 8px 0px;
         width : 100%;
     }
+    & * {
+        font-size : 16px;
+        ${breakpoint.tb`
+
+        font-size: 14px;
+        `}
+        ${breakpoint.ml`
+        
+        font-size: 12px;
+        `}
+        
+    }
+    & h1 {
+        font-size : 20px;
+        ${breakpoint.tb`
+
+        font-size: 18px;
+        `}
+        ${breakpoint.ml`
+        
+        font-size: 14px;
+        `}
+    }
     
 `
 const FirstLine = styled.div`
@@ -79,12 +139,15 @@ const FirstLine = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items:center;
+    flex-wrap : wrap;
+    
+`
+const TagBlock = styled.div`
+    display: flex;
+    flex-wrap: wrap
     
 `
 
-const RightSide = styled.div`
-    width : 35%;
-`
 function OneNew(props) {
     const href = window.location.href
     // const splitedHef = href.split("/");
@@ -187,9 +250,9 @@ function OneNew(props) {
                     <Title>{title}</Title>
                     <Times>{day}/{month}/{year}</Times>
                 </FirstLine>
-                <div>
+                <TagBlock>
                     {tags.map(tag => <Tag>{tag}</Tag>)}
-                </div>
+                </TagBlock>
                 <Source>{userName}</Source>
                 <Content id="content"></Content>
                 <Reaction>

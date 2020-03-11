@@ -1,13 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { breakpoint } from '../../../styles/mixin'
 
 
 const Img = styled.img`
     width: 40px;
     height:40px;
     border-radius: 999px;
-    margin-right:5px
+    margin-right:5px;
+    ${breakpoint.tb`
+    width: 30px;
+    height:30px;
+    `}
+${breakpoint.ml`
+    width: 25px;
+    height:25px;
+    `}
 `
 const CommentBox = styled.div`
     display:flex;
@@ -18,10 +26,18 @@ const Cmt = styled.div`
 background: #E8E8E8;
 border-radius: 20px;
 max-width : calc(100% - 40px);
-padding: 10px 12px;
+padding: 6px 12px;
+
 `
 const Text = styled.span`
     overflow-wrap: break-word;
+    ${breakpoint.tb`
+    font-size: 12px
+    `}
+${breakpoint.ml`
+    font-size: 10px
+    `}
+    
 `
 const Name = styled.span`
 
@@ -33,20 +49,27 @@ display: flex;
 align-items: center;
 
 color: #2D8F7C;
+
+${breakpoint.tb`
+font-size: 16px;
+`}
+${breakpoint.ml`
+font-size: 12px;
+`}
 `
 function Comment(props) {
     const comment = props.comment
-    
+
     return (
-        
+
         <CommentBox>
-           <Img src = {comment.user.profile.avatar}></Img> 
+            <Img src={comment.user.profile.avatar}></Img>
             <Cmt>
                 <Name >
                     {comment.user.profile.name}
                 </Name>
-                
-            
+
+
                 <Text>{comment.content}</Text>
             </Cmt>
         </CommentBox>
