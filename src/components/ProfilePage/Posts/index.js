@@ -3,8 +3,12 @@ import styled from "styled-components"
 import Post from "./Post"
 import axios from "../../../axios"
 import InfiniteScroll from "react-infinite-scroll-component";
+import { breakpoint } from '../../../styles/mixin';
 const Posts = styled.div`
    width : 60%;
+   ${breakpoint.ls`
+    width :100%
+   `}
 `
 const Done = styled.div`
     font-size : 14px;

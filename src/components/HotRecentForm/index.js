@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Post from "./Post"
 import styled from 'styled-components';
+import { breakpoint } from '../../styles/mixin';
 const Title = styled.span`
     font-size : 24px;
     font-weight : bold;
@@ -9,11 +10,17 @@ const Title = styled.span`
         color : #1ABC9C;
         margin-left : 8px;
     }
+    ${breakpoint.ml`
+        font-size : 18px;
+    `}
 `
 const BgTitle = styled.div`
     display:flex;
     flex-direction : row;
     margin-bottom : 40px;
+    ${breakpoint.ml`
+        margin-bottom : 12px;
+    `}
 
 `
 const Background =styled.div`
@@ -25,8 +32,10 @@ const Background =styled.div`
     background: #eeeeee;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
     width : 100%;
-    position : sticky;
-    top : 88px;
+    ${breakpoint.ml`
+        padding : 16px;
+    `}
+
 `
 
 const Posts = styled.ul`

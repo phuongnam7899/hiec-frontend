@@ -6,11 +6,15 @@ import Container from "../Container"
 import styled from 'styled-components';
 import MyPosts from "./Posts"
 import withNavAndFooter from "../HOC/withNavAndFooter"
+import { breakpoint } from '../../styles/mixin';
 const FlexRowBetween = styled.div`
     width : 100%;
     display : flex;
     justify-content : space-between;
     padding-top: 88px;
+    ${breakpoint.ls`
+        flex-direction : column-reverse;
+    `}
 `
 
 

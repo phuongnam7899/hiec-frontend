@@ -167,4 +167,4 @@ const NewsPage = (props) => {
     )
 }
 
-export default withNavAndFooter(NewsPage,false)
+export default withNavAndFooter(NewsPage)

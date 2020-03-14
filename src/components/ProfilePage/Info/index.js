@@ -6,20 +6,31 @@ import InfoUser from "./input";
 import Select from "./Select"
 import { saveUser } from '../../../actions/user';
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import { breakpoint } from '../../../styles/mixin';
 
 
 
 	
-
+const BG = styled.div`
+    width: 36%;
+    ${breakpoint.ls`
+        width :100%;
+        margin-bottom : 12px;
+    `}
+`
 
 const Background = styled.div`
     position: sticky ;
+    width :100%;
     top:88px;
     background-color:white;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
-    width: 36%;
-    height : 80vh;
     padding : 40px 28px;
+    ${breakpoint.ls`
+        position : relative;
+        top : 0;
+       
+   `}
 
 `
 
@@ -28,6 +39,10 @@ const Avatar = styled.img`
     width : 80px;
     height: 80px;
     margin-right : 16px;
+    ${breakpoint.ml`
+        width : 40px;
+        height : 40px;
+`}
 
 `
 const Label = styled.label`
@@ -38,8 +53,13 @@ const Label = styled.label`
     height: 80px;
     background-image : url(${props => props.url});
     background-size : cover; 
+    ${breakpoint.ml`
+    width : 40px;
+    height : 40px;
+    `}
     ${props => props.isLoading?`background-image : url("https://content.nexus.support.com/5b557b9559124044bb566bfc31a09c80/2479daa0ec2911e8bd5bcdb6b4f00d0c.gif")`
     :`background-image : url(${props => props.url})`}
+   
 `
 const IconSettings = styled.i`
     color : #37A28D;
@@ -47,7 +67,10 @@ const IconSettings = styled.i`
     position:absolute;
     right: 0;
     bottom : 0;
-    cursor : pointer
+    cursor : pointer;
+    ${breakpoint.ml`
+        bottom : -4px;
+    `}
 `
 
 const AvatarWithName = styled.div`
@@ -234,6 +257,7 @@ function Info() {
         }
       ];
     return (
+        <BG>
             <Background>
                 <AvatarWithName>
                     {upAvatar}
@@ -250,6 +274,7 @@ function Info() {
                     {updateRightUser}
                 </div>
             </Background>
+            </BG>
     )
 }
 
