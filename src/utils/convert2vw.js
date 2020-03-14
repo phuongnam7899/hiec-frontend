@@ -1,8 +1,8 @@
-export default function (size,unit = "px", width = 1360) {
+export default function (size,unit = "px",rate = 0,width = 1365) {
     switch (unit){
-        case "px" : return `${Math.max(size) / width * 100}vw`;
-        case "vh" : return `${Math.max(size * 6.56) / width * 100}vw`;
-        case "em" : return `${Math.max(size * 16) / width * 100}vw`;
+        case "px" : return `calc(${Math.max(size) / width * 100}vw + (13.65px - 1vw)*${rate})`;
+        case "vh" : return `calc(${Math.max(size * 6.56) / width * 100}vw + (13.65px - 1vw)*${rate})`;
+        case "em" : return `calc(${Math.max(size * 16) / width * 100}vw + (13.65px - 1vw)*${rate})`;
         default : return "0" 
     }
     
