@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {withRouter} from "react-router-dom"
 import WritePost from "../WritePost"
 import {useSelector} from "react-redux"
+import { breakpoint } from "../../styles/mixin"
 const Button = styled.button`
      margin-bottom : 12px;
      border : none;
@@ -21,6 +22,10 @@ const Button = styled.button`
      & i {
        margin-left : 4px;
      }
+     ${breakpoint.ml`
+        font-size : 14px;
+        margin-bottom : 4px;
+     `}
 `
 
 

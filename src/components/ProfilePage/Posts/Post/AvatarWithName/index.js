@@ -1,16 +1,26 @@
 import React, { useEffect , useState } from 'react'
 import styled from "styled-components"
+import { breakpoint } from '../../../../../styles/mixin'
 
 const Img = styled.img`
     border-radius : 999px;
     width : 40px;
     height : 40px;
+    ${breakpoint.tb`
+        width : 30px;
+        height : 30px;
+    `}
 `
 const RowCenter = styled.div`
     display : flex;
     align-items : center;
     justify-content : space-between;
     margin-bottom: 20px;
+    ${breakpoint.ml`
+        flex-direction : column;
+        align-items : flex-start;
+        margin-bottom : 10px;
+    `}
     
 `
 const Name = styled.span`
@@ -18,16 +28,33 @@ const Name = styled.span`
     font-size : 20px;
     font-weight : 600;
     color : black;
+    ${breakpoint.tb`
+        font-size : 16px;
+    `}
+    ${breakpoint.ml`
+        font-size : 12px;
+    `}
 `
 const Time = styled.span`
     font-size : 14px;
     font-weight : 600;
     color : #888787;
+    ${breakpoint.tb`
+    font-size : 16px;
+    ${breakpoint.ml`
+    font-size : 12px;
+    padding-top : 5px;
+`}
+`}
 `
 const IconTrash = styled.i`
     cursor : pointer;
     position : relative;
-    z-index : 9999;
+    z-index : 3;
+    margin-left : 6px;
+    ${breakpoint.ml`
+        font-size : 12px;
+    `}
     &:hover{
         color : #37A28D;
     }

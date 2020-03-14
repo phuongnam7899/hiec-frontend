@@ -9,6 +9,7 @@ const TagSpan = styled.span`
     margin-right: 8px;
     padding : 6px 12px;
     border-radius : 20px;
+    margin-bottom : 3px;
     ${breakpoint.ml`
     font-size: 10px;
     padding : 4px 8px;

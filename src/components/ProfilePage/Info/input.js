@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {breakpoint} from "../../../styles/mixin"
 const Icon = styled.i`
   color: #37a28d;
   margin-right: 16px;
@@ -20,10 +21,16 @@ const Input = styled.input`
     switch (props.size) {
       case "normal":
         return `font-size : 24px;
-                        font-weight : bold;`;
+                        font-weight : bold;
+                        ${breakpoint.ml`
+                          font-size : 20px;
+                        `}`;
       default:
         return `font-size : 18px;
                         font-weight : 400;
+                        ${breakpoint.ml`
+                        font-size : 14px;
+                      `};
         `;
     }
   }}
@@ -32,15 +39,26 @@ const Input = styled.input`
   width: 200px;
   transition: 0.1s all;
 `;
+const TxtBlock = styled.div`
+  // width : 80%;
+`
 const Span = styled.span`
   ${props => {
     switch (props.size) {
       case "normal":
         return `font-size : 24px;
-                            font-weight : bold`;
+                            font-weight : bold;
+                            ${breakpoint.ml`
+                              font-size : 14px;
+                            `}
+                            `
+                            ;
       default:
         return `font-size : 18px;
-                            font-weight : 400`;
+                            font-weight : 400;
+                            ${breakpoint.ml`
+                            font-size : 14px;
+                          `}`;
     }
   }}
 `;
@@ -59,7 +77,7 @@ const InputFunc = props => {
     <Info>
       {name ? <Icon className={name}></Icon> : null}
 
-      <div>{isUpdate}</div>
+      <TxtBlock>{isUpdate}</TxtBlock>
     </Info>
   );
 };

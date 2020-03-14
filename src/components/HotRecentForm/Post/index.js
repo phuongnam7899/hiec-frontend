@@ -21,12 +21,12 @@ const Title = styled.div`
     font-weight : normal;
     overflow : hidden;
     margin-bottom : 30px;
-    line-height: 21px;
+    line-height: 1.6;
     width : 50%;
-    height : 40px;
     overflow-wrap : break-word;
     ${breakpoint.ml`
-    font-size : 14px;
+        font-size : 14px;
+        margin-bottom : 6px;
     `}
 
     `
@@ -43,14 +43,14 @@ const ImgBlock =styled.div`
 `
 const Img = styled.img`
     border-radius : 999px;
-    // width : 40px;
-    // height : 40px;
-    // ${breakpoint.ml`
-    // width : 30px;
-    // height : 30px;
-    // `}
-    width  : 100%;
-    height : auto;
+    width : 40px;
+    height : 40px;
+    ${breakpoint.ml`
+    width : 20px;
+    height : 20px;
+    `}
+    // width  : 100%;
+    // height : auto;
 `
 const NameAndTime = styled.div`
     display:flex;
@@ -63,7 +63,7 @@ const NameAndTime = styled.div`
         margin-bottom:2px;
     }
     ${breakpoint.ml`
-    font-size : 12px;
+        font-size : 12px;
     `}
     
 `
@@ -101,7 +101,7 @@ function PostForm(props) {
     return (
      
         <Post onClick = {toPost}>
-            <Title><span>{props.post.title}</span></Title>
+            <Title><span>{props.post.title.slice(0,40)}</span></Title>
             <InfoPost>
                 <ImgBlock><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></ImgBlock>
                 <NameAndTime>

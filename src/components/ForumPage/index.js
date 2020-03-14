@@ -9,20 +9,30 @@ import SearchBar from "../NewsPage/SearchBar"
 import ButtonWrite from '../ButtonWrite';
 import { useSelector } from 'react-redux';
 import withNavAndFooter from "../HOC/withNavAndFooter"
+import { breakpoint } from '../../styles/mixin';
 
 const Page = styled.div`
     padding-top : 88px;
     display : flex;
-    justify-content: space-between
+    justify-content: space-between;
+    ${breakpoint.tb`
+        flex-direction : column-reverse;
+    `}
     
 `
 
 const RightContent = styled.div`
-   width : 35%;
+     width : 35%;
+     ${breakpoint.tb`
+        width : 100%
+     `}
 
 `
 const LeftContent = styled.div`
     width : 60%;
+    ${breakpoint.tb`
+    width : 100%
+    `}
 
 `
 
@@ -131,7 +141,7 @@ function ForumPage(props) {
 
         <Page>
             <LeftContent>
-                <ButtonWrite />
+                {window.innerWidth>1000?<ButtonWrite />:<></>}
                 <Posts>
                 <InfiniteScroll
                 dataLength={postsForum.length}
@@ -149,6 +159,7 @@ function ForumPage(props) {
                 </Posts>
             </LeftContent>
             <RightContent>
+            {window.innerWidth<1000?<ButtonWrite />:<></>}
             <SearchBar onSearch = {handleSearch}/>
             <HotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
             <HotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />

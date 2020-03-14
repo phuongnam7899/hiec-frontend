@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import styled from 'styled-components';
+import { breakpoint } from '../../styles/mixin';
 
 const Box = styled.div`
     padding-top:88px;
@@ -20,6 +21,11 @@ const Background = styled.div`
     border-bottom-left-radius: 5px;
     display : flex;
     align-items : center;
+    ${breakpoint.ml`
+        padding-left : 4x;
+        padding-right : 30px;
+    `}
+
     `
 
 const Icon = styled.i`
@@ -27,7 +33,9 @@ const Icon = styled.i`
     color  : white;
     text-align :center;
     margin-left : 10px;
-
+    ${breakpoint.ml`
+        font-size : 14px;
+    `}
 `
 
 const Text = styled.span`
@@ -35,6 +43,10 @@ const Text = styled.span`
     padding : 10px;
     font-size : 20px;
     text-align :center;
+    ${breakpoint.ml`
+        font-size : 14px;
+        padding  : 6px;
+    `}
 
     `
 function NotificationBox(props) {

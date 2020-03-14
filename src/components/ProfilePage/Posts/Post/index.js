@@ -7,6 +7,8 @@ import IconWithNumber from "./IconWithNumber"
 import axios from '../../../../axios'
 import { useDispatch } from "react-redux"
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import { breakpoint } from '../../../../styles/mixin'
+import YesNoDialog from '../../../YesNoDialog'
 const PostForm = styled.div`
     margin-bottom: 16px;
     background-color: white;
@@ -14,23 +16,49 @@ const PostForm = styled.div`
     padding : 28px;
     width : 100%;
     cursor : pointer;
+    ${breakpoint.ml`
+        padding : 16px;
+    `}
     
 `
 const Tags = styled.div`
+    display : flex;
+    flex-wrap : wrap;
     margin-bottom : 20px;
+    ${breakpoint.ml`
+        margin-bottom : 10px;
+        
+    `}
 `
 
 const Title = styled.div`
     font-weight: bold;
-    font-size : 24px;
     margin-bottom : 20px;
     max-width : 90%;
     overflow-wrap : break-word;
+    ${breakpoint.tb`
+    & >span{
+        font-size : 20px;
+    }
+    `}
+    ${breakpoint.ml`
+    max-width : 100%;
+    margin-bottom : 10px;
+    & >span{
+        font-size : 14px;
+        line-height : 1.6;
+    }
+    `}
+
 `
 const Content = styled.div`
     margin-bottom : 30px;
     color: black;
     overflow-wrap : break-word;
+    ${breakpoint.ml`
+        font-size : 16px;
+        margin-bottom : 10px;
+    `}
 `
 
 
@@ -39,6 +67,7 @@ const Icons = styled.div`
     flex-direction:row;
     align-items : center;
     justify-content : space-between;
+
 `
 const Arrow = styled.i`
     width : 10px;
@@ -49,18 +78,15 @@ const Arrow = styled.i`
     }
 
 `
-const More = styled(NavLink)`
-    text-decoration : none;
-    color : black;
-    transition: 0.2s all;
-    &:hover{
-        color : #37A28D;
-    }
+const MoreTxt = styled.div`
+${breakpoint.ml`
+font-size : 10px;
+`}
 `
 
 
 function Post(props) {
-
+    const [dialog,setDialog] = useState(false);
     const { post, linkTo } = props;
     const { user, tags, postTime, title, claps, comments, viewers, _id, content } = post;
     const defaultUser = { name: "Admin", avatar: "" }
@@ -88,9 +114,7 @@ function Post(props) {
     const deletePost = async (e) => {
         // console.log("CLICK")
         // e.stopPropagation()
-        e.stopPropagation();
-
-
+        // e.stopPropagation();
         if (user._id === localStorage.getItem("hiec_user_id")) {
             dispatch(showLoading())
             try {
@@ -103,6 +127,7 @@ function Post(props) {
                     dispatch({ type: "SET_NOT_VISIBLE" })
                 }, 10000)
                 setIsDelete(true)
+                setDialog(false);
             } catch (err) {
                 setTimeout(() => {
                     dispatch(hideLoading())
@@ -111,38 +136,45 @@ function Post(props) {
                 setTimeout(() => {
                     dispatch({ type: "SET_NOT_VISIBLE" })
                 }, 10000)
+                setDialog(false);
                 console.log(err)
             }
         }
     }
 
-    const goToPost = (e) =>{
+    const goToPost = (e) => {
         window.location.assign(linkTo + "/" + _id)
     }
+    const showDialogDelete = () =>{
+        setDialog(true);
+    }
+
 
     return (
         <>
+            <YesNoDialog visible = {dialog} type = "danger" 
+             message = "Xác nhận xóa bài ?" onClickYes = {deletePost} onClickNo = {()=>setDialog(false)}/>
             {isDelete ? <></> :
 
                 <>
-                   
+
                     {/* <More to={}> */}
-                        <PostForm onClick = {goToPost}>
-                            <AvatarWithName isDelete = {deletePost} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
-                            <Tags>
-                                {tags.map(item => <Tag tag={item} />)}
-                            </Tags>
-                            <Title><span>{title}</span></Title>
-                            <Content><span>{finalContent}</span>{}</Content>
+                    <PostForm >
+                        <AvatarWithName isDelete={showDialogDelete} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
+                        <Tags onClick={goToPost} >
+                            {tags.map(item => <Tag tag={item} />)}
+                        </Tags >
+                        <Title onClick={goToPost} ><span>{title}</span></Title>
+                        <Content onClick={goToPost}><span>{finalContent}</span>{}</Content>
+                        <Icons onClick={goToPost}>
                             <Icons>
-                                <Icons>
-                                    <IconWithNumber icon="fas fa-eye" number={viewers.length} />
-                                    <IconWithNumber icon="fas fa-sign-language" number={claps.length} />
-                                    <IconWithNumber icon="fas fa-comment" number={comments.length} />
-                                </Icons>
-                                <div style={{}}><span>Xem thêm </span><Arrow className="fas fa-arrow-right"></Arrow></div>
+                                <IconWithNumber icon="fas fa-eye" number={viewers.length} />
+                                <IconWithNumber icon="fas fa-sign-language" number={claps.length} />
+                                <IconWithNumber icon="fas fa-comment" number={comments.length} />
                             </Icons>
-                        </PostForm>
+                            <MoreTxt><span>Xem thêm </span><Arrow className="fas fa-arrow-right"></Arrow></MoreTxt>
+                        </Icons>
+                    </PostForm>
                     {/* </More> */}
                 </>
             }

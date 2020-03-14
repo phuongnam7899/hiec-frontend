@@ -1,5 +1,16 @@
 import React from "react"
 import styled from "styled-components"
+import { breakpoint } from "../../styles/mixin"
+
+// const YesNoBG = styled.div`
+//     position : absolute;
+//     top : 0;
+//     z-index : 19;
+//     background-color :black;
+//     // opacity : 0.7;
+//     width : 100vw;
+//     height : 100vh;
+// `
 
 const DialogContainer = styled.div`
     padding : 24px;
@@ -13,7 +24,7 @@ const DialogContainer = styled.div`
     flex-direction : column;
     justify-content : space-between;
     box-shadow : 0 0 5px #9c9c9c;
-    position : absolute;
+    position : fixed;
     left : 50%;
     top : 20%;
     transform : translate(-50%, 50%);
@@ -36,6 +47,9 @@ const Content = styled.div`
 const Message = styled.span`
 font-size : 20px;
 text-align : center;
+${breakpoint.ml`
+    font-size : 16px;
+`}
 
 `
 
@@ -52,6 +66,12 @@ const Button = styled.button`
     font-size : 20px;
     font-weight : 900;
     cursor : pointer;
+    ${breakpoint.ml`
+        font-size : 14px;
+        padding : 0px 6px;
+        min-width : 70px;
+        min-height : 20px;
+    `}
     &:hover {
         transform : scale(1.02)
     }
@@ -77,6 +97,7 @@ const YesNoDialog = (props) => {
     }
     return(
             visible ? (
+                // <YesNoBG>
                 <DialogContainer size={size}>
                     <Content>
                         {Icon}
@@ -91,6 +112,7 @@ const YesNoDialog = (props) => {
                         </ButtonGreen>
                     </Options>
                 </DialogContainer>
+                // </YesNoBG>
             ) : null
     )
 }
