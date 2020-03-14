@@ -87,7 +87,7 @@ const Footer = props => {
     window.location.assign("/")
   }
   return (
-    <div style={{ backgroundColor: "#ffffff" }}>
+    <div style={{ backgroundColor: "#eeeeee" }}>
       <Container>
         <FooterContainer>
           <Logo onClick={goToHomepage} src="https://www.pngjoy.com/pngm/30/721636_tesla-logo-lin-digital-transparent-png.png"></Logo>

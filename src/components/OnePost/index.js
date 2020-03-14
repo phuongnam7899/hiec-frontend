@@ -68,7 +68,7 @@ const Source = styled.div`
 const Post = styled.div`
     width: 60%;
     padding:32px;
-    background: #FFFFFF;
+    background: #eeeeee;
     margin-bottom : 12px;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
     & > *{

@@ -100,7 +100,7 @@ const Partner = styled(Activity)`
 `;
 const Footer = styled.div`
   width: 100%;
-  color : #ffffff;
+  color : #eeeeee;
   font-size : ${convert2vw(1.4,"em")};
   display: flex;
   flex-direction: column;
@@ -118,7 +118,7 @@ const Footer = styled.div`
     text-align : center;
   }
   & a {
-    color : #ffffff;
+    color : #eeeeee;
     text-decoration : none;
     &:hover {
       color : #f2f065;
