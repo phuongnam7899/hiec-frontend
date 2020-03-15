@@ -71,7 +71,7 @@ const Button = styled(NavLink)`
   min-width: 167px;
   min-height: 40px;
   border-radius: 10px;
-  color: #eeeeee;
+  color: #ffffff;
   text-align: center;
   line-height: 48px;
   padding: 4px 10px;

@@ -161,7 +161,7 @@ const Partner = styled(Activity)`
 `;
 const Footer = styled.div`
   width: 100%;
-  color: #eeeeee;
+  color: #ffffff;
   font-size: ${convert2vw(1.4, "em")};
   display: flex;
   flex-direction: column;

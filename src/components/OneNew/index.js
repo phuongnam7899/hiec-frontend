@@ -67,7 +67,7 @@ const Post = styled.div`
     width: 60%;
     padding:32px;
     margin-bottom : 12px;
-    background: #eeeeee;
+    background: #ffffff;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
     & >*{
         margin-bottom:15px;

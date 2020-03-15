@@ -71,7 +71,7 @@ const Button = styled.button`
     min-width : 120px;
     min-height : 30px;
     border-radius : 10px;
-    color : #eeeeee;
+    color : #ffffff;
     text-align:center;
     line-height : 48px;
     padding : 0px 8px;
