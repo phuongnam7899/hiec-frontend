@@ -31,7 +31,7 @@ export default function App() {
     const hiec_user_token = localStorage.getItem("hiec_user_token");
     if(hiec_user_id){
       
-      axios.get("/api/user/"+hiec_user_id).then(res=>{
+      axios.get(`/api/user/${hiec_user_id}?token=${localStorage.getItem("hiec_user_token")}`).then(res=>{
         dispatch(addToken(hiec_user_token))
         dispatch(saveUser(res.data))
       })

@@ -209,6 +209,7 @@ const WritePost = props => {
           postTime : currentTimeMilis,
           title : postTitle,
           content : postContent,
+          token : localStorage.getItem("token")
         });
         // console.log(response)
         dispatch(hideLoading('sectionBar'))

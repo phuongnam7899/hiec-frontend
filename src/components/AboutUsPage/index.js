@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import withNavAndFooter from "../HOC/withNavAndFooter";
 import { NavLink } from "react-router-dom";
@@ -204,6 +204,9 @@ const Footer = styled.div`
   }
 `;
 const AboutUsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0,0);
+  })
   return (
     <AboutUsPageContainer>
       <OurStory data-aos="fade-left">

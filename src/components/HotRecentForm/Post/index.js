@@ -2,6 +2,7 @@ import React, { useState ,useEffect } from 'react'
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom"
 import {breakpoint} from "../../../styles/mixin"
+import convert2vw from "../../../utils/convert2vw"
 
 const Post = styled.li`
     display : block;
@@ -33,16 +34,21 @@ const Title = styled.div`
 const InfoPost = styled.div`
     display:flex;
     justify-content : space-between;
-    width : 40%;
-    margin-left : 10%;
+    width : 45%;
     over-flow : hidden;
+    ${breakpoint.tb`
+    width : 30%;  
+    `}
+    ${breakpoint.ms`
+    width : 45%;  
+    `}
     
 `
 const ImgBlock =styled.div`
     width : 20%;
 `
 const Img = styled.img`
-    border-radius : 999px;
+    border-radius : 50%;
     width : 40px;
     height : 40px;
     ${breakpoint.ml`
@@ -56,14 +62,14 @@ const NameAndTime = styled.div`
     display:flex;
     flex-direction :  column;
     align-items : flex-start;
-    width : 80%;
+    width : 60%;
     font-size : 14px;
-    margin-left : 10px;
     & >*{
         margin-bottom:2px;
     }
     ${breakpoint.ml`
         font-size : 12px;
+        width : 70%;
     `}
     
 `
@@ -73,10 +79,8 @@ const Name = styled.span`
     overflow: hidden;
     font-weight : bold;
     height : 16px;
-    overflow-wrap : break-word;
-
-
-
+    overflow : hidden;
+    max-width : 100%;
 `
 const Time = styled(Name)`
     font-weight : 400;

@@ -37,6 +37,7 @@ function MyPosts() {
         axios.post("/api/post/by-user/", {
             page: page,
             id: idUser,
+            token : localStorage.getItem("hiec_user_token")
         }).then(res => {
             setPage(page + 1);
             setListPosts([...listPosts, ...res.data])
