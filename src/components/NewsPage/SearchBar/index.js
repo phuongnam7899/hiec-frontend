@@ -10,7 +10,7 @@ const SearchBarContainer = styled.div`
  padding : 32px;
  box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
  margin-top : 31px;
- background :#eeeeee;
+ background :#ffffff;
  margin-bottom : 12px;
  font-size : 16px;
  ${breakpoint.mm`
@@ -31,7 +31,7 @@ const Button = styled.button`
   width : 100%;
   height : 30px;
   font-size : 16px;
-  color : #eeeeee;
+  color : #ffffff;
   line-height : 30px;
   text-align : center;
   background : #1ABC9C;
@@ -62,7 +62,7 @@ const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
   background-color: #37a28d;
-  color: #eeeeee;
+  color: #ffffff;
   border-radius: 16px;
   margin-right: 8px;
   margin-bottom : 8px;

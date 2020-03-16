@@ -162,7 +162,7 @@ function Info() {
                 isWorking,
                 describe,
                 avatar,
-                token : localStorage.getItem("token")
+                token : localStorage.getItem("hiec_user_token")
             })
             // console.log(res)
             if(res.status == 200){

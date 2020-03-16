@@ -14,7 +14,7 @@ import { breakpoint } from "../../styles/mixin"
 
 const DialogContainer = styled.div`
     padding : 24px;
-    background-color : #eeeeee;
+    background-color : #ffffff;
     border-radius : 15px;
     width : 70vw;
     max-width : 350px;
@@ -58,7 +58,7 @@ const Button = styled.button`
     min-width : 100px;
     min-height : 35px;
     border-radius : 10px;
-    color : #eeeeee;
+    color : #ffffff;
     text-align:center;
     line-height : 48px;
     padding : 0px 10px;

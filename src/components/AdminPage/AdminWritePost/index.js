@@ -56,7 +56,7 @@ const Bar = styled.div`
 
 const Main = styled.div`
   padding: 18px;
-  background: #eeeeee;
+  background: #ffffff;
 `;
 
 const Input = styled.input`
@@ -76,7 +76,7 @@ const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
   background-color: #37a28d;
-  color: #eeeeee;
+  color: #ffffff;
   border-radius: 16px;
   margin-right: 8px;
   & span {
@@ -98,7 +98,7 @@ const Button = styled.button`
   margin-top: 8px;
   font-size: 24px;
   background: #37a28d;
-  color: #eeeeee;
+  color: #ffffff;
   font-weight: bold;
   &:hover {
     background: #3fbaa2;
