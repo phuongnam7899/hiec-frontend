@@ -4,7 +4,7 @@ import "./signUp.css";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
 import { useDispatch } from "react-redux";
-
+import {breakpoint} from '../../styles/mixin'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 
@@ -37,6 +37,12 @@ const InputGroup = styled.div`
     font-size: 16px;
     color :#212121;
   }
+  ${breakpoint.ml`
+        font-size:18px
+    `}
+    ${breakpoint.ms`
+        font-size:16px
+    `}
 `;
 const Button = styled.button`
   border: none;
@@ -52,6 +58,12 @@ const Button = styled.button`
   &:hover {
     background-color: #3fbfa7;
   }
+  ${breakpoint.ml`
+        font-size:28px
+    `}
+    ${breakpoint.ms`
+        font-size:26px
+    `}
 `;
 const SignUpLink = styled(Link)`
   text-decoration: underline;
@@ -97,6 +109,12 @@ const Title = styled.span`
   font-weight: bolder;
   font-size: 48px;
   transition: ${props => props.theme.time};
+  ${breakpoint.ml`
+        font-size:36px
+    `}
+    ${breakpoint.ms`
+        font-size:28px
+    `}
 `;
 const TextOnImg = styled.div`
   position: absolute;
@@ -129,6 +147,10 @@ const Background1 = styled.div.attrs(props => ({
   position: relative;
   transition: ${props => props.theme.time};
   height: 100vh;
+  ${breakpoint.ml`
+        width : 0;
+        display:none;
+    `}
 `;
 const Background2 = styled.div.attrs(props => ({
   width: props.width
@@ -142,6 +164,9 @@ const Background2 = styled.div.attrs(props => ({
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.backgroundColor};
+  ${breakpoint.ml`
+        width : 100%;
+    `}
 `;
 const Box = styled.input`
   display: none;
