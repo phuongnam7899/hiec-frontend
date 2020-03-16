@@ -7,7 +7,7 @@ import {addToken} from "../../actions/token"
 import {saveUser} from "../../actions/user"
 import user from '../../reducers/user'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
-
+import {breakpoint} from '../../styles/mixin'
 
 
 
@@ -20,10 +20,10 @@ const Background = styled.div`
 `
 const Form = styled.form`
     display: flex;
+    flex-wrap: wrap;
     flex-direction:column;
     justify-content:center;
     align-items:flex-start;
-    
     width:75%;
 `
 const Email = styled.div`
@@ -49,6 +49,12 @@ const Button = styled.button`
     color:${props => props.theme.textButton};
     cursor:pointer;
     transition: ${props => props.theme.time};
+    ${breakpoint.ml`
+        font-size:22px
+    `}
+    ${breakpoint.ms`
+        font-size:20px
+    `}
 `
 const SignUpLink = styled(Link)`
     text-decoration:underline;
@@ -59,6 +65,12 @@ const SignUpLink = styled(Link)`
         color:#1ABC9C;
     }
     transition: ${props => props.theme.time};
+    ${breakpoint.ml`
+        font-size:16px
+    `}
+    ${breakpoint.ms`
+        font-size:14px
+    `}
 `
 
 const Input = styled.input`
@@ -95,6 +107,12 @@ const Title = styled.span`
     font-weight:bolder;
     font-size:48px;
     transition: ${props => props.theme.time};
+    ${breakpoint.ml`
+        font-size:38px
+    `}
+    ${breakpoint.ms`
+        font-size:36px
+    `}
 `
 const TextOnImg = styled.div`
 position: absolute;
@@ -130,6 +148,11 @@ const Background1 = styled.div.attrs(props => ({
     transition: ${props => props.theme.time};
     min-height:100vh;
     background-size: cover;
+    ${breakpoint.ml`
+        display: none;
+        flex-grow: 0;
+        width : 0px;
+    `}
     `
 const Background2 = styled.div.attrs(props => ({
     width: props.width
@@ -143,6 +166,9 @@ transition: ${props => props.theme.time};
     justify-content:center;
     align-items:center;
     background-color:${props => props.theme.backgroundColor};
+    ${breakpoint.ml`
+        width : 100%;
+    `}
     `
 //     const IMG = styled.img`
 //         width: 100%;
