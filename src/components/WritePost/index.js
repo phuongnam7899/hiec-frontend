@@ -209,7 +209,7 @@ const WritePost = props => {
           postTime : currentTimeMilis,
           title : postTitle,
           content : postContent,
-          token : localStorage.getItem("token")
+          token : localStorage.getItem("hiec_user_token")
         });
         // console.log(response)
         dispatch(hideLoading('sectionBar'))

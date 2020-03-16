@@ -129,7 +129,7 @@ useEffect(()=>{
         const changePasswordResponse = await axios.put(`api/user/${localStorage.getItem("hiec_user_id")}/password`, {
           oldPassword,
           newPassword,
-          token : localStorage.getItem("token")
+          token : localStorage.getItem("hiec_user_token")
         });
         // console.log(changePasswordResponse)
 
