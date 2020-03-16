@@ -68,7 +68,7 @@ const Source = styled.div`
 const Post = styled.div`
     width: 60%;
     padding:32px;
-    background: #FFFFFF;
+    background: #eeeeee;
     margin-bottom : 12px;
     box-shadow: 0px 4px 4px rgba(160, 160, 160, 0.25);
     & > *{
@@ -224,7 +224,7 @@ function OnePost(props) {
         const id = window.location.pathname.replace(regex, "").split("/").join("");
 
         try {
-            const res = await axios.get("/api/post/" + id);
+            const res = await axios.get(`/api/post/${id}?token=${localStorage.getItem("hiec_user_token")}`);
             setViewers(res.data.viewers);
             setTitle(res.data.title);
             setTags(res.data.tags)
@@ -246,13 +246,15 @@ function OnePost(props) {
 
             const addView = await axios.put("/api/post/add-view",{
                 postID : res.data._id,
-                userID : localStorage.getItem("hiec_user_id")
+                userID : localStorage.getItem("hiec_user_id"),
+                token : localStorage.getItem("hiec_user_token")
             })
 
 //  lấy bài viết liên quan
             try {
                 const resByTag = await axios.post("/api/post/search/by-tag", {
-                    tagList : res.data.tags
+                    tagList : res.data.tags,
+                    token : localStorage.getItem("hiec_user_token")
                 })
                 // console.log(resByTag)
                 setRelevantPosts(resByTag.data)
@@ -274,6 +276,7 @@ function OnePost(props) {
         try {
             const res = await axios.post("/api/post/recent", {
                 number: 5,
+                token : localStorage.getItem("hiec_user_token")
             })
             setRecentPosts(res.data)
         } catch (err) {
@@ -299,7 +302,8 @@ function OnePost(props) {
                 postID,
                 user : user._id,
                 content,
-                time
+                time,
+                token : localStorage.getItem("hiec_user_token")
             })
             setNumber(number+1)
             
@@ -322,6 +326,7 @@ function OnePost(props) {
             const res = await axios.put("/api/post/add-clap",{
                 userID : user._id,
                 postID : postID,
+                token : localStorage.getItem("hiec_user_token")
             })
             console.log(res)
         }

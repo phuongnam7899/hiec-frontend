@@ -29,7 +29,7 @@ const BannerContainer = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
-    color : #FFFFFF;
+    color : #eeeeee;
     justify-content : center;
     max-width : 100vw;
     height : 100vh;
@@ -60,7 +60,7 @@ const Button = styled(NavLink)`
     min-width : 167px;
     min-height : 40px;
     border-radius : 10px;
-    color : #FFFFFF;
+    color : #eeeeee;
     text-align:center;
     line-height : 48px;
     padding : 4px 10px;

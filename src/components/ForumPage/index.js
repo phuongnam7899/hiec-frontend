@@ -49,6 +49,11 @@ const Loader = styled.img`
     height : 100px;
 `
 
+const ForumHotRecentForm = styled(HotRecentForm)`
+    ${breakpoint.tb`
+        display : none;
+    `}
+`
 function ForumPage(props) {
     const [loadMore, setLoadMore] = useState(true);
     const [ hotPosts,setHotPosts ] = useState([]);
@@ -82,7 +87,8 @@ function ForumPage(props) {
             tags : tags,
             keyword : keyword,
             sortBy : sortBy,
-            page : page
+            page : page,
+            token : localStorage.getItem("hiec_user_token")
         }).then(res => {
             console.log(res.data)
             setPostsForum([...postsForum,...res.data])
@@ -112,6 +118,7 @@ function ForumPage(props) {
         try{
             const res = await axios.post("/api/post/recent",{
                 number : 5,
+                token : localStorage.getItem("hiec_user_token")
             })
             console.log("RÊCENT")
             console.log(res.data)
@@ -125,6 +132,7 @@ function ForumPage(props) {
         try{
             const res = await axios.post("/api/post/hot",{
                 number : 5,
+                token : localStorage.getItem("hiec_user_token")
             })
             // console.log(res.data)
             console.log("HOT")
@@ -161,8 +169,8 @@ function ForumPage(props) {
             <RightContent>
             {window.innerWidth<1000?<ButtonWrite />:<></>}
             <SearchBar onSearch = {handleSearch}/>
-            <HotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
-            <HotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
+            <ForumHotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
+            <ForumHotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
             </RightContent>
         </Page>
         </Container>

@@ -47,7 +47,7 @@ const OneNews = styled.div`
 const ButtonsContainer = styled.div`
     display : flex;
     justify-content : space-between;
-    width : 35%;
+    width : 65%;
     ${breakpoint.ls`
     width : 90%;
 `}
@@ -71,7 +71,7 @@ const Button = styled(NavLink)`
   min-width: 167px;
   min-height: 40px;
   border-radius: 10px;
-  color: #ffffff;
+  color: #eeeeee;
   text-align: center;
   line-height: 48px;
   padding: 4px 10px;

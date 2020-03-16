@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Select from "react-select";
+import {breakpoint} from "../../../styles/mixin"
 
 const SelectStyled = styled(Select)`
   z-index : 22;
@@ -9,8 +10,13 @@ const SearchBarContainer = styled.div`
  padding : 32px;
  box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
  margin-top : 31px;
- background :#ffffff;
+ background :#eeeeee;
  margin-bottom : 12px;
+ font-size : 16px;
+ ${breakpoint.mm`
+   font-size : 14px;
+ 
+ `}
 `;
 const Input = styled.input`
     width : 100%;
@@ -19,14 +25,13 @@ const Input = styled.input`
     border-radius : 6px;
     border : 1px solid #c9c9c9;
     margin-bottom : 16px;
-    font-size : 16px;
 `;
 const Button = styled.button`
   border: none;
   width : 100%;
   height : 30px;
   font-size : 16px;
-  color : #FFFFFF;
+  color : #eeeeee;
   line-height : 30px;
   text-align : center;
   background : #1ABC9C;
@@ -57,7 +62,7 @@ const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
   background-color: #37a28d;
-  color: #ffffff;
+  color: #eeeeee;
   border-radius: 16px;
   margin-right: 8px;
   margin-bottom : 8px;

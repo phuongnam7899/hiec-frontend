@@ -33,9 +33,16 @@ const StyledQuill = styled(ReactQuill)`
   & .ql-toolbar {
     display: flex;
     justify-content: space-around;
+    ${breakpoint.ml`
+    flex-wrap : wrap;
+    justify-content: flex-start;
+  `}
   }
   & .ql-editor {
     min-height: 55vh;
+    ${breakpoint.ml`
+    font-size : 0.6rem;
+  `}
   }
   & code {
     display: block;
@@ -62,7 +69,7 @@ const Bar = styled.div`
 
 const Main = styled.div`
   padding: 18px;
-  background: #ffffff;
+  background: #eeeeee;
 `;
 
 const Input = styled.input`
@@ -82,7 +89,7 @@ const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
   background-color: #37a28d;
-  color: #ffffff;
+  color: #eeeeee;
   border-radius: 16px;
   margin-right: 8px;
   & span {
@@ -104,11 +111,14 @@ const Button = styled.button`
   margin-top: 8px;
   font-size: 24px;
   background: #37a28d;
-  color: #ffffff;
+  color: #eeeeee;
   font-weight: bold;
   &:hover {
     background: #3fbaa2;
   }
+  ${breakpoint.ml`
+  font-size : 0.9rem;
+`}
 `;
 
 const tagOptions = [
@@ -199,6 +209,7 @@ const WritePost = props => {
           postTime : currentTimeMilis,
           title : postTitle,
           content : postContent,
+          token : localStorage.getItem("token")
         });
         // console.log(response)
         dispatch(hideLoading('sectionBar'))

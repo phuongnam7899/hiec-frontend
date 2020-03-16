@@ -11,7 +11,7 @@ const NewsContainer = styled(NavLink)`
   text-decoration: none;
   color: #000000;
   flex-direction: column;
-  background: #ffffff;
+  background: #eeeeee;
   margin: 0px 0px 12px 0px;
   box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
   padding: 30px 22px;
@@ -156,6 +156,7 @@ const News = props => {
         <div className="more" style={{}}>
           <span>Xem thêm </span>
           <Arrow className="fas fa-arrow-right"></Arrow>
+           
         </div>
       </Icons>
     </NewsContainer>

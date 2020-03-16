@@ -71,7 +71,7 @@ const Button = styled.button`
     min-width : 120px;
     min-height : 30px;
     border-radius : 10px;
-    color : #FFFFFF;
+    color : #eeeeee;
     text-align:center;
     line-height : 48px;
     padding : 0px 8px;
@@ -129,6 +129,7 @@ useEffect(()=>{
         const changePasswordResponse = await axios.put(`api/user/${localStorage.getItem("hiec_user_id")}/password`, {
           oldPassword,
           newPassword,
+          token : localStorage.getItem("token")
         });
         // console.log(changePasswordResponse)
 
