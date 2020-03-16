@@ -47,7 +47,7 @@ const OneNews = styled.div`
 const ButtonsContainer = styled.div`
     display : flex;
     justify-content : space-between;
-    width : 35%;
+    width : 65%;
     ${breakpoint.ls`
     width : 90%;
 `}

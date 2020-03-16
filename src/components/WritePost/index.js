@@ -33,9 +33,16 @@ const StyledQuill = styled(ReactQuill)`
   & .ql-toolbar {
     display: flex;
     justify-content: space-around;
+    ${breakpoint.ml`
+    flex-wrap : wrap;
+    justify-content: flex-start;
+  `}
   }
   & .ql-editor {
     min-height: 55vh;
+    ${breakpoint.ml`
+    font-size : 0.6rem;
+  `}
   }
   & code {
     display: block;
@@ -109,6 +116,9 @@ const Button = styled.button`
   &:hover {
     background: #3fbaa2;
   }
+  ${breakpoint.ml`
+  font-size : 0.9rem;
+`}
 `;
 
 const tagOptions = [
@@ -199,6 +209,7 @@ const WritePost = props => {
           postTime : currentTimeMilis,
           title : postTitle,
           content : postContent,
+          token : localStorage.getItem("token")
         });
         // console.log(response)
         dispatch(hideLoading('sectionBar'))

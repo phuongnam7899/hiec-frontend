@@ -82,7 +82,8 @@ function ForumPage(props) {
             tags : tags,
             keyword : keyword,
             sortBy : sortBy,
-            page : page
+            page : page,
+            token : localStorage.getItem("hiec_user_token")
         }).then(res => {
             console.log(res.data)
             setPostsForum([...postsForum,...res.data])
@@ -112,6 +113,7 @@ function ForumPage(props) {
         try{
             const res = await axios.post("/api/post/recent",{
                 number : 5,
+                token : localStorage.getItem("hiec_user_token")
             })
             console.log("RÊCENT")
             console.log(res.data)
@@ -125,6 +127,7 @@ function ForumPage(props) {
         try{
             const res = await axios.post("/api/post/hot",{
                 number : 5,
+                token : localStorage.getItem("hiec_user_token")
             })
             // console.log(res.data)
             console.log("HOT")

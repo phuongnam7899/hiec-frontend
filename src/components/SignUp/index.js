@@ -201,7 +201,7 @@ function HookSignIn(props) {
     ) {
       // TODO : xử lí thông tin và gửi api
 
-      const res = await axios.post("/api/user/register", {
+      const res = await axios.post("/api/auth/register", {
         name,
         dob,
         email,

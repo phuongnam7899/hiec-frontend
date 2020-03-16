@@ -156,6 +156,7 @@ const News = props => {
         <div className="more" style={{}}>
           <span>Xem thêm </span>
           <Arrow className="fas fa-arrow-right"></Arrow>
+           
         </div>
       </Icons>
     </NewsContainer>

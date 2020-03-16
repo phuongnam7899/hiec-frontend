@@ -122,7 +122,7 @@ function Info() {
         console.log("SHKCGJHGCHJGJ")
         const regex = /profile/gi
         const idUser = window.location.pathname.replace(regex, "").split("/").join("");
-        axios.get("/api/user/" + idUser).then(res => {
+        axios.get(`/api/user/${localStorage.getItem("hiec_user_id")}?token=${localStorage.getItem("hiec_user_token")}`).then(res => {
             if (res.status === 200) {
                 const data = res.data;
                 const profile = data.profile;
@@ -161,14 +161,15 @@ function Info() {
                 address,
                 isWorking,
                 describe,
-                avatar
+                avatar,
+                token : localStorage.getItem("hiec_user_token")
             })
             // console.log(res)
             if(res.status == 200){
                 setTimeout(()=>{
                     dispatch(hideLoading())
                 },1000)
-                const userGet =  await axios.get("/api/user/"+user._id)
+                const userGet =  await axios.get(`/api/user/${user._id}?token=${localStorage.getItem("hiec_user_token")}`)
                 dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
                 setTimeout(()=>{
                   dispatch({type : "SET_NOT_VISIBLE"})
