@@ -250,8 +250,8 @@ const WritePost = props => {
       <Main>
         <Input
           onChange = {handlePostTitleChange}
-          maxLength="75"
-          placeholder="Tiêu đề bài viết (Tối đa 100 kí tự)"
+          maxLength="70"
+          placeholder="Tiêu đề bài viết (Tối đa 70 kí tự)"
           value = {postTitle}
         />
         <Select

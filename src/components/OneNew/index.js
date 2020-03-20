@@ -58,13 +58,13 @@ const Source = styled.div`
 `
 
 const RightSide = styled.div`
-    width : 35%;
+    width : 25%;
     ${breakpoint.tb`
     width : 100%
     `}
 `
 const Post = styled.div`
-    width: 60%;
+    width: 70%;
     padding:32px;
     margin-bottom : 12px;
     background: #ffffff;

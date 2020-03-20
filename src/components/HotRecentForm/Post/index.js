@@ -18,12 +18,12 @@ const Post = styled.li`
 
 `
 const Title = styled.div`
-    font-size : 18px;
+    font-size : 15px;
     font-weight : normal;
     overflow : hidden;
-    margin-bottom : 30px;
+    margin-bottom : 16px;
     line-height: 1.6;
-    width : 50%;
+    width : 100%;
     overflow-wrap : break-word;
     ${breakpoint.ml`
         font-size : 14px;
@@ -106,13 +106,13 @@ function PostForm(props) {
      
         <Post onClick = {toPost}>
             <Title><span>{props.post.title.slice(0,40)}</span></Title>
-            <InfoPost>
+            {/* <InfoPost>
                 <ImgBlock><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></ImgBlock>
                 <NameAndTime>
                     <Name>{props.post.user ? props.post.user.profile.name : "Admin"}</Name>
                     <Time>{day}/{month}/{year}</Time>
                 </NameAndTime>
-            </InfoPost>
+            </InfoPost> */}
         </Post>
     
     )

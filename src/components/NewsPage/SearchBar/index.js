@@ -13,6 +13,9 @@ const SearchBarContainer = styled.div`
  background :#ffffff;
  margin-bottom : 12px;
  font-size : 16px;
+ & input {
+   font-size : 16px;
+ }
  ${breakpoint.mm`
    font-size : 14px;
  
@@ -44,7 +47,7 @@ const Button = styled.button`
   }
 `;
 const Title = styled.div`
-    font-size : 24px;
+    font-size : 20px;
     font-weight : bold;
     margin-bottom : 32px;
     & i {
