@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from '../../axios';
 import Info from "./Info"
 import Container from "../Container"
@@ -20,8 +20,13 @@ const FlexRowBetween = styled.div`
 
 function HookProfilePage() {
     const dispatch = useDispatch();
+   
     useEffect(() => {
         window.scrollTo(0,0)
+        const id = window.localStorage.getItem("hiec_user_id");
+        if(!id){
+            window.location.assign("/sign-in")
+        }
     },[])
     return (
         <Container>

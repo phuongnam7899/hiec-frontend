@@ -22,15 +22,14 @@ const Input = styled.input`
       case "normal":
         return `font-size : 24px;
                         font-weight : bold;
-                        ${breakpoint.ml`
-                          font-size : 20px;
-                        `}`;
+                        // ${breakpoint.ml`
+                        //   font-size : 20px;
+                        // `}
+                        `;
       default:
         return `font-size : 18px;
                         font-weight : 400;
-                        ${breakpoint.ml`
-                        font-size : 14px;
-                      `};
+                      
         `;
     }
   }}
@@ -38,6 +37,10 @@ const Input = styled.input`
   border-bottom: 1px solid #808080;
   width: 200px;
   transition: 0.1s all;
+  ${breakpoint.ml`
+    font-size : 14px;
+    width : 150px;
+  `}
 `;
 const TxtBlock = styled.div`
   // width : 80%;
@@ -61,6 +64,9 @@ const Span = styled.span`
                           `}`;
     }
   }}
+  ${breakpoint.ml`
+  font-size : 14px;
+  `}
 `;
 
 const InputFunc = props => {

@@ -49,11 +49,6 @@ const Loader = styled.img`
     height : 100px;
 `
 
-const ForumHotRecentForm = styled(HotRecentForm)`
-    ${breakpoint.tb`
-        display : none;
-    `}
-`
 function ForumPage(props) {
     const [loadMore, setLoadMore] = useState(true);
     const [ hotPosts,setHotPosts ] = useState([]);
@@ -169,8 +164,12 @@ function ForumPage(props) {
             <RightContent>
             {window.innerWidth<1000?<ButtonWrite />:<></>}
             <SearchBar onSearch = {handleSearch}/>
-            <ForumHotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
-            <ForumHotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
+            {window.innerWidth>768?
+            <>  
+            <HotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
+            <HotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
+                </>:null
+        }
             </RightContent>
         </Page>
         </Container>
