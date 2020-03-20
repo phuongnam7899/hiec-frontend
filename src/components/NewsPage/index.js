@@ -19,13 +19,13 @@ const NewsPageContainer = styled(Container)`
     `}
 `
 const RightSide = styled.div`
-    width : 35%;
+    width : 25%;
     ${breakpoint.tb`
         width : 100%;
     `}
 `
 const NewsList = styled.div`
-    width : 60%;
+    width : 70%;
     padding : 32px 0px;
     ${breakpoint.tb`
     width : 100%;

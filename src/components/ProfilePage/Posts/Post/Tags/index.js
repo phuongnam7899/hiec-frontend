@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from "styled-components"
 import {breakpoint} from "../../../../../styles/mixin"
+import convert2vw from "../../../../../utils/convert2vw"
 const TagSpan = styled.span`
     background-color : #37A28D;
     color : white;
-    font-size : 12px;
+    font-size : ${convert2vw(12,"px",0.5)};
     font-weight : 600;
     margin-right: 8px;
     padding : 6px 12px;

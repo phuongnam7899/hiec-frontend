@@ -3,7 +3,7 @@ import Post from "./Post"
 import styled from 'styled-components';
 import { breakpoint } from '../../styles/mixin';
 const Title = styled.span`
-    font-size : 24px;
+    font-size : 20px;
     font-weight : bold;
     margin-right: 20px;
     & i {
@@ -32,6 +32,9 @@ const Background =styled.div`
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
     width : 100%;
+    ${breakpoint.tb`
+        display : none;
+    `}
     ${breakpoint.ml`
         padding : 16px;
     `}
