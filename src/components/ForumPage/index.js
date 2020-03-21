@@ -85,11 +85,11 @@ function ForumPage(props) {
             page : page,
             token : localStorage.getItem("hiec_user_token")
         }).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setPostsForum([...postsForum,...res.data])
             setPage(page + 1);
-            console.log(page)
-            console.log(res.data)
+            // console.log(page)
+            // console.log(res.data)
             if(res.data.length===0){
                 setLoadMore(false);
             }
@@ -115,8 +115,8 @@ function ForumPage(props) {
                 number : 5,
                 token : localStorage.getItem("hiec_user_token")
             })
-            console.log("RÊCENT")
-            console.log(res.data)
+            // console.log("RÊCENT")
+            // console.log(res.data)
             setRecentPosts(res.data)
         }catch(err){
            console.log(err)
@@ -130,8 +130,8 @@ function ForumPage(props) {
                 token : localStorage.getItem("hiec_user_token")
             })
             // console.log(res.data)
-            console.log("HOT")
-            console.log(res.data)
+            // console.log("HOT")
+            // console.log(res.data)
             setHotPosts(res.data)
         }catch(err){
            console.log(err)

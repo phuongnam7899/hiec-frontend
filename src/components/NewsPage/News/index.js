@@ -42,7 +42,7 @@ const Image = styled.img`
   margin-right: ${convert2vw(0)};
   ${breakpoint.ml`
   width : 100%;
-  height: calc(50% - (4.25px - 1vw)*50) ;
+  height: 50% ;
 `}
 `;
 

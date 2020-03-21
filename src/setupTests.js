@@ -3,3 +3,18 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+
+let character = {
+    name : "Alias",
+    skills : [
+        {
+            name : "Dash",
+            rate : 0.9
+        },
+        {
+            name : "Lightning sword",
+            rate : 0.4
+        }
+    ]
+}
+

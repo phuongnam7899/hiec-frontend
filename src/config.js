@@ -1,4 +1,4 @@
-console.log(process.env);
+// console.log(process.env);
 
 export default {
     rootPath: process.env.NODE_ENV === 'development'

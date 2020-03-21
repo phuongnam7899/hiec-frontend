@@ -23,7 +23,7 @@ const initState = {
 const user = (state = initState, action) => {
     switch (action.type) {
         case "SAVE_USER":
-            console.log("SAVE_USER")
+            // console.log("SAVE_USER")
             return {
                 isAdmin: action.user.isAdmin,
                 // account: {
@@ -34,7 +34,7 @@ const user = (state = initState, action) => {
                 _id : action.user._id,
             }
         case 'DELETE_USER':
-            console.log("DELETE_USER");
+            // console.log("DELETE_USER");
             return initState
         default:
             return state;

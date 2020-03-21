@@ -12,7 +12,7 @@ function GhimPost() {
                 const res = await axios.put("/api/news/ghim",{
                     id : text,
                 })
-                console.log(res);
+                // console.log(res);
                 if(res.data === "Update bài ghim thành công"){
                     setText("")
                     alert("GHIM BÀI THÀNH CÔNG")

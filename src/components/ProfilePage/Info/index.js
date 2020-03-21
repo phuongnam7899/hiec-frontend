@@ -131,7 +131,7 @@ function Info() {
     const [isLoading,setIsLoading] = useState(false);
     const user = useSelector(state => state.user);
     useEffect(() => {
-        console.log("SHKCGJHGCHJGJ")
+        // console.log("SHKCGJHGCHJGJ")
         const regex = /profile/gi
         const idUser = window.location.pathname.replace(regex, "").split("/").join("");
         axios.get(`/api/user/${idUser}?token=${localStorage.getItem("hiec_user_token")}`).then(res => {

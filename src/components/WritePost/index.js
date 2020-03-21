@@ -182,7 +182,7 @@ const WritePost = props => {
     document.getElementsByTagName("html")[0].scrollTop += (height - editorHeight);
     setEditorHeight(height);
     // document.scrollTop += (height - editorHeight) * 20;
-    console.log("a : " + document.getElementsByTagName("html")[0].scrollTop);
+    // console.log("a : " + document.getElementsByTagName("html")[0].scrollTop);
 
   };
   const handlePostTitleChange = (e) => {

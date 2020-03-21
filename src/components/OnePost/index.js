@@ -264,7 +264,7 @@ function OnePost(props) {
             }
 
         } catch (err) {
-            console.log("Hlel")
+            // console.log("Hlel")
             window.location.assign("/")
             console.log(err);   
         }
@@ -338,7 +338,7 @@ function OnePost(props) {
     const moreComment = ()=>{
         setNumber(number+5);
     }
-    console.log('render')
+    // console.log('render')
     return (<Container>
         <Form>
             <Post>

@@ -92,7 +92,7 @@ const ButtonGreen = styled(Button)`
 `
 
 const goToLink = (href) => {
-    console.log(window.location.href)
+    // console.log(window.location.href)
 }
 
 const Banner = (props) => {
