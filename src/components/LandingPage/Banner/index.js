@@ -103,7 +103,7 @@ const Banner = (props) => {
             <Title>Beyond the infinity</Title>
 
     <Description>{descriptionContent}</Description>
-            {localStorage.getItem("hiec_user_token") ? 
+            {!localStorage.getItem("hiec_user_token") ? 
             <ButtonsContainer>
                 <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
                 <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>

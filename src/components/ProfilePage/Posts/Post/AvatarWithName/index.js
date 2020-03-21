@@ -6,6 +6,7 @@ const Img = styled.img`
     border-radius : 999px;
     width : 40px;
     height : 40px;
+    cursor : pointer;
     ${breakpoint.tb`
         width : 30px;
         height : 30px;
@@ -28,6 +29,10 @@ const Name = styled.span`
     font-size : 20px;
     font-weight : 600;
     color : black;
+    cursor : pointer;
+    &:hover{
+        text-decoration : underline;
+    }
     ${breakpoint.tb`
         font-size : 16px;
     `}
@@ -76,12 +81,15 @@ function AvatarWithName(props) {
         
         props.isDelete();
     }
+    const goToUserProfile = () =>{
+        window.location.assign(`/profile/${props.userID}`)
+    }
 
     return (
         <RowCenter>
             <div style = {{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-            <Img src = {props.avatar} />
-            <Name>{props.name}</Name>
+            <Img onClick = {goToUserProfile}  src = {props.avatar} />
+            <Name onClick = {goToUserProfile}>{props.name}</Name>
             {props.userID === localStorage.getItem("hiec_user_id") ?
                         <div onClick={deletePost}>
                             <IconTrash className="fas fa-trash"></IconTrash>

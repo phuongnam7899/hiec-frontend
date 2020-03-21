@@ -77,7 +77,7 @@ function HookNavBar(props) {
                                 <FlexGrow grow={66} >
                                     <Ul>
                                         <Li>
-                                            <NavBarLink to="/" exact activeStyle={styleActiveLink} >Trang Chủ</NavBarLink>
+                                            <NavBarLink  to="/" exact activeStyle={styleActiveLink} >Trang Chủ</NavBarLink>
                                         </Li>
                                         <Li>
                                             <NavBarLink to="/news" activeStyle={styleActiveLink} >Tin Tức</NavBarLink>

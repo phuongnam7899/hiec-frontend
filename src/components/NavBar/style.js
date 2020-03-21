@@ -50,7 +50,7 @@ export const Ul = styled.ul`
 
 export const Li = styled.li`
     display : block;
-    margin : auto 32px;
+    margin : auto 16px;
 `;
 
 export const Options = styled.div`
@@ -87,36 +87,24 @@ export const LiOptions = styled.div`
 
 export const OptionLink = styled(NavLink)`
     padding : 8px 32px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color  : ${props => props.theme.darkMode?'black':"white"};
 
-    ${props => props.theme.darkMode ? {
-        color: "black",
-        textDecoration: "none",
-        fontWeight: "bold",
-        fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-        ":hover": {
-            color: "white",
-        }
-    } : {
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-            fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-
-        }}
 `
 export const NavBarLink = styled(NavLink)`
-        
-        ${props => props.theme.darkMode ? {
-        color: "white",
-        textDecoration: "none",
-        fontWeight: "bold",
-        fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-    } : {
-            color: "black",
-            textDecoration: "none",
-            fontWeight: "bold",
-            fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-        }}
+    text-decoration: none;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color  : ${props => props.theme.darkMode?'white':"black"};
+    transition : 0.1s all;
+    &:hover{
+        color : #37A28D
+    }
+    
+
+      
 `
 
 
@@ -145,18 +133,18 @@ padding : 8px 32px;
 cursor : pointer;
 
 ${props => props.theme.darkMode ? {
-    color: "black",
-    textDecoration: "none",
-    fontWeight: "bold",
-    fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-    ":hover": {
-        color: "white",
-    }
-} : {
-        color: "white",
+        color: "black",
         textDecoration: "none",
         fontWeight: "bold",
         fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+        ":hover": {
+            color: "white",
+        }
+    } : {
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+            fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 
-    }}
+        }}
 `

@@ -118,10 +118,11 @@ const Forum = props => {
           toHref="/forum"
         />
       </OneNews>
-      <ButtonsContainer>
-        <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
-        <ButtonGreen to="/sign-in">Đăng nhập</ButtonGreen>
-      </ButtonsContainer>
+      {!localStorage.getItem("hiec_user_token") ? 
+            <ButtonsContainer>
+                <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
+                <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>
+            </ButtonsContainer> : null }
     </ForumContainer>
   );
 };

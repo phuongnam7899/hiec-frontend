@@ -149,6 +149,7 @@ function Post(props) {
     const showDialogDelete = () =>{
         setDialog(true);
     }
+   
 
 
     return (
@@ -161,7 +162,7 @@ function Post(props) {
 
                     {/* <More to={}> */}
                     <PostForm >
-                        <AvatarWithName isDelete={showDialogDelete} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
+                        <AvatarWithName  isDelete={showDialogDelete} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
                         <Tags onClick={goToPost} >
                             {tags.map(item => <Tag tag={item} />)}
                         </Tags >
