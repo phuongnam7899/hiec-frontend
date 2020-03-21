@@ -56,7 +56,7 @@ const IconTrash = styled.i`
         font-size : 12px;
     `}
     &:hover{
-        color : #37A28D;
+        color : #a24d37;
     }
 
 `
@@ -79,7 +79,7 @@ function AvatarWithName(props) {
 
     return (
         <RowCenter>
-            <div style = {{display:"flex",alignItems:"center"}}>
+            <div style = {{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
             <Img src = {props.avatar} />
             <Name>{props.name}</Name>
             {props.userID === localStorage.getItem("hiec_user_id") ?

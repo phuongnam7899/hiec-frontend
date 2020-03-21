@@ -35,6 +35,7 @@ const Title = styled.div`
     font-weight: bold;
     margin-bottom : 20px;
     max-width : 90%;
+    font-size : 18px;
     overflow-wrap : break-word;
     ${breakpoint.tb`
     & >span{
@@ -108,7 +109,7 @@ function Post(props) {
             finalContent = finalContent + " " + current.textContent;
         }
     }
-    finalContent = finalContent.slice(0, 150);
+    finalContent = finalContent.slice(0, 150) + "...";
 
 
     const deletePost = async (e) => {

@@ -71,7 +71,7 @@ const Head = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: ${convert2vw(20,"px",0.4)};
+  font-size: ${convert2vw(18,"px",0.4)};
   max-width: 80%;
   margin-bottom: 4px;
   overflow-wrap: break-word;

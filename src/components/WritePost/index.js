@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
+
 import styled from "styled-components";
 import Select from "react-select";
 import Dialog from "../YesNoDialog";
@@ -42,7 +44,7 @@ const StyledQuill = styled(ReactQuill)`
     min-height: 55vh;
     font-size : 1.1rem;
     ${breakpoint.ml`
-    font-size : 0.6rem;
+    font-size : 1rem;
   `}
   }
   & code {
@@ -75,7 +77,7 @@ const Main = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   padding: 6px 12px;
   margin-bottom: 8px;
   border-radius: 5px;
@@ -277,6 +279,7 @@ const WritePost = props => {
           })}
         </TagContainer>
         <StyledQuill
+        theme = "bubble"
           value={postContent}
           onChange={handleContentChange}
           modules={WritePost.modules}

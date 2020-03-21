@@ -22,14 +22,14 @@ const Page = styled.div`
 `
 
 const RightContent = styled.div`
-     width : 35%;
+     width : 25%;
      ${breakpoint.tb`
         width : 100%
      `}
 
 `
 const LeftContent = styled.div`
-    width : 60%;
+    width : 70%;
     ${breakpoint.tb`
     width : 100%
     `}
