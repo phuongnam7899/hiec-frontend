@@ -31,6 +31,7 @@ const WritePostContainer = styled.div`
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
+  border : 1px solid #ffffff;
   margin-top: 16px;
     position : relative;
   & .ql-toolbar {
