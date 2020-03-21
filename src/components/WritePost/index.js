@@ -32,7 +32,12 @@ const WritePostContainer = styled.div`
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
   margin-top: 16px;
+    position : relative;
   & .ql-toolbar {
+    background : #ffffff;
+    position : sticky;
+    z-index : 1;
+    top : 75px;
     display: flex;
     justify-content: space-around;
     ${breakpoint.ml`
@@ -159,6 +164,7 @@ tagOptions.sort((currentTag, nextTag) => {
 });
 // console.log(tagOptions);
 const WritePost = props => {
+  const [editorHeight, setEditorHeight] = useState(400)
   const { onTurnOffWritePost, visible } = props;
   const [postContent, setPostContent] = useState("");
   const [tags, setTags] = useState([]);
@@ -166,10 +172,17 @@ const WritePost = props => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    // console.log(tags);
+
+    
   }, [tags, postContent]);
   const handleContentChange = newText => {
     setPostContent(newText);
+    const height = document.getElementsByClassName("ql-editor")[0].clientHeight;
+    document.getElementsByTagName("html")[0].scrollTop += (height - editorHeight);
+    setEditorHeight(height);
+    // document.scrollTop += (height - editorHeight) * 20;
+    console.log("a : " + document.getElementsByTagName("html")[0].scrollTop);
+
   };
   const handlePostTitleChange = (e) => {
       const newTitle = e.target.value;
