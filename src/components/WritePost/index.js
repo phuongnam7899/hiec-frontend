@@ -279,7 +279,7 @@ const WritePost = props => {
           })}
         </TagContainer>
         <StyledQuill
-        theme = "bubble"
+        // theme = {window.innerWidth > 768 : "bubble"}
           value={postContent}
           onChange={handleContentChange}
           modules={WritePost.modules}
