@@ -43,10 +43,10 @@ const Title = styled.div`
     `}
     ${breakpoint.ml`
     max-width : 100%;
-    margin-bottom : 10px;
+    margin-bottom : 14px;
     & >span{
         font-size : 14px;
-        line-height : 1.6;
+        line-height : 80%;
     }
     `}
 
@@ -56,7 +56,7 @@ const Content = styled.div`
     color: black;
     overflow-wrap : break-word;
     ${breakpoint.ml`
-        font-size : 16px;
+        font-size : 12px;
         margin-bottom : 10px;
     `}
 `

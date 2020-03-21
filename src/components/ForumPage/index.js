@@ -164,8 +164,12 @@ function ForumPage(props) {
             <RightContent>
             {window.innerWidth<1000?<ButtonWrite />:<></>}
             <SearchBar onSearch = {handleSearch}/>
+            {window.innerWidth>768?
+            <>  
             <HotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />
             <HotRecentForm url ="/forum/" title = "Bài viết gần đây" icon = "fas fa-clock" listPost = {recentPosts} />
+                </>:null
+        }
             </RightContent>
         </Page>
         </Container>

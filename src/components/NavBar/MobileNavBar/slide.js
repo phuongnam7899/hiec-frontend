@@ -7,7 +7,17 @@ import { saveUser, deleteUser } from "../../../actions/user"
 import { addToken, deleteToken } from "../../../actions/token"
 import { NavLink } from 'react-router-dom';
 
+const BackgroundNav = styled.div.attrs(props => ({
+    visible: props.visible || false,
+}))`
+    
+    position : fixed;
+    z-index : 9999;
+    width : ${props => props.visible?"100vw":"0px"};
+    height : 100vh;
+    background-color : rgba(1,1,1,0.6);
 
+`
 const SlideGround = styled.div.attrs(props => ({
     visible: props.visible || false,
 }))`
@@ -22,7 +32,7 @@ const SlideGround = styled.div.attrs(props => ({
         width: 40vw;
     `}
     ${breakpoint.ml`
-    width: 100vw;
+        width: 70vw;
     `}
 
 `
@@ -101,10 +111,12 @@ function Slide(props) {
         window.location.assign(link)
     }
     const setVisible = (e) => {
+        e.stopPropagation();
         props.offVisible(e);
     }
 
     return (
+        <BackgroundNav visible={props.visible}>
         <SlideGround visible={props.visible}>
             {token.token?
             <AvaNameBlock onClick={() => { goToLink("/profile/" + user._id) }}>
@@ -138,6 +150,7 @@ function Slide(props) {
                 <Logo onClick={() => { goToLink("/") }} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
             </div>
         </SlideGround>
+        </BackgroundNav>
     )
 }
 
