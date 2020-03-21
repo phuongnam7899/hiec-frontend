@@ -5,8 +5,8 @@ import convert2vw from "../../../utils/convert2vw"
 import {breakpoint} from "../../../styles/mixin"
 
 const Title = styled.h1`
-    font-size : 72px;
-    font-weight : 700;
+    font-size : 80px;
+    font-weight : 300;
     text-align : center;
     ${breakpoint.ml`
     font-size : 30px;
@@ -17,7 +17,7 @@ const Description = styled.p`
     font-size : 22px;
     margin : 52px 0px;
     text-align : center;
-    font-weight : 500;
+    font-weight : 200;
     ${breakpoint.ml`
     font-size : 16px;
     max-width : 75%;
@@ -66,7 +66,7 @@ const Button = styled(NavLink)`
     padding : 4px 10px;
     border : none;
     font-size : 24px;
-    font-weight : 900;
+    font-weight : 600;
     &:hover {
         transform : scale(1.02)
     }
@@ -79,13 +79,13 @@ const Button = styled(NavLink)`
 `}
 `
 const ButtonRed = styled(Button)`
-    background-color : #D06145;
+    background-color : #a24d37;
         &:hover {
             background-color: #c25a40;
         }
 `
 const ButtonGreen = styled(Button)`
-    background-color : #45D0B6;
+    background-color : #37a28d;
     &:hover {
         background-color: #3fbfa7;
     }
@@ -97,15 +97,17 @@ const goToLink = (href) => {
 
 const Banner = (props) => {
 
-
+    const descriptionContent = localStorage.getItem("hiec_user_token") ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien." : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien."
     return(
         <BannerContainer>
             <Title>Beyond the infinity</Title>
-            <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien.</Description>
+
+    <Description>{descriptionContent}</Description>
+            {localStorage.getItem("hiec_user_token") ? 
             <ButtonsContainer>
                 <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
                 <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>
-            </ButtonsContainer>
+            </ButtonsContainer> : null }
         </BannerContainer>
     )
 }

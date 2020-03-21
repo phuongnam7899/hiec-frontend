@@ -109,7 +109,10 @@ const News = () => {
   }
   const convertDate = (dateNumber) => {
     const timeConverted = new Date(Number(dateNumber));
-    const dateString = timeConverted.toLocaleString().split(",")[1]
+    const day = timeConverted.getDate();
+    const month = timeConverted.getMonth() + 1;
+    const year = timeConverted.getFullYear();
+    const dateString = `${day}/${month}/${year}`
     // console.log(dateString)
     return dateString
   }

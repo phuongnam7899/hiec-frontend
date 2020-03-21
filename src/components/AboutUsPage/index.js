@@ -69,7 +69,7 @@ const Title = styled.h2`
 `;
 
 const VisionTitle = styled(Title)`
-  align-self: "center";
+  align-self: center;
   margin-bottom: ${convert2vw(35, "vh", -10)};
 ${breakpoint.ml`
     margin-bottom : 10vh;
@@ -190,12 +190,12 @@ const Footer = styled.div`
     text-align: center;
   }
   & a {
-    color: #222222;
+    color: #ffffff;
     text-decoration: none;
     &:hover {
       color: #f2f065;
     }
-  };
+  }
   ${
     breakpoint.ml`
     color : #222222;

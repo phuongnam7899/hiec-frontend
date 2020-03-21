@@ -25,7 +25,8 @@ const NewsContainer = styled(NavLink)`
   }
   ${breakpoint.ml`
     flex-direction : column;
-    height : 90vh;
+    height : 55vh;
+    justify-content : flex-start;
   `}
 `;
 
@@ -41,7 +42,7 @@ const Image = styled.img`
   margin-right: ${convert2vw(0)};
   ${breakpoint.ml`
   width : 100%;
-  height: calc(40% - (4.25px - 1vw)*50) ;
+  height: calc(50% - (4.25px - 1vw)*50) ;
 `}
 `;
 
@@ -53,6 +54,8 @@ const Info = styled.div`
   justify-content : space-between;
   ${breakpoint.ml`
   width : 100%;
+  justify-content : space-around;
+
 `}
 `
 
@@ -70,7 +73,7 @@ const Head = styled.div`
 const Title = styled.h1`
   font-size: ${convert2vw(20,"px",0.4)};
   max-width: 80%;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
   overflow-wrap: break-word;
   ${breakpoint.ml`
   font-size: 16px;
@@ -85,7 +88,7 @@ const DateString = styled.span`
   color: #888787;
   ${breakpoint.ml`
   font-size: 12px;
-
+display : none;
     `}
 `;
 
@@ -99,6 +102,7 @@ const Content = styled.div`
   max-width: 100%;
   ${breakpoint.ml`
   font-size: 13px;
+  display : none;
     `}
 `;
 
@@ -124,12 +128,15 @@ const Arrow = styled.i`
 `;
 
 const News = props => {
-  const convertDate = dateNumber => {
-    const timeConverted = new Date(dateNumber);
-    const dateString = timeConverted.toLocaleString().split(",")[1];
+  const convertDate = (dateNumber) => {
+    const timeConverted = new Date(Number(dateNumber));
+    const day = timeConverted.getDate();
+    const month = timeConverted.getMonth() + 1;
+    const year = timeConverted.getFullYear();
+    const dateString = `${day}/${month}/${year}`
     // console.log(dateString)
-    return dateString;
-  };
+    return dateString
+  }
   const {
     viewer,
     clap,
@@ -161,7 +168,7 @@ const News = props => {
       demoContent = demoContent + " " + current.textContent;
     }
   }
-  demoContent = demoContent.slice(0, 150) + "...";
+  demoContent = demoContent.slice(0, 130) + "...";
 
   return (
     <NewsContainer to={`/${category}/${_id}`}>

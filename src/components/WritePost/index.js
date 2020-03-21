@@ -19,7 +19,7 @@ const WritePostContainer = styled.div`
     ${breakpoint.tb`
       width : 100%;
     `}
-    box-shadow : 0px 0px 5px #8a8a8a;
+    box-shadow : 0px 0px 5px #cccccc;
     margin-bottom : 20px;
     z-index : 11;
     // & *{
@@ -40,6 +40,7 @@ const StyledQuill = styled(ReactQuill)`
   }
   & .ql-editor {
     min-height: 55vh;
+    font-size : 1.1rem;
     ${breakpoint.ml`
     font-size : 0.6rem;
   `}
@@ -157,7 +158,7 @@ tagOptions.sort((currentTag, nextTag) => {
 // console.log(tagOptions);
 const WritePost = props => {
   const { onTurnOffWritePost, visible } = props;
-  const [postContent, setPostContent] = useState("<h1>Hello</h1>");
+  const [postContent, setPostContent] = useState("");
   const [tags, setTags] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -250,8 +251,8 @@ const WritePost = props => {
       <Main>
         <Input
           onChange = {handlePostTitleChange}
-          maxLength="70"
-          placeholder="Tiêu đề bài viết (Tối đa 70 kí tự)"
+          maxLength="90"
+          placeholder="Tiêu đề bài viết (Tối đa 90 kí tự)"
           value = {postTitle}
         />
         <Select
@@ -289,11 +290,9 @@ const WritePost = props => {
 
 WritePost.modules = {
   toolbar: [
-    [{ header: "1" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "blockquote", "code"],
+    ["bold", "italic", "underline"],["blockquote", "code"],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["link", "image", "video"]
+    ["link"], ["image", "video"]
   ]
 };
 
@@ -306,6 +305,7 @@ WritePost.formats = [
   "underline",
   "blockquote",
   "bullet",
+  "list",
   "indent",
   "link",
   "image",
