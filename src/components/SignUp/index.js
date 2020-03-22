@@ -11,6 +11,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar'
 const Background = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content:center;
   max-width: 100vw;
   max-height : 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -48,7 +49,7 @@ const Button = styled.button`
   border: none;
   border-radius: 6px;
   padding: 6px 18px;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   margin-top: 16px;
   margin-bottom: 10px;
@@ -101,35 +102,26 @@ const Center = styled.div`
 const SignUp = styled.div`
   font-weight: bold;
   color: #5e5e5e;
+  margin-top: 15px;
+  font-size: 14px;
   transition: ${props => props.theme.time};
 `;
 const Title = styled.span`
   color: ${props => props.theme.text};
   margin-bottom: 40px;
   font-weight: bolder;
-  font-size: 48px;
+  font-size: 32px;
   transition: ${props => props.theme.time};
   ${breakpoint.ml`
-        font-size:36px
+        font-size:24px
     `}
     ${breakpoint.ms`
-        font-size:28px
+        font-size:22px
     `}
 `;
-const TextOnImg = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  font-weight: bold;
-  font-size: 56px;
-  text-align: center;
-  transition: ${props => props.theme.time};
-  color: ${props => props.theme.textButton};
-`;
+
 const LogoOnImg = styled.img`
-  position: absolute;
+  position:absolute;
   top: 10px;
   right: 20px;
   font-weight: bolder;
@@ -137,40 +129,38 @@ const LogoOnImg = styled.img`
   font-size: 48px;
   cursor : pointer;
   width:60px;
-  height:auto
-`;
-
-const Background1 = styled.div.attrs(props => ({
-  width: props.width
-}))`
-  width: ${props => props.width};
-  position: relative;
-  transition: ${props => props.theme.time};
-  height: 100vh;
-  ${breakpoint.ml`
-        width : 0;
-        display:none;
+  height:auto;
+  ${breakpoint.tb`
+        width:40px
+    `}
+    ${breakpoint.ml`
+        width:30px
     `}
 `;
+
+
 const Background2 = styled.div.attrs(props => ({
   width: props.width
 }))`
   transition: ${props => props.theme.time};
-
+  width:30%;
   width: ${props => props.width};
   height: 100vh;
   display: flex;
+  position:relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.backgroundColor};
+  ${breakpoint.tb`
+        width : 60%;
+    `}
   ${breakpoint.ml`
         width : 100%;
     `}
+    
 `;
-const Box = styled.input`
-  display: none;
-`;
+
 const IMG = styled.img`
   width: 100%;
   height: 100vh;
@@ -273,8 +263,9 @@ function HookSignIn(props) {
     <ThemeProvider theme={theme}>
       {/* <div style={{ width: "100%", height: "100%" }}> */}
         <Background>
-          <Background2 width={100 - widthBackground1 + "%"}>
+          <Background2 >
             <Form onSubmit={submit}>
+            <LogoOnImg onClick = {goToHomepage}  src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
               <Title>Đăng Ký</Title>
               <InputGroup>
                 <span>Tên của bạn</span>
@@ -326,15 +317,11 @@ function HookSignIn(props) {
               </Center>
             </Form>
           </Background2>
-          <Background1 width={widthBackground1 + "%"}>
-            <IMG src={theme.ImageURL} />
-            <TextOnImg style={{}}>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </span>
-            </TextOnImg>
-            <LogoOnImg onClick = {goToHomepage}  src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
-          </Background1>
+         
+            
+            
+           
+         
         </Background>
       {/* </div> */}
       {/* <button onClick={() => setisDarkMode(!isDarkMode)}>MODE</button> */}
