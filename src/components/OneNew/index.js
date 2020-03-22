@@ -43,6 +43,7 @@ border-radius : 20px;
 `
 const Times = styled.span`
 text-align: center;
+margin-top : 10px;
     ${breakpoint.ml`
         font-size: 12px;
         max-width : 100%;
@@ -58,13 +59,13 @@ const Source = styled.div`
 `
 
 const RightSide = styled.div`
-    width : 35%;
+    width : 25%;
     ${breakpoint.tb`
     width : 100%
     `}
 `
 const Post = styled.div`
-    width: 60%;
+    width: 70%;
     padding:32px;
     margin-bottom : 12px;
     background: #ffffff;
@@ -136,9 +137,8 @@ const Content = styled.div`
 `
 const FirstLine = styled.div`
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items:center;
+    // align-items:center;
     flex-wrap : wrap;
     
 `

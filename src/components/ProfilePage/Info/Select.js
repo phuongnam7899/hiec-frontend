@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Select from "react-select";
+import { breakpoint } from "../../../styles/mixin";
 const Icon = styled.i`
   color: #37a28d;
 
@@ -17,6 +18,10 @@ const Input = styled(Select)`
   &:focus {
     outline: none;
   }
+  ${breakpoint.ml`
+    font-size : 14px;
+    width : 150px;
+`}
   ${props => {
     switch (props.size) {
       case "normal":
@@ -33,6 +38,9 @@ const Input = styled(Select)`
   transition: 0.1s all;
 `;
 const Span = styled.span`
+${breakpoint.ml`
+font-size : 14px;
+`}
   ${props => {
     switch (props.size) {
       case "normal":
@@ -43,6 +51,7 @@ const Span = styled.span`
                             font-weight : 400`;
     }
   }}
+
 `;
 
 const InputFunc = props => {

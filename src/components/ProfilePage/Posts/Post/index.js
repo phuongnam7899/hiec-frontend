@@ -35,6 +35,7 @@ const Title = styled.div`
     font-weight: bold;
     margin-bottom : 20px;
     max-width : 90%;
+    font-size : 18px;
     overflow-wrap : break-word;
     ${breakpoint.tb`
     & >span{
@@ -43,10 +44,10 @@ const Title = styled.div`
     `}
     ${breakpoint.ml`
     max-width : 100%;
-    margin-bottom : 10px;
+    margin-bottom : 14px;
     & >span{
         font-size : 14px;
-        line-height : 1.6;
+        line-height : 80%;
     }
     `}
 
@@ -56,7 +57,7 @@ const Content = styled.div`
     color: black;
     overflow-wrap : break-word;
     ${breakpoint.ml`
-        font-size : 16px;
+        font-size : 12px;
         margin-bottom : 10px;
     `}
 `
@@ -108,7 +109,7 @@ function Post(props) {
             finalContent = finalContent + " " + current.textContent;
         }
     }
-    finalContent = finalContent.slice(0, 150);
+    finalContent = finalContent.slice(0, 150) + "...";
 
 
     const deletePost = async (e) => {
@@ -148,6 +149,7 @@ function Post(props) {
     const showDialogDelete = () =>{
         setDialog(true);
     }
+   
 
 
     return (
@@ -160,7 +162,7 @@ function Post(props) {
 
                     {/* <More to={}> */}
                     <PostForm >
-                        <AvatarWithName isDelete={showDialogDelete} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
+                        <AvatarWithName  isDelete={showDialogDelete} avatar={avatar} name={name} postTime={postTime} userID={user._id} />
                         <Tags onClick={goToPost} >
                             {tags.map(item => <Tag tag={item} />)}
                         </Tags >

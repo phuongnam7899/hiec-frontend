@@ -10,18 +10,54 @@ const NewsContainer = styled(NavLink)`
   display: flex;
   text-decoration: none;
   color: #000000;
-  flex-direction: column;
   background: #ffffff;
   margin: 0px 0px 12px 0px;
   box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
-  padding: 30px 22px;
+  padding: 24px 16px;
+  height : ${convert2vw(40, "vh",10)};
+  justify-content : space-between;
   &:hover {
     h1,
     .more {
       color: #1abc9c;
+      
     }
   }
+  ${breakpoint.ml`
+    flex-direction : column;
+    height : 55vh;
+    justify-content : flex-start;
+  `}
 `;
+
+// const ImageContainer = styled.div`
+//   display: flex;
+//   max-width: 70%;
+//   flex-wrap: wrap;
+//   margin-bottom: 26px;
+// `;
+const Image = styled.img`
+  width: 33%;
+  height: 100% ;
+  margin-right: ${convert2vw(0)};
+  ${breakpoint.ml`
+  width : 100%;
+  height: 50% ;
+`}
+`;
+
+const Info = styled.div`
+  display : flex;
+  flex-direction : column;
+  width : 65%;
+  height : 100%;
+  justify-content : space-between;
+  ${breakpoint.ml`
+  width : 100%;
+  justify-content : space-around;
+
+`}
+`
 
 const Head = styled.div`
   display: flex;
@@ -30,56 +66,57 @@ const Head = styled.div`
   font-size: 20px;
   flex-direction : column;
   margin-bottom : 8px;
+  width : 100%;
     `}
 `;
 
 const Title = styled.h1`
-  font-size: 26px;
+  font-size: ${convert2vw(18,"px",0.4)};
   max-width: 80%;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
   overflow-wrap: break-word;
   ${breakpoint.ml`
-  font-size: 20px;
+  font-size: 16px;
   max-width: 100%;
 
     `}
 `;
 const DateString = styled.span`
   line-height: 2em;
-  font-size: 14px;
+  font-size: ${convert2vw(14,"px",0.4)};
   font-weight: 500;
   color: #888787;
+  ${breakpoint.ml`
+  font-size: 12px;
+display : none;
+    `}
 `;
 
 const TagsContainer = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: 28px;
 `;
 const Content = styled.div`
-  font-size: 18px;
+  font-size:  ${convert2vw(15,"px",0.5)};
   margin-bottom: 20px;
   max-width: 100%;
   ${breakpoint.ml`
-  font-size: 14px;
+  font-size: 13px;
+  display : none;
     `}
 `;
-const ImageContainer = styled.div`
-  display: flex;
-  max-width: 100%;
-  flex-wrap: wrap;
-  margin-bottom: 26px;
-`;
-const Image = styled.img`
-  width: 30%;
-  height: ${convert2vw(30, "vh")};
-  margin-right: ${convert2vw(18)};
-`;
+
 const Icons = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  & span{
+    font-size : 13px;
+    ${breakpoint.ml`
+    font-size: 12px;
+      `}
+  }
 `;
 const Arrow = styled.i`
   width: 10px;
@@ -91,12 +128,15 @@ const Arrow = styled.i`
 `;
 
 const News = props => {
-  const convertDate = dateNumber => {
-    const timeConverted = new Date(dateNumber);
-    const dateString = timeConverted.toLocaleString().split(",")[1];
+  const convertDate = (dateNumber) => {
+    const timeConverted = new Date(Number(dateNumber));
+    const day = timeConverted.getDate();
+    const month = timeConverted.getMonth() + 1;
+    const year = timeConverted.getFullYear();
+    const dateString = `${day}/${month}/${year}`
     // console.log(dateString)
-    return dateString;
-  };
+    return dateString
+  }
   const {
     viewer,
     clap,
@@ -128,10 +168,16 @@ const News = props => {
       demoContent = demoContent + " " + current.textContent;
     }
   }
-  demoContent = demoContent.slice(0, 150) + "...";
+  demoContent = demoContent.slice(0, 130) + "...";
 
   return (
     <NewsContainer to={`/${category}/${_id}`}>
+      {/* <ImageContainer> */}
+        {[...contentImage].slice(0, 1).map(img => {
+          return <Image src={img.src} />;
+        })}
+      {/* </ImageContainer> */}
+      <Info>
       <Head>
         <Title>{title}</Title>
         <DateString>{convertedDate}</DateString>
@@ -142,11 +188,6 @@ const News = props => {
         })}
       </TagsContainer>
       <Content>{demoContent}</Content>
-      <ImageContainer>
-        {[...contentImage].slice(0, 3).map(img => {
-          return <Image src={img.src} />;
-        })}
-      </ImageContainer>
       <Icons>
         <Icons>
           <IconWithNumber icon="fas fa-eye" number={viewer.length} />
@@ -159,6 +200,8 @@ const News = props => {
            
         </div>
       </Icons>
+      </Info>
+
     </NewsContainer>
   );
 };

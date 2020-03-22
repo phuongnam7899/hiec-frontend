@@ -61,6 +61,10 @@ ${breakpoint.ml`
 
 const Source = styled.div`
     font-weight:600;
+    cursor : pointer;
+    &:hover{
+        text-decoration : underline;
+    }
     ${breakpoint.ml`
         font-size: 12px;
     `}
@@ -206,7 +210,7 @@ function OnePost(props) {
     const [isClapped, setIsClapped] = useState(false)
     const [postID,setPostID] = useState("");
     const [number,setNumber] = useState(5);
-
+    const [postUserId,setPostUserId] = useState("");
     useEffect(() => {
         document.title = "HIEC - Diễn đàn"
          window.scrollTo(0,0)
@@ -237,6 +241,7 @@ function OnePost(props) {
                 }
             }
             setUserName(res.data.user.profile.name);  
+            setPostUserId(res.data.user._id)
             let getContent = document.getElementById("content");
             getContent.innerHTML += res.data.content;
             const date = new Date(res.data.postTime)
@@ -264,7 +269,7 @@ function OnePost(props) {
             }
 
         } catch (err) {
-            console.log("Hlel")
+            // console.log("Hlel")
             window.location.assign("/")
             console.log(err);   
         }
@@ -338,7 +343,10 @@ function OnePost(props) {
     const moreComment = ()=>{
         setNumber(number+5);
     }
-    console.log('render')
+    const goToUserProfile = () =>{
+        window.location.assign(`/profile/${postUserId}`)
+    }
+    // console.log('render')
     return (<Container>
         <Form>
             <Post>
@@ -349,7 +357,7 @@ function OnePost(props) {
                 <TagBlock>
                     {tags.map(tag => <Tag>{tag}</Tag>)}
                 </TagBlock>
-                <Source>Theo <b><i>{userName}</i></b></Source>
+                <Source onClick = {goToUserProfile}>Theo <b><i>{userName}</i></b></Source>
                 <Content id="content"></Content>
                 <Reaction>
                     <ReactArea onClick={clapping}>

@@ -110,7 +110,7 @@ const Footer = props => {
               <Title>Liên hệ</Title>
               <div>
                 <i class="fab fa-facebook"></i>
-                <a href="https://www.facebook.com/hiec.vn/">https://www.facebook.com/hiec.vn/</a>
+                <a href="https://www.facebook.com/hiec.vn/">Fb.com/hiec.vn</a>
               </div>
               <div>
                 <i class="fas fa-envelope"></i>

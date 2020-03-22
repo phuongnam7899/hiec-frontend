@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
+
 import styled from "styled-components";
 import Select from "react-select";
 import Dialog from "../YesNoDialog";
@@ -19,7 +21,7 @@ const WritePostContainer = styled.div`
     ${breakpoint.tb`
       width : 100%;
     `}
-    box-shadow : 0px 0px 5px #8a8a8a;
+    box-shadow : 0px 0px 5px #cccccc;
     margin-bottom : 20px;
     z-index : 11;
     // & *{
@@ -29,8 +31,14 @@ const WritePostContainer = styled.div`
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
+  border : 1px solid #ffffff;
   margin-top: 16px;
+    position : relative;
   & .ql-toolbar {
+    background : #ffffff;
+    position : sticky;
+    z-index : 1;
+    top : 75px;
     display: flex;
     justify-content: space-around;
     ${breakpoint.ml`
@@ -40,8 +48,9 @@ const StyledQuill = styled(ReactQuill)`
   }
   & .ql-editor {
     min-height: 55vh;
+    font-size : 1.1rem;
     ${breakpoint.ml`
-    font-size : 0.6rem;
+    font-size : 1rem;
   `}
   }
   & code {
@@ -74,7 +83,7 @@ const Main = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   padding: 6px 12px;
   margin-bottom: 8px;
   border-radius: 5px;
@@ -156,17 +165,25 @@ tagOptions.sort((currentTag, nextTag) => {
 });
 // console.log(tagOptions);
 const WritePost = props => {
+  const [editorHeight, setEditorHeight] = useState(400)
   const { onTurnOffWritePost, visible } = props;
-  const [postContent, setPostContent] = useState("<h1>Hello</h1>");
+  const [postContent, setPostContent] = useState("");
   const [tags, setTags] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    // console.log(tags);
+
+    
   }, [tags, postContent]);
   const handleContentChange = newText => {
     setPostContent(newText);
+    const height = document.getElementsByClassName("ql-editor")[0].clientHeight;
+    document.getElementsByTagName("html")[0].scrollTop += (height - editorHeight);
+    setEditorHeight(height);
+    // document.scrollTop += (height - editorHeight) * 20;
+    // console.log("a : " + document.getElementsByTagName("html")[0].scrollTop);
+
   };
   const handlePostTitleChange = (e) => {
       const newTitle = e.target.value;
@@ -209,7 +226,7 @@ const WritePost = props => {
           postTime : currentTimeMilis,
           title : postTitle,
           content : postContent,
-          token : localStorage.getItem("token")
+          token : localStorage.getItem("hiec_user_token")
         });
         // console.log(response)
         dispatch(hideLoading('sectionBar'))
@@ -250,8 +267,8 @@ const WritePost = props => {
       <Main>
         <Input
           onChange = {handlePostTitleChange}
-          maxLength="75"
-          placeholder="Tiêu đề bài viết (Tối đa 100 kí tự)"
+          maxLength="90"
+          placeholder="Tiêu đề bài viết (Tối đa 90 kí tự)"
           value = {postTitle}
         />
         <Select
@@ -276,6 +293,7 @@ const WritePost = props => {
           })}
         </TagContainer>
         <StyledQuill
+        // theme = {window.innerWidth > 768 : "bubble"}
           value={postContent}
           onChange={handleContentChange}
           modules={WritePost.modules}
@@ -289,11 +307,9 @@ const WritePost = props => {
 
 WritePost.modules = {
   toolbar: [
-    [{ header: "1" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "blockquote", "code"],
+    ["bold", "italic", "underline"],["blockquote", "code"],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["link", "image", "video"]
+    ["link"], ["image", "video"]
   ]
 };
 
@@ -305,8 +321,8 @@ WritePost.formats = [
   "italic",
   "underline",
   "blockquote",
-  "list",
   "bullet",
+  "list",
   "indent",
   "link",
   "image",

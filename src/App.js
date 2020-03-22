@@ -39,7 +39,7 @@ export default function App() {
   },[])
 
 
-  console.log(visible)
+  // console.log(visible)
   return (
     <Router>
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>

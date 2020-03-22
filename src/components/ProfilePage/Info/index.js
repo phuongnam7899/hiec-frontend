@@ -29,8 +29,10 @@ const Background = styled.div`
     ${breakpoint.ls`
         position : relative;
         top : 0;
-       
    `}
+    ${breakpoint.ml`
+        padding : 20px 14px;
+    `}
 
 `
 
@@ -80,6 +82,9 @@ const AvatarWithName = styled.div`
     & span {
         text-align : center;
     }
+    ${breakpoint.ml`
+        margin-bottom : 20px;
+    `}
 `
 const Button = styled.button`
     margin : 32px 0px;
@@ -98,9 +103,16 @@ const Button = styled.button`
         background-color : #37A28D;
         
     }
+    ${breakpoint.ml`
+        font-size : 16px;
+        margin: 16px 0px;
+        padding : 4px 10px;
+        border-radius : 5px;
+    `}
 `
 const I = styled.i`
     margin-left : 12px;
+ 
 `
 
 function Info() {
@@ -119,10 +131,10 @@ function Info() {
     const [isLoading,setIsLoading] = useState(false);
     const user = useSelector(state => state.user);
     useEffect(() => {
-        console.log("SHKCGJHGCHJGJ")
+        // console.log("SHKCGJHGCHJGJ")
         const regex = /profile/gi
         const idUser = window.location.pathname.replace(regex, "").split("/").join("");
-        axios.get(`/api/user/${localStorage.getItem("hiec_user_id")}?token=${localStorage.getItem("hiec_user_token")}`).then(res => {
+        axios.get(`/api/user/${idUser}?token=${localStorage.getItem("hiec_user_token")}`).then(res => {
             if (res.status === 200) {
                 const data = res.data;
                 const profile = data.profile;

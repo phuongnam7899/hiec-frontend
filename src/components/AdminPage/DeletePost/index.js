@@ -7,7 +7,7 @@ function DeletePost() {
     const ghimPost = async (e) =>{
         e.preventDefault();
         if(text){
-            console.log(text)
+            // console.log(text)
             try{
                 const res = await axios.delete("/api/news/"+text)
                 if(res.data._id === text){
