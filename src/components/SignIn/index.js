@@ -12,10 +12,13 @@ import { breakpoint } from '../../styles/mixin'
 
 
 const Background = styled.div`
-    width:100%;
-    
+    width:100vw;
+    height : 100vh;
+    background-image : url(https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-size : cover;
     display: flex;
     justify-content: center;
+    align-items : center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 const Form = styled.form`
@@ -30,7 +33,7 @@ const Email = styled.div`
 display: flex;
 flex-direction:column;
 margin: 10px 0px;
-font-size: 20px;
+font-size: 16px;
 width:100%;
 font-weight: 500;
 color:${props => props.theme.text};
@@ -41,7 +44,7 @@ const Button = styled.button`
     border:none;
     border-radius: 6px;
     padding: 12px 12px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     margin-top: 30px;
     margin-bottom:10px;
@@ -165,15 +168,14 @@ const Background2 = styled.div.attrs(props => ({
     urlImage: props.urlImage
 }))`
 transition: ${props => props.theme.time};
-background-image: url(${props => props.urlImage});
     width:30%;
     // width : ${props => props.width};
-    height:100vh;
+    height:90vh;
     display: flex;
     position:relative;
     justify-content:center;
     align-items:center;
-    background-color:${props => props.theme.backgroundColor};\
+    background-color: rgba(255,255,255);
     ${breakpoint.tb`
         width : 60%;
     `}

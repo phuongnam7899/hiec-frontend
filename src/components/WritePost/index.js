@@ -132,28 +132,16 @@ const Button = styled.button`
 
 const tagOptions = [
   {
-    value: "environment",
-    label: "Environment"
+    value: "bussiness",
+    label: "Kinh doanh"
   },
   {
     value: "technology",
-    label: "Technology"
+    label: "Công nghệ"
   },
   {
-    value: "ai",
-    label: "AI"
-  },
-  {
-    value: "iot",
-    label: "IoT"
-  },
-  {
-    value: "energy",
-    label: "Energy"
-  },
-  {
-    value: "innovation",
-    label: "Innovation"
+    value: "environment",
+    label: "Môi trường"
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {
@@ -307,9 +295,9 @@ const WritePost = props => {
 
 WritePost.modules = {
   toolbar: [
-    ["bold", "italic", "underline"],["blockquote", "code"],
+    ["bold"], ["italic"], ["underline"],["blockquote"], ["code"],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["link"], ["image", "video"]
+    ["link"], ["image"], ["video"]
   ]
 };
 

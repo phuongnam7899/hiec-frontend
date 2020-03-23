@@ -107,8 +107,7 @@ const Forum = props => {
     <ForumContainer>
       <Title to="/forum">Diễn Đàn</Title>
       <Description>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum
-        dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet
+      Chia sẻ, hỏi đáp, trao đổi về chủ đề kinh doanh - khởi nghiệp
       </Description>
       <OneNews>
         <ImageWithTitle

@@ -97,10 +97,10 @@ const goToLink = (href) => {
 
 const Banner = (props) => {
 
-    const descriptionContent = localStorage.getItem("hiec_user_token") ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien." : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dui hendrerit, luctus urna a, sagittis sapien."
+    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "adff" : "dfsdfds"
     return(
         <BannerContainer>
-            <Title>Beyond the infinity</Title>
+            <Title>Beyond the Infinity</Title>
 
     <Description>{descriptionContent}</Description>
             {!localStorage.getItem("hiec_user_token") ? 

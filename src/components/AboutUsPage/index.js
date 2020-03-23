@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import withNavAndFooter from "../HOC/withNavAndFooter";
 import { NavLink } from "react-router-dom";
@@ -10,6 +10,7 @@ AOS.init();
 
 const AboutUsPageContainer = styled.div`
   display: flex;
+  font-family: "Montserrat", sans-serif;
   flex-direction: column;
   max-width: 100vw;
   height: 300vw;
@@ -27,7 +28,7 @@ const OurStory = styled.div`
   flex-direction: column;
   // justify-content : center;
   align-items: flex-end;
-  margin-bottom: ${convert2vw(45, "vh", -10)};
+  margin-bottom: ${convert2vw(40, "vh", -10)};
   height: ${convert2vw(100, "vh")};
   ${breakpoint.ml`
   height : 100vh;
@@ -70,13 +71,13 @@ const Title = styled.h2`
 
 const VisionTitle = styled(Title)`
   align-self: center;
-  margin-bottom: ${convert2vw(35, "vh", -10)};
-${breakpoint.ml`
+  margin-bottom: ${convert2vw(30, "vh", -10)};
+  ${breakpoint.ml`
     margin-bottom : 10vh;
 `}
-`
+`;
 const Content = styled.p`
-  width: 40%;
+  width: 37%;
   overflow-wrap: break-word;
   text-align: justify;
   font-size: ${convert2vw(1.1, "em", 0.5)};
@@ -125,6 +126,7 @@ const Activity = styled.div`
   }
   & p {
     font-size: ${convert2vw(1, "em")};
+    height: 60%;
   }
   ${breakpoint.ml`
     width : 80%;
@@ -170,20 +172,16 @@ const Footer = styled.div`
     max-width: ${convert2vw(120)};
     margin-bottom: ${convert2vw(8, "vh")};
     max-height: ${convert2vw(120)};
-    ${
-      breakpoint.ml`
+    ${breakpoint.ml`
       min-width : 50px;
       min-height : 50px;
-      `
-    }
+      `}
   }
   & > p {
     margin-bottom: ${convert2vw(8, "vh")};
-    ${
-      breakpoint.ml`
+    ${breakpoint.ml`
       font-size : 0.9em;
-      `
-    }
+      `}
   }
   & ul {
     list-style-type: none;
@@ -196,36 +194,39 @@ const Footer = styled.div`
       color: #f2f065;
     }
   }
-  ${
-    breakpoint.ml`
+  ${breakpoint.ml`
     color : #222222;
     font-size : 0.9em;
-    `
-  }
+    `}
 `;
 const AboutUsPage = () => {
   useEffect(() => {
-    window.scrollTo(0,0);
-  })
+    document.title = "HIEC - Về chúng tôi";
+    window.scrollTo(0, 0);
+  });
   return (
     <AboutUsPageContainer>
       <OurStory data-aos="fade-left">
         <Logo>HIEC</Logo>
-        <Title>OUR STORY</Title>
+        <Title>GIỚI THIỆU CHUNG</Title>
         <Content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          efficitur tristique porttitor. Praesent justo odio, facilisis at
-          vulputate quis, scelerisque vitae lectus. Nam mi purus, ornare vitae
-          efficitur ac, hendrerit at orci.
+          Câu lạc bộ Khoa học sáng tạo & Khởi nghiệp (HUST Innovation &
+          Entrepreneurship Club - HIEC) trực thuộc Ban Học tập - Nghiên cứu Khoa
+          học của Đoàn thanh niên trường Đại học Bách Khoa Hà Nội với đội ngũ
+          thành viên bao gồm Ban cố vấn - những giảng viên giàu kinh nghiệm từ
+          trường Đại học Bách Khoa Hà Nội và các bạn sinh viên có đam mê, giàu
+          tiềm năng.
         </Content>
       </OurStory>
       <Intro>
-        <Title data-aos="fade-up">GIỚI THIỆU CHUNG</Title>
+        <Title data-aos="fade-up">SỨ MỆNH</Title>
         <Content data-aos="fade-up">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          efficitur tristique porttitor. Praesent justo odio, facilisis at
-          vulputate quis, scelerisque vitae lectus. Nam mi purus, ornare vitae
-          efficitur ac, hendrerit at orci.
+          HIEC ra đời với sứ mệnh xây dựng một cộng đồng ứng dụng khoa học sáng
+          tạo và kinh doanh - khởi nghiệp hướng đến các bạn sinh viên Việt Nam.
+          Từ đó, thế hệ trẻ có đủ tự tin và hành trang để biến ý tưởng trở thành
+          hiện thực, xây dựng một doanh nghiệp bền vững hàng đầu bằng chính tài
+          năng, sự trân trọng, trách nhiệm cao của mình và góp phần vào nền kinh
+          tế hội nhập.
         </Content>
       </Intro>
       <Title data-aos="fade-up" style={{ alignSelf: "center" }}>
@@ -235,52 +236,45 @@ const AboutUsPage = () => {
         <Activity data-aos="flip-left" data-aos-duration="1000">
           <h3>01 KẾT NỐI</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            efficitur tristique porttitor Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Mauris efficitur tristique porttitor
+            Là cầu nối những bạn trẻ có cùng đam mê, sở thích về kinh doanh - khởi
+            nghiệp - công nghệ, mang những ý tưởng sáng tạo đến gần hơn với
+            những tổ chức, doanh nghiệp
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="1500">
           <h3>02 ĐÀO TẠO</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            efficitur tristique porttitor Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Mauris efficitur tristique porttitor
+            Xây dựng những khóa học ngắn hạn bồi dưỡng kiến thức, kĩ năng về
+            nghiên cứu khoa học và kinh doanh.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="2000">
           <h3>03 HỖ TRỢ</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            efficitur tristique porttitor Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Mauris efficitur tristique porttitor
+            Cung cấp thiết bị, không gian sinh hoạt. Truyền cảm hứng sáng tạo,
+            thảo luận về những ý tưởng khoa học, kinh doanh.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="2500">
           <h3>04 ĐỊNH HƯỚNG</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            efficitur tristique porttitor Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Mauris efficitur tristique porttitor
+            Thành lập và hỗ trợ nhóm nghiên cứu, mô hình hóa ý tưởng và tham gia
+            thi đấu, giới thiệu đến các doanh nghiệp trong và ngoài trường.
           </p>
         </Activity>
       </Activities>
-      <VisionTitle
-        data-aos="fade-up"
-      >
-        TẦM NHÌN - SỨ MỆNH
-      </VisionTitle>
+      <VisionTitle data-aos="fade-up">TẦM NHÌN</VisionTitle>
       <Content
         data-aos="fade-right"
         style={{
           marginBottom: `calc(${convert2vw(45, "vh")} - (6.56px - 1vh) * 20)`
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        efficitur tristique porttitor. Praesent justo odio, facilisis at
-        vulputate quis, scelerisque vitae lectus. Nam mi purus, ornare vitae
-        efficitur ac, hendrerit at orci.. Praesent justo odio, facilisis at
-        vulputate quis, scelerisque vitae lectus.
+        HIEC mong muốn trở thành một tổ chức kiểu mới bằng sự sáng tạo và đổi
+        mới trong lĩnh vực Kinh doanh - Công nghệ, góp phần lan toả giá trị và
+        định hướng cho các bạn sinh viên Việt Nam nâng cao kỹ năng và kiến thức
+        chuyên môn để họ có thể phát triển bản thân tối đa, thành công trên lối
+        đi riêng và hiện thực hóa ý tưởng về khoa học - kinh doanh của mình.
       </Content>
       <Title
         data-aos="fade-up"
@@ -304,7 +298,7 @@ const AboutUsPage = () => {
           <li>Hotline : (+84)91 4351 643</li>
           <li>Email : clb.hiec@gmail.com</li>
           <li>
-            Page :{" "}
+            Fanpage :{" "}
             <a href="https://www.fb.com/hiec.vn/">
               https://www.fb.com/hiec.vn/
             </a>

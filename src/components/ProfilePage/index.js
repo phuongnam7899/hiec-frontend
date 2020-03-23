@@ -22,6 +22,7 @@ function HookProfilePage() {
     const dispatch = useDispatch();
    
     useEffect(() => {
+        document.title = "HIEC - Trang cá nhân"
         window.scrollTo(0,0)
         const id = window.localStorage.getItem("hiec_user_id");
         if(!id){

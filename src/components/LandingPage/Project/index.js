@@ -102,7 +102,7 @@ const Project = (props) => {
         <ProjectsContainer>
             <Title to="/project">Dự Án</Title>
             <Description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              {/* Thông tin về  các dự án đã, đang và sẽ  */}
             </Description>
             {hotNews.slice(0, 3).map((oneNew,index) => {
                 const {text, imgs} = getTextAndImg(oneNew.content)
