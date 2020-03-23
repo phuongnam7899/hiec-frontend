@@ -81,28 +81,16 @@ const Tag = styled.div`
 
 const tagOptions = [
   {
-    value: "environment",
-    label: "Environment"
+    value: "bussiness",
+    label: "Kinh doanh"
   },
   {
     value: "technology",
-    label: "Technology"
+    label: "Công nghệ"
   },
   {
-    value: "ai",
-    label: "AI"
-  },
-  {
-    value: "iot",
-    label: "IoT"
-  },
-  {
-    value: "energy",
-    label: "Energy"
-  },
-  {
-    value: "innovation",
-    label: "Innovation"
+    value: "environment",
+    label: "Môi trường"
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {

@@ -142,6 +142,34 @@ const tagOptions = [
   {
     value: "environment",
     label: "Môi trường"
+  },
+  {
+    value: "ai",
+    label: "Trí tuệ nhân tạo"
+  },
+  {
+    value: "ask",
+    label: "Hỏi đáp"
+  },
+  {
+    value: "bigdata",
+    label: "Big Data"
+  },
+  {
+    value: "blockchain",
+    label: "Blockchain"
+  },
+  {
+    value: "contest",
+    label: "Cuộc thi"
+  },
+  {
+    value: "design",
+    label: "Thiết kế"
+  },
+  {
+    value: "education",
+    label: "Giáo dục"
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {
