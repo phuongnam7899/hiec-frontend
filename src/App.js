@@ -20,6 +20,7 @@ import AbouUsPage from "./components/AboutUsPage"
 import LoadingBar from './components/LoadingBar'
 import AdminPage from './components/AdminPage'
 import ScrollTopButton from './components/ScrollTopButton'
+import NotFoundPage from './components/404notFound'
 
 export default function App() {
   const visible = useSelector(state=>state.notificationBox.visible)
@@ -42,9 +43,10 @@ export default function App() {
   // console.log(visible)
   return (
     <Router>
+      
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
       <LoadingBar/>
-      {user.isAdmin?<Route path = "/admin" exact component = {AdminPage}/>:<></>}
+      <Route path = "/admin" exact component = {AdminPage}/>
       <Route path= "/" exact  component = {LandingPage} />
       <Route path= "/forum" exact  component = {ForumPage} />
       <Route path= "/profile/:id" exact  component = {ProfilePage} />
@@ -56,9 +58,11 @@ export default function App() {
       <Route path= "/about-us" exact component = {AbouUsPage}/>
       <Route path= "/news" exact  render = {() => <NewsPage/> } />
       <Route path= "/project" exact  render = {() => <NewsPage/> } />
-      <Route path= "/change-password"  render = {() => <ChangePasswordPage/> } />
+      <Route path= "/change-password" exact render = {() => <ChangePasswordPage/> } />
+      <Route path = "/404-not-found" exact render = {()=><NotFoundPage/>}/>
       {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
       <ScrollTopButton />
+      
     </div>
     </Router>
   )

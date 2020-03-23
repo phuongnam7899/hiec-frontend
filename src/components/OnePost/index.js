@@ -215,7 +215,7 @@ function OnePost(props) {
         document.title = "HIEC - Diễn đàn"
          window.scrollTo(0,0)
         if (!localStorage.getItem("hiec_user_id")) {
-            props.history.push("/sign-in");
+            window.location.assign("/sign-in");
         }
         getPost()
   
@@ -248,7 +248,6 @@ function OnePost(props) {
             setDay(date.getDate())
             setMonth(date.getMonth() + 1);
             setYear(date.getFullYear())
-
             const addView = await axios.put("/api/post/add-view",{
                 postID : res.data._id,
                 userID : localStorage.getItem("hiec_user_id"),
@@ -270,7 +269,7 @@ function OnePost(props) {
 
         } catch (err) {
             // console.log("Hlel")
-            window.location.assign("/")
+            window.location.assign("/404-not-found")
             console.log(err);   
         }
     }
