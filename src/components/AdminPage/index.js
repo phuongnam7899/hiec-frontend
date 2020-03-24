@@ -50,7 +50,7 @@ function AdminPage() {
     }
     useEffect(() => {
         if (!user.isAdmin) {
-            window.location.assign("/");
+            return window.location.assign("/404-not-found");
         }
     }, [])
 
@@ -62,7 +62,8 @@ function AdminPage() {
             turnOnWritePost();
         }
     }
-    return (
+    return (<>
+        {user._id?
         <Container>
         <Background>
            <TitleFunc>Tạo Bài Viết Mới</TitleFunc>
@@ -73,8 +74,9 @@ function AdminPage() {
             <TitleFunc>Xóa Bài Viết</TitleFunc>
             <DeletePost/>
         </Background>
-        </Container>
-
+        </Container>:null
+        }
+    </>
     )
 }
 

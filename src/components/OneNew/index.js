@@ -203,6 +203,7 @@ function OneNew(props) {
             }
 
         } catch (err) {
+            window.location.assign("/404-not-found")
             console.log(err)
         }
     }
