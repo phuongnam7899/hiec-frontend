@@ -14,9 +14,10 @@ import { breakpoint } from "../../styles/mixin";
 
 const WritePostContainer = styled.div`
     position : relative;
-    // left : 50vw;
-    // top : 10vh;
-    // transform : translate(-50%, 0%);
+    & .css-2b097c-container{
+      position : relative;
+      z-index : 2;
+    }
     width : 50vw;
     ${breakpoint.tb`
       width : 100%;
@@ -24,10 +25,6 @@ const WritePostContainer = styled.div`
     box-shadow : 0px 0px 5px #cccccc;
     margin-bottom : 20px;
     z-index : 11;
-    // & *{
-    //   z-index : 11;
-    // }
-    // background-color : black;
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
