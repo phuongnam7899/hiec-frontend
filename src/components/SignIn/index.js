@@ -14,7 +14,7 @@ import { breakpoint } from '../../styles/mixin'
 const Background = styled.div`
     width:100vw;
     height : 100vh;
-    background-image : url(https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-image : url(https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/90562646_1075816319441988_977627847554236416_n.png?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeGKhol9vjQ0JdXo919JEjxgJv-Ros0l63xNJC4tNCzePOm1CtTDXrLEjBOeieYFOs37On4OmshHP0w0x_6nf3H0cnCIgtzYrE_cprmU_KceQw&_nc_ohc=e6PE5cLz_skAX-94E5d&_nc_ht=scontent.fsgn2-2.fna&oh=94f8d9960434a4d55f2e76dd52cd452b&oe=5E9DE67E);
     background-size : cover;
     display: flex;
     justify-content: center;

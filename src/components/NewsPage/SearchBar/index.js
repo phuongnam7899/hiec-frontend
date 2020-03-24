@@ -91,7 +91,99 @@ const tagOptions = [
   {
     value: "environment",
     label: "Môi trường"
-  }
+  },
+  {
+    value: "ai",
+    label: "Trí tuệ nhân tạo"
+  },
+  {
+    value: "ask",
+    label: "Hỏi đáp"
+  },
+  {
+    value: "bigdata",
+    label: "Big Data"
+  },
+  {
+    value: "blockchain",
+    label: "Blockchain"
+  },
+  {
+    value: "contest",
+    label: "Cuộc thi"
+  },
+  {
+    value: "design",
+    label: "Thiết kế"
+  },
+  {
+    value: "education",
+    label: "Giáo dục"
+  },
+  {
+    value: "tips",
+    label: "Mẹo"
+  },
+  {
+    value: "energy",
+    label: "Năng lượng"
+  },
+  {
+    value: "entertainment",
+    label: "Giải trí"
+  },
+  {
+    value: "finance",
+    label: "Tài chính"
+  },
+  {
+    value: "fintech",
+    label: "Fintech"
+  },
+  {
+    value: "food&drink",
+    label: "Ăn uống"
+  },
+  {
+    value: "games",
+    label: "Games"
+  },
+  {
+    value: "healthcare",
+    label: "Chăm sóc sức khỏe"
+  },
+  {
+    value: "hiec",
+    label: "HIEC"
+  },
+  {
+    value: "invest",
+    label: "Đầu tư"
+  },
+  {
+    value: "iot",
+    label: "Internet of Things"
+  },
+  {
+    value: "marketing",
+    label: "Marketing"
+  },
+  {
+    value: "media",
+    label: "Media"
+  },
+  {
+    value: "realestate",
+    label: "Bất động sản"
+  },
+  {
+    value: "retail",
+    label: "Bán lẻ"
+  },
+  {
+    value: "talk",
+    label: "Tâm sự - chém gió"
+  },
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();
