@@ -129,116 +129,117 @@ const Button = styled.button`
 
 const tagOptions = [
   {
-    value: "bussiness",
+    value: "Bussiness",
     label: "Kinh doanh"
   },
   {
-    value: "technology",
+    value: "Technology",
     label: "Công nghệ"
   },
   {
-    value: "environment",
+    value: "Environment",
     label: "Môi trường"
   },
   {
-    value: "ai",
+    value: "Ai",
     label: "Trí tuệ nhân tạo"
   },
   {
-    value: "ask",
+    value: "Ask",
     label: "Hỏi đáp"
   },
   {
-    value: "bigdata",
+    value: "Bigdata",
     label: "Big Data"
   },
   {
-    value: "blockchain",
+    value: "Blockchain",
     label: "Blockchain"
   },
   {
-    value: "contest",
+    value: "Contest",
     label: "Cuộc thi"
   },
   {
-    value: "design",
+    value: "Design",
     label: "Thiết kế"
   },
   {
-    value: "education",
+    value: "Education",
     label: "Giáo dục"
   },
   {
-    value: "tips",
+    value: "Tips",
     label: "Mẹo"
   },
   {
-    value: "energy",
+    value: "Energy",
     label: "Năng lượng"
   },
   {
-    value: "entertainment",
+    value: "Entertainment",
     label: "Giải trí"
   },
   {
-    value: "finance",
+    value: "Finance",
     label: "Tài chính"
   },
   {
-    value: "fintech",
+    value: "Fintech",
     label: "Fintech"
   },
   {
-    value: "food&drink",
+    value: "Food&Drink",
     label: "Ăn uống"
   },
   {
-    value: "games",
+    value: "Games",
     label: "Games"
   },
   {
-    value: "healthcare",
+    value: "Healthcare",
     label: "Chăm sóc sức khỏe"
   },
   {
-    value: "hiec",
+    value: "Hiec",
     label: "HIEC"
   },
   {
-    value: "invest",
+    value: "Invest",
     label: "Đầu tư"
   },
   {
-    value: "iot",
+    value: "Iot",
     label: "Internet of Things"
   },
   {
-    value: "marketing",
+    value: "Marketing",
     label: "Marketing"
   },
   {
-    value: "media",
+    value: "Media",
     label: "Media"
   },
   {
-    value: "realestate",
+    value: "RealEstate",
     label: "Bất động sản"
   },
   {
-    value: "retail",
+    value: "Retail",
     label: "Bán lẻ"
   },
   {
-    value: "talk",
+    value: "SideTalk",
     label: "Tâm sự - chém gió"
   },
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();
   const nextValue = nextTag.label.toLocaleUpperCase();
-  if (currentValue < nextValue) return -1;
-  else if (currentValue > nextValue) return 1;
-  else return 0;
+  // if (currentValue < nextValue) return -1;
+  // else if (currentValue > nextValue) return 1;
+  // else return 0;
+  return currentValue.localeCompare(nextValue);
 });
 // console.log(tagOptions);
 const WritePost = props => {

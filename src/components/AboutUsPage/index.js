@@ -144,6 +144,7 @@ const Activity = styled.div`
 const Partners = styled(Activities)`
   padding: 0 ${convert2vw(64)};
   margin-bottom: ${convert2vw(18, "vh")};
+  justify-content: space-around;
   ${breakpoint.ml`
   justify-content : space-between;
   margin-bottom: 15vh;
@@ -151,10 +152,10 @@ const Partners = styled(Activities)`
   margin-top : 7vh;
 `}
 `;
-const Partner = styled(Activity)`
+const Partner = styled.img`
   width: 18%;
   height: ${convert2vw(30, "vh")};
-  background-color: #c0ede6;
+
   border-radius: 50%;
   ${breakpoint.ml`
   width: 35vw;
@@ -283,10 +284,10 @@ const AboutUsPage = () => {
         ĐỐI TÁC
       </Title>
       <Partners>
-        <Partner data-aos="flip-left" data-aos-duration="1000"></Partner>
-        <Partner data-aos="flip-left" data-aos-duration="1500"></Partner>
-        <Partner data-aos="flip-left" data-aos-duration="2000"></Partner>
-        <Partner data-aos="flip-left" data-aos-duration="2500"></Partner>
+        <Partner src="https://getinsvn.com/assets/images/logo.png" data-aos="flip-left" data-aos-duration="1000"></Partner>
+        <Partner src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/60678406_2172443186198447_6219327929843712000_n.png?_nc_cat=109&_nc_sid=85a577&_nc_eui2=AeGuHdNDfJr7QKqipAvjKdFl_i-xXav325egbiqdIC1cRWLc3n3bJ2585BSwPFX3rUHACPv2a0nO_AtyNp_BShKn1aQvUtZaaSGH0O_O8SxyVQ&_nc_ohc=SMQ-akbcNQQAX822pr9&_nc_ht=scontent.fsgn2-4.fna&oh=7c71a5462e4f594a7d5e4071d8cd5243&oe=5E9F7025" data-aos="flip-left" data-aos-duration="1500"></Partner>
+        {/* <Partner data-aos="flip-left" data-aos-duration="2000"></Partner>
+        <Partner data-aos="flip-left" data-aos-duration="2500"></Partner> */}
       </Partners>
       <Footer>
         <p>HIEC - HUST Inovation & Entrepreneur Club</p>

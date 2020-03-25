@@ -26,7 +26,7 @@ const NewsContainer = styled.div`
 `;
 
 const BigNews = styled.div`
-  width: 55%;
+  width: 50%;
   height: 85vh;
   ${breakpoint.ml`
     width: 100%;
@@ -36,7 +36,7 @@ const BigNews = styled.div`
 `;
 const SubNews = styled.div`
   display: flex;
-  width: 40%;
+  width: 45%;
   height: 80vh;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -98,10 +98,10 @@ const News = () => {
       }
     }
     demoContent = demoContent.slice(0, 150);
-    console.log({
-      content : demoContent,
-      imgs
-    })
+    // console.log({
+    //   content : demoContent,
+    //   imgs
+    // })
     return {
       content : demoContent,
       imgs
@@ -129,12 +129,13 @@ const News = () => {
         />
       </BigNews>
       <SubNews>
-        {hotNews.slice(1, 5).map((oneNew,index) => {
+        {hotNews.slice(0, 5).map((oneNew,index) => {
           const {imgs} = getTextAndImg(oneNew.content)
           const date = convertDate(oneNew.postTime)
           if(!oneNew || !ghimNews[0] || ghimNews[0]._id === oneNew._id ){
             return null;
           }else{
+            console.log(oneNew)
                 return (
                   <OneNews key={index}>
                     <ImageWithTitle
