@@ -404,7 +404,6 @@ WritePost.formats = [
   "underline",
   "blockquote",
   "bullet",
-  "list",
   "indent",
   "link",
   "image",
