@@ -232,6 +232,10 @@ const tagOptions = [
     value: "SideTalk",
     label: "Tâm sự - chém gió"
   },
+  {
+    value: "StartUp",
+    label: "Start-up"
+  }
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();

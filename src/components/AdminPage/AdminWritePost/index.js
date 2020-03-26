@@ -228,6 +228,10 @@ const tagOptions = [
     value: "SideTalk",
     label: "Tâm sự - chém gió"
   },
+  {
+    value: "StartUp",
+    label: "Start-up"
+  }
 ];
 const categoryOptions = [{
   value: "news",
