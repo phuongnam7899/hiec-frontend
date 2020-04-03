@@ -125,7 +125,7 @@ const Button = styled.button`
 
 const tagOptions = [
   {
-    value: "Bussiness",
+    value: "Business",
     label: "Kinh doanh"
   },
   {
@@ -137,11 +137,11 @@ const tagOptions = [
     label: "Môi trường"
   },
   {
-    value: "Ai",
+    value: "AI",
     label: "Trí tuệ nhân tạo"
   },
   {
-    value: "Ask",
+    value: "Q&A",
     label: "Hỏi đáp"
   },
   {
@@ -153,7 +153,7 @@ const tagOptions = [
     label: "Blockchain"
   },
   {
-    value: "Contest",
+    value: "Competition",
     label: "Cuộc thi"
   },
   {
@@ -197,15 +197,15 @@ const tagOptions = [
     label: "Chăm sóc sức khỏe"
   },
   {
-    value: "Hiec",
+    value: "HIEC",
     label: "HIEC"
   },
   {
-    value: "Invest",
+    value: "Investment",
     label: "Đầu tư"
   },
   {
-    value: "Iot",
+    value: "IoT",
     label: "Internet of Things"
   },
   {
@@ -217,7 +217,7 @@ const tagOptions = [
     label: "Media"
   },
   {
-    value: "RealEstate",
+    value: "Realestate",
     label: "Bất động sản"
   },
   {
@@ -225,12 +225,12 @@ const tagOptions = [
     label: "Bán lẻ"
   },
   {
-    value: "SideTalk",
-    label: "Tâm sự - chém gió"
+    value: "Sharing",
+    label: "Tâm sự - chia sẻ"
   },
   {
-    value: "StartUp",
-    label: "Start-up"
+    value: "Transportation",
+    label: "Giao thông vận tải"
   }
 ];
 const categoryOptions = [{
