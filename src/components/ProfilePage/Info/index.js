@@ -41,6 +41,7 @@ const Avatar = styled.img`
     width : 80px;
     height: 80px;
     margin-right : 16px;
+    object-fit: cover;
     ${breakpoint.ml`
         width : 40px;
         height : 40px;
@@ -53,6 +54,7 @@ const Label = styled.label`
     border-radius : 999px;
     width : 80px;
     height: 80px;
+    object-fit: cover;
     background-image : url(${props => props.url});
     background-size : cover; 
     ${breakpoint.ml`

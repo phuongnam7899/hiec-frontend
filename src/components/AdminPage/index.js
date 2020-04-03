@@ -50,7 +50,7 @@ function AdminPage() {
     }
     useEffect(() => {
         if (!user.isAdmin) {
-            return window.location.assign("/404-not-found");
+            window.location.assign("/404-not-found");
         }
     }, [])
 
