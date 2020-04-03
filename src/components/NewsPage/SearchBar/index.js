@@ -81,108 +81,112 @@ const Tag = styled.div`
 
 const tagOptions = [
   {
-    value: "bussiness",
+    value: "Business",
     label: "Kinh doanh"
   },
   {
-    value: "technology",
+    value: "Technology",
     label: "Công nghệ"
   },
   {
-    value: "environment",
+    value: "Environment",
     label: "Môi trường"
   },
   {
-    value: "ai",
+    value: "AI",
     label: "Trí tuệ nhân tạo"
   },
   {
-    value: "ask",
+    value: "Q&A",
     label: "Hỏi đáp"
   },
   {
-    value: "bigdata",
+    value: "Bigdata",
     label: "Big Data"
   },
   {
-    value: "blockchain",
+    value: "Blockchain",
     label: "Blockchain"
   },
   {
-    value: "contest",
+    value: "Competition",
     label: "Cuộc thi"
   },
   {
-    value: "design",
+    value: "Design",
     label: "Thiết kế"
   },
   {
-    value: "education",
+    value: "Education",
     label: "Giáo dục"
   },
   {
-    value: "tips",
+    value: "Tips",
     label: "Mẹo"
   },
   {
-    value: "energy",
+    value: "Energy",
     label: "Năng lượng"
   },
   {
-    value: "entertainment",
+    value: "Entertainment",
     label: "Giải trí"
   },
   {
-    value: "finance",
+    value: "Finance",
     label: "Tài chính"
   },
   {
-    value: "fintech",
+    value: "Fintech",
     label: "Fintech"
   },
   {
-    value: "food&drink",
+    value: "Food&Drink",
     label: "Ăn uống"
   },
   {
-    value: "games",
+    value: "Games",
     label: "Games"
   },
   {
-    value: "healthcare",
+    value: "Healthcare",
     label: "Chăm sóc sức khỏe"
   },
   {
-    value: "hiec",
+    value: "HIEC",
     label: "HIEC"
   },
   {
-    value: "invest",
+    value: "Investment",
     label: "Đầu tư"
   },
   {
-    value: "iot",
+    value: "IoT",
     label: "Internet of Things"
   },
   {
-    value: "marketing",
+    value: "Marketing",
     label: "Marketing"
   },
   {
-    value: "media",
+    value: "Media",
     label: "Media"
   },
   {
-    value: "realestate",
+    value: "Realestate",
     label: "Bất động sản"
   },
   {
-    value: "retail",
+    value: "Retail",
     label: "Bán lẻ"
   },
   {
-    value: "talk",
-    label: "Tâm sự - chém gió"
+    value: "Sharing",
+    label: "Tâm sự - chia sẻ"
+  },
+  {
+    value: "Transportation",
+    label: "Giao thông vận tải"
   },
 ];
 tagOptions.sort((currentTag, nextTag) => {
