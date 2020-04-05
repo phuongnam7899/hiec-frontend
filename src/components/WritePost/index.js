@@ -236,6 +236,10 @@ const tagOptions = [
     value: "Transportation",
     label: "Giao thông vận tải"
   },
+  {
+    value: "Startup",
+    label: "Start-up"
+  }
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();

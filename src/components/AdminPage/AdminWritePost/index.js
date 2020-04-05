@@ -231,6 +231,10 @@ const tagOptions = [
   {
     value: "Transportation",
     label: "Giao thông vận tải"
+  },
+  {
+    value: "Startup",
+    label: "Start-up"
   }
 ];
 const categoryOptions = [{

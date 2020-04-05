@@ -18,6 +18,16 @@ const AboutUsPageContainer = styled.div`
   background-size: 100% 100%;
   padding: calc(${convert2vw(96)} + (6.56px - 1vh) * 50) ${convert2vw(64)};
   ${breakpoint.ml`
+  background : #fcfcfc;
+  align-items : center;
+  height: 750vw;
+`}
+${breakpoint.mm`
+background : #fcfcfc;
+align-items : center;
+height: 850vw;
+`}
+  ${breakpoint.ms`
     background : #fcfcfc;
     align-items : center;
     height: 1000vw;
@@ -143,7 +153,7 @@ const Activity = styled.div`
 
 const Partners = styled(Activities)`
   padding: 0 ${convert2vw(64)};
-  margin-bottom: ${convert2vw(18, "vh")};
+  margin-bottom: ${convert2vw(12, "vh")};
   justify-content: space-around;
   ${breakpoint.ml`
   justify-content : space-between;
@@ -170,13 +180,9 @@ const Footer = styled.div`
   flex-direction: column;
   align-items: center;
   & img {
-    max-width: ${convert2vw(120)};
-    margin-bottom: ${convert2vw(8, "vh")};
-    max-height: ${convert2vw(120)};
-    ${breakpoint.ml`
-      min-width : 50px;
-      min-height : 50px;
-      `}
+    max-width: ${convert2vw(150)};
+    margin-bottom: ${convert2vw(4, "vh")};
+    max-height: ${convert2vw(150)};
   }
   & > p {
     margin-bottom: ${convert2vw(8, "vh")};
@@ -198,6 +204,18 @@ const Footer = styled.div`
   ${breakpoint.ml`
     color : #222222;
     font-size : 0.9em;
+    & a {
+      color : #222222;
+    }
+      & img, & > a {
+    max-width: ${convert2vw(150)};
+    margin-bottom: ${convert2vw(4, "vh")};
+    max-height: ${convert2vw(150)};
+    ${breakpoint.ml`
+      min-width : 75px;
+      min-height : 100px;
+      `}
+  }
     `}
 `;
 const AboutUsPage = () => {
@@ -268,7 +286,7 @@ const AboutUsPage = () => {
       <Content
         data-aos="fade-right"
         style={{
-          marginBottom: `calc(${convert2vw(45, "vh")} - (6.56px - 1vh) * 20)`
+          marginBottom: `calc(${convert2vw(45, "vh")} - (6.56px - 1vh) * 60)`
         }}
       >
         HIEC mong muốn trở thành một tổ chức kiểu mới bằng sự sáng tạo và đổi
@@ -284,7 +302,7 @@ const AboutUsPage = () => {
         ĐỐI TÁC
       </Title>
       <Partners>
-        <Partner src="https://getinsvn.com/assets/images/logo.png" data-aos="flip-left" data-aos-duration="1000"></Partner>
+        <Partner src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/68633251_930865433931971_627575153798152192_n.png?_nc_cat=102&_nc_sid=7aed08&_nc_oc=AQmkSARdkeKZk3i-U-ZSw6c2BI7DYc-cGj13bOMqDT_2WPOPJhNElbuPxC7a0d6YuOQ&_nc_ht=scontent-hkg3-1.xx&oh=d8b31ca207e9ba954c831b1a931c4bd2&oe=5EAD56F4" data-aos="flip-left" data-aos-duration="1000"></Partner>
         <Partner src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/60678406_2172443186198447_6219327929843712000_n.png?_nc_cat=109&_nc_sid=85a577&_nc_eui2=AeGuHdNDfJr7QKqipAvjKdFl_i-xXav325egbiqdIC1cRWLc3n3bJ2585BSwPFX3rUHACPv2a0nO_AtyNp_BShKn1aQvUtZaaSGH0O_O8SxyVQ&_nc_ohc=SMQ-akbcNQQAX822pr9&_nc_ht=scontent.fsgn2-4.fna&oh=7c71a5462e4f594a7d5e4071d8cd5243&oe=5E9F7025" data-aos="flip-left" data-aos-duration="1500"></Partner>
         {/* <Partner data-aos="flip-left" data-aos-duration="2000"></Partner>
         <Partner data-aos="flip-left" data-aos-duration="2500"></Partner> */}
@@ -292,7 +310,7 @@ const AboutUsPage = () => {
       <Footer>
         <p>HIEC - HUST Inovation & Entrepreneur Club</p>
         <NavLink to="/">
-          <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
+          {window.innerWidth > 425 ?  <img src="https://i.imgur.com/sQW0ygd.png?1" /> : <img src="https://i.imgur.com/woAmhAq.png?1" />}
         </NavLink>
         <h3>Liên hệ:</h3>
         <ul>
@@ -300,8 +318,8 @@ const AboutUsPage = () => {
           <li>Email : clb.hiec@gmail.com</li>
           <li>
             Fanpage :{" "}
-            <a href="https://www.fb.com/hiec.vn/">
-              https://www.fb.com/hiec.vn/
+            <a href="https://www.fb.com/hiec.vn">
+              https://www.fb.com/hiec.vn
             </a>
           </li>
         </ul>
