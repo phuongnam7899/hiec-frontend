@@ -14,9 +14,10 @@ import { breakpoint } from "../../styles/mixin";
 
 const WritePostContainer = styled.div`
     position : relative;
-    // left : 50vw;
-    // top : 10vh;
-    // transform : translate(-50%, 0%);
+    & .css-2b097c-container{
+      position : relative;
+      z-index : 2;
+    }
     width : 50vw;
     ${breakpoint.tb`
       width : 100%;
@@ -24,10 +25,6 @@ const WritePostContainer = styled.div`
     box-shadow : 0px 0px 5px #cccccc;
     margin-bottom : 20px;
     z-index : 11;
-    // & *{
-    //   z-index : 11;
-    // }
-    // background-color : black;
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
@@ -132,52 +129,121 @@ const Button = styled.button`
 
 const tagOptions = [
   {
-    value: "bussiness",
+    value: "Business",
     label: "Kinh doanh"
   },
   {
-    value: "technology",
+    value: "Technology",
     label: "Công nghệ"
   },
   {
-    value: "environment",
+    value: "Environment",
     label: "Môi trường"
   },
   {
-    value: "ai",
+    value: "AI",
     label: "Trí tuệ nhân tạo"
   },
   {
-    value: "ask",
+    value: "Q&A",
     label: "Hỏi đáp"
   },
   {
-    value: "bigdata",
+    value: "Bigdata",
     label: "Big Data"
   },
   {
-    value: "blockchain",
+    value: "Blockchain",
     label: "Blockchain"
   },
   {
-    value: "contest",
+    value: "Competition",
     label: "Cuộc thi"
   },
   {
-    value: "design",
+    value: "Design",
     label: "Thiết kế"
   },
   {
-    value: "education",
+    value: "Education",
     label: "Giáo dục"
-  }
+  },
+  {
+    value: "Tips",
+    label: "Mẹo"
+  },
+  {
+    value: "Energy",
+    label: "Năng lượng"
+  },
+  {
+    value: "Entertainment",
+    label: "Giải trí"
+  },
+  {
+    value: "Finance",
+    label: "Tài chính"
+  },
+  {
+    value: "Fintech",
+    label: "Fintech"
+  },
+  {
+    value: "Food&Drink",
+    label: "Ăn uống"
+  },
+  {
+    value: "Games",
+    label: "Games"
+  },
+  {
+    value: "Healthcare",
+    label: "Chăm sóc sức khỏe"
+  },
+  {
+    value: "HIEC",
+    label: "HIEC"
+  },
+  {
+    value: "Investment",
+    label: "Đầu tư"
+  },
+  {
+    value: "IoT",
+    label: "Internet of Things"
+  },
+  {
+    value: "Marketing",
+    label: "Marketing"
+  },
+  {
+    value: "Media",
+    label: "Media"
+  },
+  {
+    value: "Realestate",
+    label: "Bất động sản"
+  },
+  {
+    value: "Retail",
+    label: "Bán lẻ"
+  },
+  {
+    value: "Sharing",
+    label: "Tâm sự - chia sẻ"
+  },
+  {
+    value: "Transportation",
+    label: "Giao thông vận tải"
+  },
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();
   const nextValue = nextTag.label.toLocaleUpperCase();
-  if (currentValue < nextValue) return -1;
-  else if (currentValue > nextValue) return 1;
-  else return 0;
+  // if (currentValue < nextValue) return -1;
+  // else if (currentValue > nextValue) return 1;
+  // else return 0;
+  return currentValue.localeCompare(nextValue);
 });
 // console.log(tagOptions);
 const WritePost = props => {
@@ -338,7 +404,6 @@ WritePost.formats = [
   "underline",
   "blockquote",
   "bullet",
-  "list",
   "indent",
   "link",
   "image",

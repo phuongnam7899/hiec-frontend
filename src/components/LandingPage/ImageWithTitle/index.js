@@ -32,7 +32,7 @@ const Title = styled.h2`
   font-size: ${props => (props.type === "big" ? "22px" : "16px")};
   margin: 8px 0px;
   max-width: 100%;
-  height: ${props => (props.type === "big" ? "20%" : "30%")};
+  height: ${props => (props.type === "big" ? "25%" : "30%")};
   overflow-wrap: break-word;
   ${breakpoint.tb`
     font-size: ${props => (props.type === "big" ? "20px" : "12px")};

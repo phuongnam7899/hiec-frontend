@@ -81,17 +81,113 @@ const Tag = styled.div`
 
 const tagOptions = [
   {
-    value: "bussiness",
+    value: "Business",
     label: "Kinh doanh"
   },
   {
-    value: "technology",
+    value: "Technology",
     label: "Công nghệ"
   },
   {
-    value: "environment",
+    value: "Environment",
     label: "Môi trường"
-  }
+  },
+  {
+    value: "AI",
+    label: "Trí tuệ nhân tạo"
+  },
+  {
+    value: "Q&A",
+    label: "Hỏi đáp"
+  },
+  {
+    value: "Bigdata",
+    label: "Big Data"
+  },
+  {
+    value: "Blockchain",
+    label: "Blockchain"
+  },
+  {
+    value: "Competition",
+    label: "Cuộc thi"
+  },
+  {
+    value: "Design",
+    label: "Thiết kế"
+  },
+  {
+    value: "Education",
+    label: "Giáo dục"
+  },
+  {
+    value: "Tips",
+    label: "Mẹo"
+  },
+  {
+    value: "Energy",
+    label: "Năng lượng"
+  },
+  {
+    value: "Entertainment",
+    label: "Giải trí"
+  },
+  {
+    value: "Finance",
+    label: "Tài chính"
+  },
+  {
+    value: "Fintech",
+    label: "Fintech"
+  },
+  {
+    value: "Food&Drink",
+    label: "Ăn uống"
+  },
+  {
+    value: "Games",
+    label: "Games"
+  },
+  {
+    value: "Healthcare",
+    label: "Chăm sóc sức khỏe"
+  },
+  {
+    value: "HIEC",
+    label: "HIEC"
+  },
+  {
+    value: "Investment",
+    label: "Đầu tư"
+  },
+  {
+    value: "IoT",
+    label: "Internet of Things"
+  },
+  {
+    value: "Marketing",
+    label: "Marketing"
+  },
+  {
+    value: "Media",
+    label: "Media"
+  },
+  {
+    value: "Realestate",
+    label: "Bất động sản"
+  },
+  {
+    value: "Retail",
+    label: "Bán lẻ"
+  },
+  {
+    value: "Sharing",
+    label: "Tâm sự - chia sẻ"
+  },
+  {
+    value: "Transportation",
+    label: "Giao thông vận tải"
+  },
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();

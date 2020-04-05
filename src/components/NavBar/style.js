@@ -25,7 +25,6 @@ export const Logo = styled.img`
     max-width: 40px;
     margin : auto 0;
     cursor : pointer;
-
 `;
 export const MiddleRow = styled(Container)`
     display : flex;
@@ -113,6 +112,8 @@ export const Avatar = styled.img`
   width: 40px;
   border-radius:999px;
   position : relative;
+  object-fit: cover;
+
   
 `;
 export const AvatarBackground = styled.div`

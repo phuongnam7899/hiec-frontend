@@ -14,21 +14,25 @@ const Avatar = styled.img`
     switch (props.size) {
       case "small":
         return `
+        object-fit: cover;
                 width : 40px;
                 height : 40px;
                 `;
       case "medium":
         return `
+        object-fit: cover;
                 width : calc(${convert2vw(50)} + (13.6px - 1vw)*2);
                 height : calc(${convert2vw(50)} + (13.6px - 1vw)*2);
                 `;
       case "large":
         return `
+        object-fit: cover;
                 width : 80px;
                 height : 80px;
                 `;
       default:
         return `
+        object-fit: cover;
       width : 40px;
       height : 40px;
       `;

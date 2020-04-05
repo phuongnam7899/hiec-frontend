@@ -6,30 +6,45 @@ import Select from "react-select";
 import Dialog from "../../YesNoDialog";
 import axios from "../../../axios"
 import { useDispatch } from "react-redux";
+import {breakpoint} from "../../../styles/mixin"
 
 const WritePostContainer = styled.div`
     position : relative;
-    // left : 50vw;
-    // top : 10vh;
-    // transform : translate(-50%, 0%);
+    & .css-2b097c-container{
+      position : relative;
+      z-index : 2;
+    }
     width : 50vw;
-    box-shadow : 0px 0px 5px #8a8a8a;
+    ${breakpoint.tb`
+      width : 100%;
+    `}
+    box-shadow : 0px 0px 5px #cccccc;
     margin-bottom : 20px;
     z-index : 11;
-    // & *{
-    //   z-index : 11;
-    // }
-    // background-color : black;
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
+  border : 1px solid #ffffff;
   margin-top: 16px;
+    position : relative;
   & .ql-toolbar {
+    background : #ffffff;
+    position : sticky;
+    z-index : 1;
+    top : 75px;
     display: flex;
     justify-content: space-around;
+    ${breakpoint.ml`
+    flex-wrap : wrap;
+    justify-content: flex-start;
+  `}
   }
   & .ql-editor {
     min-height: 55vh;
+    font-size : 1.1rem;
+    ${breakpoint.ml`
+    font-size : 1rem;
+  `}
   }
   & code {
     display: block;
@@ -61,7 +76,7 @@ const Main = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   padding: 6px 12px;
   margin-bottom: 8px;
   border-radius: 5px;
@@ -103,64 +118,137 @@ const Button = styled.button`
   &:hover {
     background: #3fbaa2;
   }
+  ${breakpoint.ml`
+  font-size : 0.9rem;
+`}
 `;
+
+const tagOptions = [
+  {
+    value: "Business",
+    label: "Kinh doanh"
+  },
+  {
+    value: "Technology",
+    label: "Công nghệ"
+  },
+  {
+    value: "Environment",
+    label: "Môi trường"
+  },
+  {
+    value: "AI",
+    label: "Trí tuệ nhân tạo"
+  },
+  {
+    value: "Q&A",
+    label: "Hỏi đáp"
+  },
+  {
+    value: "Bigdata",
+    label: "Big Data"
+  },
+  {
+    value: "Blockchain",
+    label: "Blockchain"
+  },
+  {
+    value: "Competition",
+    label: "Cuộc thi"
+  },
+  {
+    value: "Design",
+    label: "Thiết kế"
+  },
+  {
+    value: "Education",
+    label: "Giáo dục"
+  },
+  {
+    value: "Tips",
+    label: "Mẹo"
+  },
+  {
+    value: "Energy",
+    label: "Năng lượng"
+  },
+  {
+    value: "Entertainment",
+    label: "Giải trí"
+  },
+  {
+    value: "Finance",
+    label: "Tài chính"
+  },
+  {
+    value: "Fintech",
+    label: "Fintech"
+  },
+  {
+    value: "Food&Drink",
+    label: "Ăn uống"
+  },
+  {
+    value: "Games",
+    label: "Games"
+  },
+  {
+    value: "Healthcare",
+    label: "Chăm sóc sức khỏe"
+  },
+  {
+    value: "HIEC",
+    label: "HIEC"
+  },
+  {
+    value: "Investment",
+    label: "Đầu tư"
+  },
+  {
+    value: "IoT",
+    label: "Internet of Things"
+  },
+  {
+    value: "Marketing",
+    label: "Marketing"
+  },
+  {
+    value: "Media",
+    label: "Media"
+  },
+  {
+    value: "Realestate",
+    label: "Bất động sản"
+  },
+  {
+    value: "Retail",
+    label: "Bán lẻ"
+  },
+  {
+    value: "Sharing",
+    label: "Tâm sự - chia sẻ"
+  },
+  {
+    value: "Transportation",
+    label: "Giao thông vận tải"
+  }
+];
 const categoryOptions = [{
-    value: "news",
-    label: "Tin Tức"
+  value: "news",
+  label: "Tin Tức"
 },
 {
-    value: "project",
-    label: "Dự Án",
+  value: "project",
+  label: "Dự Án",
 }
 ]
-const tagOptions = [
-    {
-        value: "bussiness",
-        label: "Kinh doanh"
-      },
-      {
-        value: "technology",
-        label: "Công nghệ"
-      },
-      {
-        value: "environment",
-        label: "Môi trường"
-      },
-      {
-        value: "ai",
-        label: "Trí tuệ nhân tạo"
-      },
-      {
-        value: "ask",
-        label: "Hỏi đáp"
-      },
-      {
-        value: "bigdata",
-        label: "Big Data"
-      },
-      {
-        value: "blockchain",
-        label: "Blockchain"
-      },
-      {
-        value: "contest",
-        label: "Cuộc thi"
-      },
-      {
-        value: "design",
-        label: "Thiết kế"
-      },
-      {
-        value: "education",
-        label: "Giáo dục"
-      }
-];
 tagOptions.sort((currentTag, nextTag) => {
-    const currentValue = currentTag.label.toLocaleUpperCase();
-    const nextValue = nextTag.label.toLocaleUpperCase();
-    if (currentValue < nextValue) return -1;
-    else if (currentValue > nextValue) return 1;
-    else return 0;
+  const currentValue = currentTag.label.toLocaleUpperCase();
+  const nextValue = nextTag.label.toLocaleUpperCase();
+  // if (currentValue < nextValue) return -1;
+  // else if (currentValue > nextValue) return 1;
+  // else return 0;
+  return currentValue.localeCompare(nextValue);
 });
 // console.log(tagOptions);
 const AdminWritePost = props => {
@@ -338,7 +426,6 @@ AdminWritePost.formats = [
     "italic",
     "underline",
     "blockquote",
-    "list",
     "bullet",
     "indent",
     "link",

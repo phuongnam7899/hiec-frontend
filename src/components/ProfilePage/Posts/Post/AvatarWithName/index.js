@@ -7,6 +7,7 @@ const Img = styled.img`
     width : 40px;
     height : 40px;
     cursor : pointer;
+    object-fit: cover;
     ${breakpoint.tb`
         width : 30px;
         height : 30px;
