@@ -46,7 +46,7 @@ export default function App() {
       
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
       <LoadingBar/>
-      {user._id?<Route path = "/admin" exact component = {AdminPage}/>:<></>}
+      {user._id?<Route path = "/admin" exact component = {AdminPage}/>:null}
       <Route path= "/" exact  component = {LandingPage} />
       <Route path= "/forum" exact  component = {ForumPage} />
       <Route path= "/profile/:id" exact  component = {ProfilePage} />

@@ -28,6 +28,7 @@ const Form = styled.form`
     justify-content:center;
     align-items:flex-start;
     width:75%;
+    margin-bottom: 120px;
 `
 const Email = styled.div`
 display: flex;
@@ -132,37 +133,24 @@ const Title = styled.span`
 // color:${props => props.theme.textButton};
 // `
 const LogoOnImg = styled.img`
-position: absolute;
+// position: absolute;
     height:auto;
     top:10px;
     left:10px;
+    margin: 15px 0px 0px 6px; 
     font-weight:bolder;
     color:white;
     font-size: 48px;
     cursor : pointer;
     width: 60px;
+    align-self:flex-start;
     ${breakpoint.ml`
     
     width : 40px;
 `}
  
-
 `
-const Background1 = styled.div.attrs(props => ({
-    width: props.width,
-    urlImage: props.urlImage
-}))`
-    width : ${props => props.width};
-    position:relative;
-    transition: ${props => props.theme.time};
-    min-height:100vh;
-    background-size: cover;
-    ${breakpoint.ml`
-        display: none;
-        flex-grow: 0;
-        width : 0px;
-    `}
-    `
+
 const Background2 = styled.div.attrs(props => ({
     width: props.width,
     urlImage: props.urlImage
@@ -172,8 +160,9 @@ transition: ${props => props.theme.time};
     // width : ${props => props.width};
     height:90vh;
     display: flex;
+    flex-direction:column;
     position:relative;
-    justify-content:center;
+    justify-content: space-between;
     align-items:center;
     background-color: rgba(255,255,255);
     ${breakpoint.tb`
@@ -290,9 +279,9 @@ function HookSignIn(props) {
                 
                     <Background2>
                     
-                   
+                    <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
                         <Form onSubmit={submit}>
-                        <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
+                        
                             <Title>Đăng nhập</Title>
                             
                             <Email>
