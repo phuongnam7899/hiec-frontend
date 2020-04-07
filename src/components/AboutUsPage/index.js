@@ -102,7 +102,7 @@ const Intro = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: ${convert2vw(100, "vh")};
+  min-height: ${convert2vw(106, "vh")};
   padding: ${convert2vw(72)} 0px;
   margin-bottom: ${convert2vw(40, "vh")};
   ${breakpoint.ml`
@@ -129,9 +129,9 @@ const Activity = styled.div`
   width: 21.5%;
   height: ${convert2vw(50, "vh")};
   background: #fae7e1;
-  padding: ${convert2vw(30)};
+  padding: ${convert2vw(20)};
   & h3 {
-    font-size: ${convert2vw(1.5, "em")};
+    font-size: ${convert2vw(1.3, "em")};
     margin-bottom: ${convert2vw(90)};
   }
   & p {
@@ -229,19 +229,18 @@ const AboutUsPage = () => {
         <Logo>HIEC</Logo>
         <Title>GIỚI THIỆU CHUNG</Title>
         <Content>
-          Câu lạc bộ Khoa học sáng tạo & Khởi nghiệp (HUST Innovation &
+          Câu lạc bộ Sáng tạo & Khởi nghiệp (HUST Innovation &
           Entrepreneurship Club - HIEC) trực thuộc Ban Học tập - Nghiên cứu Khoa
           học của Đoàn thanh niên trường Đại học Bách Khoa Hà Nội với đội ngũ
           thành viên bao gồm Ban cố vấn - những giảng viên giàu kinh nghiệm từ
-          trường Đại học Bách Khoa Hà Nội và các bạn sinh viên có đam mê, giàu
-          tiềm năng.
+          trường Đại học Bách Khoa Hà Nội và các bạn sinh viên có giàu tiềm năng và đam mê Sáng tạo - Khởi nghiệp.
         </Content>
       </OurStory>
       <Intro>
         <Title data-aos="fade-up">SỨ MỆNH</Title>
         <Content data-aos="fade-up">
           HIEC ra đời với sứ mệnh xây dựng một cộng đồng ứng dụng khoa học sáng
-          tạo và kinh doanh - khởi nghiệp hướng đến các bạn sinh viên Việt Nam.
+          tạo và Kinh doanh - Khởi nghiệp hướng đến các bạn sinh viên Việt Nam.
           Từ đó, thế hệ trẻ có đủ tự tin và hành trang để biến ý tưởng trở thành
           hiện thực, xây dựng một doanh nghiệp bền vững hàng đầu bằng chính tài
           năng, sự trân trọng, trách nhiệm cao của mình và góp phần vào nền kinh
@@ -253,29 +252,29 @@ const AboutUsPage = () => {
       </Title>
       <Activities>
         <Activity data-aos="flip-left" data-aos-duration="1000">
-          <h3>01 KẾT NỐI</h3>
+          <h3>01 - KẾT NỐI <i class="fas fa-network-wired"></i></h3>
           <p>
             Là cầu nối những bạn trẻ có cùng đam mê, sở thích về kinh doanh - khởi
             nghiệp - công nghệ, mang những ý tưởng sáng tạo đến gần hơn với
-            những tổ chức, doanh nghiệp
+            những tổ chức, doanh nghiệp.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="1500">
-          <h3>02 ĐÀO TẠO</h3>
+          <h3>02 - ĐÀO TẠO <i class="fas fa-graduation-cap"></i></h3>
           <p>
             Xây dựng những khóa học ngắn hạn bồi dưỡng kiến thức, kĩ năng về
             nghiên cứu khoa học và kinh doanh.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="2000">
-          <h3>03 HỖ TRỢ</h3>
+          <h3>03 - HỖ TRỢ <i class="fas fa-hands-helping"></i></h3>
           <p>
             Cung cấp thiết bị, không gian sinh hoạt. Truyền cảm hứng sáng tạo,
             thảo luận về những ý tưởng khoa học, kinh doanh.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="2500">
-          <h3>04 ĐỊNH HƯỚNG</h3>
+          <h3>04 - ĐỊNH HƯỚNG <i class="fas fa-compass"></i></h3>
           <p>
             Thành lập và hỗ trợ nhóm nghiên cứu, mô hình hóa ý tưởng và tham gia
             thi đấu, giới thiệu đến các doanh nghiệp trong và ngoài trường.
@@ -286,7 +285,7 @@ const AboutUsPage = () => {
       <Content
         data-aos="fade-right"
         style={{
-          marginBottom: `calc(${convert2vw(45, "vh")} - (6.56px - 1vh) * 60)`
+          marginBottom: `calc(${convert2vw(40, "vh")} - (6.56px - 1vh) * 60)`
         }}
       >
         HIEC mong muốn trở thành một tổ chức kiểu mới bằng sự sáng tạo và đổi
@@ -308,16 +307,16 @@ const AboutUsPage = () => {
         <Partner data-aos="flip-left" data-aos-duration="2500"></Partner> */}
       </Partners>
       <Footer>
-        <p>HIEC - HUST Inovation & Entrepreneur Club</p>
+        <p>HIEC - HUST Innovation & Entrepreneurship Club</p>
         <NavLink to="/">
           {window.innerWidth > 425 ?  <img src="https://i.imgur.com/sQW0ygd.png?1" /> : <img src="https://i.imgur.com/woAmhAq.png?1" />}
         </NavLink>
         <h3>Liên hệ:</h3>
         <ul>
-          <li>Hotline : (+84)91 4351 643</li>
-          <li>Email : clb.hiec@gmail.com</li>
+          <li>Hotline: (+84) 91 4351 643</li>
+          <li>Email: clb.hiec@gmail.com</li>
           <li>
-            Fanpage :{" "}
+            Fanpage:{" "}
             <a href="https://www.fb.com/hiec.vn">
               https://www.fb.com/hiec.vn
             </a>

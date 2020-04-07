@@ -107,12 +107,12 @@ const Forum = props => {
     <ForumContainer>
       <Title to="/forum">Diễn Đàn</Title>
       <Description>
-      Chia sẻ, hỏi đáp, trao đổi về chủ đề kinh doanh - khởi nghiệp
+      Chia sẻ, hỏi đáp, trao đổi về chủ đề Kinh doanh - Khởi nghiệp.
       </Description>
       <OneNews>
         <ImageWithTitle
           type="normal"
-          description="Bạn phải đăng nhập mới có thể xem bài , đăng bài, thảo luận"
+          description="Bạn phải đăng nhập mới có thể xem bài, đăng bài và thảo luận."
           imgUrl="https://images.unsplash.com/photo-1581125206334-788f30d39d34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
           toHref="/forum"
         />

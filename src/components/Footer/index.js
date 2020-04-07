@@ -33,10 +33,12 @@ const FooterLink = styled(NavLink)`
 `;
 
 const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 75%;
-
+  display : flex;
+  flex-direction : column;
+  height : 75%;
+  & > div {
+    margin-bottom : 8px;
+  }
  
   &  a {
     text-decoration : none;
@@ -50,7 +52,7 @@ const Column = styled.div`
     cursor : pointer;
   }
   & > div > i {
-      margin-right : 4px;
+      margin-right : 8px;
   }
   & > div > span {
     color : #1c1c1c;
@@ -103,22 +105,22 @@ const Footer = props => {
             </Column>
             <Column>
               <Title>Đối tác</Title>
-              <a href="https://www.facebook.com/Dynlab.ITE/">Dynlab</a>
+              <a href="https://www.facebook.com/Dynlab.ITE/">HUST Dynlab</a>
               <a href="https://getinsvn.com/">Get Ins</a>
             </Column>
             <Column>
               <Title>Liên hệ</Title>
               <div>
                 <i class="fab fa-facebook"></i>
-                <a href="https://www.facebook.com/hiec.vn/">Fb.com/hiec.vn</a>
+                <a href="https://www.facebook.com/hiec.vn/">fb.com/hiec.vn</a>
               </div>
               <div>
                 <i class="fas fa-envelope"></i>
                 <span>clb.hiec@gmail.com</span>
               </div>
               <div>
-                <i class="fas fa-phone"></i>
-                <span>+8449867237</span>
+                <i class="fas fa-phone-alt"></i>
+                <span>(+84) 49 867 237</span>
               </div>
             </Column>
           </LinkArea>
