@@ -8,10 +8,13 @@ import Forum from "./Forum"
 import Leaderboard from "./Leaderboard"
 import withNavAndFooter from "../HOC/withNavAndFooter"
 import {breakpoint} from "../../styles/mixin"
+import NavBar from "./NavBar";
 
 
 const LandingPageContainer = styled.div`
-    background-color : #ffffff;
+  
+    background : rgb(246, 246, 246);
+
 `
 const FormAndLeaderboard = styled.div`
     display : flex;
@@ -36,8 +39,8 @@ const LandingPage = (props) => {
     },[])
     return(
         <LandingPageContainer>
+            <NavBar />
             <Banner>
-
             </Banner>
             <MenuContainer>
                 <News></News>

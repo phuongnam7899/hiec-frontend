@@ -132,7 +132,6 @@ export const styleActiveLink = {
 export const ProfilePage = styled.span`
 padding : 8px 32px;
 cursor : pointer;
-
 ${props => props.theme.darkMode ? {
         color: "black",
         textDecoration: "none",

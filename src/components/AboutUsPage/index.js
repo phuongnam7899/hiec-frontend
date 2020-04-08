@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import AOS from "aos";
 import convert2vw from "../../utils/convert2vw";
 import { breakpoint } from "../../styles/mixin";
+import AboutUsBG from "../../static/images/about-us-bg.jpg"
+
 import "aos/dist/aos.css";
 AOS.init();
 
@@ -14,7 +16,7 @@ const AboutUsPageContainer = styled.div`
   flex-direction: column;
   max-width: 100vw;
   height: 300vw;
-  background-image: url(https://i.imgur.com/377jp5o.jpg);
+  background-image: url(${AboutUsBG});
   background-size: 100% 100%;
   padding: calc(${convert2vw(96)} + (6.56px - 1vh) * 50) ${convert2vw(64)};
   ${breakpoint.ml`
