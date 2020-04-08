@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Container from "../Container";
 import { NavLink } from "react-router-dom";
 import { breakpoint } from "../../styles/mixin"
+import LogoFooter from "../../static/images/logo-footer.png"
 const FooterContainer = styled.div`
   width: 100%;
   // height: 33vh;
@@ -14,12 +15,15 @@ const FooterContainer = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 20%;
+  width: 10%;
   height: auto;
   cursor : pointer;
   margin-bottom : 20px;
-  ${breakpoint.ml`
-    width : 40%;
+  ${breakpoint.ls`
+    width : 15%;
+  `}
+  ${breakpoint.tb`
+    display : none;
   `}
 `;
 
@@ -54,10 +58,16 @@ const Column = styled.div`
   }
   & > div > span {
     color : #1c1c1c;
+  
 }
 ${breakpoint.tb`
-  min-width : 50%;
   margin-bottom : 20px;
+`}
+
+${breakpoint.ml`
+  & *{
+    font-size : 12px;
+  }
 `}
 
 `;
@@ -66,6 +76,9 @@ const Title = styled.div`
   font-size: 24px;
   font-weight: bold;
   margin-bottom : 16px;
+  ${breakpoint.ml`
+    font-size : 16px;
+`}
 `;
 
 const LinkArea = styled.div`
@@ -90,7 +103,7 @@ const Footer = props => {
     <div style={{ backgroundColor: "#ffffff" }}>
       <Container>
         <FooterContainer>
-          <Logo onClick={goToHomepage} src="https://www.pngjoy.com/pngm/30/721636_tesla-logo-lin-digital-transparent-png.png"></Logo>
+          <Logo onClick={goToHomepage} src={LogoFooter}></Logo>
 
           <LinkArea>
             <Column>
