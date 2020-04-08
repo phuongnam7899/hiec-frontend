@@ -5,9 +5,8 @@ import convert2vw from "../../../utils/convert2vw"
 import {breakpoint} from "../../../styles/mixin"
 
 const Title = styled.h1`
-    font-size : 80px;
-    font-weight : 300;
-    text-align : center;
+    font-size : 60px;
+    font-weight : 600;
     ${breakpoint.ml`
     font-size : 30px;
     `}
@@ -16,8 +15,8 @@ const Description = styled.p`
     max-width : 45%;
     font-size : 22px;
     margin : 52px 0px;
-    text-align : center;
-    font-weight : 200;
+    text-align: justify;
+    font-weight : 400;
     ${breakpoint.ml`
     font-size : 16px;
     max-width : 75%;
@@ -28,19 +27,20 @@ const Description = styled.p`
 const BannerContainer = styled.div`
     display : flex;
     flex-direction : column;
-    align-items : center;
-    color : #ffffff;
-    justify-content : center;
+    color : #222222;
+    justify-content : flex-end;
     max-width : 100vw;
+    padding: 64px;
     height : 100vh;
-    background-image : url(https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/84351595_2573974126212653_3668950583970103296_n.png?_nc_cat=103&_nc_ohc=oTJvSlhv-FMAX-Df-tl&_nc_ht=scontent.fhan2-4.fna&oh=5d03e3e3be2a4282d12a20e306b58cc8&oe=5ED98D91);
-    background-size : cover;
-    margin-top : calc(0px + (13.6px - 1vw)*5);
+    background-image : url(https://i.imgur.com/9Rz5Vab.png);
+    background-size : 100% 100%;
+    // margin-top : calc(0px + (13.6px - 1vw)*5);
 `
 const ButtonsContainer = styled.div`
     display : flex;
     justify-content : space-between;
     width : 30%;
+    margin-bottom: 5vh;
     ${breakpoint.ls`
     width : 40%;
 `}
@@ -97,7 +97,7 @@ const goToLink = (href) => {
 
 const Banner = (props) => {
 
-    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel lacus non eros eleifend iaculis id in massa. Praesent metus erat, pulvinar non dapibus et, venenatis in leo." : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel lacus non eros eleifend iaculis id in massa. Praesent metus erat, pulvinar non dapibus et, venenatis in leo."
+    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "Global Community for Young Entrepreneurs - this platform is a global community designed to educate, inspire, and connect entrepreneurs." : "Global Community for Young Entrepreneurs - this platform is a global community designed to educate, inspire, and connect entrepreneurs."
     return(
         <BannerContainer>
             <Title>Beyond the Infinity</Title>

@@ -11,7 +11,7 @@ import {breakpoint} from "../../styles/mixin"
 
 
 const LandingPageContainer = styled.div`
-    background-color : #F6F6F6;
+    background-color : #ffffff;
 `
 const FormAndLeaderboard = styled.div`
     display : flex;
@@ -51,4 +51,4 @@ const LandingPage = (props) => {
     )
 }
 
-export default withNavAndFooter(LandingPage);
+export default withNavAndFooter(LandingPage,true,false);
