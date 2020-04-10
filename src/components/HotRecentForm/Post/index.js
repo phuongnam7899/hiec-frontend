@@ -105,7 +105,7 @@ function PostForm(props) {
     return (
      
         <Post onClick = {toPost}>
-            <Title><span>{props.post.title.slice(0,40)}</span></Title>
+            <Title><span>{props.post.title}</span></Title>
             {/* <InfoPost>
                 <ImgBlock><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></ImgBlock>
                 <NameAndTime>

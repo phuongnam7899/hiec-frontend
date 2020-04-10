@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import convert2vw from "../../../utils/convert2vw"
 import {breakpoint} from "../../../styles/mixin"
+import BannerBG from "../../../static/images/web_banner.png"
 
 const Title = styled.h1`
     font-size : 60px;
@@ -32,7 +33,7 @@ const BannerContainer = styled.div`
     max-width : 100vw;
     padding: 64px;
     height : 100vh;
-    background-image : url(https://i.imgur.com/9Rz5Vab.png);
+    background-image : url(${BannerBG});
     background-size : 100% 100%;
     // margin-top : calc(0px + (13.6px - 1vw)*5);
 `

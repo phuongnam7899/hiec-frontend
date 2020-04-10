@@ -83,7 +83,7 @@ const Title = styled.h2`
 
 const VisionTitle = styled(Title)`
   align-self: center;
-  margin-bottom: ${convert2vw(30, "vh", -10)};
+  margin-bottom: ${convert2vw(25, "vh", -10)};
   ${breakpoint.ml`
     margin-bottom : 10vh;
 `}
@@ -108,7 +108,7 @@ const Intro = styled.div`
   padding: ${convert2vw(72)} 0px;
   margin-bottom: ${convert2vw(40, "vh")};
   ${breakpoint.ml`
-  margin-bottom: 15vh;
+  margin-bottom: 30vh;
   min-height: 50vh;
 `}
 `;
@@ -153,27 +153,57 @@ const Activity = styled.div`
   `}
 `;
 
+const PartnersAndProtecters = styled.div`
+    width: 100%;
+    display: flex;
+    justufy-content: space-between;
+    flex-wrap:wrap;
+`
+
+const PartnersContainer = styled.div`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ${breakpoint.ml`
+    width: 100%
+    `}
+`
+
 const Partners = styled(Activities)`
   padding: 0 ${convert2vw(64)};
   margin-bottom: ${convert2vw(12, "vh")};
-  justify-content: space-around;
+  width : 100%;
+  justify-content : space-around;
   ${breakpoint.ml`
-  justify-content : space-between;
   margin-bottom: 15vh;
   width : 100%;
   margin-top : 7vh;
 `}
 `;
-const Partner = styled.img`
-  width: 18%;
-  height: ${convert2vw(30, "vh")};
+const Protectors = styled(Partners)`
+  justify-content : space-around;
 
+`
+const ProtectorsContainer = styled(PartnersContainer)`
+    width: 40%;
+    ${breakpoint.ml`
+      width: 100%;
+    `}
+`
+const Partner = styled.img`
+  width: ${convert2vw(30, "vh")};
+  height: ${convert2vw(30, "vh")};
+  object-fit: contain;
   border-radius: 50%;
   ${breakpoint.ml`
   width: 35vw;
   height: calc(35vw + (3.75px - 1vw)*5);
 `}
 `;
+const Protector = styled(Partner)`
+border-radius: 0%;
+`
 const Footer = styled.div`
   width: 100%;
   color: #ffffff;
@@ -296,7 +326,9 @@ const AboutUsPage = () => {
         chuyên môn để họ có thể phát triển bản thân tối đa, thành công trên lối
         đi riêng và hiện thực hóa ý tưởng về khoa học - kinh doanh của mình.
       </Content>
-      <Title
+      <PartnersAndProtecters>
+        <PartnersContainer>
+        <Title
         data-aos="fade-up"
         style={{ alignSelf: "center", marginBottom: `${convert2vw(15, "vh")}` }}
       >
@@ -308,6 +340,22 @@ const AboutUsPage = () => {
         {/* <Partner data-aos="flip-left" data-aos-duration="2000"></Partner>
         <Partner data-aos="flip-left" data-aos-duration="2500"></Partner> */}
       </Partners>
+        </PartnersContainer>
+        <ProtectorsContainer>
+        <Title
+        data-aos="fade-up"
+        style={{ alignSelf: "center", marginBottom: `${convert2vw(15, "vh")}` }}
+      >
+        BẢO TRỢ
+      </Title>
+      <Protectors>
+        <Protector src="https://rubee.com.vn/admin/webroot/upload/image//images/tin-tuc/logo-bach-khoa-ha-noi.jpg" data-aos="flip-left" data-aos-duration="1000"></Protector>
+        {/* <Partner data-aos="flip-left" data-aos-duration="2000"></Partner>
+        <Partner data-aos="flip-left" data-aos-duration="2500"></Partner> */}
+      </Protectors>
+        </ProtectorsContainer>
+
+      </PartnersAndProtecters>
       <Footer>
         <p>HIEC - HUST Innovation & Entrepreneurship Club</p>
         <NavLink to="/">
