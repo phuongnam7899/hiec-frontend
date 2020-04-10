@@ -35,6 +35,10 @@ const BannerContainer = styled.div`
     background-image : url(https://i.imgur.com/9Rz5Vab.png);
     background-size : 100% 100%;
     // margin-top : calc(0px + (13.6px - 1vw)*5);
+    ${breakpoint.ls`
+        background-size : cover;
+        background-position : center;
+    `}
 `
 const ButtonsContainer = styled.div`
     display : flex;
