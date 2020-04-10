@@ -8,6 +8,9 @@ import BannerBG from "../../../static/images/web_banner.png"
 const Title = styled.h1`
     font-size : 60px;
     font-weight : 600;
+    ${breakpoint.tb`
+    font-size : 30px;
+    `}
     ${breakpoint.ml`
     font-size : 30px;
     `}
@@ -16,8 +19,13 @@ const Description = styled.p`
     max-width : 45%;
     font-size : 22px;
     margin : 52px 0px;
-    text-align: justify;
     font-weight : 400;
+    ${breakpoint.tb`
+    font-size : 16px;
+    max-width : 65%;
+    margin : 30px 0px;
+
+    `}
     ${breakpoint.ml`
     font-size : 16px;
     max-width : 75%;
@@ -36,9 +44,12 @@ const BannerContainer = styled.div`
     background-image : url(${BannerBG});
     background-size : 100% 100%;
     // margin-top : calc(0px + (13.6px - 1vw)*5);
-    ${breakpoint.ls`
-        background-size : cover;
-        background-position : center;
+    ${breakpoint.ml`
+        background-size : 400% 130vh;
+        background-position : 40% 100%;
+        background-repeat: no-repeat;
+        padding : 64px 50px;
+
     `}
 `
 const ButtonsContainer = styled.div`
@@ -50,13 +61,13 @@ const ButtonsContainer = styled.div`
     width : 40%;
 `}
     ${breakpoint.tb`
-    width : 50%;
+    width : 40%;
 `}
     ${breakpoint.ml`
-        width : 60%;
+        width : 80%;
     `}
-    ${breakpoint.ms`
-    width : 70%;
+    ${breakpoint.mm`
+    width : 100%;
 `}
 `
 const Button = styled(NavLink)`
@@ -88,12 +99,32 @@ const ButtonRed = styled(Button)`
         &:hover {
             background-color: #c25a40;
         }
+    ${breakpoint.tb`
+        font-size : 12px;
+        min-width : 100px;
+        min-height : 20px;
+        height : 30px;
+        line-height : 1.6;
+    `}
+    ${breakpoint.ml`
+        line-height : 1.2;
+    `}
 `
 const ButtonGreen = styled(Button)`
     background-color : #37a28d;
     &:hover {
         background-color: #3fbfa7;
     }
+    ${breakpoint.tb`
+    font-size : 12px;
+    min-width : 100px;
+    min-height : 20px;
+    height : 30px;
+    line-height : 1.6;
+    ${breakpoint.ml`
+        line-height : 1.2;
+    `}
+`}
 `
 
 const goToLink = (href) => {
