@@ -12,7 +12,7 @@ margin-bottom: 10px;
 const Input = styled.input`
 border : none;
 outline : none;
-background: #E8E8E8;
+background: #f5f5f5;
 border-radius: 20px;
 width : calc(100% - 40px);
 padding: 12px 12px;

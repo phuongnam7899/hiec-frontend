@@ -23,7 +23,7 @@ const CommentBox = styled.div`
 
 `
 const Cmt = styled.div`
-background: #E8E8E8;
+background: #f5f5f5;
 border-radius: 20px;
 max-width : calc(100% - 40px);
 padding: 6px 12px;
@@ -31,6 +31,7 @@ padding: 6px 12px;
 `
 const Text = styled.span`
     overflow-wrap: break-word;
+    font-size: 14px;
     ${breakpoint.tb`
     font-size: 12px
     `}
@@ -43,12 +44,12 @@ const Name = styled.span`
 
 font-style: normal;
 font-weight: bold;
-font-size: 20px;
+font-size: 16px;
 line-height: 23px;
 display: flex;
 align-items: center;
 
-color: #2D8F7C;
+color: #0853B6;
 
 ${breakpoint.tb`
 font-size: 16px;
