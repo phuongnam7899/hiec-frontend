@@ -45,8 +45,8 @@ const Done = styled.div`
     color : #8A8A8A
 `
 const Loader = styled.img`
-    width : auto;
-    height : 100px;
+    width : 50px;
+    height : 50px;
 `
 
 function ForumPage(props) {
@@ -150,7 +150,7 @@ function ForumPage(props) {
                 dataLength={postsForum.length}
                 next={more}
                 hasMore={loadMore}
-                loader={<Loader src = "https://media2.giphy.com/media/MJRLrQnnLvtfi/giphy.gif?cid=ecf05e470244e0279dfbfc16c216d694ef353eb442d7fd11&rid=giphy.gif"/>}
+                loader={<Loader src = "https://media3.giphy.com/media/LLd6Ma5vQtXyw/giphy.gif?cid=ecf05e470ef39521fac6b49e298a7daaeb2e484749e314f4&rid=giphy.gif"/>}
                 endMessage={
                     <div style={{ textAlign: "center" }}>
                         <Done>__ Bạn đã xem hết bài __</Done>

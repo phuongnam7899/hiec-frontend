@@ -38,8 +38,8 @@ const Done = styled.div`
     color : #8A8A8A
 `
 const Loader = styled.img`
-    width : auto;
-    height : 100px;
+    width : 50px;
+    height : 50px;
 `
 
 
