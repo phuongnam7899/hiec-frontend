@@ -1,6 +1,6 @@
 {
   "short_name": "HIEC",
-  "name": "Cộng đồng các doanh nhân trẻ",
+  "name": "Cộng Đồng Các Doanh Nhân Trẻ",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "favicon.ico",
+      "src": "LOGO-01.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon.ico",
+      "src": "LOGO-01.png",
       "type": "image/png",
       "sizes": "512x512"
     }

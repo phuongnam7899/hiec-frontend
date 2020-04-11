@@ -6,6 +6,8 @@ const Icon = styled.i`
   margin-right: 16px;
   width: 20px;
   height: 20px;
+  display: flex;
+  align-items: flex-end;
 `;
 const Info = styled.div`
   display: flex;
@@ -44,6 +46,9 @@ const Input = styled.input`
 `;
 const TxtBlock = styled.div`
   // width : 80%;
+  // display: flex;
+  // align-items: center;
+  // line-height: 20px;
 `
 const Span = styled.span`
   ${props => {
