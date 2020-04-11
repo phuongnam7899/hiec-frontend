@@ -77,7 +77,7 @@ const SignUpLink = styled(Link)`
     transition : 0.3s all;
     color:${props => props.theme.text};
     &:hover{
-        color:${props  => props.theme.COLOR};
+        color:${props => props.theme.COLOR};
     }
     transition: ${props => props.theme.time};
     ${breakpoint.ml`
@@ -185,6 +185,7 @@ function HookSignIn(props) {
     const [token, setToken] = useState("");
     const [info, setInfo] = useState({});
     const [isNote, setIsNote] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const user = useSelector(state => state.user)
     const dispatch = useDispatch();
     useEffect(() => {
@@ -193,7 +194,6 @@ function HookSignIn(props) {
         }
     }, [])
     const submit = async (e) => {
-
         e.preventDefault();
         dispatch(showLoading())
         if (email && password) {
@@ -229,6 +229,7 @@ function HookSignIn(props) {
                 setTimeout(() => {
                     dispatch({ type: "SET_NOT_VISIBLE" })
                 }, 10000)
+                setErrorMessage("Vui lòng kiểm tra lại thông tin")
                 setIsNote(true)
             }
         }
@@ -241,8 +242,8 @@ function HookSignIn(props) {
             setTimeout(() => {
                 dispatch({ type: "SET_NOT_VISIBLE" })
             }, 10000)
-            console.log("THIẾU FRONT");
             setIsNote(true);
+            setErrorMessage("Vui lòng nhập đủ thông tin")
         }
     }
     const goToHomepage = () => {
@@ -251,38 +252,38 @@ function HookSignIn(props) {
     // useEffect(() => {
     //     dispatch(getData());
     //   }, []);
-    const note = isNote ? <div style={{ color: "red" }}><span>Bạn nhập thiếu hoặc sai thông tin</span></div> : <></>;
+    const note = isNote ? <div style={{ color: "red" }}><span>{errorMessage}</span></div> : <></>;
 
     // console.log(useSelector(state=>state.token))
     // console.log(useSelector(state=>state.user))
     return (
-            <div style={{ width: "100%", height: "100%" }}>
-                <Background>
-                
-                    <Background2>
-                    
+        <div style={{ width: "100%", height: "100%" }}>
+            <Background>
+
+                <Background2>
+
                     <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
-                        <Form onSubmit={submit}>
-                        
-                            <Title>Đăng nhập</Title>
-                            
-                            <Email>
-                                <span>Email</span>
-                                <Input value={email} onChange={(e) => setEmail(e.target.value)}></Input>
-                            </Email>
-                            <Password >
-                                <span>Password</span>
-                                <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" style={{ fontFamily: "pass" }} />
-                            </Password>
-                            {note}
-                            <Center>
-                                <Button>Đăng Nhập</Button>
-                                <SignUp>Chưa có tài khoản? <SignUpLink to="/sign-up">Đăng kí ngay</SignUpLink></SignUp>
-                            </Center>
-                        </Form>
-                    </Background2>
-                </Background>
-            </div>
+                    <Form onSubmit={submit}>
+
+                        <Title>Đăng nhập</Title>
+
+                        <Email>
+                            <span>Email</span>
+                            <Input value={email} onChange={(e) => setEmail(e.target.value)}></Input>
+                        </Email>
+                        <Password >
+                            <span>Password</span>
+                            <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" style={{ fontFamily: "pass" }} />
+                        </Password>
+                        {note}
+                        <Center>
+                            <Button>Đăng Nhập</Button>
+                            <SignUp>Chưa có tài khoản? <SignUpLink to="/sign-up">Đăng kí ngay</SignUpLink></SignUp>
+                        </Center>
+                    </Form>
+                </Background2>
+            </Background>
+        </div>
 
     )
 }

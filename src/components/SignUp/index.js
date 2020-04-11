@@ -26,7 +26,7 @@ const Form = styled.form`
   align-items: flex-start;
   width: 75%;
   margin-bottom: 110px;
-  margin-top: ${convert2vw(40)}; 
+  margin-top: ${convert2vw(40 )}; 
   ${breakpoint.tb`
   margin-bottom: 70px;
     `}
