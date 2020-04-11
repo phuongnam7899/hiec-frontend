@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { breakpoint } from '../../styles/mixin'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import convert2vw from "../../utils/convert2vw"
-
 const Background = styled.div`
   display: flex;
   flex-direction: row;
@@ -27,10 +26,9 @@ const Form = styled.form`
   align-items: flex-start;
   width: 75%;
   margin-bottom: 110px;
-  margin-top: ${convert2vw(45)}; 
+  margin-top: ${convert2vw(40)}; 
   ${breakpoint.tb`
   margin-bottom: 70px;
-
     `}
     ${breakpoint.ml`
     margin-bottom: 40px;
@@ -39,7 +37,7 @@ const Form = styled.form`
 const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 12px 0px;
+  margin: 4px 0px;
   font-size: 20px;
   width: 100%;
   font-weight: 500;
@@ -62,8 +60,8 @@ const Button = styled.button`
   padding: 6px 18px;
   font-size: 20px;
   font-weight: 600;
-  margin-top: 16px;
-  margin-bottom: 10px;
+  margin-top: 12px;
+  margin-bottom: 18px;
   background-color: ${props => props.theme.COLOR};
   color: ${props => props.theme.textButton};
   transition : ${props => props.theme.time};
@@ -82,15 +80,14 @@ const SignUpLink = styled(Link)`
   text-decoration: underline;
   cursor: pointer;
   transition: all 0.1s;
-  color: #5e5e5e;
+  color: #5E5E5E;
   &:hover {
     color: ${props => props.theme.COLOR};
   }
 `;
-
 const Input = styled.input`
   border: none;
-  border-bottom: 1px solid #b6b6b6;
+  border-bottom: 1px solid #B6B6B6;
   font-size: 20px;
   padding-bottom: 4px;
   width: 100%;
@@ -99,7 +96,7 @@ const Input = styled.input`
   background-color: ${props => props.theme.backgroundColor};
   outline: none;
   &:focus {
-    bor3fofa7ttom: 1px solid #41b2eb;
+    bor3fofa7ttom: 1px solid #41B2EB;
     transition: all 0.1s;
   }
   transition: all 0.1s;
@@ -113,7 +110,7 @@ const Center = styled.div`
 `;
 const SignUp = styled.div`
   font-weight: bold;
-  color: #5e5e5e;
+  color: #5E5E5E;
   margin-top: 15px;
   font-size: 14px;
   transition: ${props => props.theme.time};
@@ -131,7 +128,6 @@ const Title = styled.span`
         font-size:22px
     `}
 `;
-
 const LogoOnImg = styled.img`
 height:auto;
 top:10px;
@@ -150,13 +146,10 @@ align-self:flex-start;
         width:30px
     `}
 `;
-
-
 const Background2 = styled.div.attrs(props => ({
   width: props.width
 }))`
   transition: ${props => props.theme.time};
-  
   width:30%;
   width: ${props => props.width};
   height: 90vh;
@@ -168,29 +161,24 @@ const Background2 = styled.div.attrs(props => ({
   background-color: ${props => props.theme.backgroundColor};
   ${breakpoint.tb`
         width : 60%;
-        
     `}
   ${breakpoint.ml`
         width : 100%;
         height:100vh;
     `}
-    
 `;
-
 const IMG = styled.img`
   width: 100%;
   height: 100vh;
   size: cover;
   transition: ${props => props.theme.time};
 `;
-
 function HookSignIn(props) {
   const dispatch = useDispatch()
   const [widthBackground1, setWidthBackground1] = useState((100 / 20) * 13);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [isWorking, setIsWorking] = useState(false);
   const [enoughInfo, setEnoughInfo] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -205,10 +193,8 @@ function HookSignIn(props) {
       name
     ) {
       // TODO : xử lí thông tin và gửi api
-
       const res = await axios.post("/api/auth/register", {
         name,
-
         email,
         password,
         isWorking
@@ -222,8 +208,6 @@ function HookSignIn(props) {
           dispatch({ type: "SET_NOT_VISIBLE" })
         }, 10000)
         props.history.push("/");
-
-
       } else {
         setTimeout(() => {
           dispatch(hideLoading())
@@ -254,14 +238,11 @@ function HookSignIn(props) {
   ) : (
       <div style={{ color: "red" }}>Mời nhập đầy đủ thông tin</div>
     );
-
   return (
-
       <Background>
         <Background2>
           <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
           <Form onSubmit={submit}>
-
             <Title>Đăng Ký</Title>
             <InputGroup>
               <span>Tên của bạn</span>
@@ -277,7 +258,6 @@ function HookSignIn(props) {
                 onChange={e => setEmail(e.target.value)}
               ></Input>
             </InputGroup>
-
             <InputGroup>
               <span>Mật khẩu ( Tối thiểu 8 ký tự )</span>
               <Input
@@ -306,13 +286,7 @@ function HookSignIn(props) {
             </Center>
           </Form>
         </Background2>
-
-
-
-
-
       </Background>
   );
 }
-
 export default HookSignIn;
