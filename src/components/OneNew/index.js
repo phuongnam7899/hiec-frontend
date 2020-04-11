@@ -165,7 +165,7 @@ function OneNew(props) {
 
 
     useEffect(() => {
-        document.title = href.includes("/news") ? "HIEC - Tin tức" : "HIEC - Dự án";
+        document.title = href.includes("/news") ? "HIEC - Tin tức" : "HIEC - Cơ hội";
         window.scrollTo(0,0)
         getHotPosts()
         getRecentNews()
@@ -262,8 +262,8 @@ function OneNew(props) {
                 
             </Post>
             <RightSide>
-                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức nổi bật":"Dự án nổi bật"} icon="fas fa-star" listPost={hotPosts} />
-                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức gần đây":"Dự án gần đây"} icon="fas fa-clock" listPost={recentPosts} />
+                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức nổi bật":"Nổi bật"} icon="fas fa-star" listPost={hotPosts} />
+                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức gần đây":"Gần đây"} icon="fas fa-clock" listPost={recentPosts} />
             </RightSide>
         </Form>
 

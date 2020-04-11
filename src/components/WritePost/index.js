@@ -57,7 +57,7 @@ const StyledQuill = styled(ReactQuill)`
 
 const Bar = styled.div`
   display: flex;
-  background: #abd9c1;
+  background: #81b1f0;
   justify-content: space-between;
   padding: 0px 18px;
   height: 40px;
@@ -239,6 +239,10 @@ const tagOptions = [
   {
     value: "Startup",
     label: "Start-up"
+  },
+  {
+    value: "Innovation",
+    label: "Sáng tạo"
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {

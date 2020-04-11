@@ -165,7 +165,7 @@ const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!togg
         <NavContainer>
             <NavOptions>
                 <Optional to = "/news">Tin tức</Optional>
-                <Optional to = "/project">Dự án</Optional>
+                <Optional to = "/project">Cơ hội</Optional>
                 <Optional to = "/forum">Diễn đàn</Optional>
                 <Optional to = "/about-us">Về chúng tôi</Optional>
                 {User}

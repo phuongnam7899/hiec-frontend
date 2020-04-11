@@ -235,6 +235,10 @@ const tagOptions = [
   {
     value: "Startup",
     label: "Start-up"
+  },
+  {
+    value: "Innovation",
+    label: "Sáng tạo"
   }
 ];
 const categoryOptions = [{

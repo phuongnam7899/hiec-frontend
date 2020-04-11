@@ -6,7 +6,7 @@ import {breakpoint} from "../../../styles/mixin"
 import BannerBG from "../../../static/images/web_banner.png"
 
 const Title = styled.h1`
-    font-size : 60px;
+    font-size : 56px;
     font-weight : 600;
     ${breakpoint.tb`
     font-size : 32px;
@@ -19,7 +19,7 @@ const Title = styled.h1`
 `
 const Description = styled.p`
     max-width : 45%;
-    font-size : 22px;
+    font-size : 20px;
     margin : 40px 0px;
     font-weight : 400;
     ${breakpoint.tb`
@@ -85,7 +85,7 @@ const Button = styled(NavLink)`
     line-height : 48px;
     padding : 4px 10px;
     border : none;
-    font-size : 24px;
+    font-size : 22px;
     font-weight : 600;
     &:hover {
         transform : scale(1.02)
@@ -137,7 +137,7 @@ const goToLink = (href) => {
 
 const Banner = (props) => {
 
-    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "Global Community for Young Entrepreneurs - this platform is a global community designed to educate, inspire, and connect entrepreneurs." : "Global Community for Young Entrepreneurs - this platform is a global community designed to educate, inspire, and connect entrepreneurs."
+    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "Cộng đồng các doanh nhân trẻ - nơi giáo dục, truyền cảm hứng và kết nối những người có chung niềm đam mê Khởi nghiệp - Kinh doanh." : "Global Community for Young Entrepreneurs - this platform is a global community designed to educate, inspire, and connect entrepreneurs."
     return(
         <BannerContainer>
             <Title>Beyond the Infinity</Title>

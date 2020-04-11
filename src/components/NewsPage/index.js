@@ -61,7 +61,7 @@ const NewsPage = (props) => {
     const [filterCd,setFilterCd] = useState({})
     const [ghimPost,setGhimPost] = useState([]);
     useEffect(()=>{
-        document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Dự án"
+        document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Cơ hội"
         window.scrollTo(0,0)
         getGhimPost()
         getRecentPosts()
@@ -148,7 +148,7 @@ const NewsPage = (props) => {
                 dataLength={listPosts.length}
                 next={more}
                 hasMore={loadMore}
-                loader={<Loader src = "https://i.pinimg.com/originals/3f/2c/97/3f2c979b214d06e9caab8ba8326864f3.gif"/>}
+                loader={<Loader src = "https://media3.giphy.com/media/LLd6Ma5vQtXyw/giphy.gif?cid=ecf05e470ef39521fac6b49e298a7daaeb2e484749e314f4&rid=giphy.gif"/>}
                 endMessage={
                     <div style={{ textAlign: "center" }}>
                         <Done>__ Bạn đã xem hết bài __</Done>
@@ -160,8 +160,8 @@ const NewsPage = (props) => {
             </NewsList>
             <RightSide>
                 <SearchBar onSearch = {handleSearch}/>
-                <HotRecentForm url ={"/"+category+"/"} title = {category.includes("news")?"Tin tức nổi bật":"Dự án nổi bật"} icon = "fas fa-star" listPost = {hotPosts} />
-                <HotRecentForm url ={"/"+category+"/"} title =  {category.includes("news")?"Tin tức gần đây":"Dự án gần đây"} icon = "fas fa-clock" listPost = {recentPosts} />
+                <HotRecentForm url ={"/"+category+"/"} title = {category.includes("news")?"Tin tức nổi bật":"Nổi bật"} icon = "fas fa-star" listPost = {hotPosts} />
+                <HotRecentForm url ={"/"+category+"/"} title =  {category.includes("news")?"Tin tức gần đây":"Gần đây"} icon = "fas fa-clock" listPost = {recentPosts} />
             </RightSide>
         </NewsPageContainer>
     )

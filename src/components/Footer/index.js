@@ -112,7 +112,7 @@ const Footer = props => {
               <Title>Menu</Title>
               <FooterLink to="/">Trang chủ</FooterLink>
               <FooterLink to="/news">Tin tức</FooterLink>
-              <FooterLink to="/project">Dự án</FooterLink>
+              <FooterLink to="/project">Cơ hội</FooterLink>
               <FooterLink to="/forum">Diễn đàn</FooterLink>
               <FooterLink to="/about-us">Về chúng tôi</FooterLink>
             </Column>

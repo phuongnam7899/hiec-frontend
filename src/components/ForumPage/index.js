@@ -150,7 +150,7 @@ function ForumPage(props) {
                 dataLength={postsForum.length}
                 next={more}
                 hasMore={loadMore}
-                loader={<Loader src = "https://i.pinimg.com/originals/3f/2c/97/3f2c979b214d06e9caab8ba8326864f3.gif"/>}
+                loader={<Loader src = "https://media2.giphy.com/media/MJRLrQnnLvtfi/giphy.gif?cid=ecf05e470244e0279dfbfc16c216d694ef353eb442d7fd11&rid=giphy.gif"/>}
                 endMessage={
                     <div style={{ textAlign: "center" }}>
                         <Done>__ Bạn đã xem hết bài __</Done>
