@@ -85,7 +85,7 @@ const LiOptions = styled.div`
     width:100%;
     text-align:center;
     &:hover{
-        background-color: #59d8ff;
+        background-color: ${props  => props.theme.COLOR};
         transition : 0.2s all;
     }
     

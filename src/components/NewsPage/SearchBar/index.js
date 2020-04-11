@@ -37,11 +37,11 @@ const Button = styled.button`
   color : #ffffff;
   line-height : 30px;
   text-align : center;
-  background : #1ABC9C;
+  background : ${props  => props.theme.COLOR};
   border-radius : 15px;
   margin-top : 32px;
   &:hover {
-    background : #24d4b1;
+    background : ${props => props.theme.HOVER_COLOR};
     transform : scale(1.05);
     cursor : pointer;
   }
@@ -51,7 +51,7 @@ const Title = styled.div`
     font-weight : bold;
     margin-bottom : 32px;
     & i {
-        color : #1ABC9C;
+        color : ${props  => props.theme.COLOR};
         margin-left : 8px;
     }
 `;
@@ -64,7 +64,7 @@ const TagContainer = styled.div`
 const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
-  background-color: #37a28d;
+  background-color: ${props  => props.theme.COLOR};
   color: #ffffff;
   border-radius: 16px;
   margin-right: 8px;

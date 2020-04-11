@@ -13,7 +13,7 @@ const Post = styled.li`
     transition: 0.2s all;
     cursor : pointer;
     &:hover{
-        color :  #1ABC9C;
+        color :  ${props  => props.theme.COLOR};
     }
 
 `

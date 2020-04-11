@@ -8,7 +8,7 @@ const Button = styled.i`
     cursor : pointer;
     font-size : 2em;
     :hover{
-        color : #1ABC9C;
+        color : ${props  => props.theme.COLOR};
     }
 `
 

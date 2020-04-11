@@ -2,7 +2,7 @@ import styled, { ThemeProvider } from "styled-components"
 
 import { NavLink, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
 import Container from "../Container"
-
+import {theme} from "../../App"
 
 export const BackgroundNav = styled.div`
     background-color:${props => props.theme.darkMode ? "#494949" : "white"};
@@ -11,12 +11,7 @@ export const BackgroundNav = styled.div`
     box-shadow: 0px 4px 4px rgba(193,193,193,0.25);
 `;
 
-// export const Container = styled.div`
-//     margin: 0px 90px;
-//     height:100%;
-//     position:relative;
 
-// `;
 export const Logo = styled.img`
     display : block;
     width : 40px;
@@ -53,7 +48,7 @@ export const Li = styled.li`
 `;
 
 export const Options = styled.div`
-    background-color:${props => props.theme.darkMode ? "#EFEFEF" : "#3E3E3E"};
+    background-color:#3E3E3E;
     position:absolute;
     right: 0px;
     top: 65px;
@@ -70,7 +65,7 @@ export const Polygon = styled.div`
     clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
     right:0px;
     top:57px;
-    background-color:${props => props.theme.darkMode ? "#EFEFEF" : "#3E3E3E"};
+    background-color:#3E3E3E;
 `
 
 export const LiOptions = styled.div`
@@ -78,7 +73,7 @@ export const LiOptions = styled.div`
     width:100%;
     text-align:center;
     &:hover{
-        background-color: #37A28D;
+        background-color: ${props => props.theme.HOVER_COLOR};
         transition : 0.2s all;
     }
     
@@ -89,17 +84,17 @@ export const OptionLink = styled(NavLink)`
     text-decoration: none;
     font-weight: bold;
     font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color  : ${props => props.theme.darkMode?'black':"white"};
+    color  : white;
 
 `
 export const NavBarLink = styled(NavLink)`
     text-decoration: none;
     font-weight: bold;
     font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color  : ${props => props.theme.darkMode?'white':"black"};
+    color  : black;
     transition : 0.1s all;
     &:hover{
-        color : #37A28D
+        color : ${props  => props.theme.HOVER_COLOR}
     }
     
 
@@ -126,25 +121,15 @@ export const AvatarBackground = styled.div`
     
 `;
 export const styleActiveLink = {
-    color: '#37A28D',
+    color: "#0853B6",
 }
 
 export const ProfilePage = styled.span`
-padding : 8px 32px;
-cursor : pointer;
-${props => props.theme.darkMode ? {
-        color: "black",
-        textDecoration: "none",
-        fontWeight: "bold",
-        fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-        ":hover": {
-            color: "white",
-        }
-    } : {
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-            fontFamily: "-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    padding : 8px 32px;
+    cursor : pointer;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-        }}
 `

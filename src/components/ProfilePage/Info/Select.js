@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Select from "react-select";
 import { breakpoint } from "../../../styles/mixin";
 const Icon = styled.i`
-  color: #37a28d;
+  color: ${props  => props.theme.COLOR};
 
   width: 20px;
   height: 20px;

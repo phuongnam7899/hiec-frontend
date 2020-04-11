@@ -9,7 +9,7 @@ const Button = styled.button`
      border : none;
      padding : 10px;
      border-radius : 10px;
-     background-color : #37A28D;
+     background-color : ${props  => props.theme.COLOR};
      color : #fff;
      cursor : pointer;
      font-weight : 600;
@@ -17,7 +17,7 @@ const Button = styled.button`
      transition : 0.1s all;
      text-align : center;
      &:hover {
-      background-color : #1ABC9C
+      background-color : ${props  => props.theme.HOVER_COLOR}
      }
      & i {
        margin-left : 4px;

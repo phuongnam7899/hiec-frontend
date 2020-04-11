@@ -21,6 +21,17 @@ import LoadingBar from './components/LoadingBar'
 import AdminPage from './components/AdminPage'
 import ScrollTopButton from './components/ScrollTopButton'
 import NotFoundPage from './components/404notFound'
+import { ThemeProvider } from 'styled-components'
+
+
+ export const theme = {
+  COLOR : "#0853B6",
+  HOVER_COLOR : "#093ea8",
+  time: ".3s all",
+  textButton: "white",
+  text: "black",
+  backgroundColor: "white",
+}
 
 export default function App() {
   const visible = useSelector(state=>state.notificationBox.visible)
@@ -43,7 +54,7 @@ export default function App() {
   // console.log(visible)
   return (
     <Router>
-      
+      <ThemeProvider theme = {theme}>
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
       <LoadingBar/>
       {user._id?<Route path = "/admin" exact component = {AdminPage}/>:null}
@@ -62,8 +73,9 @@ export default function App() {
       <Route path = "/404-not-found" exact render = {()=><NotFoundPage/>}/>
       {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
       <ScrollTopButton />
-      
+    
     </div>
+    </ThemeProvider>
     </Router>
   )
 }

@@ -7,7 +7,7 @@ const Title = styled.span`
     font-weight : bold;
     margin-right: 20px;
     & i {
-        color : #1ABC9C;
+        color : ${props  => props.theme.COLOR};
         margin-left : 8px;
     }
     ${breakpoint.ml`

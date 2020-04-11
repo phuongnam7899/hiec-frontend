@@ -32,7 +32,7 @@ const FooterLink = styled(NavLink)`
     text-decoration : none;
     color : black;
     &:hover {
-        color: #37A28D;
+        color: ${props  => props.theme.COLOR};
     }
 `;
 
@@ -52,7 +52,7 @@ const Column = styled.div`
     margin-bottom : 4px;
   }
   & a:hover {
-    color : #37A28D;
+    color : ${props  => props.theme.COLOR};
     cursor : pointer;
   }
   & > div > i {

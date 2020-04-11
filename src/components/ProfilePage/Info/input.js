@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {breakpoint} from "../../../styles/mixin"
 const Icon = styled.i`
-  color: #37a28d;
+  color: ${props  => props.theme.COLOR};
   margin-right: 16px;
   width: 20px;
   height: 20px;

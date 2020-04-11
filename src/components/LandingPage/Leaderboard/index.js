@@ -46,7 +46,7 @@ const OneRow = styled(NavLink)`
   color : #000000;
   text-decoration : none;
   &:hover {
-      color : #1ABC9C;
+      color : ${props  => props.theme.COLOR};
   }
 `;
 
@@ -73,7 +73,7 @@ const Point = styled.div`
   text-align: end;
   font-weight: bold;
   & > i {
-    color: #1abc9c;
+    color: ${props  => props.theme.COLOR};
     margin-left: 8px;
   }
 `;

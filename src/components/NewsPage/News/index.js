@@ -19,7 +19,7 @@ const NewsContainer = styled(NavLink)`
   &:hover {
     h1,
     .more {
-      color: #1abc9c;
+      color: ${props  => props.theme.COLOR};
       
     }
   }

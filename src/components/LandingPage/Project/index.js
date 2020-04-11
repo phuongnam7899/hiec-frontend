@@ -22,7 +22,7 @@ const Title = styled(NavLink)`
   
   color : #000000;
   &:hover {
-      color : #1ABC9C
+      color : ${props  => props.theme.COLOR}
   }
   margin: 32px 0px 0px 0px;
 `;

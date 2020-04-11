@@ -94,7 +94,7 @@ const TagContainer = styled.div`
 const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
-  background-color: #37a28d;
+  background-color: ${props  => props.theme.COLOR};
   color: #ffffff;
   border-radius: 16px;
   margin-right: 8px;
@@ -116,7 +116,7 @@ const Button = styled.button`
   text-align: center;
   margin-top: 8px;
   font-size: 24px;
-  background: #37a28d;
+  background: ${props  => props.theme.COLOR};
   color: #ffffff;
   font-weight: bold;
   &:hover {

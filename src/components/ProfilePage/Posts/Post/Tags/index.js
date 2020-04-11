@@ -3,7 +3,7 @@ import styled from "styled-components"
 import {breakpoint} from "../../../../../styles/mixin"
 import convert2vw from "../../../../../utils/convert2vw"
 const TagSpan = styled.span`
-    background-color : #37A28D;
+    background-color : ${props  => props.theme.COLOR};
     color : white;
     font-size : ${convert2vw(12,"px",0.5)};
     font-weight : 600;
