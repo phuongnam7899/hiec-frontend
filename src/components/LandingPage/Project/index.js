@@ -103,7 +103,7 @@ const Project = (props) => {
     }
     return(
         <ProjectsContainer>
-            <Title to="/project">Dự Án</Title>
+            <Title to="/project">Cơ Hội</Title>
             <Description>
               {/* Thông tin về  các dự án đã, đang và sẽ  */}
             </Description>

@@ -83,7 +83,7 @@ function HookNavBar(props) {
                                             <NavBarLink to="/news" activeStyle={styleActiveLink} >Tin Tức</NavBarLink>
                                         </Li>
                                         <Li>
-                                            <NavBarLink to="/project" activeStyle={styleActiveLink}  >Dự Án</NavBarLink>
+                                            <NavBarLink to="/project" activeStyle={styleActiveLink}  >Cơ Hội</NavBarLink>
                                         </Li>
                                         <Li>
                                             <NavBarLink to="/forum" activeStyle={styleActiveLink}>Diễn Đàn</NavBarLink>

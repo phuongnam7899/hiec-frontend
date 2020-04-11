@@ -247,8 +247,7 @@ const categoryOptions = [{
 },
 {
   value: "project",
-  label: "Dự Án",
-}
+  label: "Cơ Hội"
 ]
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();

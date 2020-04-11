@@ -127,7 +127,7 @@ function Slide(props) {
             <ListOption>
                 <Option activeStyle={styleActiveLink} exact to="/" onClick={() => { goToLink("/") }}>Trang Chủ</Option>
                 <Option activeStyle={styleActiveLink} to="/news" onClick={() => { goToLink("/news") }}>Tin Tức</Option>
-                <Option activeStyle={styleActiveLink} to="/project" onClick={() => { goToLink("/project") }}>Dự Án</Option>
+                <Option activeStyle={styleActiveLink} to="/project" onClick={() => { goToLink("/project") }}>Cơ Hội</Option>
                 <Option activeStyle={styleActiveLink} to="/forum" onClick={() => { goToLink("/forum") }}>Diễn Đàn</Option>
                 <Option activeStyle={styleActiveLink} to="/about-us" onClick={() => { goToLink("/about-us") }}>Về Chúng Tôi</Option>
             </ListOption>

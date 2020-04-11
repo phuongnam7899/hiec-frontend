@@ -83,7 +83,7 @@ const ButtonRed = styled(Button)`
         }
 `
 const ButtonGreen = styled(Button)`
-    background-color : #45D0B6;
+    background-color : #0853B6;
     &:hover {
         background-color: #41b2eb;
     }
