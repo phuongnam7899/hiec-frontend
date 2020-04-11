@@ -190,11 +190,12 @@ function HookSignIn(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [disableButton,setDisableButton] = useState(false);
   const [isWorking, setIsWorking] = useState(false);
   const [enoughInfo, setEnoughInfo] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isDarkMode, setisDarkMode] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const submit = async e => {
     dispatch(showLoading())
     e.preventDefault();
@@ -205,14 +206,14 @@ function HookSignIn(props) {
       name
     ) {
       // TODO : xử lí thông tin và gửi api
-
+      setDisableButton(true);
       const res = await axios.post("/api/auth/register", {
         name,
-
         email,
         password,
         isWorking
       });
+      setDisableButton(false)
       if (res.status === 200) {
         setTimeout(() => {
           dispatch(hideLoading())
@@ -229,6 +230,7 @@ function HookSignIn(props) {
           dispatch(hideLoading())
         }, 1000)
         setEnoughInfo(false);
+        setErrorMessage("Tài khoản đã tồn tại")
         dispatch({ type: "SET_VISIBLE_AND_NOT_SUCCESS" })
         setTimeout(() => {
           dispatch({ type: "SET_NOT_VISIBLE" })
@@ -243,7 +245,18 @@ function HookSignIn(props) {
         dispatch({ type: "SET_NOT_VISIBLE" })
       }, 10000)
       setEnoughInfo(false);
-      // console.log("THIẾU HOẶC SAI FORMAT")
+      if(password !== confirmPassword){
+        setErrorMessage("Xác nhận mật khẩu không trùng khớp")
+      } 
+      if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+        setErrorMessage("Vui lòng điền đúng email")
+      }
+      if(password.length < 8 ){
+        setErrorMessage("Vui lòng điền mật khẩu trên 8 kí tự")
+      }
+      if(!(email && password && name && confirmPassword)){
+        setErrorMessage("Vui lòng điền đủ thông tin")
+      }
     }
   };
   const goToHomepage = () => {
@@ -252,66 +265,66 @@ function HookSignIn(props) {
   const enough = enoughInfo ? (
     <></>
   ) : (
-      <div style={{ color: "red" }}>Mời nhập đầy đủ thông tin</div>
+  <div style={{ color: "red" }}>{errorMessage}</div>
     );
 
   return (
 
-      <Background>
-        <Background2>
-          <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
-          <Form onSubmit={submit}>
+    <Background>
+      <Background2>
+        <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
+        <Form onSubmit={submit}>
 
-            <Title>Đăng Ký</Title>
-            <InputGroup>
-              <span>Tên của bạn</span>
-              <Input
-                value={name}
-                onChange={e => setName(e.target.value)}
-              ></Input>
-            </InputGroup>
-            <InputGroup>
-              <span>Email</span>
-              <Input
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              ></Input>
-            </InputGroup>
+          <Title>Đăng Ký</Title>
+          <InputGroup>
+            <span>Tên của bạn</span>
+            <Input
+              value={name}
+              onChange={e => setName(e.target.value)}
+            ></Input>
+          </InputGroup>
+          <InputGroup>
+            <span>Email</span>
+            <Input
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            ></Input>
+          </InputGroup>
 
-            <InputGroup>
-              <span>Mật khẩu ( Tối thiểu 8 ký tự )</span>
-              <Input
-                type="password"
-                style={{ fontFamily: "pass" }}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </InputGroup>
-            <InputGroup>
-              <span>Nhập lại mật khẩu</span>
-              <Input
-                type="password"
-                style={{ fontFamily: "pass" }}
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-              />
-            </InputGroup>
-            {enough}
-            <Center>
-              <Button>Đăng Ký</Button>
-              <SignUp>
-                Đã có tài khoản?{" "}
-                <SignUpLink to="/sign-in">Đăng nhập</SignUpLink>
-              </SignUp>
-            </Center>
-          </Form>
-        </Background2>
-
-
+          <InputGroup>
+            <span>Mật khẩu ( Tối thiểu 8 ký tự )</span>
+            <Input
+              type="password"
+              style={{ fontFamily: "pass" }}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <span>Nhập lại mật khẩu</span>
+            <Input
+              type="password"
+              style={{ fontFamily: "pass" }}
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
+            />
+          </InputGroup>
+          {enough}
+          <Center>
+            <Button disabled = {disableButton}>Đăng Ký</Button>
+            <SignUp>
+              Đã có tài khoản?{" "}
+              <SignUpLink to="/sign-in">Đăng nhập</SignUpLink>
+            </SignUp>
+          </Center>
+        </Form>
+      </Background2>
 
 
 
-      </Background>
+
+
+    </Background>
   );
 }
 
