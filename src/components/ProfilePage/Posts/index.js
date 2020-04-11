@@ -52,7 +52,7 @@ function MyPosts() {
                 dataLength={listPosts.length}
                 next={more}
                 hasMore={loadMore}
-                loader={<Loader src="https://i.pinimg.com/originals/3f/2c/97/3f2c979b214d06e9caab8ba8326864f3.gif" />}
+                loader={<Loader src="https://media3.giphy.com/media/LLd6Ma5vQtXyw/giphy.gif?cid=ecf05e470ef39521fac6b49e298a7daaeb2e484749e314f4&rid=giphy.gif" />}
                 endMessage={
                     <div style={{ textAlign: "center" }}>
                         <Done>__ Bạn đã xem hết bài __</Done>
