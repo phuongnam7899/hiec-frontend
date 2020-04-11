@@ -397,13 +397,14 @@ const WritePost = props => {
 
 WritePost.modules = {
   toolbar: [
-    ["bold"], ["italic"], ["underline"],["blockquote"], ["code"],
+    ["bold"], ["italic"], ["underline"],["blockquote"], ["code"], [{ 'align': [] }],
     [{ list: "ordered" }, { list: "bullet" }],
     ["link"], ["image"], ["video"]
   ]
 };
 
 WritePost.formats = [
+  "align",
   "header",
   "font",
   "size",
