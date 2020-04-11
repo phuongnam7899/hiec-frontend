@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const LoadingBar = styled(Loading)`
     height : 3px;
-    background-color : #37A28D;
+    background-color : ${props  => props.theme.COLOR};
     position : fixed;
     top: 0;
     z-index : 10000;

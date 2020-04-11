@@ -48,7 +48,7 @@ const Input = styled.input`
   background-color: #f6f6f6;
   outline: none;
   &:focus {
-    border-bottom: 1px solid #3fbfa7;
+    border-bottom: 1px solid #41b2eb;
     transition: all 0.1s;
   }
   transition: all 0.1s;
@@ -85,7 +85,7 @@ const Button = styled.button`
 const ButtonGreen = styled(Button)`
     background-color : #45D0B6;
     &:hover {
-        background-color: #3fbfa7;
+        background-color: #41b2eb;
     }
 `
 const Err = styled.div`

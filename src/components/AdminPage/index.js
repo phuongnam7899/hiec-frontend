@@ -24,7 +24,7 @@ const Button = styled.button`
      transition : 0.1s all;
      text-align : center;
      &:hover {
-      background-color : #1ABC9C
+      background-color : ${props  => props.theme.COLOR}
      }
      & i {
        margin-left : 4px;

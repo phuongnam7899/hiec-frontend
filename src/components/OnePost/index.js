@@ -37,7 +37,7 @@ const Title = styled.span`
 
 `
 const Tag = styled.span`
-background-color : #37A28D;
+background-color : ${props  => props.theme.COLOR};
 color : white;
 font-size : 12px;
 font-weight : 600;
@@ -113,7 +113,7 @@ const ReactArea = styled.div`
     
 `
 const Icon = styled.i`
-    color : ${props => props.isClapped ? "#1ABC9C" : "black"};
+    color : ${props => props.isClapped ?  props.theme.COLOR : "black"};
     margin :auto;
     ${breakpoint.tb`
 
@@ -185,7 +185,7 @@ const Button = styled.button`
     font-size : 16px;
     transition : 0.2s all;
     :hover{
-        color : #1ABC9C;
+        color : ${props  => props.theme.COLOR};
     }
 `
 const TagBlock = styled.div`

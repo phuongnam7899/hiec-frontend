@@ -66,7 +66,7 @@ const Label = styled.label`
    
 `
 const IconSettings = styled.i`
-    color : #37A28D;
+    color : ${props  => props.theme.COLOR};
     z-index : 999;
     position:absolute;
     right: 0;
@@ -95,14 +95,14 @@ const Button = styled.button`
     font-size : 20px;
     font-weight : bolder;
     color : white;
-    background-color : #45D0B6;
+    background-color : ${props  => props.theme.COLOR};
     border-radius : 10px;
     transition : 0.3s all;
     cursor : pointer;
     outline:none;
     text-align : center;
     &:hover {
-        background-color : #37A28D;
+        background-color : ${props  => props.theme.HOVER_COLOR};
         
     }
     ${breakpoint.ml`

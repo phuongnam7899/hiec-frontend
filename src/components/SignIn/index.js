@@ -8,7 +8,7 @@ import { saveUser } from "../../actions/user"
 import user from '../../reducers/user'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { breakpoint } from '../../styles/mixin'
-
+import convert2vw from "../../utils/convert2vw"
 
 
 const Background = styled.div`
@@ -29,6 +29,14 @@ const Form = styled.form`
     align-items:flex-start;
     width:75%;
     margin-bottom: 120px;
+    margin-top: ${convert2vw(45)}; 
+    ${breakpoint.tb`
+  margin-bottom: 70px;
+
+    `}
+    ${breakpoint.ml`
+    margin-bottom: 140px;
+    `}
 `
 const Email = styled.div`
 display: flex;
@@ -49,10 +57,13 @@ const Button = styled.button`
     font-weight: 600;
     margin-top: 30px;
     margin-bottom:10px;
-    background-color:${props => props.theme.backgroundButton};
+    background-color:${props => props.theme.COLOR};
     color:${props => props.theme.textButton};
     cursor:pointer;
     transition: ${props => props.theme.time};
+    &:hover{
+        background-color : ${props => props.theme.HOVER_COLOR}
+    }
     ${breakpoint.ml`
         font-size:22px
     `}
@@ -66,7 +77,7 @@ const SignUpLink = styled(Link)`
     transition : 0.3s all;
     color:${props => props.theme.text};
     &:hover{
-        color:#1ABC9C;
+        color:${props  => props.theme.COLOR};
     }
     transition: ${props => props.theme.time};
     ${breakpoint.ml`
@@ -120,18 +131,7 @@ const Title = styled.span`
         font-size:24px
     `}
 `
-// const TextOnImg = styled.div`
-// position: absolute;
-// left:50%;
-// top:50%; 
-// transform: translate(-50%, -50%);
-// width:60%;
-// font-weight:bold;
-// font-size:56px;
-// text-align:center;
-// transition: ${props => props.theme.time};
-// color:${props => props.theme.textButton};
-// `
+
 const LogoOnImg = styled.img`
 // position: absolute;
     height:auto;
@@ -170,6 +170,7 @@ transition: ${props => props.theme.time};
     `}
   ${breakpoint.ml`
         width : 100%;
+        height: 100vh;
     `}
     
     
@@ -191,23 +192,6 @@ function HookSignIn(props) {
             window.history.back()
         }
     }, [])
-
-
-    const theme = isDarkMode ? {
-        time: "1s all",
-        backgroundButton: "#FFD946",
-        textButton: "black",
-        text: "white",
-        backgroundColor: "#494949",
-        ImageURL: "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.15752-9/84164546_132935084572581_2080401842293964800_n.png?_nc_cat=109&_nc_oc=AQnhx2E0Q8UGZK_FH8uyi-7d71-KOA1Yjj-kxLOCEcQ7pZOeNRsePy7YNMqvySRG3pk&_nc_ht=scontent.fhan3-1.fna&oh=b46fc187805aa382109de1993bde7857&oe=5EB6C7A7"
-    } : {
-            time: "2s all",
-            textButton: "white",
-            text: "black",
-            backgroundColor: "white",
-            backgroundButton: "#1ABC9C",
-            ImageURL: "https://scontent.fhan3-3.fna.fbcdn.net/v/t1.15752-9/85055898_133191184536849_84730002418958336_n.png?_nc_cat=100&_nc_oc=AQnwnWSAzvLc8L7LR8mXIHInGK5jFTL3v_hvHd0yNvF4xjyZTP9nu4HbgOQgBFemcgk&_nc_ht=scontent.fhan3-3.fna&oh=3ee88d558f7ab401687844b396bf88a3&oe=5EB828F4"
-        }
     const submit = async (e) => {
 
         e.preventDefault();
@@ -272,8 +256,6 @@ function HookSignIn(props) {
     // console.log(useSelector(state=>state.token))
     // console.log(useSelector(state=>state.user))
     return (
-        <ThemeProvider theme={theme}>
-
             <div style={{ width: "100%", height: "100%" }}>
                 <Background>
                 
@@ -301,8 +283,7 @@ function HookSignIn(props) {
                     </Background2>
                 </Background>
             </div>
-            {/* <button onClick = {()=>setisDarkMode(!isDarkMode)}>MODE</button> */}
-        </ThemeProvider>
+
     )
 }
 

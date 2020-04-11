@@ -42,11 +42,11 @@
     opacity: 1;
   }
   .check:hover svg {
-    stroke: #1ABC9C;
+    stroke: #59d8ff;
   }
   
   .cbx[type="radio"]:checked + .check svg {
-    stroke: #1ABC9C;
+    stroke: #59d8ff;
   }
   .cbx[type="radio"]:checked + .check svg path {
     stroke-dashoffset: 60;

@@ -33,7 +33,7 @@ const Title = styled.span`
     `}
 `
 const Tag = styled.span`
-background-color : #37A28D;
+background-color : ${props  => props.theme.COLOR};
 color : white;
 font-size : 12px;
 font-weight : 600;
@@ -87,7 +87,7 @@ const Reaction = styled.div`
 
 `
 const Icon = styled.i`
-    color : #1ABC9C;
+    color : ${props  => props.theme.COLOR};
     ${breakpoint.tb`
 
     font-size: 18px;

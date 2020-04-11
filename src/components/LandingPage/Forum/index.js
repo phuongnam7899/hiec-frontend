@@ -25,7 +25,7 @@ const Title = styled(NavLink)`
   color: #000000;
 
   &:hover {
-    color: #1abc9c;
+    color: ${props  => props.theme.COLOR};
   }
   //   margin: 32px 0px 0px 0px;
 `;
@@ -98,7 +98,7 @@ const ButtonRed = styled(Button)`
 const ButtonGreen = styled(Button)`
   background-color: #45d0b6;
   &:hover {
-    background-color: #3fbfa7;
+    background-color: #41b2eb;
   }
 `;
 

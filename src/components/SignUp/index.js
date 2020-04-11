@@ -64,11 +64,12 @@ const Button = styled.button`
   font-weight: 600;
   margin-top: 16px;
   margin-bottom: 10px;
-  background-color: ${props => props.theme.backgroundButton};
+  background-color: ${props => props.theme.COLOR};
   color: ${props => props.theme.textButton};
+  transition : ${props => props.theme.time};
   cursor: pointer;
   &:hover {
-    background-color: #3fbfa7;
+    background-color: ${props => props.theme.HOVER_COLOR};
   }
   ${breakpoint.ml`
         font-size:28px
@@ -83,7 +84,7 @@ const SignUpLink = styled(Link)`
   transition: all 0.1s;
   color: #5e5e5e;
   &:hover {
-    color: #1abc9c;
+    color: ${props => props.theme.COLOR};
   }
 `;
 
@@ -98,7 +99,7 @@ const Input = styled.input`
   background-color: ${props => props.theme.backgroundColor};
   outline: none;
   &:focus {
-    border-bottom: 1px solid #3fbfa7;
+    bor3fofa7ttom: 1px solid #41b2eb;
     transition: all 0.1s;
   }
   transition: all 0.1s;
@@ -245,25 +246,6 @@ function HookSignIn(props) {
       // console.log("THIẾU HOẶC SAI FORMAT")
     }
   };
-  const theme = isDarkMode
-    ? {
-      time: "1s all",
-      backgroundButton: "#FFD946",
-      textButton: "black",
-      text: "white",
-      backgroundColor: "#494949",
-      ImageURL:
-        "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.15752-9/84164546_132935084572581_2080401842293964800_n.png?_nc_cat=109&_nc_oc=AQnhx2E0Q8UGZK_FH8uyi-7d71-KOA1Yjj-kxLOCEcQ7pZOeNRsePy7YNMqvySRG3pk&_nc_ht=scontent.fhan3-1.fna&oh=b46fc187805aa382109de1993bde7857&oe=5EB6C7A7"
-    }
-    : {
-      time: "2s all",
-      textButton: "white",
-      text: "black",
-      backgroundColor: "white",
-      backgroundButton: "#1ABC9C",
-      ImageURL:
-        "https://scontent.fhan3-3.fna.fbcdn.net/v/t1.15752-9/85055898_133191184536849_84730002418958336_n.png?_nc_cat=100&_nc_oc=AQnwnWSAzvLc8L7LR8mXIHInGK5jFTL3v_hvHd0yNvF4xjyZTP9nu4HbgOQgBFemcgk&_nc_ht=scontent.fhan3-3.fna&oh=3ee88d558f7ab401687844b396bf88a3&oe=5EB828F4"
-    };
   const goToHomepage = () => {
     window.location.assign("/")
   }
@@ -274,8 +256,7 @@ function HookSignIn(props) {
     );
 
   return (
-    <ThemeProvider theme={theme}>
-      {/* <div style={{ width: "100%", height: "100%" }}> */}
+
       <Background>
         <Background2>
           <LogoOnImg onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" ></LogoOnImg>
@@ -331,9 +312,6 @@ function HookSignIn(props) {
 
 
       </Background>
-      {/* </div> */}
-      {/* <button onClick={() => setisDarkMode(!isDarkMode)}>MODE</button> */}
-    </ThemeProvider>
   );
 }
 
