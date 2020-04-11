@@ -9,16 +9,18 @@ const Title = styled.h1`
     font-size : 60px;
     font-weight : 600;
     ${breakpoint.tb`
-    font-size : 30px;
+    font-size : 32px;
     `}
     ${breakpoint.ml`
     font-size : 30px;
+    max-width : 100%;
+
     `}
 `
 const Description = styled.p`
     max-width : 45%;
     font-size : 22px;
-    margin : 52px 0px;
+    margin : 40px 0px;
     font-weight : 400;
     ${breakpoint.tb`
     font-size : 16px;
@@ -28,7 +30,7 @@ const Description = styled.p`
     `}
     ${breakpoint.ml`
     font-size : 16px;
-    max-width : 75%;
+    max-width : 100%;
 
     `}
 `
@@ -46,9 +48,11 @@ const BannerContainer = styled.div`
     // margin-top : calc(0px + (13.6px - 1vw)*5);
     ${breakpoint.ml`
         background-size : 400% 130vh;
-        background-position : 40% 100%;
+        background-position : 37% 120%;
         background-repeat: no-repeat;
         padding : 64px 50px;
+    justify-content : center;
+
 
     `}
 `

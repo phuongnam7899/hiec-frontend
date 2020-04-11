@@ -54,4 +54,4 @@ const LandingPage = (props) => {
     )
 }
 
-export default withNavAndFooter(LandingPage,true,false);
+export default withNavAndFooter(LandingPage);

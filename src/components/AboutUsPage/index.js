@@ -22,7 +22,7 @@ const AboutUsPageContainer = styled.div`
   ${breakpoint.ml`
   background : #fcfcfc;
   align-items : center;
-  height: 750vw;
+  height: 835vw;
 `}
 ${breakpoint.mm`
 background : #fcfcfc;
