@@ -243,6 +243,34 @@ const tagOptions = [
   {
     value: "Innovation",
     label: "Sáng tạo"
+  },  
+  {
+    value: "Scholarship",
+    label: "Học bổng"
+  },  
+  {
+    value: "Event",
+    label: "Sự kiện"
+  },
+  {
+    value: "Course",
+    label: "Khóa học"
+  },
+  {
+    value: "Internship",
+    label: "Thực tập"
+  },
+  {
+    value: "Job",
+    label: "Việc làm"
+  },
+  {
+    value: "Volunteer",
+    label: "Tình nguyện"
+  },
+  {
+    value: "ExchangeProgram",
+    label: "Chương trình trao đổi"
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {
@@ -402,7 +430,6 @@ WritePost.modules = {
     ["link"], ["image"], ["video"]
   ]
 };
-
 WritePost.formats = [
   "align",
   "header",
