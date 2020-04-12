@@ -105,10 +105,11 @@ function Post(props) {
     let parserContent = parser.parseFromString(content, "text/html");
     let newContent = parserContent.getElementsByTagName("*");
     let finalContent = "";
+    console.log(newContent)
     for (var i = 0; i < newContent.length; i++) {
         var current = newContent[i];
         // console.log(current)
-        if (current.children.length === 0 && current.textContent.replace(/ |\n/g, '') !== '') {
+        if (current.textContent){
             // Check the element has no children && that it is not empty
             finalContent = finalContent + " " + current.textContent;
         }
