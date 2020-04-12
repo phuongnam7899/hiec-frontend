@@ -120,7 +120,7 @@ function Slide(props) {
         <SlideGround visible={props.visible}>
             {token.token?
             <AvaNameBlock onClick={() => { goToLink("/profile/" + user._id) }}>
-                <Avatar src={avatar} />
+                <Avatar align="middle" src={avatar} />
                 <Name>{name}</Name>
             </AvaNameBlock>:<></>
             }

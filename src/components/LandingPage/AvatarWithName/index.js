@@ -79,7 +79,7 @@ const Name = styled.span`
 const AvatarWithName = props => {
   return (
     <AvatarWithNameContainer size={props.size}>
-      <Avatar size={props.size} src={props.imgSrc}></Avatar>
+      <Avatar size={props.size} src={props.imgSrc} align="middle"></Avatar>
       <Name size={props.size}>{props.name}</Name>
     </AvatarWithNameContainer>
   );

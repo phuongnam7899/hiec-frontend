@@ -36,7 +36,7 @@ function HookNavBar(props) {
     }
 
     const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
-        <Avatar src= {user.profile.avatar} />
+        <Avatar src= {user.profile.avatar} align="middle"/>
         <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
     </AvatarBackground> : <></>
 

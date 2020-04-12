@@ -89,7 +89,7 @@ function AvatarWithName(props) {
     return (
         <RowCenter>
             <div style = {{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-            <Img onClick = {goToUserProfile}  src = {props.avatar} />
+            <Img onClick = {goToUserProfile}  src = {props.avatar} align="middle"/>
             <Name onClick = {goToUserProfile}>{props.name}</Name>
             {props.userID === localStorage.getItem("hiec_user_id") ?
                         <div onClick={deletePost}>
