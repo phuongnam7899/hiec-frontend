@@ -44,6 +44,7 @@ font-size: ${props => (props.type === "big" ? "20px" : "12px")};
 const Description = styled.div`
   font-size: 18px;
   margin: 8px 0px;
+  font-style: ${props => (props.fontStyle === "i" ? "italic" : "normal")};
 `;
 const Date = styled.div`
   font-size: 14px;
@@ -60,7 +61,7 @@ const ImageWithTitle = props => {
         </Title>
       ) : null}
       {props.description ? (
-        <Description>{props.description}</Description>
+        <Description fontStyle={props.fontStyle}>{props.description}</Description>
       ) : null}
       {props.date ? <Date type={props.type}>{props.date}</Date> : null}
     </ImageWithTitleContainer>

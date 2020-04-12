@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { breakpoint } from "../../../styles/mixin";
 
 const ForumContainer = styled.div`
-  width: 50%;
+  width: 45%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -112,16 +112,17 @@ const Forum = props => {
       <OneNews>
         <ImageWithTitle
           type="normal"
+          fontStyle="i"
           description="Bạn phải đăng nhập mới có thể xem bài, đăng bài và thảo luận."
-          imgUrl="https://images.unsplash.com/photo-1581125206334-788f30d39d34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+          imgUrl="https://i.imgur.com/3rznM28.png"
           toHref="/forum"
         />
       </OneNews>
-      {!localStorage.getItem("hiec_user_token") ? 
+      {/* {!localStorage.getItem("hiec_user_token") ? 
             <ButtonsContainer>
                 <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
                 <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>
-            </ButtonsContainer> : null }
+            </ButtonsContainer> : null } */}
     </ForumContainer>
   );
 };

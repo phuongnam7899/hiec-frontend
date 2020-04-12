@@ -20,6 +20,7 @@ const PostForm = styled.div`
         padding : 16px;
     `}
     
+    
 `
 const Tags = styled.div`
     display : flex;
@@ -80,6 +81,9 @@ const Arrow = styled.i`
 
 `
 const MoreTxt = styled.div`
+&:hover {
+    color: #0853b6;
+}
 ${breakpoint.ml`
 font-size : 10px;
 `}
