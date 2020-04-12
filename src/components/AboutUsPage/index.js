@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import AOS from "aos";
 import convert2vw from "../../utils/convert2vw";
 import { breakpoint } from "../../styles/mixin";
-import AboutUsBG from "../../static/images/about-us-bg.jpg"
+import AboutUsBG from "../../static/images/about-us-bbg.png"
 
 import "aos/dist/aos.css";
 AOS.init();
@@ -57,7 +57,7 @@ const Logo = styled.h1`
     20deg,
     rgba(69, 231, 199, 1) 0%,
     rgba(177, 249, 235, 1) 10%,
-    rgba(52, 171, 147, 1) 100%
+    #0853b6 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -70,7 +70,7 @@ const Logo = styled.h1`
 const Title = styled.h2`
   display: inline-block;
   max-width: 30vw;
-  border-bottom: 5px solid #34ab93;
+  border-bottom: 5px solid #0853b6;
   text-align: justify;
   margin-bottom: ${convert2vw(5, "vh")};
   font-size: ${convert2vw(2, "em")};
