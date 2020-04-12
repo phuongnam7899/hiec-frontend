@@ -15,14 +15,21 @@ const Post = styled.li`
     &:hover{
         color :  ${props  => props.theme.COLOR};
     }
+    & > i {
+        font-size : 8px;
+        line-height: 16px;
+        margin-right: 4px;
+        margin-top: 4px;
+        color: #0853b6;
+    }
 
 `
 const Title = styled.div`
     font-size : 15px;
+    line-height: 1.6;
     font-weight : normal;
     overflow : hidden;
     margin-bottom : 16px;
-    line-height: 1.6;
     width : 100%;
     overflow-wrap : break-word;
     ${breakpoint.ml`
@@ -105,6 +112,7 @@ function PostForm(props) {
     return (
      
         <Post onClick = {toPost}>
+            <i class="fas fa-dot-circle"></i>
             <Title><span>{props.post.title}</span></Title>
             {/* <InfoPost>
                 <ImgBlock><Img src = {props.post.user ? props.post.user.profile.avatar : "https://static.boredpanda.com/blog/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-29.jpg"} /></ImgBlock>
