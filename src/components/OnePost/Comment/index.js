@@ -48,9 +48,11 @@ font-size: 16px;
 line-height: 23px;
 display: flex;
 align-items: center;
-
+cursor : pointer;
 color: #0853B6;
-
+&:hover{
+    text-decoration : underline;
+}
 ${breakpoint.tb`
 font-size: 16px;
 `}
@@ -60,17 +62,20 @@ font-size: 12px;
 `
 function Comment(props) {
     const comment = props.comment
-
+    const userID = props.comment.user._id
+    console.log(userID)
+    const goToProfile = () =>{
+        if(userID){
+            window.location.assign("/profile/" + userID);
+        }
+    }
     return (
-
         <CommentBox>
             <Img src={comment.user.profile.avatar}></Img>
             <Cmt>
-                <Name >
+                <Name onClick = {goToProfile} >
                     {comment.user.profile.name}
                 </Name>
-
-
                 <Text>{comment.content}</Text>
             </Cmt>
         </CommentBox>
