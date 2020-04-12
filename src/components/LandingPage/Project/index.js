@@ -106,6 +106,7 @@ const Project = (props) => {
             <Title to="/project">Cơ Hội</Title>
             <Description>
               {/* Thông tin về  các dự án đã, đang và sẽ  */}
+              Tổng hợp chia sẻ cơ hội, dự án, các chương trình trao đổi nước ngoài và cuộc thi về Khởi nghiệp - Kinh doanh - Công nghệ trong nước và quốc tế uy tín dành cho sinh viên.
             </Description>
             {hotNews.slice(0, 3).map((oneNew,index) => {
                 const {text, imgs} = getTextAndImg(oneNew.content)

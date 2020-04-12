@@ -137,7 +137,7 @@ const goToLink = (href) => {
 
 const Banner = (props) => {
 
-    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "Cộng đồng các doanh nhân trẻ - nơi giáo dục, truyền cảm hứng và kết nối những người có chung niềm đam mê Khởi nghiệp - Kinh doanh." : "Global Community for Young Entrepreneurs - this platform is a global community designed to educate, inspire, and connect entrepreneurs."
+    const descriptionContent = !localStorage.getItem("hiec_user_token") ? "Cộng đồng các doanh nhân trẻ - nơi giáo dục, truyền cảm hứng và kết nối những người có chung niềm đam mê Khởi nghiệp - Kinh doanh." : "Cộng đồng các doanh nhân trẻ - nơi giáo dục, truyền cảm hứng và kết nối những người có chung niềm đam mê Khởi nghiệp - Kinh doanh."
     return(
         <BannerContainer>
             <Title>Beyond the Infinity</Title>
