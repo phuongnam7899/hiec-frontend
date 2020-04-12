@@ -18,7 +18,7 @@ const LandingPageContainer = styled.div`
 `
 const FormAndLeaderboard = styled.div`
     display : flex;
-    min-height : 100vh;
+    min-height : 85vh;
     width : 100%;
     justify-content : space-between;
     ${breakpoint.tb`
@@ -43,12 +43,17 @@ const LandingPage = (props) => {
             <Banner>
             </Banner>
             <MenuContainer>
-            <FormAndLeaderboard>
+                {localStorage.getItem("hiec_user_id") ? (<FormAndLeaderboard>
                     <Forum></Forum>
                     <Leaderboard></Leaderboard>
-                </FormAndLeaderboard>
+                </FormAndLeaderboard>) : null}
+
                 <News></News>
                 <Project></Project>
+                {!localStorage.getItem("hiec_user_id") ? (<FormAndLeaderboard>
+                    <Forum></Forum>
+                    <Leaderboard></Leaderboard>
+                </FormAndLeaderboard>) : null}
             </MenuContainer>
         </LandingPageContainer>
     )

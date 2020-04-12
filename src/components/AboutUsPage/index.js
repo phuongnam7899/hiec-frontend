@@ -104,7 +104,7 @@ const Intro = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: ${convert2vw(106, "vh")};
+  min-height: ${convert2vw(100, "vh")};
   padding: ${convert2vw(72)} 0px;
   margin-bottom: ${convert2vw(40, "vh")};
   ${breakpoint.ml`
@@ -112,7 +112,9 @@ const Intro = styled.div`
   min-height: 50vh;
 `}
 `;
-
+const IntroContent = styled(Content)`
+    width: 50%;
+`
 const Activities = styled.div`
   display: flex;
   justify-content: space-between;
@@ -270,14 +272,14 @@ const AboutUsPage = () => {
       </OurStory>
       <Intro>
         <Title data-aos="fade-up">SỨ MỆNH</Title>
-        <Content data-aos="fade-up">
+        <IntroContent data-aos="fade-up">
           HIEC ra đời với sứ mệnh xây dựng một cộng đồng ứng dụng khoa học sáng
           tạo và Kinh doanh - Khởi nghiệp hướng đến các bạn sinh viên Việt Nam.
           Từ đó, thế hệ trẻ có đủ tự tin và hành trang để biến ý tưởng trở thành
           hiện thực, xây dựng một doanh nghiệp bền vững hàng đầu bằng chính tài
           năng, sự trân trọng, trách nhiệm cao của mình và góp phần vào nền kinh
           tế hội nhập.
-        </Content>
+        </IntroContent>
       </Intro>
       <Title data-aos="fade-up" style={{ alignSelf: "center" }}>
         HOẠT ĐỘNG
@@ -317,7 +319,7 @@ const AboutUsPage = () => {
       <Content
         data-aos="fade-right"
         style={{
-          marginBottom: `calc(${convert2vw(40, "vh")} - (6.56px - 1vh) * 60)`
+          marginBottom: `calc(${convert2vw(47, "vh")} - (6.56px - 1vh) * 60)`
         }}
       >
         HIEC mong muốn trở thành một tổ chức kiểu mới bằng sự sáng tạo và đổi

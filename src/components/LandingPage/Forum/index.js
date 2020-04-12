@@ -6,7 +6,7 @@ import { breakpoint } from "../../../styles/mixin";
 
 const ForumContainer = styled.div`
   width: 45%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

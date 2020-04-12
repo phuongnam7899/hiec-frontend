@@ -9,7 +9,7 @@ import {breakpoint} from "../../../styles/mixin"
 const LeaderboardContainer = styled.div`
   width: 45%;
   margin-top: 64px;
-  min-height: 100vh;
+  min-height: 100%;
   ${
     breakpoint.tb`
   width: 100%;

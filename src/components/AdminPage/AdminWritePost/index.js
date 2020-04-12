@@ -185,7 +185,7 @@ const tagOptions = [
     label: "Fintech"
   },
   {
-    value: "Food&Drink",
+    value: "Food&Beverage",
     label: "Ăn uống"
   },
   {
