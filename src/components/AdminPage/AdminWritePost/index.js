@@ -417,29 +417,27 @@ const AdminWritePost = props => {
 };
 
 AdminWritePost.modules = {
-    toolbar: [
-        [{ header: "1" }, { font: [] }],
-        [{ size: [] }],
-        ["bold", "italic", "underline", "blockquote", "code"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image", "video"]
-    ]
+  toolbar: [
+    ["bold"], ["italic"], ["underline"],["blockquote"], ["code"], [{ 'align': [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["link"], ["image"], ["video"]
+  ]
 };
-
 AdminWritePost.formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "blockquote",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-    "video",
-    "code"
+  "align",
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "blockquote",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+  "video",
+  "code"
 ];
 
 export default AdminWritePost;

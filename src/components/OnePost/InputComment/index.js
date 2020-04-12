@@ -55,7 +55,7 @@ function InputComment(props) {
     return (
        <Box onSubmit ={submitText}>
            <AvatarUser src = {user.profile.avatar}/>
-           <Input name ="comment-input" placeholder = "Nhập bình luận của bạn ..." value = {text} onChange = {(e)=>setText(e.target.value)}/>
+           <Input name ="comment-input" placeholder = "Nhập bình luận của bạn..." value = {text} onChange = {(e)=>setText(e.target.value)}/>
        </Box>
     )
 }
