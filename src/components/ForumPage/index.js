@@ -65,6 +65,7 @@ function ForumPage(props) {
         document.title = "HIEC - Diễn đàn";
         window.scrollTo(0,0);        
         if(!localStorage.getItem("hiec_user_id")){
+            // console.log(props.history);
             props.history.push("/sign-in");
         }        
         getHotPosts()

@@ -62,6 +62,12 @@ const NewsPage = (props) => {
     const [ghimPost,setGhimPost] = useState([]);
     useEffect(()=>{
         document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Cơ hội"
+        if(!localStorage.getItem("hiec_user_id") && splitedHef.includes("project")){
+            console.log(props)
+            props.history.push("/sign-in");
+        }        
+        getHotPosts()
+        getRecentPosts()
         window.scrollTo(0,0)
         getGhimPost()
         getRecentPosts()

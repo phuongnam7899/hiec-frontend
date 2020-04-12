@@ -67,8 +67,8 @@ export default function App() {
       <Route path= "/news/:id" exact component = {OneNew}/>
       <Route path= "/project/:id" exact component = {OneNew}/>
       <Route path= "/about-us" exact component = {AbouUsPage}/>
-      <Route path= "/news" exact  render = {() => <NewsPage/> } />
-      <Route path= "/project" exact  render = {() => <NewsPage/> } />
+      <Route path= "/news" exact  component = {NewsPage}  />
+      <Route path= "/project" exact  component = {NewsPage} />
       <Route path= "/change-password" exact render = {() => <ChangePasswordPage/> } />
       <Route path = "/404-not-found" exact render = {()=><NotFoundPage/>}/>
       {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
