@@ -57,11 +57,11 @@ const Number = styled.div`
   ${props => {
     switch (props.number) {
       case 1:
-        return `color : #FFD056`;
+        return `color : #ffd700`;
       case 2:
-        return `color : #A1A1A1`;
+        return `color : #C0C0C0`;
       case 3:
-        return `color : #FF8A65`;
+        return `color : #b87333`;
       default:
         return `color : #000000`;
     }
