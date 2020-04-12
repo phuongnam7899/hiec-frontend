@@ -49,12 +49,14 @@ const Description = styled.div`
 const Date = styled.div`
   font-size: 14px;
   color: #707070;
+  margin: 8px 0px;
 `;
 
 const ImageWithTitle = props => {
   return (
     <ImageWithTitleContainer to={props.toHref}>
       <Img imgSrc={props.imgUrl} className="img"></Img>
+      {props.date ? <Date type={props.type}>Ngày đăng: {props.date}</Date> : null}
       {props.title ? (
         <Title type={props.type} className="title">
           {props.title}
@@ -63,7 +65,7 @@ const ImageWithTitle = props => {
       {props.description ? (
         <Description fontStyle={props.fontStyle}>{props.description}</Description>
       ) : null}
-      {props.date ? <Date type={props.type}>{props.date}</Date> : null}
+      
     </ImageWithTitleContainer>
   );
 };

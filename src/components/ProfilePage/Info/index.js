@@ -241,7 +241,7 @@ function Info() {
 
     // console.log(name + " - " + dob + "- " + gender + "- " + isWorking + "- " + phoneNumber + "- " + avatar)
     const upAvatar = isUpdate ? <>  <Label isLoading = {isLoading} url={avatar} for="avatar-file"> <IconSettings className="fas fa-wrench"></IconSettings> </Label><input accept=".jpg" id="avatar-file" type="file" onChange={changeAvatar} style={{ display: "none" }} /></>
-        : <Avatar src={avatar} />
+        : <Avatar src={avatar} align="middle" />
 
     const button = isUpdate ? <Button disabled = {isLoading} onClick={updateUser}>Lưu<I className="fas fa-pen"></I></Button>
         : <Button onClick={() => setIsUpdate(true)}>Chỉnh sửa<I className="fas fa-pen"></I></Button>

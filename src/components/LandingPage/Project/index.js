@@ -9,7 +9,7 @@ const ProjectsContainer = styled.div`
     display : flex;
     flex-wrap : wrap;
     width :100%;
-    min-height : 100vh;
+    min-height : 90vh;
     justify-content : space-between;
     align-items : center;
 `
@@ -18,7 +18,7 @@ const Title = styled(NavLink)`
   width: 100%;
   text-decoration : none;
   font-weight : bold;
-  margin-bottom : 16px;
+  margin-bottom : 0px;
   
   color : #000000;
   &:hover {
@@ -34,7 +34,7 @@ const Description = styled.div`
   font-size: 16px;
   width : 90%;
   `}
-  margin-bottom : 16px;
+  margin-bottom : 0px;
 
 `;
 const OneNews = styled.div`

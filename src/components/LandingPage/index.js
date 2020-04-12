@@ -43,12 +43,12 @@ const LandingPage = (props) => {
             <Banner>
             </Banner>
             <MenuContainer>
-                <News></News>
-                <Project></Project>
-                <FormAndLeaderboard>
+            <FormAndLeaderboard>
                     <Forum></Forum>
                     <Leaderboard></Leaderboard>
                 </FormAndLeaderboard>
+                <News></News>
+                <Project></Project>
             </MenuContainer>
         </LandingPageContainer>
     )
