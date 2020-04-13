@@ -271,6 +271,10 @@ const tagOptions = [
   {
     value: "Entrepreneurship",
     label: "Khởi nghiệp"
+  },
+  {
+    value: "Science",
+    label: "Khoa học"
   }
 ];
 const categoryOptions = [{

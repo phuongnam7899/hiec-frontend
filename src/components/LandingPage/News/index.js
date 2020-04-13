@@ -63,7 +63,7 @@ const News = () => {
     const news = await axios.post("/api/news/hot", {
       number: 7,
       category: "news",
-      limit : 30
+      limit : 8
     });
     setHotNews(news.data);
     // console.log(news.data[0].postTime);
