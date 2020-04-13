@@ -138,13 +138,15 @@ const Content = styled.div`
         margin : 8px 0px;
     }
     & * {
+        text-align: justify;
+        line-height: 24px;
         font-size : 16px;
         ${breakpoint.tb`
-
+        line-height: 21px;
         font-size: 14px;
         `}
         ${breakpoint.ml`
-        
+        line-height: 18px;
         font-size: 12px;
         `}
         

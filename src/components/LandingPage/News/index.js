@@ -129,7 +129,7 @@ const News = () => {
         />
       </BigNews>
       <SubNews>
-        {hotNews.slice(0, 4).map((oneNew,index) => {
+        {hotNews.slice(0, 5).map((oneNew,index) => {
           const {imgs} = getTextAndImg(oneNew.content)
           const date = convertDate(oneNew.postTime)
           if(!oneNew || !ghimNews[0] || ghimNews[0]._id === oneNew._id ){
