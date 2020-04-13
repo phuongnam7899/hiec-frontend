@@ -283,7 +283,14 @@ function Info() {
                  :null }
                 <Select name="fas fa-venus-mars" options={genderOptions} info={gender} update={isUpdate} change={(value) => { setGender(value) }}></Select>
                 <InfoUser type="date" name="fas fa-baby" info={dob} update={isUpdate} change={(value) => { setDob(value) }}></InfoUser>
-                <Select name="fas fa-briefcase" options={jobOptions} info={isWorking ? jobOptions[0].value : jobOptions[1].value} update={isUpdate} change={(value) => { if (value.value === "Đi làm") setIsWorking(true); else setIsWorking(false) }}></Select>
+                <Select name="fas fa-briefcase" options={jobOptions} info={isWorking ? jobOptions[0].value : jobOptions[1].value} update={isUpdate} 
+                    change={(value) => { 
+                        console.log(value);
+                        if (value === "Đi làm") 
+                            {setIsWorking(true)}
+                        else setIsWorking(false) }}>
+
+                    </Select>
                 {isRightUser?
                 <InfoUser name="fas fa-phone" info={phoneNumber} update={isUpdate} change={(value) => {if(value.length < 16)setPhoneNumber(value) }}></InfoUser>
                 :null}
