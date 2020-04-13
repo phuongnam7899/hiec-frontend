@@ -271,6 +271,10 @@ const tagOptions = [
   {
     value: "ExchangeProgram",
     label: "Chương trình trao đổi"
+  },
+  {
+    value: "Entrepreneurship",
+    label: "Khởi nghiệp"
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {
