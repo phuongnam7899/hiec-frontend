@@ -16,6 +16,7 @@ background: #f5f5f5;
 border-radius: 20px;
 width : calc(100% - 40px);
 padding: 12px 12px;
+overflow-wrap: break-word;
 ${breakpoint.tb`
 padding: 10px 12px;
 font-size: 10px;
