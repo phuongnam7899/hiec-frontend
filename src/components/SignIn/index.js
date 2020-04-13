@@ -176,8 +176,7 @@ transition: ${props => props.theme.time};
     
     `
 
-function HookSignIn(props) {
-
+const HookSignIn = (props) => {
     const [widthBackground1, setWidthBackground1] = useState(100 / 20 * 13);
     const [isDarkMode, setisDarkMode] = useState(false);
     const [email, setEmail] = useState("");
@@ -186,12 +185,12 @@ function HookSignIn(props) {
     const [info, setInfo] = useState({});
     const [isNote, setIsNote] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    const user = useSelector(state => state.user)
+    const  user = useSelector(state => state.user)
     const dispatch = useDispatch();
     useEffect(() => {
-        if (user._id) {
-            window.history.back()
-        }
+            if (user._id) {
+                window.location.assign("/");
+            }        
     }, [])
     const submit = async (e) => {
         e.preventDefault();
@@ -217,7 +216,7 @@ function HookSignIn(props) {
                     setTimeout(() => {
                         dispatch({ type: "SET_NOT_VISIBLE" })
                     }, 10000)
-                    window.history.back()
+                    window.location.assign("/")
                 }
             }
             catch (err) {
