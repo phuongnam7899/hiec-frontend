@@ -29,7 +29,7 @@ const Title = styled(NavLink)`
 
 const Description = styled.div`
   font-size: 20px;
-  width : 75%;
+  width : 72%;
   ${breakpoint.ml`
   font-size: 16px;
   width : 90%;

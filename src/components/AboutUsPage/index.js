@@ -27,12 +27,12 @@ const AboutUsPageContainer = styled.div`
 ${breakpoint.mm`
 background : #fcfcfc;
 align-items : center;
-height: 850vw;
+height: 950vw;
 `}
   ${breakpoint.ms`
     background : #fcfcfc;
     align-items : center;
-    height: 1000vw;
+    height: 1130vw;
   `}
 `;
 const OurStory = styled.div`
@@ -337,8 +337,8 @@ const AboutUsPage = () => {
         ĐỐI TÁC
       </Title>
       <Partners>
-        <Partner src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/68633251_930865433931971_627575153798152192_n.png?_nc_cat=102&_nc_sid=7aed08&_nc_oc=AQmkSARdkeKZk3i-U-ZSw6c2BI7DYc-cGj13bOMqDT_2WPOPJhNElbuPxC7a0d6YuOQ&_nc_ht=scontent-hkg3-1.xx&oh=d8b31ca207e9ba954c831b1a931c4bd2&oe=5EAD56F4" data-aos="flip-left" data-aos-duration="1000"></Partner>
-        <Partner src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/60678406_2172443186198447_6219327929843712000_n.png?_nc_cat=109&_nc_sid=85a577&_nc_eui2=AeGuHdNDfJr7QKqipAvjKdFl_i-xXav325egbiqdIC1cRWLc3n3bJ2585BSwPFX3rUHACPv2a0nO_AtyNp_BShKn1aQvUtZaaSGH0O_O8SxyVQ&_nc_ohc=SMQ-akbcNQQAX822pr9&_nc_ht=scontent.fsgn2-4.fna&oh=7c71a5462e4f594a7d5e4071d8cd5243&oe=5E9F7025" data-aos="flip-left" data-aos-duration="1500"></Partner>
+        <Partner src="https://i.imgur.com/Ytu67Jv.png" data-aos="flip-left" data-aos-duration="1000"></Partner>
+        <Partner src="https://i.imgur.com/gM2SMqL.png" data-aos="flip-left" data-aos-duration="1500"></Partner>
         {/* <Partner data-aos="flip-left" data-aos-duration="2000"></Partner>
         <Partner data-aos="flip-left" data-aos-duration="2500"></Partner> */}
       </Partners>
