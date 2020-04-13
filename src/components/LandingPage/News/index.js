@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom"
 import {breakpoint} from "../../../styles/mixin"
 
 const Title = styled(NavLink)`
-  font-size: 40px;
+  font-size: 36px;
   margin-bottom : 16px;
   width: 100%;
   text-decoration : none;

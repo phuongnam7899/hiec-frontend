@@ -24,8 +24,8 @@ const Img = styled.div`
     width: 100%;
     height : 75%;
     transition : background-size .3s;
-    box-shadow: 4px 4px 4px rgba(193, 193, 193, 0.25);
-
+    box-shadow: ${props => (props.shadow === "f" ? "none" : "4px 4px 4px rgba(193, 193, 193, 0.25)")};
+    
 }
 `;
 const Title = styled.h2`
@@ -55,7 +55,7 @@ const Date = styled.div`
 const ImageWithTitle = props => {
   return (
     <ImageWithTitleContainer to={props.toHref}>
-      <Img imgSrc={props.imgUrl} className="img"></Img>
+      <Img imgSrc={props.imgUrl} className="img" shadow={props.shadow}></Img>
       {props.date ? <Date type={props.type}>Ngày đăng: {props.date}</Date> : null}
       {props.title ? (
         <Title type={props.type} className="title">

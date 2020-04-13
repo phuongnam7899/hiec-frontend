@@ -21,8 +21,8 @@ const Avatar = styled.img`
       case "medium":
         return `
         object-fit: cover;
-                width : calc(${convert2vw(50)} + (13.6px - 1vw)*2);
-                height : calc(${convert2vw(50)} + (13.6px - 1vw)*2);
+                width : calc(${convert2vw(45)} + (13.6px - 1vw)*2);
+                height : calc(${convert2vw(45)} + (13.6px - 1vw)*2);
                 `;
       case "large":
         return `
@@ -56,7 +56,7 @@ const Name = styled.span`
                 `;
       case "medium":
         return `
-            font-size : calc(${convert2vw(20)} + (13.6px - 1vw)*1);
+            font-size : calc(${convert2vw(18)} + (13.6px - 1vw)*1);
             line-height : calc(${convert2vw(50)} + (13.6px - 1vw)*1);
             height : calc(${convert2vw(50)} + (13.6px - 1vw)*1);
                 `;

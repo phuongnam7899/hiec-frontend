@@ -3,9 +3,10 @@ import styled from "styled-components";
 import ImageWithTitle from "../ImageWithTitle";
 import { NavLink } from "react-router-dom";
 import { breakpoint } from "../../../styles/mixin";
+import ForumImage from "../../../static/images/landing-page-forum-2.png"
 
 const ForumContainer = styled.div`
-  width: 45%;
+  width: 40%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@ const ForumContainer = styled.div`
 `;
 
 const Title = styled(NavLink)`
-  font-size: 40px;
+  font-size: 36px;
   width: 80%;
   text-decoration: none;
   font-weight: bold;
@@ -41,7 +42,7 @@ const Description = styled.div`
 `;
 const OneNews = styled.div`
   width: 100%;
-  height: 50%;
+  height: 70%;
 `;
 
 const ButtonsContainer = styled.div`
@@ -114,8 +115,10 @@ const Forum = props => {
           type="normal"
           fontStyle="i"
           description="Bạn phải đăng nhập mới có thể xem bài, đăng bài và thảo luận."
-          imgUrl="https://i.imgur.com/3rznM28.png"
+          imgUrl={ForumImage}
+          // imgUrl="https://i.imgur.com/3IZto2Y.png"
           toHref="/forum"
+          shadow="f"
         />
       </OneNews>
       {/* {!localStorage.getItem("hiec_user_token") ? 

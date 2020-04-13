@@ -14,7 +14,7 @@ const ProjectsContainer = styled.div`
     align-items : center;
 `
 const Title = styled(NavLink)`
-  font-size: 40px;
+  font-size: 36px;
   width: 100%;
   text-decoration : none;
   font-weight : bold;

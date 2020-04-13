@@ -25,7 +25,7 @@ const WidthXPercent = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 40px;
+  font-size: 36px;
   width: 100%;
   font-weight: bold;
   color: #000000;
@@ -69,7 +69,7 @@ const Number = styled.div`
 `;
 const Point = styled.div`
   width: 20%;
-  font-size: 24px;
+  font-size: 20px;
   text-align: end;
   font-weight: bold;
   & > i {
