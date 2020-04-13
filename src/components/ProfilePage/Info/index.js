@@ -285,7 +285,6 @@ function Info() {
                 <InfoUser type="date" name="fas fa-baby" info={dob} update={isUpdate} change={(value) => { setDob(value) }}></InfoUser>
                 <Select name="fas fa-briefcase" options={jobOptions} info={isWorking ? jobOptions[0].value : jobOptions[1].value} update={isUpdate} 
                     change={(value) => { 
-                        console.log(value);
                         if (value === "Đi làm") 
                             {setIsWorking(true)}
                         else setIsWorking(false) }}>
