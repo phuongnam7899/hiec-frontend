@@ -60,7 +60,7 @@ const ButtonsContainer = styled.div`
     display : flex;
     justify-content : space-between;
     width : 30%;
-    margin-bottom: 5vh;
+    margin-bottom: ${!localStorage.getItem("hiec_user_token") ? "5vh" : "10vh"};
     ${breakpoint.ls`
     width : 40%;
 `}
@@ -143,11 +143,14 @@ const Banner = (props) => {
             <Title>Beyond the Infinity</Title>
 
     <Description>{descriptionContent}</Description>
-            {!localStorage.getItem("hiec_user_token") ? 
             <ButtonsContainer>
+            {!localStorage.getItem("hiec_user_token") ? 
+            (<>
                 <ButtonRed to="/sign-up">Đăng kí</ButtonRed>
                 <ButtonGreen to="/sign-in" >Đăng nhập</ButtonGreen>
-            </ButtonsContainer> : null }
+            </> ): null
+            }
+            </ButtonsContainer>
         </BannerContainer>
     )
 }
