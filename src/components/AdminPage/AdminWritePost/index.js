@@ -387,7 +387,7 @@ const AdminWritePost = props => {
             setTimeout(() => {
                 dispatch({ type: "SET_NOT_VISIBLE" })
             }, 10000)
-            console.log(err)
+            // console.log(err)
         }
 
     }
@@ -398,7 +398,7 @@ const AdminWritePost = props => {
             <Bar>
                 <div>Tạo bài viết</div>
                 <i
-                    class="fas fa-times"
+                    className ="fas fa-times"
                     onClick={() => {
                         turnOnDialog();
                     }}
@@ -428,7 +428,7 @@ const AdminWritePost = props => {
                                 }}
                             >
                                 <span>#{tagName}</span>
-                                <i class="fas fa-times"></i>
+                                <i className ="fas fa-times"></i>
                             </Tag>
                         );
                     })}

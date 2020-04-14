@@ -107,7 +107,7 @@ const Leaderboard = props => {
                 </WidthXPercent>
                 <Point>
                   <span>{user.score}</span>
-                  <i class="fas fa-sign-language"></i>
+                  <i className ="fas fa-sign-language"></i>
                 </Point>
               </OneRow>
             );

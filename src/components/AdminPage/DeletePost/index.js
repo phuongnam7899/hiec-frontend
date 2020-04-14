@@ -18,7 +18,7 @@ function DeletePost() {
                 }
             }
             catch(err){
-                console.log(err);
+                // console.log(err);
                 alert(err)
             }
 

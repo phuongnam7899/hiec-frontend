@@ -220,7 +220,7 @@ const HookSignIn = (props) => {
                 }
             }
             catch (err) {
-                console.log("hello")
+         
                 setTimeout(() => {
                     dispatch(hideLoading())
                 }, 1000)

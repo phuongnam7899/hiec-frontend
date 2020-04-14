@@ -124,19 +124,19 @@ const Footer = props => {
             <Column>
               <Title>Liên hệ</Title>
               <div>
-                <i class="fab fa-facebook"></i>
+                <i className="fab fa-facebook"></i>
                 <a href="https://www.facebook.com/hiec.vn/" target="_blank">fb.com/hiec.vn</a>
               </div>
               <div>
-                <i class="fas fa-envelope"></i>
+                <i className ="fas fa-envelope"></i>
                 <span>clb.hiec@gmail.com</span>
               </div>
               <div>
-                <i class="fab fa-linkedin"></i>
+                <i className ="fab fa-linkedin"></i>
                 <a href="https://www.linkedin.com/company/hiec-hust-innovation-entrepreneurship-club/" target="_blank">linkedin.com/hiec</a>
               </div>
               <div>
-                <i class="fas fa-phone-alt"></i>
+                <i className ="fas fa-phone-alt"></i>
                 <span>(+84) 914 351 642</span>
               </div>
             </Column>

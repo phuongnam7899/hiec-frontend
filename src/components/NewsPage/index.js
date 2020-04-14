@@ -63,7 +63,7 @@ const NewsPage = (props) => {
     useEffect(()=>{
         document.title = splitedHef.includes("news") ? "HIEC - Tin tức" : "HIEC - Cơ hội"
         if(!localStorage.getItem("hiec_user_id") && splitedHef.includes("project")){
-            console.log(props)
+            // console.log(props)
             props.history.push("/sign-in");
         }        
         getHotPosts()
@@ -93,7 +93,7 @@ const NewsPage = (props) => {
             const res= await axios.get("/api/news/ghim/"+category);
             setGhimPost([...ghimPost,res.data]);
         }catch(err){
-            console.log(err)
+            // console.log(err)
         }
     }
     const getRecentPosts = async ()=>{
@@ -105,7 +105,7 @@ const NewsPage = (props) => {
             // console.log(res)
             setRecentPosts(res.data)
         }catch(err){
-           console.log(err)
+        //    console.log(err)
         }   
     }
 
@@ -119,7 +119,7 @@ const NewsPage = (props) => {
             // console.log(res)
             setHotPosts(res.data)
         }catch(err){
-           console.log(err)
+        //    console.log(err)
         }    
     }
     const more = () => {
@@ -144,8 +144,6 @@ const NewsPage = (props) => {
                 }
             }) 
     }
-    console.log(ghimPost)
-    console.log(listPosts)
     return(
         <NewsPageContainer>
             <NewsList>

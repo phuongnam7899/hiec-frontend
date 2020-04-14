@@ -63,7 +63,6 @@ font-size: 12px;
 function Comment(props) {
     const comment = props.comment
     const userID = props.comment.user._id
-    console.log(userID)
     const goToProfile = () =>{
         if(userID){
             window.location.assign("/profile/" + userID);

@@ -119,8 +119,9 @@ const Button = styled.button`
   background: ${props  => props.theme.COLOR};
   color: #ffffff;
   font-weight: bold;
+  cursor : pointer;
   &:hover {
-    background: #3fbaa2;
+    background: ${props => props.theme.HOVER_COLOR};
   }
   ${breakpoint.ml`
   font-size : 0.9rem;
@@ -338,14 +339,13 @@ const WritePost = props => {
   };
 
   const createNewPost = async () => {
-      
       const currentTime = new Date();
       const currentTimeMilis = currentTime.getTime();
-      // console.log("click")
+
       dispatch(showLoading('sectionBar'))
       try{
         if(tags.length > 0 && props.userId && postTitle && postContent){
-          // console.log("POSS")
+
         const response = await axios.post("/api/post",{
           tags : tags,
           user: props.userId,
@@ -354,10 +354,11 @@ const WritePost = props => {
           content : postContent,
           token : localStorage.getItem("hiec_user_token")
         });
-        // console.log(response)
+        if(response.status === 200){
+            props.postSuccess(true)
+        }
         dispatch(hideLoading('sectionBar'))
             onTurnOffWritePost();
-            // props.success(true)
             dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
             setTimeout(()=>{
               dispatch({type : "SET_NOT_VISIBLE"})
@@ -373,7 +374,7 @@ const WritePost = props => {
           setTimeout(()=>{
             dispatch({type : "SET_NOT_VISIBLE"})
           },10000)
-          console.log(err)
+          // console.log(err)
       }
     
   }
@@ -384,7 +385,7 @@ const WritePost = props => {
       <Bar>
         <div>Tạo bài viết</div>
         <i
-          class="fas fa-times"
+          className ="fas fa-times"
           onClick={() => {
             turnOnDialog();
           }}
@@ -413,7 +414,7 @@ const WritePost = props => {
                 }}
               >
                 <span>#{tagName}</span>
-                <i class="fas fa-times"></i>
+                <i className ="fas fa-times"></i>
               </Tag>
             );
           })}

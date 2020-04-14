@@ -286,7 +286,7 @@ const AboutUsPage = () => {
       </Title>
       <Activities>
         <Activity data-aos="flip-left" data-aos-duration="1000">
-          <h3>01 - KẾT NỐI <i class="fas fa-network-wired"></i></h3>
+          <h3>01 - KẾT NỐI <i className ="fas fa-network-wired"></i></h3>
           <p>
             Là cầu nối những bạn trẻ có cùng đam mê, sở thích về kinh doanh - khởi
             nghiệp - công nghệ, mang những ý tưởng sáng tạo đến gần hơn với
@@ -294,21 +294,21 @@ const AboutUsPage = () => {
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="1500">
-          <h3>02 - ĐÀO TẠO <i class="fas fa-graduation-cap"></i></h3>
+          <h3>02 - ĐÀO TẠO <i className ="fas fa-graduation-cap"></i></h3>
           <p>
             Xây dựng những khóa học ngắn hạn bồi dưỡng kiến thức, kĩ năng về
             nghiên cứu khoa học và kinh doanh.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="2000">
-          <h3>03 - HỖ TRỢ <i class="fas fa-hands-helping"></i></h3>
+          <h3>03 - HỖ TRỢ <i className ="fas fa-hands-helping"></i></h3>
           <p>
             Cung cấp thiết bị, không gian sinh hoạt. Truyền cảm hứng sáng tạo,
             thảo luận về những ý tưởng khoa học, kinh doanh.
           </p>
         </Activity>
         <Activity data-aos="flip-left" data-aos-duration="2500">
-          <h3>04 - ĐỊNH HƯỚNG <i class="fas fa-compass"></i></h3>
+          <h3>04 - ĐỊNH HƯỚNG <i className ="fas fa-compass"></i></h3>
           <p>
             Thành lập và hỗ trợ nhóm nghiên cứu, mô hình hóa ý tưởng và tham gia
             thi đấu, giới thiệu đến các doanh nghiệp trong và ngoài trường.

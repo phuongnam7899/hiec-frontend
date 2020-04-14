@@ -150,7 +150,7 @@ useEffect(()=>{
         setTimeout(()=>{
           dispatch(hideLoading())
         },1000)
-        console.log(err)
+        // console.log(err)
       }
     }
   }
