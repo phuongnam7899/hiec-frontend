@@ -124,6 +124,11 @@ const Content = styled.div`
         `}
         
     }
+
+    & .ql-align-center {
+        text-align: center;
+    }
+
     & h1 {
         font-size : 20px;
         ${breakpoint.tb`

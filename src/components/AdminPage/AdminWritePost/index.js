@@ -460,7 +460,6 @@ AdminWritePost.modules = {
   ]
 };
 AdminWritePost.formats = [
-  "align",
   "header",
   "font",
   "size",
@@ -468,6 +467,7 @@ AdminWritePost.formats = [
   "italic",
   "underline",
   "blockquote",
+  "align",
   "list",
   "bullet",
   "indent",
