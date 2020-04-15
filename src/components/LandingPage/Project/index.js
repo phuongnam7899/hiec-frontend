@@ -83,10 +83,10 @@ const Project = (props) => {
         }
       }
       demoContent = demoContent.slice(0, 150);
-      console.log({
-        content : demoContent,
-        imgs
-      })
+      // console.log({
+      //   content : demoContent,
+      //   imgs
+      // })
       return {
         content : demoContent,
         imgs

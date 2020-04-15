@@ -52,8 +52,8 @@ function ButtonWrite(props) {
       // console.log(writePostVisible)
     },[writePostVisible])
     return (<>
-        {buttonVisible?<Button onClick = {click}>Thêm bài viết <i class="fas fa-plus"></i></Button>:<></>}
-        <WritePost userId = {user._id} visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}}></WritePost>
+        {buttonVisible?<Button onClick = {click}>Thêm bài viết <i className ="fas fa-plus"></i></Button>:<></>}
+        <WritePost postSuccess = {(value)=>props.postSuccess(value)}  userId = {user._id} visible={writePostVisible} onTurnOffWritePost={() => {turnOffWritePost()}}></WritePost>
         </>
     )
 }

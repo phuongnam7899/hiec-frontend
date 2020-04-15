@@ -50,9 +50,9 @@ const Loader = styled.img`
 `
 
 function ForumPage(props) {
-    const [loadMore, setLoadMore] = useState(true);
     const [ hotPosts,setHotPosts ] = useState([]);
     const [ recentPosts,setRecentPosts ] = useState([]);
+    const [loadMore, setLoadMore] = useState(true);
     const [postsForum,setPostsForum] = useState([]);
     const [filterCd,setFilterCd] = useState({})
     const [tags,setTags] = useState([]);
@@ -120,7 +120,7 @@ function ForumPage(props) {
             // console.log(res.data)
             setRecentPosts(res.data)
         }catch(err){
-           console.log(err)
+        //    console.log(err)
         }   
     }
 
@@ -135,17 +135,21 @@ function ForumPage(props) {
             // console.log(res.data)
             setHotPosts(res.data)
         }catch(err){
-           console.log(err)
+        //    console.log(err)
         }  
     }
-    // console.log(user._id)
+    const postSuccess = (value) =>{
+        if(value){
+            window.open("/profile/"+user._id);
+        }
+    }
 
     return (
         <Container>
 
         <Page>
             <LeftContent>
-                {window.innerWidth>1000?<ButtonWrite />:<></>}
+                {window.innerWidth>1000?<ButtonWrite  postSuccess = {postSuccess} />:<></>}
                 <Posts>
                 <InfiniteScroll
                 dataLength={postsForum.length}
@@ -163,8 +167,8 @@ function ForumPage(props) {
                 </Posts>
             </LeftContent>
             <RightContent>
-            {window.innerWidth<1000?<ButtonWrite />:<></>}
-            <SearchBar onSearch = {handleSearch}/>
+            {window.innerWidth<1000?<ButtonWrite postSuccess = {postSuccess} />:<></>}
+            <SearchBar   onSearch = {handleSearch}/>
             {window.innerWidth>768?
             <>  
             <HotRecentForm url ="/forum/" title = "Bài viết nổi bật" icon = "fas fa-star" listPost = {hotPosts} />

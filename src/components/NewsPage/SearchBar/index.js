@@ -281,7 +281,7 @@ const SearchBar = props => {
     <SearchBarContainer>
       <Title>
         <span>Tìm kiếm</span>
-        <i class="fas fa-search"></i>
+        <i className ="fas fa-search"></i>
       </Title>
       <Input placeholder="Từ khóa" onChange={handleInputChange} />
       <SelectStyled
@@ -300,7 +300,7 @@ const SearchBar = props => {
               }}
             >
               <span>#{tagName}</span>
-              <i class="fas fa-times"></i>
+              <i className ="fas fa-times"></i>
             </Tag>
           );
         })}

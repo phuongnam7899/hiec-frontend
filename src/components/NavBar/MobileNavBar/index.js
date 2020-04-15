@@ -34,7 +34,6 @@ function MobileNavBar() {
     const [mobileNav, setMobileNav] = useState(false);
 
     const showMobileNav = (e) => {
-        console.log("HHHH")
         e.stopPropagation()
         setMobileNav(!mobileNav);
     }

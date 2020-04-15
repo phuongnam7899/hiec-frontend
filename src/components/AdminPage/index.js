@@ -67,7 +67,7 @@ function AdminPage() {
         <Container>
         <Background>
            <TitleFunc>Tạo Bài Viết Mới</TitleFunc>
-            {buttonVisible ? <Button onClick={click}>Thêm bài viết <i class="fas fa-plus"></i></Button> : <></>}
+            {buttonVisible ? <Button onClick={click}>Thêm bài viết <i className ="fas fa-plus"></i></Button> : <></>}
             <AdminWritePost userId={user._id} visible={writePostVisible} onTurnOffWritePost={() => { turnOffWritePost() }} />
             <TitleFunc>Ghim Bài Viết (Lưu ý chỉ một bài)</TitleFunc>
             <GhimPost/>

@@ -98,14 +98,13 @@ function Post(props) {
     const { name, avatar } = user ? user.profile : defaultUser;
     const dispatch = useDispatch();
     const [isDelete, setIsDelete] = useState(false);
-    console.log(user)
     // console.log(props.post);
     let parser = new DOMParser();
     // console.log(props.post.content);
     let parserContent = parser.parseFromString(content, "text/html");
     let newContent = parserContent.getElementsByTagName("*");
     let finalContent = "";
-    console.log(newContent)
+
     for (var i = 0; i < newContent.length; i++) {
         var current = newContent[i];
         // console.log(current)
@@ -143,7 +142,7 @@ function Post(props) {
                     dispatch({ type: "SET_NOT_VISIBLE" })
                 }, 10000)
                 setDialog(false);
-                console.log(err)
+                // console.log(err)
             }
         }
     }

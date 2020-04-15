@@ -266,13 +266,13 @@ function OnePost(props) {
                 setRelevantPosts(resByTag.data)
             } catch (err) {
                
-                console.log(err)
+                // console.log(err)
             }
 
         } catch (err) {
             // console.log("Hlel")
             window.location.assign("/404-not-found")
-            console.log(err);   
+            // console.log(err);   
         }
     }
 
@@ -286,7 +286,7 @@ function OnePost(props) {
             })
             setRecentPosts(res.data)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 
@@ -316,7 +316,7 @@ function OnePost(props) {
 
         }
         catch(err){
-            console.log(err)
+            // console.log(err)
         }
     }
 
@@ -334,10 +334,10 @@ function OnePost(props) {
                 postID : postID,
                 token : localStorage.getItem("hiec_user_token")
             })
-            console.log(res)
+            // console.log(res)
         }
         catch(err){
-            console.log(err)
+            // console.log(err)
         }
     } 
 

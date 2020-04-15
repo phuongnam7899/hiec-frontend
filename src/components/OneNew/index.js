@@ -211,7 +211,7 @@ function OneNew(props) {
 
         } catch (err) {
             window.location.assign("/404-not-found")
-            console.log(err)
+            // console.log(err)
         }
     }
     
@@ -227,7 +227,7 @@ function OneNew(props) {
             })
             setRecentPosts(res.data)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 
@@ -242,7 +242,7 @@ function OneNew(props) {
             })
             setHotPosts(res.data)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
     // useEffect(() => {

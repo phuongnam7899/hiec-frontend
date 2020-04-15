@@ -93,7 +93,7 @@ const YesNoDialog = (props) => {
     const {type, message, size, visible, onClickYes, onClickNo} = props;
     let Icon = null;
     switch (type){
-        case "danger" : Icon = <i class="fas fa-exclamation-triangle"></i>
+        case "danger" : Icon = <i className ="fas fa-exclamation-triangle"></i>
     }
     return(
             visible ? (

@@ -73,7 +73,7 @@ const News = () => {
         const res= await axios.get("/api/news/ghim/news");
         setGhimNews([...ghimNews,res.data]);
     }catch(err){
-        console.log(err)
+        // console.log(err)
     }
 }
   const getTextAndImg = (html) => {
@@ -135,7 +135,7 @@ const News = () => {
           if(!oneNew || !ghimNews[0] || ghimNews[0]._id === oneNew._id ){
             return null;
           }else{
-            console.log(oneNew)
+            // console.log(oneNew)
                 return (
                   <OneNews key={index}>
                     <ImageWithTitle
