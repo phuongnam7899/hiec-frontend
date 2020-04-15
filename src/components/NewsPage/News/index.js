@@ -14,7 +14,7 @@ const NewsContainer = styled(NavLink)`
   margin: 0px 0px 12px 0px;
   box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
   padding: 24px 16px;
-  height : ${convert2vw(40, "vh",10)};
+  height : ${convert2vw(34, "vh",10)};
   justify-content : space-between;
   &:hover {
     h1,

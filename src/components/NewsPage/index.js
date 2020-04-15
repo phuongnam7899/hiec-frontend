@@ -25,7 +25,7 @@ const RightSide = styled.div`
     `}
 `
 const NewsList = styled.div`
-    width : 70%;
+    width : 73%;
     padding : 32px 0px;
     ${breakpoint.tb`
     width : 100%;

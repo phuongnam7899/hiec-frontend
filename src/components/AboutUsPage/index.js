@@ -267,7 +267,7 @@ const AboutUsPage = () => {
           Entrepreneurship Club - HIEC) trực thuộc Ban Học tập - Nghiên cứu Khoa
           học của Đoàn thanh niên trường Đại học Bách Khoa Hà Nội với đội ngũ
           thành viên bao gồm Ban cố vấn - những giảng viên giàu kinh nghiệm từ
-          trường Đại học Bách Khoa Hà Nội và các bạn sinh viên có giàu tiềm năng và đam mê Sáng tạo - Khởi nghiệp.
+          trường Đại học Bách Khoa Hà Nội và các bạn sinh viên giàu tiềm năng và có đam mê Sáng tạo - Khởi nghiệp.
         </Content>
       </OurStory>
       <Intro>
