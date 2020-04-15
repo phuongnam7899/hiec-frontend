@@ -137,6 +137,9 @@ const Content = styled.div`
         width : 100%;
         margin : 8px 0px;
     }
+    & .ql-align-center {
+        text-align: center;
+    }
     & * {
         text-align: justify;
         line-height: 24px;
