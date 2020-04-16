@@ -249,6 +249,7 @@ function HookSignIn(props) {
               <Input
                 value={name}
                 onChange={e => setName(e.target.value)}
+                maxLength="30"
               ></Input>
             </InputGroup>
             <InputGroup>
