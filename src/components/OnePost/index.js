@@ -141,7 +141,6 @@ const Content = styled.div`
         text-align: center;
     }
     & * {
-        text-align: justify;
         line-height: 24px;
         font-size : 16px;
         ${breakpoint.tb`
