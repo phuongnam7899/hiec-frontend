@@ -19,6 +19,7 @@ const AboutUsPageContainer = styled.div`
   background-image: url(${AboutUsBG});
   background-size: 100% 100%;
   padding: calc(${convert2vw(96)} + (6.56px - 1vh) * 50) ${convert2vw(64)};
+  padding-top : 60px;
   ${breakpoint.ml`
   background : #fcfcfc;
   align-items : center;
