@@ -407,8 +407,8 @@ const AdminWritePost = props => {
             <Main>
                 <Input
                     onChange={handlePostTitleChange}
-                    maxLength="100"
-                    placeholder="Tiêu đề bài viết (Tối đa 100 kí tự)"
+                    maxLength="75"
+                    placeholder="Tiêu đề bài viết (Tối đa 75 kí tự)"
                     value = {postTitle}
                 />
                 <Select
