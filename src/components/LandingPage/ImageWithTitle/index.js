@@ -11,8 +11,12 @@ const ImageWithTitleContainer = styled(NavLink)`
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  
   &:hover > .title {
     color: ${props  => props.theme.COLOR};
+  }
+  & > .img{
+    background-position : center;
   }
   &:hover > .img {
     background-size: 105% 105%;
