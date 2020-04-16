@@ -22,7 +22,7 @@ const Form = styled.div`
 `
 const Title = styled.span`
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 26px;
     max-width : 80%;
     overflow-wrap : break-word;
 
