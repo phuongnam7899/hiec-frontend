@@ -448,6 +448,7 @@ WritePost.formats = [
   "italic",
   "underline",
   "blockquote",
+  "list",
   "bullet",
   "indent",
   "link",
