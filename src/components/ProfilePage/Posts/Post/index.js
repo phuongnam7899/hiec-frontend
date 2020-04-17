@@ -123,7 +123,7 @@ function Post(props) {
         if (user._id === localStorage.getItem("hiec_user_id")) {
             dispatch(showLoading())
             try {
-                const res = await axios.delete(`/api/post/${_id}?token=${localStorage.getItem("hiec_user_token")}`)
+                const res = await axios.delete(`/api/post/${_id}/${user._id}/${localStorage.getItem("hiec_user_token")}`);
                 setTimeout(() => {
                     dispatch(hideLoading())
                 }, 1000)
