@@ -185,7 +185,7 @@ const HookSignIn = (props) => {
     const [info, setInfo] = useState({});
     const [isNote, setIsNote] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    const [emailExist,setEmailExist] = useState(false);
+    
     const  user = useSelector(state => state.user)
     const dispatch = useDispatch();
     useEffect(() => {
@@ -194,29 +194,7 @@ const HookSignIn = (props) => {
             }        
     }, [])
 
-    const checkEmail = () =>{
-        console.log("HELLo")
-        axios({
-            "method":"GET",
-            "url":`https://email-verification-with-threat-detection.p.rapidapi.com/v1/email/${email}`,
-            "headers":{
-            "content-type":"application/octet-stream",
-            "x-rapidapi-host":"email-verification-with-threat-detection.p.rapidapi.com",
-            "x-rapidapi-key":"6a143e6cd4msh2f776764f9a9ac6p122b10jsnc7040b1c3d09"
-            }
-        }
-        ).then((res)=>{
-            return res.json();
-        }).then((data)=>{
-            console.log(data)
-            if(data.deliverable){
-                setEmailExist(true)
-            }else{
-                setEmailExist(false)
-            }
-            
-        })
-    }
+ 
 
     const submit = async (e) => {
         e.preventDefault();
@@ -281,7 +259,7 @@ const HookSignIn = (props) => {
 
     // console.log(useSelector(state=>state.token))
     // console.log(useSelector(state=>state.user))
-    console.log(emailExist)
+    
     return (
         <div style={{ width: "100%", height: "100%" }}>
             <Background>
@@ -295,7 +273,7 @@ const HookSignIn = (props) => {
 
                         <Email>
                             <span>Email</span>
-                            <Input onBlur = {checkEmail} value={email} onChange={(e) => setEmail(e.target.value)}></Input>
+                            <Input value={email} onChange={(e) => setEmail(e.target.value)}></Input>
                         </Email>
                         <Password >
                             <span>Password</span>
