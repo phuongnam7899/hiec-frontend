@@ -296,6 +296,8 @@ tagOptions.sort((currentTag, nextTag) => {
 });
 // console.log(tagOptions);
 const AdminWritePost = props => {
+    const token = localStorage.getItem("hiec_user_token")
+    const userID = localStorage.getItem("hiec_user_id")
     const { onTurnOffWritePost, visible } = props;
     const [postContent, setPostContent] = useState("<h1>Hello</h1>");
     const [tags, setTags] = useState([]);
@@ -362,6 +364,8 @@ const AdminWritePost = props => {
                     title: postTitle,
                     content: postContent,
                     category,
+                    token,
+                    userID
                 });
                 
                 // console.log(response)
