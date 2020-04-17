@@ -183,7 +183,9 @@ function HookSignIn(props) {
   const [enoughInfo, setEnoughInfo] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isDarkMode, setisDarkMode] = useState(false);
+  const [errorMessage,setErrorMessage] = useState("");
   const submit = async e => {
+    setEnoughInfo(true);
     dispatch(showLoading())
     e.preventDefault();
     if (
@@ -199,7 +201,8 @@ function HookSignIn(props) {
         password,
         isWorking
       });
-      if (res.status === 200) {
+      console.log(res);
+      if (res.data.code === 200) {
         setTimeout(() => {
           dispatch(hideLoading())
         }, 1000)
@@ -208,11 +211,22 @@ function HookSignIn(props) {
           dispatch({ type: "SET_NOT_VISIBLE" })
         }, 10000)
         props.history.push("/");
-      } else {
+      } else if(res.data.code === 405) {
         setTimeout(() => {
           dispatch(hideLoading())
         }, 1000)
         setEnoughInfo(false);
+        setErrorMessage("Tài khoản đã tồn tại")
+        dispatch({ type: "SET_VISIBLE_AND_NOT_SUCCESS" })
+        setTimeout(() => {
+          dispatch({ type: "SET_NOT_VISIBLE" })
+        }, 10000)
+      } else if(res.data.code === 400){
+        setTimeout(() => {
+          dispatch(hideLoading())
+        }, 1000)
+        setEnoughInfo(false);
+        setErrorMessage("Email không xác thực")
         dispatch({ type: "SET_VISIBLE_AND_NOT_SUCCESS" })
         setTimeout(() => {
           dispatch({ type: "SET_NOT_VISIBLE" })
@@ -227,7 +241,7 @@ function HookSignIn(props) {
         dispatch({ type: "SET_NOT_VISIBLE" })
       }, 10000)
       setEnoughInfo(false);
-      // console.log("THIẾU HOẶC SAI FORMAT")
+      setErrorMessage("Mời bạn nhập đầy đủ thông tin")
     }
   };
   const goToHomepage = () => {
@@ -236,7 +250,7 @@ function HookSignIn(props) {
   const enough = enoughInfo ? (
     <></>
   ) : (
-      <div style={{ color: "red" }}>Mời nhập đầy đủ thông tin</div>
+  <div style={{ color: "red" }}>{errorMessage}</div>
     );
   return (
       <Background>
