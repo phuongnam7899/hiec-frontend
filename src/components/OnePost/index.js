@@ -194,8 +194,7 @@ const Button = styled.button`
 `
 const TagBlock = styled.div`
     display: flex;
-    flex-wrap: wrap
-    
+    flex-wrap: wrap; 
 `
 
 function OnePost(props) {

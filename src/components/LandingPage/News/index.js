@@ -61,7 +61,7 @@ const News = () => {
   }, []);
   const getNews = async () => {
     const news = await axios.post("/api/news/hot", {
-      number: 7,
+      number: 4,
       category: "news",
       limit : 8
     });
