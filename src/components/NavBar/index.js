@@ -10,6 +10,7 @@ import {BackgroundNav,Li,OptionLink,MiddleRow,LiOptions,Options,ProfilePage,Avat
 }from "./style"
 
 import MobileNavBar from "./MobileNavBar/index"
+import axios from "../../axios"
 
 function HookNavBar(props) {
     const [toggleUser, setToggleUser] = useState(false);
@@ -24,6 +25,7 @@ function HookNavBar(props) {
         window.location.assign("/")
     }
     const setLocal = ()=>{
+        axios.delete(`/api/auth/sign-out?token=${localStorage.getItem("hiec_user_token")}&id=${localStorage.getItem("hiec_user_id")}`)
         dispatch(deleteToken());
         dispatch(deleteUser());
         localStorage.setItem("hiec_user_id","");
