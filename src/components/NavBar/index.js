@@ -21,7 +21,7 @@ function HookNavBar(props) {
 
 
     const goToHomepage = () =>{
-        window.location.assign("/")
+        window.location.assign("/");
     }
     const setLocal = ()=>{
         dispatch(deleteToken());
@@ -36,7 +36,7 @@ function HookNavBar(props) {
     }
 
     const User = token.token? <AvatarBackground onClick={() => { setToggleUser(!toggleUser) }}>
-        <Avatar src= {user.profile.avatar} align="middle"/>
+        <Avatar src= {user.profile.avatar || "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcVTlEXUHIyBJGKGKRcdKVOYhb22zka6_CZ0VwJ4z2c7wSlWw6&usqp=CAU"} align="middle"/>
         <i style={isDarkMode ? { color: "white", marginLeft: "12px" } : { color: "#AEAEAE", marginLeft: "12px" }} className="fas fa-chevron-down"></i>
     </AvatarBackground> : <></>
 
