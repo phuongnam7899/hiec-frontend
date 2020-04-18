@@ -349,7 +349,7 @@ const WritePost = props => {
   const createNewPost = async () => {
       const currentTime = new Date();
       const currentTimeMilis = currentTime.getTime();
-
+    
       dispatch(showLoading('sectionBar'))
       try{
         if(tags.length > 0 && props.userId && postTitle && postContent){
