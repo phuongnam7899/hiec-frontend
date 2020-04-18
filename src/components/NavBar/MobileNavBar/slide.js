@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { saveUser, deleteUser } from "../../../actions/user"
 import { addToken, deleteToken } from "../../../actions/token"
 import { NavLink } from 'react-router-dom';
+import axios from '../../../axios';
 
 const BackgroundNav = styled.div.attrs(props => ({
     visible: props.visible || false,
@@ -100,6 +101,7 @@ function Slide(props) {
 
 
     const signOut = (e) => {
+        axios.delete(`/api/auth/sign-out?token=${localStorage.getItem("hiec_user_token")}&id=${localStorage.getItem("hiec_user_id")}`)
         dispatch(deleteToken());
         dispatch(deleteUser());
         localStorage.setItem("hiec_user_id", "");
