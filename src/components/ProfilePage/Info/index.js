@@ -178,7 +178,6 @@ function Info() {
                 avatar,
                 token : localStorage.getItem("hiec_user_token")
             })
-            // console.log(res)
             if(res.status == 200){
                 setTimeout(()=>{
                     dispatch(hideLoading())
