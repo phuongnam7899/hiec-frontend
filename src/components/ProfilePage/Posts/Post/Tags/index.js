@@ -3,8 +3,8 @@ import styled from "styled-components"
 import {breakpoint} from "../../../../../styles/mixin"
 import convert2vw from "../../../../../utils/convert2vw"
 const TagSpan = styled.span`
-    background-color : ${props  => props.theme.COLOR};
-    color : white;
+    background-color : ${props  => props.isHightlight ? "#2f8427":props.theme.COLOR};
+    color : white ;
     font-size : ${convert2vw(12,"px",0.5)};
     font-weight : 600;
     margin-right: 8px;
@@ -17,9 +17,11 @@ const TagSpan = styled.span`
       `}
 `
 
+const hightlightTags = ["Covidea", "IdeaContest"];
+
 function Tag(props) {
     return (
-        <TagSpan>
+        <TagSpan isHightlight={hightlightTags.includes(props.tag)}>
             #{props.tag}
         </TagSpan>
     )

@@ -184,7 +184,7 @@ const News = props => {
       </Head>
       <TagsContainer>
         {tags.map(tag => {
-          return <Tag tag={tag} />;
+          return <Tag tag={tag}/>;
         })}
       </TagsContainer>
       <Content>{demoContent}</Content>
