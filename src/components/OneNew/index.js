@@ -204,13 +204,12 @@ function OneNew(props) {
             setYear(date.getFullYear())
             
             if(localStorage.getItem("hiec_user_id")){
-                // console.log("hello")
                 const addView = await axios.put("/api/news/add-view",{
                     newsID : res.data._id,
                     userID : localStorage.getItem("hiec_user_id"),
+                    token : localStorage.getItem("hiec_user_token")
                 })
-
-                // console.log(addView)
+               
             }
 
         } catch (err) {
