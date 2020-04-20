@@ -1,18 +1,18 @@
 import React , {useState} from 'react'
 import {Input,Button,Form} from "../style"
 import axios from "../../../axios"
-function DeletePost() {
+function DeleteNews() {
     const [text,setText] = useState("");
     const token = localStorage.getItem("hiec_user_token")
     const userID = localStorage.getItem("hiec_user_id")
 
-    const deletePost = async (e) =>{
+    const ghimPost = async (e) =>{
         e.preventDefault();
         if(text){
             // console.log(text)
             try{
-                const res = await axios.delete(`/api/admin/post/${text}/${userID}/${token}?token=${token}`)
-                if(res.data.message === "delete success"){
+                const res = await axios.delete(`/api/news/${text}/${userID}/${token}`)
+                if(res.data._id === text){
                     alert("XÓA TIN THÀNH CÔNG");
                     setText("");
                 }else{
@@ -27,11 +27,11 @@ function DeletePost() {
         }
     }
     return (
-        <Form onSubmit = {deletePost}>
+        <Form onSubmit = {ghimPost}>
             <Input placeholder ="Nhập ID Để Xóa Bài"  value = {text} onChange = {(e)=>{setText(e.target.value)}}/>
-            <Button onClick = {deletePost} >Xóa Bài</Button>
+            <Button onClick = {ghimPost} >Xóa Bài</Button>
         </Form>
     )
 }
 
-export default DeletePost;
+export default DeleteNews;

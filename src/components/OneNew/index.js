@@ -172,6 +172,9 @@ function OneNew(props) {
 
     useEffect(() => {
         document.title = href.includes("/news") ? "HIEC - Tin tức" : "HIEC - Cơ hội";
+        // if(!localStorage.getItem("hiec_user_id") && href.includes("project")){
+        //     props.history.push("/sign-in");
+        // }   
         window.scrollTo(0,0)
         getHotPosts()
         getRecentNews()

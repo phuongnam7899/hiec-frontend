@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AdminWritePost from './AdminWritePost';
 import Container from "../Container"
 import GhimPost from "./GhimPost"
+import DeleteNews from "./DeleteNews"
 import DeletePost from "./DeletePost"
 
 const Background = styled.div`
@@ -71,7 +72,9 @@ function AdminPage() {
             <AdminWritePost userId={user._id} visible={writePostVisible} onTurnOffWritePost={() => { turnOffWritePost() }} />
             <TitleFunc>Ghim Bài Viết (Lưu ý chỉ một bài)</TitleFunc>
             <GhimPost/>
-            <TitleFunc>Xóa Bài Viết</TitleFunc>
+            <TitleFunc>Xóa Bài Viết Trên Tin Tức/Cơ Hội</TitleFunc>
+            <DeleteNews/>
+            <TitleFunc>Xóa Bài Trên Diễn Đàn</TitleFunc>
             <DeletePost/>
         </Background>
         </Container>:null
