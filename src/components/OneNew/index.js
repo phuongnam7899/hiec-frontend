@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { NavLink } from "react-router-dom"
 import HotRecentForm from "../HotRecentForm"
 import axios from "../../axios"
 import Container from "../Container"
 import withNavAndFooter from "../HOC/withNavAndFooter"
-import {breakpoint} from "../../styles/mixin"
+import { breakpoint } from "../../styles/mixin"
+
 const Form = styled.div`
 
     display: flex;
@@ -33,7 +34,7 @@ const Title = styled.span`
     `}
 `
 const Tag = styled.span`
-background-color : ${props  => props.isHightlight ? "#2f8427":props.theme.COLOR};
+background-color : ${props => props.isHightlight ? "#2f8427" : props.theme.COLOR};
 color : white;
 font-size : 12px;
 font-weight : 600;
@@ -49,7 +50,7 @@ margin-top : 10px;
         max-width : 100%;
     `}
     `
-    
+
 
 const Source = styled.div`
     font-weight:600;
@@ -77,6 +78,23 @@ const Post = styled.div`
         width : 100%
     `}
 `
+const loadingAminate = keyframes`
+from {transition:none;}
+to {background-color:#f6f7f8;transition: all 0.3s ease-out;}
+
+`
+const ElementLoading = styled.div`
+    margin : 10px 0;
+    height : ${props => props.height};
+    width : ${props => props.width};
+    animation: ${loadingAminate} 1s  infinite;
+`
+const PostLoading = styled(Post)`
+    max-height : 60vh;
+`
+
+
+
 
 const Reaction = styled.div`
     display: flex;
@@ -87,7 +105,7 @@ const Reaction = styled.div`
 
 `
 const Icon = styled.i`
-    color : ${props  => props.theme.COLOR};
+    color : ${props => props.theme.COLOR};
     ${breakpoint.tb`
 
     font-size: 18px;
@@ -166,8 +184,9 @@ function OneNew(props) {
     const [title, setTitle] = useState("")
     const [tags, setTags] = useState([]);
     const [viewers, setViewers] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
 
-    
+
 
 
     useEffect(() => {
@@ -175,7 +194,7 @@ function OneNew(props) {
         // if(!localStorage.getItem("hiec_user_id") && href.includes("project")){
         //     props.history.push("/sign-in");
         // }   
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         getHotPosts()
         getRecentNews()
         getPost()
@@ -186,11 +205,12 @@ function OneNew(props) {
     const getPost = async () => {
         const regexNews = /news/gi;
         const regexProject = /project/gi;
-        const id = window.location.pathname.replace(regexProject, "").replace(regexNews,"").split("/").join("");
+        const id = window.location.pathname.replace(regexProject, "").replace(regexNews, "").split("/").join("");
 
         try {
             const res = await axios.get("/api/news/" + id);
             // console.log(res.data)
+            setIsLoading(false);
             setViewers(res.data.viewer);
             // console.log(res.data)
             setTitle(res.data.title);
@@ -202,28 +222,27 @@ function OneNew(props) {
             // console.log(date)
             setMonth(date.getMonth() + 1);
             setYear(date.getFullYear())
-            
-            if(localStorage.getItem("hiec_user_id")){
-                const addView = await axios.put("/api/news/add-view",{
-                    newsID : res.data._id,
-                    userID : localStorage.getItem("hiec_user_id"),
-                    token : localStorage.getItem("hiec_user_token")
+            if (localStorage.getItem("hiec_user_id")) {
+                const addView = await axios.put("/api/news/add-view", {
+                    newsID: res.data._id,
+                    userID: localStorage.getItem("hiec_user_id"),
+                    token: localStorage.getItem("hiec_user_token")
                 })
-               
+
             }
 
         } catch (err) {
             window.location.assign("/404-not-found")
-            // console.log(err)
+            console.log(err)
         }
     }
-    
+
 
 
     const getRecentNews = async () => {
         // console.log("hello");
         try {
-            const category = href.includes("news")?"news":"project"
+            const category = href.includes("news") ? "news" : "project"
             const res = await axios.post("/api/news/recent", {
                 number: 5,
                 category,
@@ -237,10 +256,10 @@ function OneNew(props) {
     const getHotPosts = async () => {
         // console.log("hello");
         try {
-            const category = href.includes("news")?"news":"project"
+            const category = href.includes("news") ? "news" : "project"
             const res = await axios.post("/api/news/hot", {
                 number: 5,
-                limit : 30,
+                limit: 30,
                 category,
             })
             setHotPosts(res.data)
@@ -253,28 +272,39 @@ function OneNew(props) {
     // })
 
     // console.log(hotPosts)
-    
+
     return (<Container>
         <Form>
-            <Post>
-                <FirstLine>
-                    <Title>{title}</Title>
-                    <Times>{day}/{month}/{year}</Times>
-                </FirstLine>
-                <TagBlock>
-                    {tags.map(tag => <Tag isHightlight={hightlightTags.includes(tag)}>{tag}</Tag>)}
-                </TagBlock>
-                <Source>{userName}</Source>
-                <Content id="content"></Content>
-                <Reaction>
-                <Icon className="fas fa-eye" ><ReactNumber>{viewers.length}</ReactNumber></Icon>
-                </Reaction>
-                
-            </Post>
-            <RightSide>
-                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức nổi bật":"Nổi bật"} icon="fas fa-star" listPost={hotPosts} />
-                <HotRecentForm url={href.includes("/news")?"/news/":"/project/"} title={href.includes("/news")?"Tin tức gần đây":"Gần đây"} icon="fas fa-clock" listPost={recentPosts} />
-            </RightSide>
+            {isLoading ?
+                <PostLoading>
+                    <ElementLoading width="70%" height="30px"></ElementLoading>
+                    <ElementLoading width="50%" height="24px"></ElementLoading>
+                    <ElementLoading width="100%" height="24px"></ElementLoading>
+                    <ElementLoading width="100%" height="24px"></ElementLoading>
+                    <ElementLoading width="100%" height="24px"></ElementLoading>
+                </PostLoading>
+                :
+                <Post>
+                    <FirstLine>
+                        <Title>{title}</Title>
+                        <Times>{day}/{month}/{year}</Times>
+                    </FirstLine>
+                    <TagBlock>
+                        {tags.map(tag => <Tag isHightlight={hightlightTags.includes(tag)}>{tag}</Tag>)}
+                    </TagBlock>
+                    <Source>{userName}</Source>
+                    <Content id="content"></Content>
+                    <Reaction>
+                        <Icon className="fas fa-eye" ><ReactNumber>{viewers.length}</ReactNumber></Icon>
+                    </Reaction>
+
+                </Post>
+                }
+
+                <RightSide>
+                    <HotRecentForm url={href.includes("/news") ? "/news/" : "/project/"} title={href.includes("/news") ? "Tin tức nổi bật" : "Nổi bật"} icon="fas fa-star" listPost={hotPosts} />
+                    <HotRecentForm url={href.includes("/news") ? "/news/" : "/project/"} title={href.includes("/news") ? "Tin tức gần đây" : "Gần đây"} icon="fas fa-clock" listPost={recentPosts} />
+                </RightSide>
         </Form>
 
     </Container>
