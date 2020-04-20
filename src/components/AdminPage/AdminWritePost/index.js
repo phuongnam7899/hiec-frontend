@@ -275,6 +275,14 @@ const tagOptions = [
   {
     value: "Science",
     label: "Khoa học"
+  },
+  {
+    value: "Covidea",
+    label: "Covidea"
+  },
+  {
+    value: "IdeaContest",
+    label: "IdeaContest"
   }
 ];
 const categoryOptions = [{

@@ -239,14 +239,27 @@ const tagOptions = [
   {
     value: "IdeaContest",
     label: "IdeaContest"
+  },
+  {
+    value: "",
+    label: ""
+  },
+  {
+    value: "",
+    label: ""
+  },
+  {
+    value: "",
+    label: ""
   }
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();
   const nextValue = nextTag.label.toLocaleUpperCase();
-  if (currentValue < nextValue) return -1;
-  else if (currentValue > nextValue) return 1;
-  else return 0;
+  // if (currentValue < nextValue) return -1;
+  // else if (currentValue > nextValue) return 1;
+  // else return 0;
+  return currentValue.localeCompare(nextValue);
 });
 const sortOptions = [
   {
@@ -264,7 +277,7 @@ const SearchBar = props => {
   const [tags, setTags] = useState([]);
   const [sortOption, setSortOption] = useState("claps");
   const addTag = tagName => {
-    if (tags.length < 3 && !tags.includes(tagName.value))
+    if (tags.length < 3 && !tags.includes(tagName.value) && tagName.value)
       setTags([...tags, tagName.value]);
   };
   const deleteTag = index => {

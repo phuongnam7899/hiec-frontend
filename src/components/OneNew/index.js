@@ -33,7 +33,7 @@ const Title = styled.span`
     `}
 `
 const Tag = styled.span`
-background-color : ${props  => props.theme.COLOR};
+background-color : ${props  => props.isHightlight ? "#2f8427":props.theme.COLOR};
 color : white;
 font-size : 12px;
 font-weight : 600;
@@ -178,6 +178,8 @@ function OneNew(props) {
         getPost()
     }, [])
 
+    const hightlightTags = ["Covidea", "IdeaContest"];
+
     const getPost = async () => {
         const regexNews = /news/gi;
         const regexProject = /project/gi;
@@ -258,7 +260,7 @@ function OneNew(props) {
                     <Times>{day}/{month}/{year}</Times>
                 </FirstLine>
                 <TagBlock>
-                    {tags.map(tag => <Tag>{tag}</Tag>)}
+                    {tags.map(tag => <Tag isHightlight={hightlightTags.includes(tag)}>{tag}</Tag>)}
                 </TagBlock>
                 <Source>{userName}</Source>
                 <Content id="content"></Content>
