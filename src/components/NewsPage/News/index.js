@@ -171,7 +171,7 @@ const News = props => {
   demoContent = demoContent.slice(0, 130) + "...";
 
   return (
-    <NewsContainer to={`/${category}/${_id}`}>
+    <NewsContainer to={"#"} onClick = {()=>window.open(`/${category}/${_id}`)} >
       {/* <ImageContainer> */}
         {[...contentImage].slice(0, 1).map(img => {
           return <Image src={img.src} />;
