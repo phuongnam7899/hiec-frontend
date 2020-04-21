@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import convert2vw from "../../../utils/convert2vw"
 import {breakpoint} from "../../../styles/mixin"
-import BannerBG from "../../../static/images/web_banner.png"
+import BannerBG from "../../../static/images/web_banner.jpeg"
 
 const Title = styled.h1`
     font-size : 56px;

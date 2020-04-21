@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import AOS from "aos";
 import convert2vw from "../../utils/convert2vw";
 import { breakpoint } from "../../styles/mixin";
-import AboutUsBG from "../../static/images/about-us-bbg.png"
+import AboutUsBG from "../../static/images/about-us-bbg.jpeg"
 
 import "aos/dist/aos.css";
 AOS.init();

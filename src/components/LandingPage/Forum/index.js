@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ImageWithTitle from "../ImageWithTitle";
 import { NavLink } from "react-router-dom";
 import { breakpoint } from "../../../styles/mixin";
-import ForumImage from "../../../static/images/landing-page-forum-2.png"
+import ForumImage from "../../../static/images/landing-page-forum-2.jpeg"
 
 const ForumContainer = styled.div`
   width: 40%;
