@@ -49,7 +49,7 @@ line-height: 23px;
 display: flex;
 align-items: center;
 cursor : pointer;
-color: #0853B6;
+color : ${props  => props.isHightlight ? "#2f8427":"#0853B6"};
 &:hover{
     text-decoration : underline;
 }
@@ -72,7 +72,7 @@ function Comment(props) {
         <CommentBox>
             <Img src={comment.user.profile.avatar}></Img>
             <Cmt>
-                <Name onClick = {goToProfile} >
+                <Name isHightlight={userID === "5e91ff39f0383f003d4ad4c3"} onClick = {goToProfile} >
                     {comment.user.profile.name}
                 </Name>
                 <Text>{comment.content}</Text>
