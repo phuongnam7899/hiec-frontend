@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { NavLink } from "react-router-dom";
 import HotRecentForm from "../HotRecentForm";
 import axios from "../../axios";
@@ -82,6 +82,21 @@ const Post = styled.div`
 
     `}
 `;
+
+const loadingAminate = keyframes`
+from {transition:none;}
+to {background-color:#f6f7f8;transition: all 0.3s ease-out;}
+
+`
+const ElementLoading = styled.div`
+    margin : 10px 0;
+    height : ${props => props.height};
+    width : ${props => props.width};
+    animation: ${loadingAminate} 1s  infinite;
+`
+const PostLoading = styled(Post)`
+    max-height : 60vh;
+`
 
 const RightSide = styled.div`
   width: 35%;
@@ -206,6 +221,7 @@ function OnePost(props) {
   const [postID, setPostID] = useState("");
   const [number, setNumber] = useState(5);
   const [postUserId, setPostUserId] = useState("");
+  const [isLoading,setIsLoading] = useState(true);
   useEffect(() => {
     document.title = "HIEC - Diễn đàn";
     window.scrollTo(0, 0);
@@ -225,6 +241,7 @@ function OnePost(props) {
       const res = await axios.get(
         `/api/post/${id}?token=${localStorage.getItem("hiec_user_token")}`
       );
+      setIsLoading(false);
       setViewers(res.data.viewers);
       setTitle(res.data.title);
       setTags(res.data.tags);
@@ -337,6 +354,15 @@ function OnePost(props) {
   return (
     <Container>
       <Form>
+      {isLoading ?
+                <PostLoading>
+                    <ElementLoading width="70%" height="30px"></ElementLoading>
+                    <ElementLoading width="50%" height="24px"></ElementLoading>
+                    <ElementLoading width="100%" height="24px"></ElementLoading>
+                    <ElementLoading width="100%" height="24px"></ElementLoading>
+                    <ElementLoading width="100%" height="24px"></ElementLoading>
+                </PostLoading>
+                :
         <Post>
           <FirstLine>
             <Title>{title}</Title>
@@ -389,6 +415,7 @@ function OnePost(props) {
             )}
           </CommentContainer>
         </Post>
+        }
         <RightSide>
           <HotRecentForm
             url="/forum/"

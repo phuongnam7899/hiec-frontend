@@ -365,6 +365,7 @@ const AdminWritePost = props => {
         const currentTimeMilis = currentTime.getTime();
         // console.log("click")
         try {
+         
             if (category && tags.length !== 0 && postTitle && postContent) {
                 const response = await axios.post("/api/news/", {
                     tags: tags,
