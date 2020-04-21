@@ -41,7 +41,7 @@ const OurStory = styled.div`
   flex-direction: column;
   // justify-content : center;
   align-items: flex-end;
-  margin-bottom: ${convert2vw(40, "vh", -10)};
+  margin-bottom: ${convert2vw(45, "vh", -10)};
   height: ${convert2vw(100, "vh")};
   ${breakpoint.ml`
   height : 100vh;
@@ -114,7 +114,7 @@ const Intro = styled.div`
 `}
 `;
 const IntroContent = styled(Content)`
-    width: 50%;
+    width: 55%;
 `
 const Activities = styled.div`
   display: flex;
