@@ -6,36 +6,36 @@ import "react-quill/dist/quill.bubble.css";
 import styled from "styled-components";
 import Select from "react-select";
 import Dialog from "../YesNoDialog";
-import axios from "../../axios"
+import axios from "../../axios";
 // import {notificationNotSuccess,notificationNotVisible,notificationSuccess} from "../../actions/notificationBox"
 import { useDispatch } from "react-redux";
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 import { breakpoint } from "../../styles/mixin";
 
 const WritePostContainer = styled.div`
-    position : relative;
-    & .css-2b097c-container{
-      position : relative;
-      z-index : 2;
-    }
-    width : 50vw;
-    ${breakpoint.tb`
+  position: relative;
+  & .css-2b097c-container {
+    position: relative;
+    z-index: 2;
+  }
+  width: 50vw;
+  ${breakpoint.tb`
       width : 100%;
     `}
-    box-shadow : 0px 0px 5px #cccccc;
-    margin-bottom : 20px;
-    z-index : 11;
+  box-shadow : 0px 0px 5px #cccccc;
+  margin-bottom: 20px;
+  z-index: 11;
 `;
 const StyledQuill = styled(ReactQuill)`
   width: 100%;
-  border : 1px solid #ffffff;
+  border: 1px solid #ffffff;
   margin-top: 16px;
-    position : relative;
+  position: relative;
   & .ql-toolbar {
-    background : #ffffff;
-    position : sticky;
-    z-index : 1;
-    top : 75px;
+    background: #ffffff;
+    position: sticky;
+    z-index: 1;
+    top: 75px;
     display: flex;
     justify-content: space-around;
     ${breakpoint.ml`
@@ -45,7 +45,7 @@ const StyledQuill = styled(ReactQuill)`
   }
   & .ql-editor {
     min-height: 55vh;
-    font-size : 1.1rem;
+    font-size: 1.1rem;
     ${breakpoint.ml`
     font-size : 1rem;
   `}
@@ -94,7 +94,7 @@ const TagContainer = styled.div`
 const Tag = styled.div`
   font-size: 12px;
   padding: 4px 8px;
-  background-color: ${props  => props.theme.COLOR};
+  background-color: ${(props) => props.theme.COLOR};
   color: #ffffff;
   border-radius: 16px;
   margin-right: 8px;
@@ -116,12 +116,12 @@ const Button = styled.button`
   text-align: center;
   margin-top: 8px;
   font-size: 24px;
-  background: ${props  => props.theme.COLOR};
+  background: ${(props) => props.theme.COLOR};
   color: #ffffff;
   font-weight: bold;
-  cursor : pointer;
+  cursor: pointer;
   &:hover {
-    background: ${props => props.theme.HOVER_COLOR};
+    background: ${(props) => props.theme.HOVER_COLOR};
   }
   ${breakpoint.ml`
   font-size : 0.9rem;
@@ -131,164 +131,164 @@ const Button = styled.button`
 const tagOptions = [
   {
     value: "Business",
-    label: "Kinh doanh"
+    label: "Kinh doanh",
   },
   {
     value: "Technology",
-    label: "Công nghệ"
+    label: "Công nghệ",
   },
   {
     value: "Environment",
-    label: "Môi trường"
+    label: "Môi trường",
   },
   {
     value: "AI",
-    label: "Trí tuệ nhân tạo"
+    label: "Trí tuệ nhân tạo",
   },
   {
     value: "Q&A",
-    label: "Hỏi đáp"
+    label: "Hỏi đáp",
   },
   {
     value: "Bigdata",
-    label: "Big Data"
+    label: "Big Data",
   },
   {
     value: "Blockchain",
-    label: "Blockchain"
+    label: "Blockchain",
   },
   {
     value: "Competition",
-    label: "Cuộc thi"
+    label: "Cuộc thi",
   },
   {
     value: "Design",
-    label: "Thiết kế"
+    label: "Thiết kế",
   },
   {
     value: "Education",
-    label: "Giáo dục"
+    label: "Giáo dục",
   },
   {
     value: "Tips",
-    label: "Mẹo"
+    label: "Mẹo",
   },
   {
     value: "Energy",
-    label: "Năng lượng"
+    label: "Năng lượng",
   },
   {
     value: "Entertainment",
-    label: "Giải trí"
+    label: "Giải trí",
   },
   {
     value: "Finance",
-    label: "Tài chính"
+    label: "Tài chính",
   },
   {
     value: "Fintech",
-    label: "Fintech"
+    label: "Fintech",
   },
   {
     value: "Food&Beverage",
-    label: "Ăn uống"
+    label: "Ăn uống",
   },
   {
     value: "Games",
-    label: "Games"
+    label: "Games",
   },
   {
     value: "Healthcare",
-    label: "Chăm sóc sức khỏe"
+    label: "Chăm sóc sức khỏe",
   },
   {
     value: "HIEC",
-    label: "HIEC"
+    label: "HIEC",
   },
   {
     value: "Investment",
-    label: "Đầu tư"
+    label: "Đầu tư",
   },
   {
     value: "IoT",
-    label: "Internet of Things"
+    label: "Internet of Things",
   },
   {
     value: "Marketing",
-    label: "Marketing"
+    label: "Marketing",
   },
   {
     value: "Media",
-    label: "Media"
+    label: "Media",
   },
   {
     value: "Realestate",
-    label: "Bất động sản"
+    label: "Bất động sản",
   },
   {
     value: "Retail",
-    label: "Bán lẻ"
+    label: "Bán lẻ",
   },
   {
     value: "Sharing",
-    label: "Tâm sự - chia sẻ"
+    label: "Tâm sự - chia sẻ",
   },
   {
     value: "Transportation",
-    label: "Giao thông vận tải"
+    label: "Giao thông vận tải",
   },
   {
     value: "Startup",
-    label: "Start-up"
+    label: "Start-up",
   },
   {
     value: "Innovation",
-    label: "Sáng tạo"
-  },  
+    label: "Sáng tạo",
+  },
   {
     value: "Scholarship",
-    label: "Học bổng"
-  },  
+    label: "Học bổng",
+  },
   {
     value: "Event",
-    label: "Sự kiện"
+    label: "Sự kiện",
   },
   {
     value: "Course",
-    label: "Khóa học"
+    label: "Khóa học",
   },
   {
     value: "Internship",
-    label: "Thực tập"
+    label: "Thực tập",
   },
   {
     value: "Job",
-    label: "Việc làm"
+    label: "Việc làm",
   },
   {
     value: "Volunteer",
-    label: "Tình nguyện"
+    label: "Tình nguyện",
   },
   {
     value: "ExchangeProgram",
-    label: "Chương trình trao đổi"
+    label: "Chương trình trao đổi",
   },
   {
     value: "Entrepreneurship",
-    label: "Khởi nghiệp"
+    label: "Khởi nghiệp",
   },
   {
     value: "Science",
-    label: "Khoa học"
+    label: "Khoa học",
   },
   {
     value: "Covidea",
-    label: "Covidea"
+    label: "Covidea",
   },
   {
     value: "IdeaContest",
-    label: "IdeaContest"
-  }
+    label: "IdeaContest",
+  },
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();
@@ -299,47 +299,44 @@ tagOptions.sort((currentTag, nextTag) => {
   return currentValue.localeCompare(nextValue);
 });
 // console.log(tagOptions);
-const WritePost = props => {
-  const [editorHeight, setEditorHeight] = useState(400)
+const WritePost = (props) => {
+  const [editorHeight, setEditorHeight] = useState(400);
   const { onTurnOffWritePost, visible } = props;
   const [postContent, setPostContent] = useState("");
   const [tags, setTags] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-
-    
-  }, [tags, postContent]);
-  const handleContentChange = newText => {
+  useEffect(() => {}, [tags, postContent]);
+  const handleContentChange = (newText) => {
     setPostContent(newText);
     const height = document.getElementsByClassName("ql-editor")[0].clientHeight;
-    document.getElementsByTagName("html")[0].scrollTop += (height - editorHeight);
+    document.getElementsByTagName("html")[0].scrollTop += height - editorHeight;
     setEditorHeight(height);
     // document.scrollTop += (height - editorHeight) * 20;
     // console.log("a : " + document.getElementsByTagName("html")[0].scrollTop);
-
   };
   const handlePostTitleChange = (e) => {
-      const newTitle = e.target.value;
-      setPostTitle(newTitle)
+    const newTitle = e.target.value;
+    setPostTitle(newTitle);
     // console.log(e)
-  }
+  };
   const turnOnDialog = () => {
     setDialogVisible(true);
   };
   const turnOffDialog = () => {
     setDialogVisible(false);
-  }
-  const handleClickYes = () => {
-      onTurnOffWritePost();
-      turnOffDialog();
-  }
-
-  const addTag = tagName => {
-    if (tags.length < 3 && !tags.includes(tagName.value)) setTags([...tags, tagName.value]);
   };
-  const deleteTag = index => {
+  const handleClickYes = () => {
+    onTurnOffWritePost();
+    turnOffDialog();
+  };
+
+  const addTag = (tagName) => {
+    if (tags.length < 3 && !tags.includes(tagName.value))
+      setTags([...tags, tagName.value]);
+  };
+  const deleteTag = (index) => {
     const oldTags = [...tags];
     oldTags.splice(index, 1);
     setTags(oldTags);
@@ -347,53 +344,60 @@ const WritePost = props => {
   };
 
   const createNewPost = async () => {
-      const currentTime = new Date();
-      const currentTimeMilis = currentTime.getTime();
-    
-      dispatch(showLoading('sectionBar'))
-      try{
-        if(tags.length > 0 && props.userId && postTitle && postContent){
+    const currentTime = new Date();
+    const currentTimeMilis = currentTime.getTime();
 
-        const response = await axios.post("/api/post",{
-          tags : tags,
+    dispatch(showLoading("sectionBar"));
+    try {
+      if (tags.length > 0 && props.userId && postTitle && postContent) {
+        const response = await axios.post("/api/post", {
+          tags: tags,
           user: props.userId,
-          postTime : currentTimeMilis,
-          title : postTitle,
-          content : postContent,
-          token : localStorage.getItem("hiec_user_token")
+          postTime: currentTimeMilis,
+          title: postTitle,
+          content: postContent,
+          token: localStorage.getItem("hiec_user_token"),
         });
-        if(response.status === 200){
-            props.postSuccess(true)
+        if (response.status === 200) {
+          props.postSuccess(true);
         }
-        dispatch(hideLoading('sectionBar'))
-            onTurnOffWritePost();
-            dispatch({type : "SET_VISIBLE_AND_SUCCESS"})
-            setTimeout(()=>{
-              dispatch({type : "SET_NOT_VISIBLE"})
-            },10000)
-        }else{
-          throw new Error({message : "NHẬP THIẾU"})
-        }
+        dispatch(hideLoading("sectionBar"));
+        onTurnOffWritePost();
+        dispatch({ type: "SET_VISIBLE_AND_SUCCESS" });
+        setTimeout(() => {
+          dispatch({ type: "SET_NOT_VISIBLE" });
+        }, 10000);
+      } else {
+        throw new Error({ message: "NHẬP THIẾU" });
       }
-      catch(err){
-        dispatch(hideLoading('sectionBar'))
-          onTurnOffWritePost();
-          dispatch({type : "SET_VISIBLE_AND_NOT_SUCCESS"})
-          setTimeout(()=>{
-            dispatch({type : "SET_NOT_VISIBLE"})
-          },10000)
-          // console.log(err)
-      }
-    
-  }
+    } catch (err) {
+      dispatch(hideLoading("sectionBar"));
+      onTurnOffWritePost();
+      dispatch({ type: "SET_VISIBLE_AND_NOT_SUCCESS" });
+      setTimeout(() => {
+        dispatch({ type: "SET_NOT_VISIBLE" });
+      }, 10000);
+      // console.log(err)
+    }
+  };
 
   return visible ? (
-      <WritePostContainer>
-      <Dialog visible={dialogVisible} type="danger" message ="Bạn có muốn hủy bài viết ?" onClickYes={() => {handleClickYes()}} onClickNo={() => {turnOffDialog()}} />
+    <WritePostContainer>
+      <Dialog
+        visible={dialogVisible}
+        type="danger"
+        message="Bạn có muốn hủy bài viết ?"
+        onClickYes={() => {
+          handleClickYes();
+        }}
+        onClickNo={() => {
+          turnOffDialog();
+        }}
+      />
       <Bar>
         <div>Tạo bài viết</div>
         <i
-          className ="fas fa-times"
+          className="fas fa-times"
           onClick={() => {
             turnOnDialog();
           }}
@@ -401,10 +405,10 @@ const WritePost = props => {
       </Bar>
       <Main>
         <Input
-          onChange = {handlePostTitleChange}
+          onChange={handlePostTitleChange}
           maxLength="90"
           placeholder="Tiêu đề bài viết (Tối đa 90 kí tự)"
-          value = {postTitle}
+          value={postTitle}
         />
         <Select
           onChange={addTag}
@@ -422,30 +426,45 @@ const WritePost = props => {
                 }}
               >
                 <span>#{tagName}</span>
-                <i className ="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </Tag>
             );
           })}
         </TagContainer>
         <StyledQuill
-        // theme = {window.innerWidth > 768 : "bubble"}
+          // theme = {window.innerWidth > 768 : "bubble"}
           value={postContent}
           onChange={handleContentChange}
           modules={WritePost.modules}
           formats={WritePost.formats}
         />
-        <Button onClick={() => {createNewPost()}}>Đăng</Button>
+        <Button
+          onClick={() => {
+            createNewPost();
+          }}
+        >
+          Đăng
+        </Button>
       </Main>
     </WritePostContainer>
-  ) : <></>;
+  ) : (
+    <></>
+  );
 };
 
 WritePost.modules = {
   toolbar: [
-    ["bold"], ["italic"], ["underline"],["blockquote"], ["code"], [{ 'align': [] }],
+    ["bold"],
+    ["italic"],
+    ["underline"],
+    ["blockquote"],
+    ["code"],
+    [{ align: [] }],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["link"], ["image"], ["video"]
-  ]
+    ["link"],
+    ["image"],
+    ["video"],
+  ],
 };
 WritePost.formats = [
   "align",
@@ -462,7 +481,7 @@ WritePost.formats = [
   "link",
   "image",
   "video",
-  "code"
+  "code",
 ];
 
 export default WritePost;
