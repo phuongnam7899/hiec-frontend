@@ -106,7 +106,7 @@ function PostForm(props) {
         setYear(date.getFullYear())
     },[])
     const toPost = () =>{
-        window.location.assign(props.url + props.post._id)
+        window.open(props.url + props.post._id)
     }
 
     return (

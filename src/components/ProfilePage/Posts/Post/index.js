@@ -148,7 +148,7 @@ function Post(props) {
     }
 
     const goToPost = (e) => {
-        window.location.assign(linkTo + "/" + _id)
+        window.open(linkTo + "/" + _id)
     }
     const showDialogDelete = () =>{
         setDialog(true);
