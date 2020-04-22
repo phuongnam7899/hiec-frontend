@@ -150,6 +150,7 @@ function ForumPage(props) {
         <Page>
             <LeftContent>
                 {window.innerWidth>1000?<ButtonWrite  postSuccess = {postSuccess} />:<></>}
+                <p>Do tình hình server không ổn định nên các bài load sẽ lâu một chút, nhưng các bạn vẫn có thể đăng bài dự thi như hướng dẫn bình thường, rất xin lỗi vì sự bất tiện này.</p>
                 <Posts>
                 <InfiniteScroll
                 dataLength={postsForum.length}
