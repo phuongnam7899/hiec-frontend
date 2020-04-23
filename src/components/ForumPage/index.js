@@ -150,7 +150,9 @@ function ForumPage(props) {
         <Page>
             <LeftContent>
                 {window.innerWidth>1000?<ButtonWrite  postSuccess = {postSuccess} />:<></>}
-                <p>Do tình hình server không ổn định nên các bài load sẽ lâu một chút, nhưng các bạn vẫn có thể đăng bài dự thi như hướng dẫn bình thường, rất xin lỗi vì sự bất tiện này.</p>
+                <p style={{
+          margin: "8px 0px"
+        }}>Do tình hình server không ổn định nên các bài viết load sẽ lâu hơn so với bình thường. Tuy nhiên các bạn vẫn có thể đăng bài dự thi như bình thường. HIEC rất xin lỗi vì sự bất tiện này và sẽ sớm khắc phục trong thời gian tới.</p>
                 <Posts>
                 <InfiniteScroll
                 dataLength={postsForum.length}
