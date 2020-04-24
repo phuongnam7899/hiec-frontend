@@ -55,7 +55,7 @@ function HotRecentForm(props) {
         </Title>
         </BgTitle>
         <Posts>
-            {props.listPost !== null?<>{props.listPost.map(post => <Post url = {props.url} post = {post}></Post>)}</>:<>aaaaa</>}
+            {props.listPost !== null?<>{props.listPost.slice(0,5).map(post => <Post url = {props.url} post = {post}></Post>)}</>:<>aaaaa</>}
         </Posts>
         </Background>
     )
