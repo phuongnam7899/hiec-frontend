@@ -72,7 +72,7 @@ function Comment(props) {
         <CommentBox>
             <Img src={comment.user.profile.avatar}></Img>
             <Cmt>
-                <Name isHightlight={userID === "5e91ff39f0383f003d4ad4c3"} onClick = {goToProfile} >
+                <Name isHightlight={userID === "5e91ff39f0383f003d4ad4c3" || userID === "5e73930a69b4d5003d3e222b"} onClick = {goToProfile} >
                     {comment.user.profile.name}
                 </Name>
                 <Text>{comment.content}</Text>
