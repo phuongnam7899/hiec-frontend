@@ -144,7 +144,12 @@ const ReactNumber = styled.span`
 `;
 const Content = styled.div`
   width: 100%;
+  height : auto;
   & img {
+    width: 100%;
+    margin: 8px 0px;
+  }
+  & video {
     width: 100%;
     margin: 8px 0px;
   }
@@ -381,7 +386,7 @@ function OnePost(props) {
               <i>{userName}</i>
             </b>
           </Source>
-          <Content id="content"></Content>
+          <Content id="content" className = "ql-editor"></Content>
           <Reaction>
             <ReactArea onClick={clapping}>
               <Icon isClapped={isClapped} className="fas fa-sign-language">

@@ -122,12 +122,17 @@ const ReactNumber = styled.span`
     font-weight : 500;
 `
 const Content = styled.div`
-    width : 100%;
-
+    width: 100%;
+    height : auto;
     & img {
-        margin : 8px 0px;
-        width : 100%;
+      width: 100%;
+      margin: 8px 0px;
     }
+    & video {
+      width: 100%;
+      margin: 8px 0px;
+    }
+
     & * {
         line-height: 24px;
         font-size : 16px;
@@ -293,7 +298,7 @@ function OneNew(props) {
                         {tags.map(tag => <Tag isHightlight={hightlightTags.includes(tag)}>{tag}</Tag>)}
                     </TagBlock>
                     <Source>{userName}</Source>
-                    <Content id="content"></Content>
+                    <Content id="content" className = "ql-editor"></Content>
                     <Reaction>
                         <Icon className="fas fa-eye" ><ReactNumber>{viewers.length}</ReactNumber></Icon>
                     </Reaction>
