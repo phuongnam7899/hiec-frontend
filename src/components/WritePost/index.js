@@ -281,14 +281,14 @@ const tagOptions = [
     value: "Science",
     label: "Khoa học",
   },
-  {
-    value: "Covidea",
-    label: "Covidea",
-  },
-  {
-    value: "IdeaContest",
-    label: "IdeaContest",
-  },
+  // {
+  //   value: "Covidea",
+  //   label: "Covidea",
+  // },
+  // {
+  //   value: "IdeaContest",
+  //   label: "IdeaContest",
+  // },
 ];
 tagOptions.sort((currentTag, nextTag) => {
   const currentValue = currentTag.label.toLocaleUpperCase();
@@ -464,7 +464,7 @@ WritePost.modules = {
     ["link"],
     ["image"],
     ["video"],
-  ],
+  ]
 };
 WritePost.formats = [
   "align",

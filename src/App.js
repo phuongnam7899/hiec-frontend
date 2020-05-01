@@ -24,6 +24,7 @@ import NotFoundPage from './components/404notFound'
 import { ThemeProvider } from 'styled-components'
 
 
+
  export const theme = {
   COLOR : "#0853B6",
   HOVER_COLOR : "#093ea8",
@@ -79,6 +80,8 @@ export default function App() {
       <Route path= "/project" exact  component = {NewsPage} />
       <Route path= "/change-password" exact render = {() => <ChangePasswordPage/> } />
       <Route path = "/404-not-found" exact render = {()=><NotFoundPage/>}/>
+
+
       {visible?<NotificationBox message = {success?"Thành Công":"Thất Bại"} success = {success}></NotificationBox>:<></>}
       <ScrollTopButton />
     

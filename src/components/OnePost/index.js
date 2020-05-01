@@ -331,18 +331,23 @@ function OnePost(props) {
 
   const clapping = async () => {
     try {
-      if (isClapped) {
-        setClaps(claps.filter((id) => id != user._id));
-      } else {
-        setClaps([...claps, user._id]);
+      if(tags.includes("Covidea") || tags.includes("IdeaContest")){
+        throw new Error({message : "this post no longer clap"})
+      }else{
+        if (isClapped) {
+          setClaps(claps.filter((id) => id != user._id));
+        } else {
+          setClaps([...claps, user._id]);
+        }
+        // call API
+        setIsClapped(!isClapped);
+        const res = await axios.put("/api/post/add-clap", {
+          userID: user._id,
+          postID: postID,
+          token: localStorage.getItem("hiec_user_token"),
+        });
       }
-      // call API
-      setIsClapped(!isClapped);
-      const res = await axios.put("/api/post/add-clap", {
-        userID: user._id,
-        postID: postID,
-        token: localStorage.getItem("hiec_user_token"),
-      });
+
       // console.log(res)
     } catch (err) {
       // console.log(err)
