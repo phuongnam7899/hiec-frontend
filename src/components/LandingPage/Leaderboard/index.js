@@ -93,8 +93,8 @@ const Leaderboard = props => {
   return (
     <LeaderboardContainer>
       <Title>Xếp Hạng</Title>
-      {rank.month
-        ? rank.month.slice(0,5).map((user, index) => {
+      {rank.year
+        ? rank.year.slice(0,5).map((user, index) => {
             return (
               <OneRow to={`/profile/${user.userId}`} key={index}>
                 <Number number={index + 1}>{index + 1}</Number>
