@@ -63,6 +63,7 @@ export default function App() {
     <Router>
       <ThemeProvider theme = {theme}>
       <div style = {{backgroundColor : "#F6F6F6",height: "100%"}}>
+      <div></div>
       <LoadingBar/>
       <Route path = "/admin" exact component = {NotFoundPage}/>
       {user._id?<Route path = "/dm-hacker" exact component = {AdminPage}/>:null}

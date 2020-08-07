@@ -16,7 +16,9 @@ const initState = {
         },
         address: "",
         avatar: "",
-    }
+    },
+
+    
 }
 
 
@@ -32,10 +34,13 @@ const user = (state = initState, action) => {
                 // },
                 profile: action.user.profile,
                 _id : action.user._id,
+
             }
         case 'DELETE_USER':
             // console.log("DELETE_USER");
             return initState
+
+  
         default:
             return state;
     }
