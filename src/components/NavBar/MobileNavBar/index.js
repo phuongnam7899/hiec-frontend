@@ -5,6 +5,7 @@ import { Logo, FlexGrow, BackgroundNav, MiddleRow, styleActiveLink ,AvatarBackgr
 
 import styled from "styled-components"
 import Slide from './slide';
+import LogoNav from "../../../static/images/logo-nav.png"
 const Icon = styled.i`
     display : block;
     margin : auto 0;
@@ -72,7 +73,7 @@ function MobileNavBar() {
             <BackgroundNav>
                 <MiddleRow>
                     <FlexGrow grow={1}>
-                        <Logo onClick={goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
+                        <Logo onClick={goToHomepage} src= {LogoNav}/>
                     </FlexGrow>
                     <FlexGrow grow={1} style = {{display:"flex",justifyContent:"flex-end"}}>
                         <Icon className="fas fa-bars" onClick={showMobileNav}></Icon>

@@ -7,7 +7,7 @@ import { saveUser, deleteUser } from "../../../actions/user"
 import { addToken, deleteToken } from "../../../actions/token"
 import { NavLink } from 'react-router-dom';
 import axios from '../../../axios';
-
+import LogoNav from "../../../static/images/logo-nav.png"
 const BackgroundNav = styled.div.attrs(props => ({
     visible: props.visible || false,
 }))`
@@ -90,6 +90,7 @@ const Logo = styled.img`
     width : auto;
     cursor : pointer;
     height : 10vh;
+   
 `
 
 
@@ -149,7 +150,7 @@ function Slide(props) {
                 <Back onClick={setVisible}><i className="fas fa-arrow-right"></i> </Back>
             </ListOption>
             <div style={{ width: "100%" }}>
-                <Logo onClick={() => { goToLink("/") }} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
+                <Logo onClick={() => { goToLink("/") }} src= {LogoNav} />
             </div>
         </SlideGround>
         </BackgroundNav>

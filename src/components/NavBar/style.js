@@ -14,7 +14,7 @@ export const BackgroundNav = styled.div`
 
 export const Logo = styled.img`
     display : block;
-    width : 40px;
+    // width : 40px;
     height : 40px;
     max-height : 40px;
     max-width: 40px;

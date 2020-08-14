@@ -11,7 +11,7 @@ import {BackgroundNav,Li,OptionLink,MiddleRow,LiOptions,Options,ProfilePage,Avat
 
 import MobileNavBar from "./MobileNavBar/index"
 import axios from "../../axios"
-
+import LogoNav from "../../static/images/logo-nav.png"
 function HookNavBar(props) {
     const [toggleUser, setToggleUser] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -73,7 +73,7 @@ function HookNavBar(props) {
                     <BackgroundNav>
                             <MiddleRow>
                                 <FlexGrow grow={12}>
-                                    <Logo onClick = {goToHomepage} src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/87460570_497744691125483_1187986171662172160_n.png?_nc_cat=110&_nc_ohc=oY_irOj354gAX8KBPnc&_nc_ht=scontent.fhan2-4.fna&oh=895c58ec753afd651eb7b38c99cfd87a&oe=5F038AAD" />
+                                    <Logo onClick = {goToHomepage} src={LogoNav} />
                                 </FlexGrow>
 
                                 <FlexGrow grow={66} >
